@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 느림보고딕 */
+@font-face {
+  font-family: 'neurimboGothicRegular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/neurimboGothicRegular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 지마켓 산스 */
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 카페24 써라운드 에어 */
+@font-face {
+  font-family: 'Cafe24SsurroundAir';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 나눔 스퀘어 어라운드 */
+@font-face {
+  font-family: 'NanumSquareRound';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.gmarketsans{
+  font-family: 'GmarketSansMedium';
+}
+
+.NanumSquareRound{
+  font-family: 'NanumSquareRound';
+}
+
+.Cafe24SsurroundAir{
+  font-family: 'Cafe24SsurroundAir';
+}
+
+.neurimboGothic{
+  font-family: 'neurimboGothicRegular';
+}
+
+/* @font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  unicode-range: U+AC00-D7A3;
+}
+
+@font-face {
+  font-family: "Lexend-Regular";
+  src:
+    url("../font/Lexend-Regular.woff2") format("woff2"),
+    url("../font/Lexend-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  unicode-range: U+0041-005A, U+0061-007A;
+}
+
+@font-face {
+  font-family: "Montserrat-Thin";
+  src:
+    url("../font/Montserrat-Thin.woff2") format("woff2"),
+    url("../font/Montserrat-Thin.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  unicode-range: U+0030-0039;
+}
+
+body {
+  font-family: "Pretendard-Regular", "Lexend-Regular", "Montserrat";
+} */

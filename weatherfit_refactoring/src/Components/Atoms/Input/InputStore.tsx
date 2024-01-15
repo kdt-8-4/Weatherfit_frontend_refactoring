@@ -23,7 +23,7 @@ export default function InputStore({inputStyle,placeholderContents, onChageFunct
                 placeholder={placeholderContents}
                 />
             case InputStyle.INPUT_IMAGE:
-                return <div className="border rounded-2xl w-40 h-64" style={{backgroundColor:"#F1EDED"}} onChange={onChageFunction}>
+                return <div className="border rounded-2xl w-40 h-64 flex" style={{backgroundColor:"#F1EDED"}} onChange={onChageFunction}>
                     <Image
                     style={{margin:"auto", padding:"100px 0px" }}
                     src={"/icon_svg/add.svg"}
@@ -31,6 +31,7 @@ export default function InputStore({inputStyle,placeholderContents, onChageFunct
                     width={25}
                     height={25}
                     />
+                    <input className="hidden" type="file" accept="image/*" multiple/>
                 </div>
             default:
                 return null;

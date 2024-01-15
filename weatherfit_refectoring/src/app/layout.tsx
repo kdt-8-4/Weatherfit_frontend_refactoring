@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     
     <html>
-      <body>
+      <body className=" w-[600px]">
         <ReactQueryProvider>{children}</ReactQueryProvider>
       </body>
     </html>

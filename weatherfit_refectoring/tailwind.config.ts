@@ -13,6 +13,12 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      fontFamily: {
+        gmarketsans: ["GmarketSansMedium"],
+        Cafe24SsurroundAir: ["Cafe24SsurroundAir"],
+        NanumSquareRound:["NanumSquareRound"],
+        neurimboGothic:["neurimboGothicRegular"],
+      },
     },
   },
   plugins: [],

@@ -14,69 +14,61 @@ export enum ButtonStyle {
 
 interface Props {
     buttonStyle: ButtonStyle;
-    design?: string;
-    fontsize?: string;
-    btnwidth?:number;
-    btnheight?:number;
-    btnName?:string;
-    font?:string;
+    fontsize?:string;//회원가입 버튼에서 사용 회원가입 다 만들고 크기가 지정됐다면 그냥 지정해주고 없애주세요
+    style?:string;
+    //여기서 w-[100px] h-[50px] m-auto로 적으면 버튼 넓이랑 높이 그리고 마진이나 다른 것들도 지정할 수 있어요
     onClickFunction?: MouseEventHandler<HTMLButtonElement> | undefined;
-    children: React.ReactNode;
+    children?: React.ReactNode;
 }
 //높이 조정도 필요하면 가져다 쓰세요
 
-export default function ButtonStore({buttonStyle, design, fontsize, children, btnName, btnwidth, btnheight, font, onClickFunction}: Props) {
+export default function ButtonStore({buttonStyle, fontsize, children, onClickFunction, style}: Props) {
     const selectButton = (): React.ReactNode => {
         switch (buttonStyle) {
             case ButtonStyle.DEFAULT_BTN:
                 return <button 
-                className={`${font} bg-white border border-black rounded-xl z-10`}
-                style={{width:`${btnwidth}px`,height:`${btnheight}px`, boxShadow:"7px 7px 1px"}}
+                className={`${style} bg-white border border-black rounded-xl z-10`}
+                style={{boxShadow:"7px 7px 1px"}}
                 onClick={onClickFunction}
-                >{btnName}
+                >{children}
                 </button>
             case ButtonStyle.DEFAULT_BTN_FILL:
                 return <button 
-                className={`${font} bg-yellow-200 border border-black rounded-xl z-10`}
-                style={{width:`${btnwidth}px`, height:`${btnheight}px`, boxShadow:"7px 7px 1px"}}
+                className={`${style} bg-yellow-200 border border-black rounded-xl z-10`}
+                style={{boxShadow:"7px 7px 1px"}}
                 onClick={onClickFunction}
-                >{btnName}
+                >{children}
                 </button>
             case ButtonStyle.CATEGORY_BTN:
                 return <button
-                className={`${font} bg-white border border-black rounded-2xl`}
-                style={{width:`${btnwidth}px`, height:`${btnheight}px`}}
+                className={`${style} bg-white border border-black rounded-2xl`}
                 onClick={onClickFunction}
                 >
-                    {btnName}
+                    {children}
                 </button>
             case ButtonStyle.CATEGORY_BTN_Y:
                 return <button
-                className={`${font} bg-yellow-200 border-black rounded-2xl`}
-                style={{width:`${btnwidth}px`, height:`${btnheight}px`}}
+                className={`${style} bg-yellow-200 border-black rounded-2xl`}
                 onClick={onClickFunction}
                 >
-                    {btnName}
+                    {children}
                 </button>
             case ButtonStyle.CATEGORY_BTN_FILL:
                 return <button
-                className={`${font} bg-blue-300 rounded-2xl`}
-                style={{width:`${btnwidth}px`, height:`${btnheight}px`}}
+                className={`${style} bg-blue-300 rounded-2xl`}
                 onClick={onClickFunction}
                 >
-                    {btnName}
+                    {children}
                 </button>
             case ButtonStyle.CONFIRM_BTN:
                 return <button
-                className={`${font} bg-yellow-200 border border-black rounded-lg`}
-                style={{width:`${btnwidth}px`, height:`${btnheight}px`}}
+                className={`${style} bg-yellow-200 border border-black rounded-lg`}
                 onClick={onClickFunction}
-                >{btnName}
+                >{children}
                 </button>
             case ButtonStyle.GOOGLE_BTN:
                 return <button
-                className={` ${font} bg-white border border-black rounded-lg p-2`}
-                style={{width:`${btnwidth}px`, height:`${btnheight}px`}}
+                className={` ${style} bg-white border border-black rounded-lg p-2`}
                 onClick={onClickFunction}
                 >
                 <div className="flex m-auto" style={{width:"230px"}}>
@@ -91,7 +83,7 @@ export default function ButtonStore({buttonStyle, design, fontsize, children, bt
                 </button>
             case ButtonStyle.SIGNUP_BTN:
                 return <button 
-                className={`${font} text-slate-400`}
+                className={`${style} text-slate-400`}
                 style={{fontSize:`${fontsize}px`}}
                 onClick={onClickFunction}
                 >

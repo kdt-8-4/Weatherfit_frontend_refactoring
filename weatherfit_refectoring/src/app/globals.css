@@ -34,50 +34,9 @@
   font-style: normal;
 }
 
-.gmarketsans{
-  font-family: 'GmarketSansMedium';
-}
-
-.NanumSquareRound{
-  font-family: 'NanumSquareRound';
-}
-
-.Cafe24SsurroundAir{
-  font-family: 'Cafe24SsurroundAir';
-}
-
-.neurimboGothic{
-  font-family: 'neurimboGothicRegular';
-}
-
-/* @font-face {
-  font-family: "Pretendard-Regular";
-  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-  unicode-range: U+AC00-D7A3;
-}
-
-@font-face {
-  font-family: "Lexend-Regular";
-  src:
-    url("../font/Lexend-Regular.woff2") format("woff2"),
-    url("../font/Lexend-Regular.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-  unicode-range: U+0041-005A, U+0061-007A;
-}
-
-@font-face {
-  font-family: "Montserrat-Thin";
-  src:
-    url("../font/Montserrat-Thin.woff2") format("woff2"),
-    url("../font/Montserrat-Thin.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-  unicode-range: U+0030-0039;
-}
-
-body {
-  font-family: "Pretendard-Regular", "Lexend-Regular", "Montserrat";
-} */
+/* 원하는 폰트 사용할려면 font ="font-원하는폰트이름"으로 적어서 사용하면 되고 가 목록은
+  gmarketsans
+  NanumSquareRound
+  Cafe24SsurroundAir
+  neurimboGothic
+*/

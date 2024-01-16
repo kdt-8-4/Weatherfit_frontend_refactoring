@@ -7,7 +7,7 @@ export enum ButtonStyle {
   GOOGLE_BTN = 'GOOGLE_BTN',
   CATEGORY_BTN = 'CATEGORY_BTN',
   CATEGORY_BTN_Y = 'CATEGORY_BTN_Y',
-  CATEGORY_BTN_FILL = 'CATEGORY_BTN_FILL',
+  CATEGORY_BTN_CHECKED = 'CATEGORY_BTN_CHECKED',
   SIGNUP_BTN = 'SIGNUP_BTN',
   CONFIRM_BTN = 'CONFIRM_BTN',
 }
@@ -52,7 +52,7 @@ export default function ButtonStore({
       case ButtonStyle.CATEGORY_BTN:
         return (
           <button
-            className={`${style} bg-white border border-black rounded-2xl`}
+            className={`${style} bg-white border border-black rounded-2xl `}
             onClick={onClickFunction}>
             {children}
           </button>
@@ -60,12 +60,12 @@ export default function ButtonStore({
       case ButtonStyle.CATEGORY_BTN_Y:
         return (
           <button
-            className={`${style} bg-yellow-200 border-black rounded-2xl`}
+            className={`${style} bg-yellow-200 border-black rounded-2xl `}
             onClick={onClickFunction}>
             {children}
           </button>
         )
-      case ButtonStyle.CATEGORY_BTN_FILL:
+      case ButtonStyle.CATEGORY_BTN_CHECKED:
         return (
           <button
             className={`${style} bg-blue-300 rounded-2xl`}

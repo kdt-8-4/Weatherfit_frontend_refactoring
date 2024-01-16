@@ -5,7 +5,8 @@
 /* 느림보고딕 */
 @font-face {
   font-family: 'neurimboGothicRegular';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/neurimboGothicRegular.woff2') format('woff2');
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/neurimboGothicRegular.woff2')
+    format('woff2');
   font-weight: normal;
   font-style: normal;
 }
@@ -13,7 +14,8 @@
 /* 지마켓 산스 */
 @font-face {
   font-family: 'GmarketSansMedium';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
+    format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -21,7 +23,8 @@
 /* 카페24 써라운드 에어 */
 @font-face {
   font-family: 'Cafe24SsurroundAir';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff') format('woff');
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff')
+    format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -29,7 +32,8 @@
 /* 나눔 스퀘어 어라운드 */
 @font-face {
   font-family: 'NanumSquareRound';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff')
+    format('woff');
   font-weight: normal;
   font-style: normal;
 }

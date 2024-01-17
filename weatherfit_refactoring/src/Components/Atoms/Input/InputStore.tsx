@@ -1,25 +1,40 @@
 import Image from 'next/image'
-import { FormEventHandler } from 'react'
+import {
+  ChangeEventHandler,
+  FocusEventHandler,
+  FormEventHandler,
+  KeyboardEventHandler,
+  LegacyRef,
+} from 'react'
 
 export enum InputStyle {
   INPUT_WHITE = 'INPUT_WHITE',
   INPUT_IMAGE = 'INPUT_IMAGE',
   INPUT_TEXTAREA = 'INPUT_TEXTAREA',
 }
-//INPUT_IMAGE는 크기 고정이라서 여기 아톰에서 w-40랑 h-64 수정해주면 돼요
 
 interface Props {
   inputStyle: InputStyle
   placeholderContents?: string
+  value?: string
+  textAreaRef?: LegacyRef<HTMLTextAreaElement> | undefined
   style?: string
-  onChageFunction?: FormEventHandler<HTMLDivElement> | undefined
+  onChageFunctionInput?: FormEventHandler<HTMLDivElement> | undefined
+  onChangeFunctionTextArea?: ChangeEventHandler<HTMLTextAreaElement>
+  onFocusFunctionTextArea?: FocusEventHandler<HTMLTextAreaElement>
+  onKeyDownFunctionTextArea?: KeyboardEventHandler<HTMLTextAreaElement>
 }
 
 export default function InputStore({
   inputStyle,
   placeholderContents,
-  onChageFunction,
+  value,
+  textAreaRef,
   style,
+  onChageFunctionInput,
+  onChangeFunctionTextArea,
+  onFocusFunctionTextArea,
+  onKeyDownFunctionTextArea,
 }: Props) {
   const selectInput = (): React.ReactNode => {
     switch (inputStyle) {
@@ -35,7 +50,7 @@ export default function InputStore({
         return (
           <div
             className="border rounded-2xl w-32 h-48 bg-stone-200 flex cursor-pointer hover:bg-stone-300"
-            onChange={onChageFunction}>
+            onChange={onChageFunctionInput}>
             <Image
               className="m-auto"
               src={'/icon_svg/add.svg'}
@@ -49,14 +64,14 @@ export default function InputStore({
       case InputStyle.INPUT_TEXTAREA:
         return (
           <textarea
-            // ref={textAreaRef}
+            className="w-full h-[125px] text-xs align-text-top border rounded-lg bg-white border-gray-500 p-2 font-NanumSquareRound"
+            ref={textAreaRef}
             rows={6}
-            // value={text}
+            value={value}
             placeholder={placeholderContents}
-            // onFocus={handleFocus}
-            // onKeyDown={handleKeyDown}
-            className="w-full h-[125px] text-sm align-text-top border rounded-lg bg-white border-gray-500 p-2"
-            // onChange={handleInputChange}
+            onFocus={onFocusFunctionTextArea}
+            onKeyDown={onKeyDownFunctionTextArea}
+            onChange={onChangeFunctionTextArea}
           />
         )
       default:

@@ -1,5 +1,8 @@
-import TextUpload from '@/Components/Atoms/TextUpload'
+'use client'
+
 import ImageUpload from '@/Components/Organisms/ImageUpload'
+import TextUpload from '@/Components/Atoms/TextUpload'
+import SelectCategory from '@/Components/Atoms/SelectCategory'
 
 export default function Upload() {
   return (
@@ -8,6 +11,7 @@ export default function Upload() {
         <ImageUpload />
         <TextUpload />
       </div>
+      <SelectCategory />
     </>
   )
 }

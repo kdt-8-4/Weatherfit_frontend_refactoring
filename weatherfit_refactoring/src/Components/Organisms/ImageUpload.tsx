@@ -1,11 +1,11 @@
 import InputStore, { InputStyle } from '@/Components/Atoms/Input/InputStore'
 import UploadWeather from '../Molecules/UploadWeather'
-import ImageUploadMolecule from '../Molecules/ImageUploadMolecule'
+import ImageUploadMolecule from '../Molecules/UploadImage'
 import { useStore } from '../Atoms/Store'
 import { useCallback } from 'react'
 
 export default function ImageUpload() {
-  const { selectedImages, setSelectedImages } = useStore()
+  const { setSelectedImages } = useStore()
 
   const handleImagesSelected = useCallback((files: File[] | null) => {
     setSelectedImages(files ? Array.from(files) : [])

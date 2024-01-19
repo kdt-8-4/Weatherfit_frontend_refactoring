@@ -1,8 +1,7 @@
-import Image from 'next/image'
 import InputStore, { InputStyle } from '../Atoms/Input/InputStore'
 import { ChangeEvent } from 'react'
-import BoxStore, { BoxStyle } from '../Atoms/Box/BoxStore'
 import { useStore } from '../Atoms/Store'
+import ArrayImage from './ArrayImage'
 
 interface Props {
   onImagesSelected: (image: File[]) => void
@@ -43,20 +42,11 @@ export default function ImageUploadMolecule({ onImagesSelected }: Props) {
       <div className="flex items-center w-full overflow-x-auto overflow-y-hidden whitespace-nowrap">
         {selectedImages &&
           Array.from(selectedImages).map((image, index) => (
-            <BoxStore boxStyle={BoxStyle.BOX_IMAGE} key={index}>
-              <Image
-                src={URL.createObjectURL(image)}
-                alt={`Image ${index}`}
-                width={100}
-                height={100}
-                className="w-full h-full object-cover border rounded-2xl"
-              />
-              <button
-                className="absolute top-1 right-1.5 text-xs border-none cursor-pointer "
-                onClick={() => removeImage(index)}>
-                ❌
-              </button>
-            </BoxStore>
+            <ArrayImage
+              index={index}
+              imageUrl={URL.createObjectURL(image)}
+              removeImage={removeImage}
+            />
           ))}
         <InputStore
           inputStyle={InputStyle.INPUT_IMAGE}

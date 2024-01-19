@@ -22,6 +22,7 @@ export const useStore = create<State>(set => ({
   selectedImages: [],
   setSelectedImages: (selectedImages: File[]) =>
     set(state => ({ ...state, selectedImages })),
+  // 하위 카테고리 관리
   selectedSubCategories: {},
   setSelectedSubCategories: (category: string, subCategories: string[]) =>
     set(state => ({

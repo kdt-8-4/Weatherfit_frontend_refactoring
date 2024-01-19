@@ -34,8 +34,8 @@ export default function InputStore({
         return (
           <label htmlFor="upload_image">
             <div
-              className="border rounded-2xl w-32 h-48 bg-stone-200 flex cursor-pointer hover:bg-stone-300"
-              onChange={onChageFunction}>
+              onChange={onChageFunction}
+              className="border rounded-2xl w-32 h-48 bg-stone-200 flex cursor-pointer hover:bg-stone-300">
               <Image
                 className="m-auto"
                 src={'/icon_svg/add.svg'}

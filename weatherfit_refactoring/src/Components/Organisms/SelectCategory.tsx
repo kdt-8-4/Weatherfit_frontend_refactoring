@@ -8,9 +8,9 @@ export default function SelectCategory() {
 
   const handleCategorySelect = useCallback(
     (category: string, subCategories: string[]) => {
-      //  setSelectedSubCategories(prev => ({ ...prev, [category]: subCategories }))
+      setSelectedSubCategories(category, subCategories)
     },
-    [],
+    [setSelectedSubCategories],
   )
 
   return (

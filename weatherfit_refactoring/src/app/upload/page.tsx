@@ -1,17 +1,22 @@
 'use client'
 
 import ImageUpload from '@/Components/Organisms/ImageUpload'
-import TextUpload from '@/Components/Atoms/TextUpload'
-import SelectCategory from '@/Components/Atoms/SelectCategory'
+import TextAreaMolecule from '@/Components/Molecules/TextAreaMolecule'
+import SelectCategory from '@/Components/Organisms/SelectCategory'
+import UploadHeader from '@/Components/Organisms/UploadHeader'
 
 export default function Upload() {
   return (
-    <>
-      <div className="mx-5">
+    <div className="h-screen">
+      {/* 헤더 들어가야 함*/}
+      <UploadHeader />
+      {/* 디자인에 있는 날씨 바 없어도 될 듯..?*/}
+      <div className="mx-5 h-full">
         <ImageUpload />
-        <TextUpload />
+        <TextAreaMolecule />
+        <hr />
+        <SelectCategory />
       </div>
-      <SelectCategory />
-    </>
+    </div>
   )
 }

@@ -8,23 +8,23 @@ export enum ButtonStyle {
   CATEGORY_BTN = 'CATEGORY_BTN',
   CATEGORY_BTN_Y = 'CATEGORY_BTN_Y',
   CATEGORY_BTN_CHECKED = 'CATEGORY_BTN_CHECKED',
-  SIGNUP_BTN = 'SIGNUP_BTN',
+  TEXT_BTN = 'TEXT_BTN',
   CONFIRM_BTN = 'CONFIRM_BTN',
 }
 
 interface Props {
+  btnText?: string
   buttonStyle: ButtonStyle
   fontsize?: string //회원가입 버튼에서 사용 회원가입 다 만들고 크기가 지정됐다면 그냥 지정해주고 없애주세요
   style?: string
-  //여기서 w-[100px] h-[50px] m-auto로 적으면 버튼 넓이랑 높이 그리고 마진이나 다른 것들도 지정할 수 있어요
   onClickFunction?: MouseEventHandler<HTMLButtonElement> | undefined
   children?: React.ReactNode
 }
 //높이 조정도 필요하면 가져다 쓰세요
 
 export default function ButtonStore({
+  btnText,
   buttonStyle,
-  fontsize,
   children,
   onClickFunction,
   style,
@@ -60,7 +60,7 @@ export default function ButtonStore({
       case ButtonStyle.CATEGORY_BTN_Y:
         return (
           <button
-            className={`${style} bg-yellow-200 border-black rounded-2xl `}
+            className={`${style} bg-yellow-200 border border-black rounded-2xl px-1.5 py-0.5`}
             onClick={onClickFunction}>
             {children}
           </button>
@@ -68,7 +68,7 @@ export default function ButtonStore({
       case ButtonStyle.CATEGORY_BTN_CHECKED:
         return (
           <button
-            className={`${style} bg-blue-300 rounded-2xl`}
+            className={`${style} bg-blue-300 border border-blue-300 text-white rounded-2xl px-1.5 py-0.5`}
             onClick={onClickFunction}>
             {children}
           </button>
@@ -96,13 +96,10 @@ export default function ButtonStore({
             </div>
           </button>
         )
-      case ButtonStyle.SIGNUP_BTN:
+      case ButtonStyle.TEXT_BTN:
         return (
-          <button
-            className={`${style} text-slate-400`}
-            style={{ fontSize: `${fontsize}px` }}
-            onClick={onClickFunction}>
-            회원가입
+          <button className={`${style}`} onClick={onClickFunction}>
+            {btnText}
           </button>
         )
       default:

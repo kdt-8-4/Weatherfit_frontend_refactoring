@@ -43,6 +43,7 @@ export default function ImageUploadMolecule({ onImagesSelected }: Props) {
         {selectedImages &&
           Array.from(selectedImages).map((image, index) => (
             <ArrayImage
+              key={index}
               index={index}
               imageUrl={URL.createObjectURL(image)}
               removeImage={removeImage}

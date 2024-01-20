@@ -17,7 +17,7 @@ export default function UploadHeader() {
         content,
         // temperature: usetemp,
         // weatherIcon: `https://openweathermap.org/img/wn/${icon}.png`,
-        temperature: 0,
+        temperature: 2,
         weatherIcon: 'test.jpeg',
       }
 

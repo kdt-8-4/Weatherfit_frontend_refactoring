@@ -1,4 +1,3 @@
-import InputStore, { InputStyle } from '@/Components/Atoms/Input/InputStore'
 import UploadWeather from '../Molecules/UploadWeather'
 import ImageUploadMolecule from '../Molecules/UploadImage'
 import { useStore } from '../Atoms/Store'

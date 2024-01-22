@@ -187,6 +187,7 @@ export default function IconStore({
             width={size}
             height={size}
             className={`${style}`}
+            onClick={onClickFunction}
           />
         )
       case IconStyle.ETC:

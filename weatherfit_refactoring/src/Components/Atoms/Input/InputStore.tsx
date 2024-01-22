@@ -1,49 +1,35 @@
 import Image from 'next/image'
-import {
-  ChangeEventHandler,
-  FocusEventHandler,
-  FormEventHandler,
-  KeyboardEventHandler,
-  LegacyRef,
-} from 'react'
+import { FormEventHandler } from 'react'
 
 export enum InputStyle {
   INPUT_WHITE = 'INPUT_WHITE',
   INPUT_SEARCH = 'INPUT_SEARCH',
   INPUT_IMAGE = 'INPUT_IMAGE',
-  INPUT_TEXTAREA = 'INPUT_TEXTAREA',
 }
 
 interface Props {
   inputStyle: InputStyle
+  inputType?: string
   placeholderContents?: string
   value?: string
-  textAreaRef?: LegacyRef<HTMLTextAreaElement> | undefined
   style?: string
-  onChageFunctionInput?: FormEventHandler<HTMLDivElement> | undefined
-  onChangeFunctionTextArea?: ChangeEventHandler<HTMLTextAreaElement>
-  onFocusFunctionTextArea?: FocusEventHandler<HTMLTextAreaElement>
-  onKeyDownFunctionTextArea?: KeyboardEventHandler<HTMLTextAreaElement>
+  onChageFunction?: FormEventHandler<HTMLDivElement> | undefined
 }
 
 export default function InputStore({
   inputStyle,
+  inputType,
   placeholderContents,
-  value,
-  textAreaRef,
   style,
-  onChageFunctionInput,
-  onChangeFunctionTextArea,
-  onFocusFunctionTextArea,
-  onKeyDownFunctionTextArea,
+  onChageFunction,
 }: Props) {
   const selectInput = (): React.ReactNode => {
     switch (inputStyle) {
       case InputStyle.INPUT_WHITE:
         return (
           <input
-            type="text"
-            className={`border rounded-lg bg-white border-gray-400 p-1 ${style}`}
+            type={inputType}
+            className={`border rounded-lg bg-white border-gray-500 p-1 ${style}`}
             placeholder={placeholderContents}
           />
         )
@@ -56,32 +42,29 @@ export default function InputStore({
         )
       case InputStyle.INPUT_IMAGE:
         return (
-          <div
-            className="border rounded-2xl w-32 h-48 bg-stone-200 flex cursor-pointer hover:bg-stone-300"
-            onChange={onChageFunctionInput}>
-            <Image
-              className="m-auto"
-              src={'/icon_svg/add.svg'}
-              alt="add"
-              width={20}
-              height={20}
-            />
-            <input className="hidden" type="file" accept="image/*" multiple />
-          </div>
+          <label htmlFor="upload_image">
+            <div
+              onChange={onChageFunction}
+              className="border rounded-2xl w-32 h-48 bg-stone-200 flex cursor-pointer hover:bg-stone-300">
+              <Image
+                className="m-auto"
+                src={'/icon_svg/add.svg'}
+                alt="add"
+                width={20}
+                height={20}
+              />
+              <input
+                id="upload_image"
+                className="hidden"
+                type="file"
+                accept="image/*"
+                multiple
+                onChange={onChageFunction}
+              />
+            </div>
+          </label>
         )
-      case InputStyle.INPUT_TEXTAREA:
-        return (
-          <textarea
-            className="w-full h-[125px] text-xs align-text-top border rounded-lg bg-white border-gray-500 p-2 font-NanumSquareRound"
-            ref={textAreaRef}
-            rows={6}
-            value={value}
-            placeholder={placeholderContents}
-            onFocus={onFocusFunctionTextArea}
-            onKeyDown={onKeyDownFunctionTextArea}
-            onChange={onChangeFunctionTextArea}
-          />
-        )
+
       default:
         return null
     }

@@ -3,6 +3,7 @@ import { MouseEventHandler } from 'react'
 
 export enum ButtonStyle {
   DEFAULT_BTN = 'DEFAULT_BTN',
+  DEFAULT_BTN_BLUE = 'DEFAULT_BTN_BLUE',
   DEFAULT_BTN_FILL = 'DEFAULT_BTN_FILL',
   GOOGLE_BTN = 'GOOGLE_BTN',
   CATEGORY_BTN = 'CATEGORY_BTN',
@@ -10,6 +11,7 @@ export enum ButtonStyle {
   CATEGORY_BTN_CHECKED = 'CATEGORY_BTN_CHECKED',
   SIGNUP_BTN = 'SIGNUP_BTN',
   CONFIRM_BTN = 'CONFIRM_BTN',
+  CANCLE_BTN= "CANCLE_BTN",
 }
 
 interface Props {
@@ -34,8 +36,16 @@ export default function ButtonStore({
       case ButtonStyle.DEFAULT_BTN:
         return (
           <button
-            className={`${style} bg-white border border-black rounded-xl z-10`}
+            className={`${style} bg-white border border-black rounded-2xl z-10`}
             style={{ boxShadow: '7px 7px 1px' }}
+            onClick={onClickFunction}>
+            {children}
+          </button>
+        )
+      case ButtonStyle.DEFAULT_BTN_BLUE:
+        return (
+          <button
+            className={`${style} border bg-A8C6EC border-black rounded-2xl z-10`}              style={{ boxShadow: '7px 7px 1px' }}
             onClick={onClickFunction}>
             {children}
           </button>
@@ -43,7 +53,7 @@ export default function ButtonStore({
       case ButtonStyle.DEFAULT_BTN_FILL:
         return (
           <button
-            className={`${style} bg-yellow-200 border border-black rounded-xl z-10`}
+            className={`${style} bg-yellow-200 border border-black rounded-2xl z-10`}
             style={{ boxShadow: '7px 7px 1px' }}
             onClick={onClickFunction}>
             {children}
@@ -81,6 +91,14 @@ export default function ButtonStore({
             {children}
           </button>
         )
+        case ButtonStyle.CANCLE_BTN:
+          return (
+            <button
+              className={`${style} bg-yellow-200 border border-gray-500 rounded-[9px]`}
+              onClick={onClickFunction}>
+              {children}
+            </button>
+          )
       case ButtonStyle.GOOGLE_BTN:
         return (
           <button

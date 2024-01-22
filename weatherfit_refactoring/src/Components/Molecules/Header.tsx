@@ -6,22 +6,18 @@ import BoxStore, { BoxStyle } from '../Atoms/Box/BoxStore'
 import { MouseEventHandler } from 'react'
 
 interface Props {
-  isIcon: boolean
   title: string
   btnText?: string
-  iconStyleCase: IconStyle
-  iconStyleCase2?: IconStyle
+  iconStyleCase?: IconStyle
   buttonStyleCase?: ButtonStyle
   onClickFunction?: MouseEventHandler<HTMLButtonElement> | undefined
   onClickFunction2?: () => void
 }
 
 export default function Header({
-  isIcon,
   title,
   btnText,
   iconStyleCase,
-  iconStyleCase2,
   buttonStyleCase,
   onClickFunction,
   onClickFunction2,
@@ -29,7 +25,7 @@ export default function Header({
   return (
     <div className="flex items-center justify-between h-[50px] my-[10px]">
       <IconStore
-        iconStyle={iconStyleCase}
+        iconStyle={IconStyle.PREV2}
         size={20}
         style={'ml-[10px] cursor-pointer'}
         onClickFunction={() => window.history.back()}
@@ -39,14 +35,14 @@ export default function Header({
         children={title}
         style="px-2 h-[30px] font-neurimboGothic text-[22px] pb-[5px] shadow-[7px_7px_1px] flex items-center"
       />
-      {isIcon && iconStyleCase2 != null ? (
+      {iconStyleCase ? (
         <IconStore
-          iconStyle={iconStyleCase2}
+          iconStyle={iconStyleCase}
           size={17}
           style={'mr-[10px] cursor-pointer'}
           onClickFunction={onClickFunction2}
         />
-      ) : buttonStyleCase != null ? (
+      ) : buttonStyleCase ? (
         <ButtonStore
           buttonStyle={buttonStyleCase}
           style={'mr-[10px] font-NanumSquareRound text-xs'}

@@ -1,6 +1,5 @@
 import { ButtonStyle } from '../Atoms/Button/ButtonStore'
 import Header from '../Molecules/Header'
-import { IconStyle } from '../Atoms/Icon/IconStore'
 import { useStore } from '../Atoms/Store'
 
 export default function UploadHeader() {
@@ -52,9 +51,7 @@ export default function UploadHeader() {
   return (
     <>
       <Header
-        isIcon={false}
         title="등록하기"
-        iconStyleCase={IconStyle.PREV2}
         buttonStyleCase={ButtonStyle.TEXT_BTN}
         btnText="등록"
         onClickFunction={handleOnClick}

@@ -9,6 +9,7 @@ export default function Home() {
       <IconStore iconStyle={IconStyle.UNLIKE} size={16} />
       <InputStore
         inputStyle={InputStyle.INPUT_WHITE}
+        inputType="text"
         placeholderContents="아이디 입력"
         style="w-[130px]"
       />
@@ -40,9 +41,9 @@ export default function Home() {
         style="font-gmarketsans w-[300px]"
       />
       <ButtonStore
-        buttonStyle={ButtonStyle.SIGNUP_BTN}
-        style="font-neurimboGothic"
-        fontsize="32"
+        buttonStyle={ButtonStyle.TEXT_BTN}
+        style="font-neurimboGothic text-[32px]"
+        btnText="회원가입"
       />
     </>
   )

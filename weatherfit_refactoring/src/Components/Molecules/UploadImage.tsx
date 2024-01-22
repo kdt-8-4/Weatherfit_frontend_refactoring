@@ -1,14 +1,14 @@
 import InputStore, { InputStyle } from '../Atoms/Input/InputStore'
-import { ChangeEvent } from 'react'
+import { ChangeEvent, useCallback } from 'react'
 import { useStore } from '../Atoms/Store'
 import ArrayImage from './ArrayImage'
 
-interface Props {
-  onImagesSelected: (image: File[]) => void
-}
-
-export default function ImageUploadMolecule({ onImagesSelected }: Props) {
+export default function ImageUploadMolecule() {
   const { selectedImages, setSelectedImages } = useStore()
+
+  const handleImagesSelected = useCallback((files: File[] | null) => {
+    setSelectedImages(files ? Array.from(files) : [])
+  }, [])
 
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     const files: FileList | null = event.target.files
@@ -24,7 +24,7 @@ export default function ImageUploadMolecule({ onImagesSelected }: Props) {
 
       const combinedImages = [...selectedImages, ...filesArray]
       setSelectedImages(combinedImages)
-      onImagesSelected(combinedImages) //부모 컴포넌트로 File[] 전달
+      handleImagesSelected(combinedImages) //부모 컴포넌트로 File[] 전달
     }
   }
 
@@ -33,7 +33,7 @@ export default function ImageUploadMolecule({ onImagesSelected }: Props) {
       const newImages = [...selectedImages]
       newImages.splice(index, 1)
       setSelectedImages(newImages)
-      onImagesSelected(newImages)
+      handleImagesSelected(newImages)
     }
   }
 

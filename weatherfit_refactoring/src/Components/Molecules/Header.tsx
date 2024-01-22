@@ -25,7 +25,7 @@ export default function Header({
   return (
     <div className="flex items-center justify-between h-[50px] my-[10px]">
       <IconStore
-        iconStyle={IconStyle.PREV}
+        iconStyle={IconStyle.PREV2}
         size={20}
         style={'ml-[10px] cursor-pointer'}
         onClickFunction={() => window.history.back()}

@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { MouseEventHandler } from 'react'
 
 export enum IconStyle {
   MY_PROFILE = 'MY_PROFILE',
@@ -26,9 +27,15 @@ interface Props {
   iconStyle: IconStyle
   size?: number
   style?: string
+  onClickFunction?: () => void
 }
 
-export default function IconStore({ iconStyle, size, style }: Props) {
+export default function IconStore({
+  iconStyle,
+  size,
+  style,
+  onClickFunction,
+}: Props) {
   const selectIcon = (): React.ReactNode => {
     switch (iconStyle) {
       case IconStyle.MY_PROFILE_FILL:
@@ -159,6 +166,7 @@ export default function IconStore({ iconStyle, size, style }: Props) {
             width={size}
             height={size}
             className={`${style}`}
+            onClick={onClickFunction}
           />
         )
       case IconStyle.NEXT:

@@ -9,6 +9,7 @@ export default function Home() {
       <IconStore iconStyle={IconStyle.UNLIKE} size={16} />
       <InputStore
         inputStyle={InputStyle.INPUT_WHITE}
+        inputType="text"
         placeholderContents="아이디 입력"
         style="w-[130px]"
       />

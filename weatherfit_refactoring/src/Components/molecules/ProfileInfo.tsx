@@ -1,6 +1,6 @@
 export default function ProfileInfo() {
   return (
-    <div className="flex items-center justify-evenly">
+    <div className="flex items-center justify-evenly my-[10px]">
       <div className="flex items-center flex-col font-Cafe24SsurroundAir">
         <div className="bg-[black] h-[80px] rounded-[50%] w-[80px]"></div>
         <p className="font-bold">깜찍이</p>

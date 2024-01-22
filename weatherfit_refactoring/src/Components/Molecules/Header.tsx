@@ -13,6 +13,7 @@ interface Props {
   iconStyleCase2?: IconStyle
   buttonStyleCase?: ButtonStyle
   onClickFunction?: MouseEventHandler<HTMLButtonElement> | undefined
+  onClickFunction2?: () => void
 }
 
 export default function Header({
@@ -23,9 +24,10 @@ export default function Header({
   iconStyleCase2,
   buttonStyleCase,
   onClickFunction,
+  onClickFunction2,
 }: Props) {
   return (
-    <div className="flex items-center justify-between h-[50px]">
+    <div className="flex items-center justify-between h-[50px] my-[10px]">
       <IconStore
         iconStyle={iconStyleCase}
         size={20}
@@ -38,7 +40,12 @@ export default function Header({
         style="px-2 h-[30px] font-neurimboGothic text-[22px] pb-[5px] shadow-[7px_7px_1px] flex items-center"
       />
       {isIcon && iconStyleCase2 != null ? (
-        <IconStore iconStyle={iconStyleCase2} size={17} style={'mr-[10px]'} />
+        <IconStore
+          iconStyle={iconStyleCase2}
+          size={17}
+          style={'mr-[10px] cursor-pointer'}
+          onClickFunction={onClickFunction2}
+        />
       ) : buttonStyleCase != null ? (
         <ButtonStore
           buttonStyle={buttonStyleCase}

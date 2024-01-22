@@ -60,7 +60,7 @@ export default function ButtonStore({
       case ButtonStyle.CATEGORY_BTN_Y:
         return (
           <button
-            className={`${style} bg-yellow-200 border border-black rounded-2xl px-1.5 py-0.5`}
+            className={`${style} bg-yellow-200 border border-black rounded-2xl pb-[5px]`}
             onClick={onClickFunction}>
             {children}
           </button>

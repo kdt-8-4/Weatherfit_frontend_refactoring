@@ -3,6 +3,7 @@ import { FormEventHandler } from 'react'
 
 export enum InputStyle {
   INPUT_WHITE = 'INPUT_WHITE',
+  INPUT_SEARCH = 'INPUT_SEARCH',
   INPUT_IMAGE = 'INPUT_IMAGE',
 }
 
@@ -31,6 +32,13 @@ export default function InputStore({
             className={`border rounded-lg bg-white border-gray-500 p-1 ${style}`}
             placeholder={placeholderContents}
           />
+        )
+      case InputStyle.INPUT_SEARCH:
+        return (
+          <input
+            type="text"
+            className={`rounded-lg bg-white border-gray-500 p-1 ${style}`}
+            placeholder={placeholderContents}            />
         )
       case InputStyle.INPUT_IMAGE:
         return (

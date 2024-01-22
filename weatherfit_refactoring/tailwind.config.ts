@@ -19,6 +19,11 @@ const config: Config = {
         NanumSquareRound: ['NanumSquareRound'],
         neurimboGothic: ['neurimboGothicRegular'],
       },
+      colors:{
+        "A8C6EC": "#A8C6EC",
+        "F4E58F": "#F4E58F",
+        "E4E4E6": "#E4E4E6",
+      }
     },
   },
   plugins: [],

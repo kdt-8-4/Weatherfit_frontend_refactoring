@@ -1,20 +1,20 @@
 // "use client"
 
-import ProfileHeader from "@/Components/molecules/ProfileHeader";
-import ProfileInfo from "@/Components/molecules/ProfileInfo";
-import ProfilePost from "@/Components/molecules/ProfilePost";
-import ProfilePostBar from "@/Components/molecules/ProfilePostBar";
+import ProfileInfo from '@/Components/Molecules/ProfileInfo'
+import ProfilePost from '@/Components/Molecules/ProfilePost'
+import ProfilePostBar from '@/Components/Molecules/ProfilePostBar'
+import ProfileHeader from '@/Components/Organisms/ProfileHeader'
 
 export default function Mypage() {
-    return(
-        <>
-        <ProfileHeader />
-        <br />
-        <ProfileInfo />
-        <br />
-        <ProfilePostBar />
-        <br />
-        <ProfilePost />
-        </>
-    )
+  return (
+    <>
+      <ProfileHeader />
+      <br />
+      <ProfileInfo />
+      <br />
+      <ProfilePostBar />
+      <br />
+      <ProfilePost />
+    </>
+  )
 }

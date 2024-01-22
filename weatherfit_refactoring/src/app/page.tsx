@@ -40,9 +40,9 @@ export default function Home() {
         style="font-gmarketsans w-[300px]"
       />
       <ButtonStore
-        buttonStyle={ButtonStyle.SIGNUP_BTN}
-        style="font-neurimboGothic"
-        fontsize="32"
+        buttonStyle={ButtonStyle.TEXT_BTN}
+        style="font-neurimboGothic text-[32px]"
+        btnText="회원가입"
       />
     </>
   )

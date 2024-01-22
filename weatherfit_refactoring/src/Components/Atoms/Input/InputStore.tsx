@@ -8,6 +8,7 @@ export enum InputStyle {
 
 interface Props {
   inputStyle: InputStyle
+  inputType?: string
   placeholderContents?: string
   value?: string
   style?: string
@@ -16,6 +17,7 @@ interface Props {
 
 export default function InputStore({
   inputStyle,
+  inputType,
   placeholderContents,
   style,
   onChageFunction,
@@ -25,7 +27,7 @@ export default function InputStore({
       case InputStyle.INPUT_WHITE:
         return (
           <input
-            type="text"
+            type={inputType}
             className={`border rounded-lg bg-white border-gray-500 p-1 ${style}`}
             placeholder={placeholderContents}
           />

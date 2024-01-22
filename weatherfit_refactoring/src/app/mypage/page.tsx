@@ -9,11 +9,8 @@ export default function Mypage() {
   return (
     <>
       <ProfileHeader />
-      <br />
       <ProfileInfo />
-      <br />
       <ProfilePostBar />
-      <br />
       <ProfilePost />
     </>
   )

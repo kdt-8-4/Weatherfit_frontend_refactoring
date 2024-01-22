@@ -1,3 +1,6 @@
+'use client'
+// 리액트 use 들어간 hook에는 use client 써야함
+
 import IconStore, { IconStyle } from '../Atoms/Icon/IconStore'
 import ButtonStore, { ButtonStyle } from '../Atoms/Button/ButtonStore'
 import { useState } from 'react'

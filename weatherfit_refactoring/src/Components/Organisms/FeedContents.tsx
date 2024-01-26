@@ -1,77 +1,72 @@
-import ButtonStore, { ButtonStyle } from "../Atoms/Button/ButtonStore"
-import InputStore from "../Atoms/Input/InputStore"
-import IconStore from "../Atoms/Icon/IconStore"
-import { FeedData } from "@/Store/FeedData"
-import FeedContent from "../Molecules/FeedContent"
-import { useEffect } from "react"
-
-interface LIKE {
-    likeId : number;
-    nickName: string;
-  }
-  
-
-interface IMAGE {
-    boardId: number;
-    imageId: number;
-    imageUrl: string;
-  }
-
-interface FEEDATA {
-    boardId: number;
-    images: IMAGE;
-    createDate: string;
-    likeCount: number;
-    likelist: LIKE[];
-    nickName: string;
-    temperature: number;
-    weather: string;
-    weatherIcon?: string;
-  }
-  
+import ButtonStore, { ButtonStyle } from "../Atoms/Button/ButtonStore";
+import feedDummy from "../../../public/dummy_data/feed.json";
+import { FeedData } from "@/Store/FeedData";
+import { FeedSort } from "@/Store/FeedSort";
+import { WeatherTempMax } from "@/Store/WeatherMaxTemp";
+import { WeatherTempMin } from "@/Store/WeatherMinTemp";
+import FeedContent from "../Molecules/FeedContent";
+import { useEffect } from "react";
 
 export default function FeedContents(){ 
 
     const { feedData, setFeedData } = FeedData();
+    const { feedSort } = FeedSort();
+    const {temperatureMax} = WeatherTempMax();
+    const {temperatureMin} = WeatherTempMin();
 
-    useEffect(()=>{
-        const feedData = async() => {
-            const req = await fetch("https://www.jerneithe.site/board/list",{method:"GET"});
-            console.log("피드데이터 잘 받아지나?", req);
+    console.log("피드 더미 데이터", feedDummy.feed_data);
+    console.log("최고 최저", temperatureMax, temperatureMin);
 
-            //콘텐츠 정렬
-            // const sortedData: FEEDATA[] = [...req.data].sort((a :FEEDATA, b: FEEDATA) => {
-            //     const dateA = new Date(a.createDate);
-            //     const dateB = new Date(b.createDate);
-            //     return dateB.getTime() - dateA.getTime(); // 최신 날짜 순으로 정렬
-            // });
+    const sortedData: FEEDATA[] = [...feedDummy.feed_data].sort((a :FEEDATA, b: FEEDATA) => {
+        const dateA = new Date(a.createDate);
+        const dateB = new Date(b.createDate);
+        return dateB.getTime() - dateA.getTime(); // 최신 날짜 순으로 정렬
+    });
+    
+    const filterFunction = () => {
+        const filterByTemperature = sortedData.filter(
+            (item) => 
+            item.temperature >= temperatureMin &&
+            item.temperature <= temperatureMax,
+        )
+    
+        setFeedData(sortedData);
+    }
 
-            // const copy: FEEDATA[] = sortedData;
-
-            //온도 범위 내 콘텐츠 표시
-            // const filter_of_tem = copy.filter(
-            //     (item) =>
-            //       item.temperature >= parseFloat(min) &&
-            //       item.temperature <= parseFloat(max),
-            //   );
-        }
-
-        
-
-        feedData();
+    //useEffect를 안쓰면 무한루프 돌던데 어떻게 해야하나요..
+    useEffect(() => {
+        filterFunction();
     },[]);
-
 
     return (<div>
         <div className="my-3 text-center">
             <ButtonStore 
                 buttonStyle={ButtonStyle.DEFAULT_BTN_BLUE} 
                 style={`font-neurimboGothic font-semibold text-[15px] bg-A8C6EC m-auto pt-[0px] pb-[4px] w-[70px]`}>
-                HOT
+                {feedSort}
             </ButtonStore>
         </div>
-        <div className="mt-5">
-            <FeedContent />
+        <div className="mt-5 flex flex-wrap">
+            {feedData ? (
+                feedData.map((arr)=>{
+                    return(<FeedContent 
+                        images={arr.images} 
+                        nickName={arr.nickName} 
+                        temperature={arr.temperature} 
+                        weatherIcon={arr.weatherIcon}
+                        
+                        boardId={arr.boardId}
+                        createDate={arr.createDate}
+                        likeCount={arr.likeCount}
+                        likelist={arr.likelist}
+                        weather={arr.weather}
+                        />)
+                })
+            ) : (
+                <div className=" font-gmarketsans">데이터를 불러오고 있습니다.</div>
+            )
+            }
+            
         </div>
     </div>)
 }

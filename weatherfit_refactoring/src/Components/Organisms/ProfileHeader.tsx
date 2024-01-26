@@ -2,6 +2,9 @@
 
 import React, { useState, MouseEventHandler } from 'react'
 import { ButtonStyle } from '../Atoms/Button/ButtonStore'
+import ProfileEditModal from './ProfileEditModal'
+import Header from '../Molecules/Header'
+import { IconStyle } from '../Atoms/Icon/IconStore'
 
 export default function ProfileHeader() {
   const [isModalOpen, setIsModalOpen] = useState(false)

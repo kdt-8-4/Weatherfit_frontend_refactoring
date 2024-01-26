@@ -1,10 +1,12 @@
 import Image from "next/image"
 import IconStore, { IconStyle } from "../Atoms/Icon/IconStore"
 
-export default function FeedContent() {
+
+
+export default function FeedContent({boardId, createDate, likeCount, likelist, weather, images, nickName, temperature, weatherIcon}:FEEDATA) {
 
     return (
-        <div className=" bg-E4E4E6 rounded-xl mx-2 w-[180px] h-[280px]">
+        <div className=" bg-E4E4E6 rounded-xl mx-2 my-2 w-[179px] h-[340px]">
             <div className="flex justify-between m-auto w-[90%] py-2">
                 <div className="flex">
                     <div className=" relative w-[40px] h-[40px]">
@@ -16,24 +18,43 @@ export default function FeedContent() {
                         />
                     </div>
                     <div>
-                        <p className=" font-Cafe24SsurroundAir text-[13px]">아이유</p>
-                        <p className=" font-NanumSquareRound text-[10px]">@iamiu</p>
+                        <p className=" font-Cafe24SsurroundAir text-[13px]">{nickName}</p>
+                        <p className=" font-NanumSquareRound text-[10px]">{createDate}</p>
                     </div>
                 </div>
                 <div>
                     <IconStore iconStyle={IconStyle.ETC} size={30}/>
                 </div>
             </div>
-            <div className=" relative m-auto w-[90%] h-[75%]">
+            <div className=" relative m-auto w-[90%] h-[218px]">
                 <Image 
-                src={"https://cdn.peacedoorball.blog/wp-content/uploads/2024/01/iu-sends-uaenas-into-whiplash-with-her-new-bleached-hair-ahead-of-2024-comeback-something-big-is-coming.webp"}
+                src={images}
                 alt="코디 사진"
                 fill
                 className="border border-black rounded-xl"
                 />
             </div>
-            <div>
-                
+            <div className="flex justify-between m-auto w-[90%] py-2">
+                <div className="flex">
+                    <div className="relative">
+                        <IconStore iconStyle={IconStyle.LIKE} size={25} style="relative top-[26%]"/>
+                    </div>
+                    <div className="relative font-Cafe24SsurroundAir text-[13px]">
+                        <p className=" absolute top-[50%] translate-y-[-50%] w-[100%] h-auto">{likeCount}</p>
+                    </div>
+                </div>
+                <div>
+                    <Image  
+                    src={`https://openweathermap.org/img/wn/${weatherIcon}.png`}
+                    alt="weatherIcon"
+                    width={40}
+                    height={40}
+                    loading="lazy"
+                    />
+                    <div>
+                        <p className="font-Cafe24SsurroundAir text-xs text-center">{temperature}℃</p>
+                    </div>
+                </div>
             </div>
         </div>
     )

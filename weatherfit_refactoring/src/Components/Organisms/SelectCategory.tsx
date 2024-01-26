@@ -1,7 +1,7 @@
 import Select from '../Molecules/Select'
-import { categories } from '@/Components/Atoms/CategoryList'
+import { categories } from '@/Components/data/CategoryList'
 import { useCallback } from 'react'
-import { useStore } from '../Atoms/Store'
+import { useStore } from '../../Store/Store'
 
 export default function SelectCategory() {
   const { initialSubCategories, setSelectedSubCategories } = useStore()

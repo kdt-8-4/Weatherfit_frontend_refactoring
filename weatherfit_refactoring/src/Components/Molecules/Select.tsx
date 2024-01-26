@@ -4,7 +4,7 @@
 import IconStore, { IconStyle } from '../Atoms/Icon/IconStore'
 import ButtonStore, { ButtonStyle } from '../Atoms/Button/ButtonStore'
 import { useState } from 'react'
-import { useStore } from '../Atoms/Store'
+import { useStore } from '../../Store/Store'
 
 interface Props {
   category: string

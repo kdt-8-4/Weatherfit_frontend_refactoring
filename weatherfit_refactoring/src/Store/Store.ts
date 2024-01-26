@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { categories } from './CategoryList'
+import { categories } from '../Components/data/CategoryList'
 
 interface State {
   content: string
@@ -12,6 +12,10 @@ interface State {
   setSelectedSubCategories: (category: string, subCategories: string[]) => void
   initialSubCategories: string[][]
   setInitialSubCategories: () => void
+  deletedImages: number[]
+  setDeletedImages: (imageId: number) => void
+  // existingImages: Image[]
+  // setExistingImages: (images: Image[]) => void
 }
 
 export const useStore = create<State>(set => ({
@@ -38,4 +42,13 @@ export const useStore = create<State>(set => ({
       ...state,
       initialSubCategories: Array(Object.entries(categories).length).fill([]),
     })),
+  deletedImages: [],
+  setDeletedImages(imageId: number) {
+    set(state => ({
+      deletedImages: [...state.deletedImages, imageId],
+    }))
+  },
+  // existingImages: [],
+  // setExistingImages: (existingImages: Image[]) =>
+  //   set(state => ({ ...state, existingImages })),
 }))

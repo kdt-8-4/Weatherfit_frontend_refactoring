@@ -1,9 +1,18 @@
 'use client'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ButtonStore, { ButtonStyle } from '../Atoms/Button/ButtonStore'
 
-export default function ProfilePostBar() {
+interface Props {
+  onFeedClick: () => void
+  onLikeClick: () => void
+}
+
+export default function ProfilePostBar({ onFeedClick, onLikeClick }: Props) {
   const [isFeedSelected, setIsFeedSelected] = useState<boolean>(true)
+
+  useEffect(() => {
+    isFeedSelected ? onFeedClick() : onLikeClick()
+  }, [isFeedSelected])
 
   const handleFeedClike = () => {
     setIsFeedSelected(true)

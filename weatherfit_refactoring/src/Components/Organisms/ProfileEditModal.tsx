@@ -5,6 +5,9 @@ import BoxStore, { BoxStyle } from '../Atoms/Box/BoxStore'
 import InputStore, { InputStyle } from '../Atoms/Input/InputStore'
 import ButtonStore, { ButtonStyle } from '@/Components/Atoms/Button/ButtonStore'
 import ProfileModalInfo from '../Molecules/ProfileModalInfo'
+import Logout from '../Molecules/Logout'
+import Unregister from '../Molecules/Unregister'
+import ProfileImageEdit from '../Molecules/ProfileImageEdit'
 
 interface Props {
   onClickFunction?: () => void
@@ -29,18 +32,19 @@ export default function ProfileEditModal({ onClickFunction }: Props) {
           </BoxStore>
         </div>
         <div className="p-[20px]">
+          <ProfileImageEdit />
           <hr className="my-[10px]" />
           {/* 이메일, 이름, 닉네임 부분 */}
-          <div className="fix_info">
+          <div>
             <ProfileModalInfo title="이메일" value="user@test.com" />
             <ProfileModalInfo title="이름" value="가나다" />
             <ProfileModalInfo title="닉네임" value="깜찍이" />
           </div>
           <hr className="my-[10px]" />
           {/* 비밀번호 부분 */}
-          <form className="flex flex-col items-center ">
-            <div className="pw_box">
-              <p className="font-gmarketsans text-[11px] mb-[5px]">
+          <form className="flex flex-col ">
+            <div>
+              <p className="font-gmarketsans text-[11px] mb-[10px]">
                 비밀번호 (8~20자 영문, 숫자, 특수기호 조합)
               </p>
               <div className="mb-[5px]">
@@ -70,6 +74,11 @@ export default function ProfileEditModal({ onClickFunction }: Props) {
               수정
             </ButtonStore>
           </form>
+          <hr className="my-[10px]" />
+          <div className="flex items-center justify-center flex-col">
+            <Logout />
+            <Unregister />
+          </div>
         </div>
       </div>
     </div>

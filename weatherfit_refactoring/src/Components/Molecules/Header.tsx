@@ -23,7 +23,7 @@ export default function Header({
   onClickFunction2,
 }: Props) {
   return (
-    <div className="flex items-center justify-between h-[50px] my-[10px]">
+    <div className="relative flex items-center justify-between h-[50px] my-1 pb-1">
       <IconStore
         iconStyle={IconStyle.PREV2}
         size={20}
@@ -32,9 +32,9 @@ export default function Header({
       />
       <BoxStore
         boxStyle={BoxStyle.BOX_BLUE}
-        children={title}
-        style="px-2 h-[30px] font-neurimboGothic text-[22px] pb-[5px] shadow-[7px_7px_1px] flex items-center"
-      />
+        style="absolute left-1/2 transform -translate-x-1/2 px-2 h-[30px] font-neurimboGothic text-[22px] pb-[7px] shadow-[7px_7px_1px] flex items-center">
+        {title}
+      </BoxStore>
       {iconStyleCase ? (
         <IconStore
           iconStyle={iconStyleCase}
@@ -49,7 +49,9 @@ export default function Header({
           btnText={btnText}
           onClickFunction={onClickFunction}
         />
-      ) : null}
+      ) : (
+        <div style={{ visibility: 'hidden' }}></div>
+      )}
     </div>
   )
 }

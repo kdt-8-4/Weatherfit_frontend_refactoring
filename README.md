@@ -181,7 +181,7 @@
         <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/f6c6b8e6-ba41-4013-b384-49cae9f47d28" width=300/></td>
     </tr>
   </tbody>
-</table>
+</table>:
 - 코디를 올린 시점의 온도와 날씨가 표시되고, 해시태그가 포함된 게시글과 카테고리를 확인할 수 있습니다.
 - 좋아요 및 댓글 기능을 통해 소통이 가능합니다.
 

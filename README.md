@@ -28,7 +28,7 @@
       <td align="center"><a href="https://github.com/hyeiis"><img src="https://github.com/hyeiis.png" width="100px;" alt=""/><br /><b>박혜원</b></a><br /></td>
     </tr>
     <tr>
-      <td align="center">팀장<br/>Frontend<br/></td>
+      <td align="center">Frontend<br/>팀장<br/></td>
       <td align="center">Frontend</td>
       <td align="center">Frontend</td>
     </tr>

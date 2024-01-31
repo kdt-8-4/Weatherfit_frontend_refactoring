@@ -60,7 +60,7 @@
 - 일반 회원가입 구현
 - 구글 소셜 회원가입 구현
 
-### >박혜원
+> ### 박혜원
 
 📜 **페이지**
 
@@ -75,7 +75,7 @@
 - 로그인 토큰에서 사용자 닉네임을 가져와 사용자가 업로드한 게시물 구분하여 수정 기능 구현
 - 가장 좋아요가 많이 눌린 게시물 3개 메인 페이지에 불러오기
 
-### >전주현
+> ### 전주현
 
 🎨 **디자인**
 
@@ -120,7 +120,7 @@
   <table>
   <tbody>
     <tr>
-      <td align="center">메인 페이지</td>
+      <td align="center" font-width="bold>메인 페이지</td>
     </tr>
     <tr>
         <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/f1f88e81-1356-43eb-8837-759f6758c811" width=350/></td>

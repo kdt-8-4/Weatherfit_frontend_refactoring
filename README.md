@@ -114,16 +114,52 @@
 
 ### 기술 스택
 
-<table align="center">
-  <tbody>
-    <tr>
-      <td align="center">Front-End</td>
-      <td align="center">
-          ![next](https://img.shields.io/badge/Next.js-000?logo=nextdotjs&logoClor=fff&style=flat-square)
-      </td>
-    </tr>
-  </tbody>
+<table>
+  <tr>
+    <td align="center">Front-End</td>
+    <td>
+      <span><img src="https://img.shields.io/badge/next.js-000?style=flat-square&logo=next.js&logoColor=white"></span>&nbsp
+      <span><img src="https://img.shields.io/badge/tailwindcss-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white"></span>&nbsp
+      <span><img src="https://img.shields.io/badge/reactquery-FF4154?style=flat-square&logo=reactquery&logoColor=black"></span>&nbsp
+      <span><img src="https://img.shields.io/badge/recoil-000?style=flat-square&logo=recoil&logoColor=white"></span>&nbsp
+    </td>
+  </tr>
+  <tr>
+    <td align="center">Collaboration</td>
+    <td>
+      <span><img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=Git&logoColor=white"/></span>&nbsp
+      <span><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"/></span>&nbsp 
+      <span><img src="https://img.shields.io/badge/Discord-4263f5?style=flat-square&logo=Discord&logoColor=white"/></span>&nbsp 
+    </td>
+  </tr>
+  <tr>
+     <td align="center">Design</td>
+     <td>
+       <span><img src="https://img.shields.io/badge/Figma-d90f42?style=flat-square&logo=Figma&logoColor=white"/></span>&nbsp
+     </td>
+  </tr>
+  <tr>
+   <td align="center">IDE</td>
+   <td>
+      <span><img src="https://img.shields.io/badge/VSCode-007ACC?style=flat-square&logo=Visual%20Studio%20Code&logoColor=white"/></span>&nbsp
+  </tr>
+  <tr>
+   <td align="center">Convention</td>
+   <td>
+      <span><img src="https://img.shields.io/badge/Prettier-F7B93E?style=flat-square&logo=Prettier&logoColor=white"/></span>&nbsp
+      <span><img src="https://img.shields.io/badge/ESLint-4B32C3?style=flat-square&logo=Prettier&logoColor=white"/></span>&nbsp
+   </td>
+  </tr>
+  <tr>
+   <td align="center">Deployment</td>
+   <td>
+      <span><img src="https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=Netlify&logoColor=white"/></span>&nbsp
+   </td>
+  </tr>
 </table>
+
+
+<br />
 
 ## 5. 🎨 변경된 페이지 디자인
 

@@ -117,10 +117,10 @@
 ## 5. 🎨 변경된 페이지 디자인
 
 ### 메인 페이지
-  <table align="center">
+  <table>
   <tbody>
     <tr>
-        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/f1f88e81-1356-43eb-8837-759f6758c811"/></td>
+        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/f1f88e81-1356-43eb-8837-759f6758c811" width=200/></td>
     </tr>
     <tr>
       <td align="center"> **메인 페이지** </td>

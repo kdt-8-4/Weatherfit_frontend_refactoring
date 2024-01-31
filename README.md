@@ -120,7 +120,7 @@
   <table align="center">
   <tbody>
     <tr>
-        <img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/f1f88e81-1356-43eb-8837-759f6758c811"/>
+        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/f1f88e81-1356-43eb-8837-759f6758c811"/></td>
     </tr>
     <tr>
       <td align="center"> **메인 페이지** </td>

@@ -120,7 +120,7 @@
   <table>
   <tbody>
     <tr>
-      <td align="center"> <blod>메인 페이지</blod> </td>
+      <td align="center">메인 페이지</td>
     </tr>
     <tr>
         <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/f1f88e81-1356-43eb-8837-759f6758c811" width=350/></td>
@@ -133,7 +133,7 @@
 <table>
   <tbody>
     <tr>
-      <td align="center"> **로그인 페이지** </td>
+      <td align="center">로그인 페이지</td>
     </tr>
     <tr>
         <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/c7688a67-8091-4a9d-a881-ef608613db13" width=350/></td>
@@ -145,7 +145,7 @@
 <table>
   <tbody>
     <tr>
-      <td align="center"> **회원가입 페이지** </td>
+      <td align="center">회원가입 페이지</td>
     </tr>
     <tr>
         <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/7dcd0f08-d95e-4e9f-8aed-fc78f8d61551" width=350/></td>
@@ -159,7 +159,7 @@
 <table>
   <tbody>
     <tr>
-      <td align="center"> **피드 페이지** </td>
+      <td align="center">피드 페이지</td>
     </tr>  
     <tr>
         <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/53a6fa96-c4a5-4fc5-866f-7a6d08c88482" width=350/></td>
@@ -173,7 +173,7 @@
 <table>
   <tbody>
     <tr>
-      <td align="center"> **게시물 상세 페이지** </td>
+      <td align="center">게시물 상세 페이지</td>
     </tr>  
     <tr>
         <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/f6c6b8e6-ba41-4013-b384-49cae9f47d28" width=350/></td>
@@ -188,7 +188,7 @@
 <table>
   <tbody>
     <tr>
-      <td align="center"> **업로드 페이지 & 게시물 수정 페이지** </td>
+      <td align="center">업로드 페이지 & 게시물 수정 페이지</td>
     </tr>
     <tr>
         <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/5f271f16-a660-42cb-9a98-63bf6405826b" width=350/></td>
@@ -198,3 +198,17 @@
 - 업로드 페이지와 게시물 수정 페이지는 디자인이 동일합니다.
 - 차이점은 게시물 수정 시에 수정할려는 게시물의 데이터가 들어있다는 점입니다.
 - 해시태그를 글과 함께 입력 가능하며 카테고리를 선택하여 게시물을 업로드합니다.
+
+### 마이 페이지
+
+<table>
+  <tbody>
+    <tr>
+      <td align="center">마이 페이지</td>
+    </tr>
+    <tr>
+        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/3bb2c1a5-5b5a-482f-a33a-85b8ab21c9ab" width=350/></td>
+    </tr>
+  </tbody>
+</table>
+- 자신의 회원 정보를 수정할 수 있고, 업로드한 코디와 좋아요한 코디를 확인할 수 있습니다.

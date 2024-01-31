@@ -114,6 +114,17 @@
 
 ### 기술 스택
 
+<table align="center">
+  <tbody>
+    <tr>
+      <td align="center">Front-End</td>
+      <td align="center">
+          ![next](https://img.shields.io/badge/Next.js-000?logo=nextdotjs&logoClor=fff&style=flat-square)
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 ## 5. 🎨 변경된 페이지 디자인
 
 ### 메인 페이지

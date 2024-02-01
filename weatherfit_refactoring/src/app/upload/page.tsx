@@ -5,7 +5,6 @@ import TextAreaMolecule from '@/Components/Molecules/TextAreaMolecule'
 import SelectCategory from '@/Components/Organisms/SelectCategory'
 import UploadHeader from '@/Components/Organisms/UploadHeader'
 import UploadWeather from '@/Components/Molecules/UploadWeather'
-import ArrayImageOrganism from '@/Components/Organisms/ImageUpload'
 
 export default function Upload() {
   return (

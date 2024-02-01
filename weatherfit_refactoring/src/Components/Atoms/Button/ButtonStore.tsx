@@ -71,7 +71,7 @@ export default function ButtonStore({
       case ButtonStyle.CATEGORY_BTN_Y:
         return (
           <button
-            className={`${style} bg-yellow-200 border border-black rounded-2xl px-1.5 py-0.5`}
+            className={`${style} bg-yellow-200 border border-black rounded-2xl px-2 py-0.5`}
             onClick={onClickFunction}>
             {children}
           </button>
@@ -79,7 +79,7 @@ export default function ButtonStore({
       case ButtonStyle.CATEGORY_BTN_CHECKED:
         return (
           <button
-            className={`${style} bg-blue-300 border border-blue-300 text-white rounded-2xl px-1.5 py-0.5`}
+            className={`${style} bg-blue-300 border border-blue-300 text-white rounded-2xl px-2 py-0.5`}
             onClick={onClickFunction}>
             {children}
           </button>

@@ -15,9 +15,8 @@ interface Props {
   onClickFunction?: MouseEventHandler<HTMLButtonElement> | undefined
   children?: React.ReactNode
 }
-//높이 조정도 필요하면 가져다 쓰세요
 
-export default function ButtonStore({
+export default function BoxStore({
   boxStyle,
   children,
   onClickFunction,

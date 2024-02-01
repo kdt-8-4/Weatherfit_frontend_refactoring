@@ -1,11 +1,15 @@
 import { ButtonStyle } from '../Atoms/Button/ButtonStore'
 import Header from '../Molecules/Header'
 import { useStore } from '../../Store/Store'
+import { WeatherIcon } from '@/Store/WeatherIcon'
+import { WeatherTemp } from '@/Store/WeatherTemp'
 
 export default function UploadHeader() {
   const { content, hashTags, selectedImages, selectedSubCategories } =
     useStore()
   const subCategoriesOnly = Object.values(selectedSubCategories).flat() // 하위 카테고리들만 저장
+  const { weatherIcon } = WeatherIcon()
+  const { temperature } = WeatherTemp()
 
   const handleOnClick = async () => {
     try {
@@ -14,10 +18,8 @@ export default function UploadHeader() {
         hashTag: hashTags,
         category: subCategoriesOnly,
         content,
-        // temperature: usetemp,
-        // weatherIcon: `https://openweathermap.org/img/wn/${icon}.png`,
-        temperature: 2,
-        weatherIcon: 'test.jpeg',
+        temperature,
+        weatherIcon: `https://openweathermap.org/img/wn/${weatherIcon}.png`,
       }
 
       formData.append('board', JSON.stringify(boardData))
@@ -32,7 +34,7 @@ export default function UploadHeader() {
           'Content-Type': 'multipart/form-data',
           // Authorization: 'Bearer ' + logintoken,
           Authorization:
-            'Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDU2NjMwNDMsImV4cCI6MTcwNTY3Mzg0Mywic3ViIjoi7YWM7Iqk7YSwNTUifQ.3I1pZDJYZO2a7lOypu6DegBZ5DuzKYQttbP49U9g1Oo',
+            'Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDY3OTA5MDEsImV4cCI6MTcwNjgwMTcwMSwic3ViIjoi7YWM7Iqk7YSwNTUifQ.sdm2nHun06cOIeWzXFv8xSbuuhY_yCsiRT7Upu1vtIs',
         },
       })
 

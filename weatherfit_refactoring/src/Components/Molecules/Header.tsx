@@ -27,7 +27,7 @@ export default function Header({
       <IconStore
         iconStyle={IconStyle.PREV2}
         size={20}
-        style={'ml-[10px] cursor-pointer'}
+        style="ml-[10px] cursor-pointer"
         onClickFunction={() => window.history.back()}
       />
       <BoxStore
@@ -39,18 +39,18 @@ export default function Header({
         <IconStore
           iconStyle={iconStyleCase}
           size={17}
-          style={'mr-[10px] cursor-pointer'}
+          style="mr-[10px] cursor-pointer"
           onClickFunction={onClickFunction2}
         />
       ) : buttonStyleCase ? (
         <ButtonStore
           buttonStyle={buttonStyleCase}
-          style={'mr-[10px] font-NanumSquareRound text-xs'}
+          style="mr-[10px] font-NanumSquareRound text-xs"
           btnText={btnText}
           onClickFunction={onClickFunction}
         />
       ) : (
-        <div style={{ visibility: 'hidden' }}></div>
+        <div className="hidden"></div>
       )}
     </div>
   )

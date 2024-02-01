@@ -9,6 +9,10 @@ interface IMAGE {
   imageUrl: string
 }
 
+interface BOARDID {
+  boardId: string | string[] | undefined
+}
+
 interface FEEDATA {
   boardId: number
   images: string

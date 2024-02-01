@@ -63,9 +63,9 @@ export default function Select({ category, subCategories, onSelect }: Props) {
               }
               key={index}
               style="mr-2 my-1.5"
-              children={subCategory}
-              onClickFunction={() => selectSubCategory(subCategory)}
-            />
+              onClickFunction={() => selectSubCategory(subCategory)}>
+              {subCategory}
+            </ButtonStore>
           ))}
         </div>
       )}

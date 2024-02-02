@@ -11,7 +11,7 @@ export enum ButtonStyle {
   CATEGORY_BTN_CHECKED = 'CATEGORY_BTN_CHECKED',
   TEXT_BTN = 'TEXT_BTN',
   CONFIRM_BTN = 'CONFIRM_BTN',
-  CANCLE_BTN = "CANCLE_BTN",
+  CANCEL_BTN = 'CANCEL_BTN',
   CATEGORY_BTN_TOP = "CATEGORY_BTN_TOP",
 }
 
@@ -46,7 +46,8 @@ export default function ButtonStore({
       case ButtonStyle.DEFAULT_BTN_BLUE:
         return (
           <button
-            className={`${style} border bg-A8C6EC border-black rounded-2xl z-10`}              style={{ boxShadow: '7px 7px 1px' }}
+            className={`${style} border bg-A8C6EC border-black rounded-2xl z-10`}
+            style={{ boxShadow: '7px 7px 1px' }}
             onClick={onClickFunction}>
             {children}
           </button>
@@ -71,7 +72,7 @@ export default function ButtonStore({
       case ButtonStyle.CATEGORY_BTN_Y:
         return (
           <button
-            className={`${style} bg-yellow-200 border border-black rounded-2xl pb-[5px] px-1.5 py-0.5`}
+            className={`${style} bg-yellow-200 border border-black rounded-2xl px-2 py-0.5`}
             onClick={onClickFunction}>
             {children}
           </button>
@@ -79,7 +80,7 @@ export default function ButtonStore({
       case ButtonStyle.CATEGORY_BTN_CHECKED:
         return (
           <button
-            className={`${style} bg-blue-300 border border-blue-300 text-white rounded-2xl px-1.5 py-0.5`}
+            className={`${style} bg-blue-300 border border-blue-300 text-white rounded-2xl px-2 py-0.5`}
             onClick={onClickFunction}>
             {children}
           </button>
@@ -100,14 +101,14 @@ export default function ButtonStore({
             {children}
           </button>
         )
-        case ButtonStyle.CANCLE_BTN:
-          return (
-            <button
-              className={`${style} bg-yellow-200 border border-gray-500 rounded-[9px]`}
-              onClick={onClickFunction}>
-              {children}
-            </button>
-          )
+      case ButtonStyle.CANCEL_BTN:
+        return (
+          <button
+            className={`${style} bg-yellow-200 border border-gray-500 rounded-[9px]`}
+            onClick={onClickFunction}>
+            {children}
+          </button>
+        )
       case ButtonStyle.GOOGLE_BTN:
         return (
           <button

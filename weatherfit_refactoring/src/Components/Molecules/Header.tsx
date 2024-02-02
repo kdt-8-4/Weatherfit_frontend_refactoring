@@ -23,33 +23,35 @@ export default function Header({
   onClickFunction2,
 }: Props) {
   return (
-    <div className="flex items-center justify-between h-[50px] my-[10px]">
+    <div className="relative flex items-center justify-between h-[50px] my-1 pb-1">
       <IconStore
         iconStyle={IconStyle.PREV2}
         size={20}
-        style={'ml-[10px] cursor-pointer'}
+        style="ml-[10px] cursor-pointer"
         onClickFunction={() => window.history.back()}
       />
       <BoxStore
         boxStyle={BoxStyle.BOX_BLUE}
-        children={title}
-        style="px-2 h-[30px] font-neurimboGothic text-[22px] pb-[5px] shadow-[7px_7px_1px] flex items-center"
-      />
+        style="absolute left-1/2 transform -translate-x-1/2 px-2 h-[30px] font-neurimboGothic text-[22px] pb-[7px] shadow-[7px_7px_1px] flex items-center">
+        {title}
+      </BoxStore>
       {iconStyleCase ? (
         <IconStore
           iconStyle={iconStyleCase}
           size={17}
-          style={'mr-[10px] cursor-pointer'}
+          style="mr-[10px] cursor-pointer"
           onClickFunction={onClickFunction2}
         />
       ) : buttonStyleCase ? (
         <ButtonStore
           buttonStyle={buttonStyleCase}
-          style={'mr-[10px] font-NanumSquareRound text-xs'}
+          style="mr-[10px] font-NanumSquareRound text-xs"
           btnText={btnText}
           onClickFunction={onClickFunction}
         />
-      ) : null}
+      ) : (
+        <div className="hidden"></div>
+      )}
     </div>
   )
 }

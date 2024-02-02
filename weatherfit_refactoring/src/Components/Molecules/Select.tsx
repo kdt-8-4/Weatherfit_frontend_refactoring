@@ -4,7 +4,7 @@
 import IconStore, { IconStyle } from '../Atoms/Icon/IconStore'
 import ButtonStore, { ButtonStyle } from '../Atoms/Button/ButtonStore'
 import { useState } from 'react'
-import { useStore } from '../Atoms/Store'
+import { useStore } from '../../Store/Store'
 
 interface Props {
   category: string
@@ -63,9 +63,9 @@ export default function Select({ category, subCategories, onSelect }: Props) {
               }
               key={index}
               style="mr-2 my-1.5"
-              children={subCategory}
-              onClickFunction={() => selectSubCategory(subCategory)}
-            />
+              onClickFunction={() => selectSubCategory(subCategory)}>
+              {subCategory}
+            </ButtonStore>
           ))}
         </div>
       )}

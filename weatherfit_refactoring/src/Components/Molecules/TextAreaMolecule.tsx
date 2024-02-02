@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import TextArea from '../Atoms/TextArea'
-import { useStore } from '../Atoms/Store'
+import { useStore } from '../../Store/Store'
 import extractHashtags from '@/utils/function/utilFunction'
 
 export default function TextAreaMolecule() {

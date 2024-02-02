@@ -158,6 +158,7 @@ export default function IconStore({
             width={size}
             height={size}
             className={`${style}`}
+            onClick={onClickFunction}
           />
         )
       case IconStyle.PREV2:
@@ -179,6 +180,7 @@ export default function IconStore({
             width={size}
             height={size}
             className={`${style}`}
+            onClick={onClickFunction}
           />
         )
       case IconStyle.SETTING:

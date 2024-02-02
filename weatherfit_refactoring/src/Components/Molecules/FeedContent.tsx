@@ -2,6 +2,7 @@
 import Image from "next/image"
 import IconStore, { IconStyle } from "../Atoms/Icon/IconStore"
 import { useState } from "react";
+import Link from 'next/link'
 
 interface Props {
     feedData : FEEDDATA
@@ -34,14 +35,16 @@ export default function FeedContent( {feedData} : Props ) {
                         <IconStore iconStyle={IconStyle.ETC} size={30}/>
                     </div>
                 </div>
-                <div className=" relative m-auto w-[90%] h-[218px]">
+                <Link href={`/detail/${boardId}`}>
+                  <div className=" relative m-auto w-[90%] h-[218px]">
                     <Image 
                     src={feedData.images.imageUrl}
                     alt="코디 사진"
                     fill
                     className="border border-black rounded-xl"
                     />
-                </div>
+                  </div>
+                </Link>
                 <div className="flex justify-between m-auto w-[90%] py-2">
                     <div className="flex">
                         <div className="relative">

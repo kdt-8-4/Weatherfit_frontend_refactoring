@@ -1,10 +1,10 @@
 import InputStore, { InputStyle } from '../Atoms/Input/InputStore'
-import { ChangeEvent, useCallback } from 'react'
-import { useStore } from '../Atoms/Store'
+import { ChangeEvent, useCallback, useState } from 'react'
+import { useStore } from '../../Store/Store'
 import ArrayImage from '../Molecules/ArrayImage'
 
 export default function ImageUpload() {
-  const { selectedImages, setSelectedImages } = useStore()
+  const { selectedImages, setSelectedImages, setDeletedImages } = useStore()
 
   const handleImagesSelected = useCallback((files: File[] | null) => {
     setSelectedImages(files ? Array.from(files) : [])
@@ -28,18 +28,36 @@ export default function ImageUpload() {
     }
   }
 
-  const removeImage = (index: number) => {
+  const removeImage = (index: number, id?: number) => {
     if (selectedImages) {
       const newImages = [...selectedImages]
       newImages.splice(index, 1)
       setSelectedImages(newImages)
       handleImagesSelected(newImages)
     }
+    // else if (existingImages) {
+    //   if (id != undefined) {
+    //     setDeletedImages(id) // 상위 컴포넌트에 삭제된 이미지의 URL 전달
+    //   }
+    //   const newImages = [...existingImages]
+    //   newImages.splice(index, 1)
+    //   setExistingImages(newImages)
+    //   onExistingImagesSelected?.(newImages)
+    // }
   }
 
   return (
     <div>
       <div className="flex items-center w-full overflow-x-auto overflow-y-hidden whitespace-nowrap">
+        {/* {existingImages &&
+          Array.from(existingImages).map((image, index) => (
+            <ArrayImage
+              key={index}
+              index={index}
+              imageUrl={image.imageUrl}
+              removeImage={removeImage}
+            />
+          ))} */}
         {selectedImages &&
           Array.from(selectedImages).map((image, index) => (
             <ArrayImage

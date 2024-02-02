@@ -1,15 +1,18 @@
+'use client'
+
 import { ButtonStyle } from '../Atoms/Button/ButtonStore'
 import Header from '../Molecules/Header'
 import { useStore } from '../../Store/Store'
-import { WeatherIcon } from '@/Store/WeatherIcon'
-import { WeatherTemp } from '@/Store/WeatherTemp'
 
 export default function UploadHeader() {
-  const { content, hashTags, selectedImages, selectedSubCategories } =
-    useStore()
+  const {
+    content,
+    hashTags,
+    selectedImages,
+    selectedSubCategories,
+    deletedImages,
+  } = useStore()
   const subCategoriesOnly = Object.values(selectedSubCategories).flat() // 하위 카테고리들만 저장
-  const { weatherIcon } = WeatherIcon()
-  const { temperature } = WeatherTemp()
 
   const handleOnClick = async () => {
     try {
@@ -18,8 +21,7 @@ export default function UploadHeader() {
         hashTag: hashTags,
         category: subCategoriesOnly,
         content,
-        temperature,
-        weatherIcon: `https://openweathermap.org/img/wn/${weatherIcon}.png`,
+        deletedImages,
       }
 
       formData.append('board', JSON.stringify(boardData))
@@ -27,19 +29,19 @@ export default function UploadHeader() {
         formData.append('images', image)
       })
 
-      const response = await fetch('https://www.jerneithe.site/board/write', {
-        method: 'POST',
+      const response = await fetch(`https://www.jerneithe.site/board/edit/1`, {
+        method: 'PATCH',
         body: formData,
         headers: {
           'Content-Type': 'multipart/form-data',
           // Authorization: 'Bearer ' + logintoken,
           Authorization:
-            'Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDY3OTA5MDEsImV4cCI6MTcwNjgwMTcwMSwic3ViIjoi7YWM7Iqk7YSwNTUifQ.sdm2nHun06cOIeWzXFv8xSbuuhY_yCsiRT7Upu1vtIs',
+            'Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDU2NjMwNDMsImV4cCI6MTcwNTY3Mzg0Mywic3ViIjoi7YWM7Iqk7YSwNTUifQ.3I1pZDJYZO2a7lOypu6DegBZ5DuzKYQttbP49U9g1Oo',
         },
       })
 
       console.log(response)
-      console.log('등록 버튼 클릭')
+      console.log('수정 버튼 클릭')
       console.log('content: ', content) //ok
       console.log('hashTag: ', hashTags) //ok
       const images = formData.getAll('images')
@@ -53,9 +55,9 @@ export default function UploadHeader() {
   return (
     <>
       <Header
-        title="등록하기"
+        title="수정하기"
         buttonStyleCase={ButtonStyle.TEXT_BTN}
-        btnText="등록"
+        btnText="완료"
         onClickFunction={handleOnClick}
       />
     </>

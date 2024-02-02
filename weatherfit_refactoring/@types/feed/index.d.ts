@@ -27,7 +27,7 @@ interface FEEDDATA {
     modifiedDate: string;
   }
 
-interface FEEDATA {
+interface FEEDDATA_detail {
   boardId: number
   images: string
   createDate: string

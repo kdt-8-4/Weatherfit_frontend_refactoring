@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import { MouseEventHandler } from 'react'
 
 export enum IconStyle {
   MY_PROFILE = 'MY_PROFILE',
@@ -106,6 +105,7 @@ export default function IconStore({
             width={size}
             height={size}
             className={`${style}`}
+            onClick={onClickFunction}
           />
         )
       case IconStyle.UNLIKE:
@@ -116,6 +116,7 @@ export default function IconStore({
             width={size}
             height={size}
             className={`${style}`}
+            onClick={onClickFunction}
           />
         )
       case IconStyle.LIKE:
@@ -126,6 +127,7 @@ export default function IconStore({
             width={size}
             height={size}
             className={`${style}`}
+            onClick={onClickFunction}
           />
         )
       case IconStyle.TOGGLE:
@@ -198,6 +200,7 @@ export default function IconStore({
             width={size}
             height={size}
             className={`${style}`}
+            onClick={onClickFunction}
           />
         )
       case IconStyle.HIGHEST:

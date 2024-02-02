@@ -40,17 +40,17 @@ export default function DetailCategory(boardId: BOARDID) {
   }
 
   return (
-    <div className="font-NanumSquareRound flex w-screen justify-center bg-stone-200 flex-col p-3">
+    <div className="font-NanumSquareRound flex flex-col bg-stone-200 p-3 justify-center w-full">
       {Object.entries(categoryGroups).map(
         ([parentCategory, subCategories], index) => (
           <div key={index} className="m-2 flex items-center">
-            <span className="font-bold text-[16px] mr-3">{parentCategory}</span>
+            <span className="font-bold text-[17px] mr-3">{parentCategory}</span>
             {subCategories.map((subCategory, index) => (
               <ButtonStore
                 key={index}
                 onClickFunction={handleSelectCategory}
                 buttonStyle={ButtonStyle.CATEGORY_BTN_Y}
-                style="mr-2">
+                style="mr-2 text-sm flex ">
                 {subCategory}
               </ButtonStore>
             ))}

@@ -29,7 +29,6 @@ export default function DetailContent(boardId: BOARDID) {
       result.push(
         <span
           key={`content-${index}`}
-          className="break-all"
           dangerouslySetInnerHTML={{ __html: replacedContent }} // HTML 문자열을 설정하여 줄바꿈 인식
         />,
       )
@@ -41,9 +40,7 @@ export default function DetailContent(boardId: BOARDID) {
         result.push(
           <span
             key={`hashtag-${index}`}
-            className={
-              tagIndex !== -1 ? 'text-blue-400 cursor-pointer break-all' : ''
-            }
+            className={tagIndex !== -1 ? 'text-blue-400 cursor-pointer' : ''}
             onClick={() => handleHashTagClick(currentHashTag)}>
             {currentHashTag}
           </span>,
@@ -55,10 +52,12 @@ export default function DetailContent(boardId: BOARDID) {
   }
 
   return (
-    <div className="font-NanumSquareRound flex">
-      <div className="mr-3 font-semibold">{post.nickName}</div>
+    <div className="font-NanumSquareRound flex space-x-3">
+      <div className="font-semibold">{post.nickName}</div>
       {/* 추후에 더보기 접기 버튼 넣어야 할 듯 */}
-      <div>{extractAndStyleHashtags(post.content)}</div>
+      <div className="break-all text-justify w-full">
+        {extractAndStyleHashtags(post.content)}
+      </div>
     </div>
   )
 }

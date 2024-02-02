@@ -1,3 +1,4 @@
+"use client"
 import { useEffect, useState } from "react";
 import Image from "next/image";
 //Zustand
@@ -44,7 +45,7 @@ export default function WeatherNavbar() {
               setWeat(weatherData.weather[0].main);
               setIcon(weatherData.weather[0].icon);
       
-              console.log("데이터", weatherData);
+              // console.log("데이터", weatherData);
               // console.log(`온도 : ${temp} ,최고온도 ${max},최저온도 ${min}, 날씨 : ${weat}`);
               
               
@@ -75,13 +76,13 @@ export default function WeatherNavbar() {
     return (
         <div className="flex justify-between text-[11px]">
             <div className="flex">
-                <Image  
-                src={`https://openweathermap.org/img/wn/${weatherIcon}.png`}
-                alt="weatherIcon"
-                width={40}
-                height={40}
-                loading="lazy"
-                />
+                  <Image  
+                  src={`https://openweathermap.org/img/wn/${weatherIcon}.png`}
+                  alt="weatherIcon"
+                  width={40}
+                  height={40}
+                  loading="lazy"
+                  />
                 <span className=" font-gmarketsans font-thin px-0 pt-[12px]">{temperature}℃</span>
             </div>
             <div className="px-1 pt-[10px]">

@@ -11,7 +11,8 @@ export enum ButtonStyle {
   CATEGORY_BTN_CHECKED = 'CATEGORY_BTN_CHECKED',
   TEXT_BTN = 'TEXT_BTN',
   CONFIRM_BTN = 'CONFIRM_BTN',
-  CANCLE_BTN= "CANCLE_BTN",
+  CANCLE_BTN = "CANCLE_BTN",
+  CATEGORY_BTN_TOP = "CATEGORY_BTN_TOP",
 }
 
 interface Props {
@@ -79,6 +80,14 @@ export default function ButtonStore({
         return (
           <button
             className={`${style} bg-blue-300 border border-blue-300 text-white rounded-2xl px-1.5 py-0.5`}
+            onClick={onClickFunction}>
+            {children}
+          </button>
+        )
+      case ButtonStyle.CATEGORY_BTN_TOP:
+        return (
+          <button
+            className={`${style} bg-blue-300 border border-blue-300 rounded-2xl px-1.5 py-0.5`}
             onClick={onClickFunction}>
             {children}
           </button>

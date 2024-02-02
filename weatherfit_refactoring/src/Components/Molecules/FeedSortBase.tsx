@@ -1,3 +1,5 @@
+"use client"
+
 import { FeedSort } from "@/Store/FeedSort";
 import { FeedData } from "@/Store/FeedData";
 

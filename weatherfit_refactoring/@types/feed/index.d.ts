@@ -5,20 +5,22 @@ interface LIKE {
   
 
 interface IMAGE {
-    boardId: number;
     imageId: number;
+    boardId: number;
     imageUrl: string;
   }
 
-interface FEEDATA {
+interface FEEDDATA {
     boardId: number;
-    images: string;
-    createDate: string;
-    likeCount: number;
-    likelist: LIKE[];
     nickName: string;
+    likeCount: number;
     temperature: number;
-    weather: string;
+    images: IMAGE;
+    category: string[];
+    hashTag: string[];
     weatherIcon: string;
+    likelist: LIKE[];
+    createDate: string;
+    modifiedDate: string;
   }
 

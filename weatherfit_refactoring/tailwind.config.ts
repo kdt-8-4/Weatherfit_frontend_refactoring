@@ -23,6 +23,20 @@ const config: Config = {
         "A8C6EC": "#A8C6EC",
         "F4E58F": "#F4E58F",
         "E4E4E6": "#E4E4E6",
+      },
+      keyframes:{
+        autoPlay: {
+          '0%' : {
+            transition: 'transform 0s ease-out',
+            transform: 'translateX(0)',
+          },
+          '100%' : {
+            transform: 'translateX(calc(-55px * 5))'
+          }
+        }
+      },
+      animation:{
+        topCategory : "autoPlay 10s linear infinite",
       }
     },
   },

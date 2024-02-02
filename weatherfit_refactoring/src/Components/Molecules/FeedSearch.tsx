@@ -1,3 +1,5 @@
+"use client"
+
 import IconStore, { IconStyle } from "../Atoms/Icon/IconStore";
 import InputStore, { InputStyle } from "../Atoms/Input/InputStore";
 import ButtonStore, { ButtonStyle } from "../Atoms/Button/ButtonStore";

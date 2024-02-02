@@ -1,3 +1,5 @@
+'use client'
+
 import { ButtonStyle } from '../Atoms/Button/ButtonStore'
 import Header from '../Molecules/Header'
 import { useStore } from '../../Store/Store'

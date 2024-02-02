@@ -16,7 +16,7 @@ export default function DetailImage(boardId: BOARDID) {
           key={index}
           src={image}
           width={100}
-          height={200}
+          height={100}
           alt={`image-${index}`}
           className="rounded-xl m-2"
         />

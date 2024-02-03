@@ -4,6 +4,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import DetailEtc from '../Molecules/DetailEtc'
 import DetailProfile from '../Molecules/DetailProfile'
 import Swal from 'sweetalert2'
+import { deleteAlert } from '@/utils/function/utilFunction'
 
 export default function DetailProfileOrganism({ boardId }: BOARDID) {
   const router = useRouter()
@@ -14,21 +15,7 @@ export default function DetailProfileOrganism({ boardId }: BOARDID) {
   }
 
   const handleDelete = () => {
-    Swal.fire({
-      title: '게시물 삭제',
-      text: '게시물을 삭제하시겠습니까?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: '삭제',
-      cancelButtonText: '취소',
-      customClass: {
-        popup: 'w-[275px] font-NanumSquareRound',
-        icon: 'size-13',
-        title: 'text-xl',
-      },
-    }).then(async result => {
+    deleteAlert().then(async result => {
       if (result.isConfirmed) {
         try {
           const response = await fetch(

@@ -14,22 +14,22 @@ interface BOARDID {
 }
 
 interface FEEDDATA {
-    boardId: number;
-    nickName: string;
-    likeCount: number;
-    temperature: number;
-    images: IMAGE;
-    category: string[];
-    hashTag: string[];
-    weatherIcon: string;
-    likelist: LIKE[];
-    createDate: string;
-    modifiedDate: string;
-  }
+  boardId: number
+  nickName: string
+  likeCount: number
+  temperature: number
+  images: IMAGE
+  category: string[]
+  hashTag: string[]
+  weatherIcon: string
+  likelist: LIKE[]
+  createDate: string
+  modifiedDate: string
+}
 
 interface FEEDDATA_detail {
   boardId: number
-  images: string
+  images: IMAGE[]
   createDate: string
   likeCount: number
   likelist: LIKE[]

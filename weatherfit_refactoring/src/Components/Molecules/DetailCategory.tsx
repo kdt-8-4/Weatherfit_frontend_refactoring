@@ -1,17 +1,9 @@
 'use client'
 
-import feedDummy from '../../../public/dummy_data/feed.json'
 import ButtonStore, { ButtonStyle } from '../Atoms/Button/ButtonStore'
 import { categories } from '../data/CategoryList'
 
-export default function DetailCategory(boardId: BOARDID) {
-  const id = boardId.boardId
-  const post = feedDummy.feed_data.find(post => post.boardId === Number(id))
-
-  if (!post) {
-    return <div>게시물이 삭제되었습니다.</div>
-  }
-
+export default function DetailCategory({ data }: { data: FEEDDATA_detail }) {
   const findParentCategory = (subCategory: string): string | null => {
     for (const [parentCategory, subCategories] of Object.entries(categories)) {
       if (subCategories.includes(subCategory)) {
@@ -21,7 +13,7 @@ export default function DetailCategory(boardId: BOARDID) {
     return null
   }
 
-  const categoryGroups: Record<string, string[]> = post.category.reduce(
+  const categoryGroups: Record<string, string[]> = data.category.reduce(
     (groups: Record<string, string[]>, subCategory) => {
       const parentCategory = findParentCategory(subCategory)
       if (parentCategory && !groups[parentCategory]) {

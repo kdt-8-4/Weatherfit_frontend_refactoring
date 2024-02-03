@@ -1,15 +1,6 @@
 'use client'
 
-import feedDummy from '../../../public/dummy_data/feed.json'
-
-export default function DetailContent(boardId: BOARDID) {
-  const id = boardId.boardId
-  const post = feedDummy.feed_data.find(post => post.boardId === Number(id))
-
-  if (!post) {
-    return <div>게시물이 삭제되었습니다.</div>
-  }
-
+export default function DetailContent({ data }: { data: FEEDDATA_detail }) {
   const handleHashTagClick = (hashTag: string) => {
     console.log('Clicked hashtag:', hashTag)
   }
@@ -36,7 +27,7 @@ export default function DetailContent(boardId: BOARDID) {
 
       if (index !== splitContent.length - 1) {
         const currentHashTag = matchedHashTags[index]
-        const tagIndex = post.hashTag.indexOf(currentHashTag.slice(1))
+        const tagIndex = data.hashTag.indexOf(currentHashTag.slice(1))
 
         result.push(
           <span
@@ -53,12 +44,10 @@ export default function DetailContent(boardId: BOARDID) {
   }
 
   return (
-    <div className="font-NanumSquareRound flex space-x-3">
-      <div className="font-semibold">{post.nickName}</div>
+    <div className="font-NanumSquareRound px-1 break-all text-justify w-full">
       {/* 추후에 더보기 접기 버튼 넣어야 할 듯 */}
-      <div className="break-all text-justify w-full">
-        {extractAndStyleHashtags(post.content)}
-      </div>
+      <span className="font-extrabold mr-2">{data.nickName}</span>
+      {extractAndStyleHashtags(data.content)}
     </div>
   )
 }

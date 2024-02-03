@@ -47,3 +47,35 @@ export const deleteAlert = () => {
     },
   })
 }
+
+export const deleteOkAlert = () => {
+  return Swal.fire({
+    title: '삭제 완료',
+    text: '게시물이 성공적으로 삭제되었습니다.',
+    icon: 'success',
+    confirmButtonColor: '#3085d6',
+    confirmButtonText: '확인',
+    customClass: {
+      // popup: 'w-[275px] font-NanumSquareRound',
+      // icon: 'size-13',
+      // title: 'text-xl',
+      // 커스텀 하기
+    },
+  })
+}
+
+export const alertError = () => {
+  return Swal.fire({
+    title: '접근 불가',
+    text: '잘못된 접근입니다.',
+    icon: 'warning',
+    confirmButtonColor: '#3085d6',
+    confirmButtonText: '확인',
+    customClass: {
+      // popup: 'w-[275px] font-NanumSquareRound',
+      // icon: 'size-13',
+      // title: 'text-xl',
+      // 커스텀 하기
+    },
+  })
+}

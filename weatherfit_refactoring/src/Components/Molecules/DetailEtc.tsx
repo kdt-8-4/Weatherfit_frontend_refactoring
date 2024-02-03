@@ -3,15 +3,13 @@
 import { useState } from 'react'
 import IconStore, { IconStyle } from '../Atoms/Icon/IconStore'
 import ButtonStore, { ButtonStyle } from '../Atoms/Button/ButtonStore'
-import { deleteAlert } from '@/utils/function/utilFunction'
-import { useRouter, usePathname } from 'next/navigation'
-import Swal from 'sweetalert2'
+import { usePathname, useRouter } from 'next/navigation'
+import { deleteAlert, deleteOkAlert } from '@/utils/function/utilFunction'
 
 export default function DetailEtc(boardId: BOARDID) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const router = useRouter()
   const currentUrl = usePathname()
-
   const handleEdit = () => {
     router.push(`${currentUrl}/edit`)
   }
@@ -34,19 +32,7 @@ export default function DetailEtc(boardId: BOARDID) {
           const data = await response.json()
           console.log(data.result)
           if (response.ok) {
-            Swal.fire({
-              title: '삭제 완료',
-              text: '게시물이 성공적으로 삭제되었습니다.',
-              icon: 'success',
-              confirmButtonColor: '#3085d6',
-              confirmButtonText: '확인',
-              customClass: {
-                // popup: 'w-[275px] font-NanumSquareRound',
-                // icon: 'size-13',
-                // title: 'text-xl',
-                // 커스텀 하기
-              },
-            }).then(() => {
+            deleteOkAlert().then(() => {
               router.push('/feed')
             })
           }

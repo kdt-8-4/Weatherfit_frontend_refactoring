@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { MouseEventHandler } from 'react'
 
 export enum BoxStyle {
@@ -12,7 +11,7 @@ interface Props {
   title?: string
   boxStyle: BoxStyle
   style?: string
-  onClickFunction?: MouseEventHandler<HTMLButtonElement> | undefined
+  onClickFunction?: () => void
   children?: React.ReactNode
 }
 
@@ -39,7 +38,11 @@ export default function BoxStore({
         )
       case BoxStyle.BOX_BLUE:
         return (
-          <div className={`${style} bg-blue-300 rounded-2xl`}>{children}</div>
+          <div
+            className={`${style} bg-blue-300 rounded-2xl`}
+            onClick={onClickFunction}>
+            {children}
+          </div>
         )
       case BoxStyle.BOX_IMAGE:
         return (

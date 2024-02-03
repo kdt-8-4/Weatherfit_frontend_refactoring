@@ -13,6 +13,20 @@ interface BOARDID {
   boardId: string | string[] | undefined
 }
 
+interface FEEDDATA {
+    boardId: number;
+    nickName: string;
+    likeCount: number;
+    temperature: number;
+    images: IMAGE;
+    category: string[];
+    hashTag: string[];
+    weatherIcon: string;
+    likelist: LIKE[];
+    createDate: string;
+    modifiedDate: string;
+  }
+
 interface FEEDATA {
   boardId: number
   images: string

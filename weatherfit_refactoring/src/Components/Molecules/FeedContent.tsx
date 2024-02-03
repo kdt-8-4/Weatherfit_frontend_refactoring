@@ -22,7 +22,8 @@ export default function FeedContent( {feedData} : Props ) {
                             <Image
                             src={"https://cdnimg.melon.co.kr/cm2/artistcrop/images/002/61/143/261143_20210325180240_500.jpg?61e575e8653e5920470a38d1482d7312/melon/optimize/90"}
                             alt="프로필 사진"
-                            fill
+                            width={40}
+                            height={40}
                             className="rounded-full"
                             />
                         </div>
@@ -35,11 +36,12 @@ export default function FeedContent( {feedData} : Props ) {
                         <IconStore iconStyle={IconStyle.ETC} size={30}/>
                     </div>
                 </div>
-                <Link href={`/detail/${boardId}`}>
+                <Link href={`/detail/${feedData.boardId}`}>
                   <div className=" relative m-auto w-[90%] h-[218px]">
                     <Image 
                     src={feedData.images.imageUrl}
                     alt="코디 사진"
+                    sizes="auto"
                     fill
                     className="border border-black rounded-xl"
                     />

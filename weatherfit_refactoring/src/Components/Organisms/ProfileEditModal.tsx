@@ -16,7 +16,7 @@ interface Props {
 export default function ProfileEditModal({ onClickFunction }: Props) {
   return (
     <div className="fixed top-0 left-0 w-[100%] h-[100%] bg-[#00000066] z-[100] flex justify-center items-center">
-      <div className="bg-[#ffffff] w-[70vw] h-[85vh] rounded-md z-[200]">
+      <div className="bg-[#ffffff] w-[70vw] h-[75vh] rounded-md z-[200]">
         {/* 헤더 부분 */}
         <div className="flex justify-center items-center relative my-[10px]">
           <IconStore
@@ -70,8 +70,8 @@ export default function ProfileEditModal({ onClickFunction }: Props) {
             </div>
             <ButtonStore
               buttonStyle={ButtonStyle.CATEGORY_BTN_Y}
-              style="font-neurimboGothic w-[20vw]">
-              수정
+              style="font-neurimboGothic">
+              비밀번호 수정
             </ButtonStore>
           </form>
           <hr className="my-[10px]" />

@@ -18,8 +18,9 @@ export default function DetailContent(boardId: BOARDID) {
     const hashTagRegex = /#[^\s#]+/g
     const splitContent = content.split(hashTagRegex)
     const matchedHashTags = content.match(hashTagRegex) || []
+    // -> 3줄 util로 빼주기
 
-    const result: (string | JSX.Element)[] = []
+    const result: JSX.Element[] = []
 
     splitContent.forEach((current, index) => {
       const replacedContent = current

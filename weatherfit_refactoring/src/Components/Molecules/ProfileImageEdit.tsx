@@ -1,9 +1,8 @@
-'use client'
-
 import React, { useState } from 'react'
 import IconStore, { IconStyle } from '../Atoms/Icon/IconStore'
 import Image from 'next/image'
 import axios from 'axios'
+import ButtonStore, { ButtonStyle } from '@/Components/Atoms/Button/ButtonStore'
 
 export default function ProfileImageEdit() {
   // const [selectedImage, setSelectedImage] = useState(userProfileImage)
@@ -56,8 +55,8 @@ export default function ProfileImageEdit() {
   }
 
   return (
-    <>
-      <div className="profile_image">
+    <div className="flex flex-col items-center">
+      <div>
         {selectedImage ? (
           typeof selectedImage === 'string' ? (
             <Image
@@ -77,11 +76,15 @@ export default function ProfileImageEdit() {
             />
           )
         ) : (
-          <IconStore iconStyle={IconStyle.MY_PROFILE_FILL} size={80} />
+          <IconStore
+            iconStyle={IconStyle.MY_PROFILE_FILL}
+            size={80}
+            style="border-[3px] border-solid border-gray rounded-full"
+          />
         )}
       </div>
       {/* 파일 업로드 인풋 */}
-      <div className="profile_select_box">
+      <div className="font-gmarketsans my-[10px] text-[12px]">
         <input
           type="file"
           id="imageUploadInput"
@@ -89,15 +92,22 @@ export default function ProfileImageEdit() {
           onChange={handleImageUpload}
           style={{ display: 'none' }}
         />
-        <label htmlFor="imageUploadInput" className="profile_select_btn">
+        <label htmlFor="imageUploadInput" className="mx-[5px]">
           이미지 선택
         </label>
         |
-        <button onClick={handleDefaultImage} type="button">
+        <button onClick={handleDefaultImage} type="button" className="mx-[5px]">
           기본 이미지
         </button>
       </div>
-      <button type="submit">이미지 수정</button>
-    </>
+      <ButtonStore
+        buttonStyle={ButtonStyle.CATEGORY_BTN_Y}
+        style="font-neurimboGothic">
+        이미지 수정
+      </ButtonStore>
+      {/* <button type="submit" className="font-gmarketsans">
+        이미지 수정
+      </button> */}
+    </div>
   )
 }

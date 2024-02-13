@@ -3,17 +3,45 @@
 import { useState } from 'react'
 import IconStore, { IconStyle } from '../Atoms/Icon/IconStore'
 import ButtonStore, { ButtonStyle } from '../Atoms/Button/ButtonStore'
+import { usePathname, useRouter } from 'next/navigation'
+import { deleteAlert, deleteOkAlert } from '@/utils/function/utilFunction'
 
-interface DetailEtcProps {
-  handleEdit: () => void
-  handleDelete: () => void
-}
-
-export default function DetailEtc({
-  handleEdit,
-  handleDelete,
-}: DetailEtcProps) {
+export default function DetailEtc(boardId: BOARDID) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const router = useRouter()
+  const currentUrl = usePathname()
+  const handleEdit = () => {
+    router.push(`${currentUrl}/edit`)
+  }
+
+  const handleDelete = () => {
+    deleteAlert().then(async result => {
+      if (result.isConfirmed) {
+        try {
+          const response = await fetch(
+            `https://www.jerneithe.site/board/delete/${boardId}`,
+            {
+              method: 'DELETE',
+              headers: {
+                // Authorization: 'Bearer ' + logintoken,
+                Authorization:
+                  'Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDY3OTA5MDEsImV4cCI6MTcwNjgwMTcwMSwic3ViIjoi7YWM7Iqk7YSwNTUifQ.sdm2nHun06cOIeWzXFv8xSbuuhY_yCsiRT7Upu1vtIs',
+              },
+            },
+          )
+          const data = await response.json()
+          console.log(data.result)
+          if (response.ok) {
+            deleteOkAlert().then(() => {
+              router.push('/feed')
+            })
+          }
+        } catch (error) {
+          console.error('Error: ', error)
+        }
+      }
+    })
+  }
 
   return (
     <>

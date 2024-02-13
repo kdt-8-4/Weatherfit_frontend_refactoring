@@ -19,6 +19,7 @@ export default function DetailImage({ data }: { data: FEEDDATA_detail }) {
           src={data.images[index].imageUrl}
           layout="fill"
           objectFit="cover"
+          sizes="auto"
           alt={`image-${index}`}
           className="rounded-xl m-2"
         />

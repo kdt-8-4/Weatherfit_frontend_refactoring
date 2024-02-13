@@ -11,11 +11,10 @@ interface State {
   selectedSubCategories: { [category: string]: string[] }
   setSelectedSubCategories: (category: string, subCategories: string[]) => void
   initialSubCategories: string[][]
-  setInitialSubCategories: () => void
+  // initialSubCategories: string[]
+  setInitialSubCategories: (initialSubCategories: string[][]) => void
   deletedImages: number[]
   setDeletedImages: (imageId: number) => void
-  // existingImages: Image[]
-  // setExistingImages: (images: Image[]) => void
 }
 
 export const useStore = create<State>(set => ({
@@ -37,10 +36,11 @@ export const useStore = create<State>(set => ({
       },
     })),
   initialSubCategories: [],
-  setInitialSubCategories: () =>
+  setInitialSubCategories: (initialSubCategories: string[][]) =>
     set(state => ({
       ...state,
-      initialSubCategories: Array(Object.entries(categories).length).fill([]),
+      // initialSubCategories: Array(Object.entries(categories).length).fill([]),
+      initialSubCategories,
     })),
   deletedImages: [],
   setDeletedImages(imageId: number) {
@@ -48,7 +48,4 @@ export const useStore = create<State>(set => ({
       deletedImages: [...state.deletedImages, imageId],
     }))
   },
-  // existingImages: [],
-  // setExistingImages: (existingImages: Image[]) =>
-  //   set(state => ({ ...state, existingImages })),
 }))

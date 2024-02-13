@@ -17,7 +17,7 @@ export default function Feedbestcody(){
                 <div className="flex overflow-hidden whitespace-nowrap w-[calc(55px*10)]">
                     {topCategory.concat(topCategory).map((topCategory, index)=>{
                         return(
-                            <ButtonStore key={index} buttonStyle={ButtonStyle.CATEGORY_BTN_CHECKED} style="font-NanumSquareRound mx-1 w-[55px] h-[30px] relative animate-topCategory" onClickFunction={gotoCategory} >
+                            <ButtonStore key={index} buttonStyle={ButtonStyle.CATEGORY_BTN_CHECKED} style="font-NanumSquareRound mx-1 p-1 w-[60px] h-[30px] relative animate-topCategory" onClickFunction={gotoCategory} >
                                 {topCategory}
                             </ButtonStore>
                         )

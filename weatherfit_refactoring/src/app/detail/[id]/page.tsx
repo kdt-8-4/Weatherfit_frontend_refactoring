@@ -1,7 +1,7 @@
 import Header from '@/Components/Molecules/Header'
 import WeatherNavbar from '@/Components/Molecules/WeatherNavbar'
 import DetailOrganism from '@/Components/Organisms/DetailOrganism'
-import DetailProfileOrganism from '@/Components/Organisms/DetailProfileOrganism'
+import NotFound from '@/app/not-found'
 
 export default function Detail({ params }: { params: { id: string } }) {
   const { id: boardId } = params
@@ -10,10 +10,7 @@ export default function Detail({ params }: { params: { id: string } }) {
     <div className="mb-7">
       <Header title="옷늘날씨" />
       <WeatherNavbar />
-      <div className="space-y-3">
-        <DetailProfileOrganism boardId={boardId} />
-        <DetailOrganism boardId={boardId} />
-      </div>
+      <DetailOrganism boardId={boardId} />
     </div>
   )
 }

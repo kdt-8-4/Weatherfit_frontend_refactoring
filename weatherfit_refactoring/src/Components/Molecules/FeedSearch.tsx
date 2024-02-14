@@ -1,15 +1,14 @@
-"use client"
+'use client'
 
 import IconStore, { IconStyle } from "../Atoms/Icon/IconStore";
 import InputStore, { InputStyle } from "../Atoms/Input/InputStore";
 import ButtonStore, { ButtonStyle } from "../Atoms/Button/ButtonStore";
 import { ChangeEventHandler, useEffect, useState } from "react";
 
-export default function FeedSearch(){
-
-    const [hashValue, setHval] = useState<string>("");
-
-    const searchCancle = () => {
+export default function FeedSearch() {
+  const searchCancle = () => {}
+  const [hashValue, setHval] = useState<string>("");
+  const searchCancle = () => {
         setHval("");
     }
 

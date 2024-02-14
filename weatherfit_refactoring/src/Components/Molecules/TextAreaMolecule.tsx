@@ -1,17 +1,24 @@
+'use client'
+
 import { useEffect, useRef } from 'react'
 import TextArea from '../Atoms/TextArea'
 import { useStore } from '../../Store/Store'
 import { extractHashtags } from '@/utils/function/utilFunction'
 
-export default function TextAreaMolecule() {
+export default function TextAreaMolecule({ data }: { data?: FEEDDATA_detail }) {
   const { content, setContent, setHashTags } = useStore()
   const textAreaRef = useRef<HTMLTextAreaElement>(null)
 
-  useEffect(() => {
-    setContent(content)
-  }, [content])
+  // useEffect(() => {
+  //   setContent(content)
+  // }, [content])
 
-  // 현재 textarea에 갓 있으면,
+  useEffect(() => {
+    if (data && data.content) {
+      setContent(data.content)
+    }
+  }, [data, setContent])
+
   const handleChange = () => {
     if (textAreaRef.current) {
       const newContent = textAreaRef.current.value || ''

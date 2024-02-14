@@ -1,3 +1,5 @@
+'use client'
+
 import { WeatherIcon } from '@/Store/WeatherIcon'
 import Image from 'next/image'
 

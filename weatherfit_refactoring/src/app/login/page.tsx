@@ -4,6 +4,7 @@ import ButtonStore, { ButtonStyle } from '@/Components/Atoms/Button/ButtonStore'
 import EasyLogin from '@/Components/Molecules/EasyLogin'
 import LoginForm from '@/Components/Molecules/LoginForm'
 import LoginLogo from '@/Components/Molecules/LoginLogo'
+import NavBar from '@/Components/Molecules/NavBar'
 
 export default function Login() {
   return (
@@ -16,6 +17,7 @@ export default function Login() {
         btnText="회원가입"
       />
       <EasyLogin />
+      <NavBar />
     </div>
   )
 }

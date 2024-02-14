@@ -13,7 +13,10 @@ interface Props {
   placeholderContents?: string
   value?: string
   style?: string
-  onChageFunction?: FormEventHandler<HTMLDivElement> | undefined
+  onChageFunction?:
+    | FormEventHandler<HTMLDivElement>
+    | React.ChangeEventHandler<HTMLInputElement>
+    | undefined
 }
 
 export default function InputStore({
@@ -22,12 +25,15 @@ export default function InputStore({
   placeholderContents,
   style,
   onChageFunction,
+  value,
 }: Props) {
   const selectInput = (): React.ReactNode => {
     switch (inputStyle) {
       case InputStyle.INPUT_WHITE:
         return (
           <input
+            value={value}
+            onChange={onChageFunction}
             type={inputType}
             className={`border rounded-lg bg-white border-gray-500 p-1 ${style}`}
             placeholder={placeholderContents}
@@ -38,7 +44,8 @@ export default function InputStore({
           <input
             type="text"
             className={`rounded-lg bg-white border-gray-500 p-1 ${style}`}
-            placeholder={placeholderContents}            />
+            placeholder={placeholderContents}
+          />
         )
       case InputStyle.INPUT_IMAGE:
         return (

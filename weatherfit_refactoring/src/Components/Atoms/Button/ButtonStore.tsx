@@ -12,7 +12,7 @@ export enum ButtonStyle {
   TEXT_BTN = 'TEXT_BTN',
   CONFIRM_BTN = 'CONFIRM_BTN',
   CANCEL_BTN = 'CANCEL_BTN',
-  CATEGORY_BTN_TOP = "CATEGORY_BTN_TOP",
+  CATEGORY_BTN_TOP = 'CATEGORY_BTN_TOP',
 }
 
 interface Props {
@@ -22,6 +22,7 @@ interface Props {
   style?: string
   onClickFunction?: MouseEventHandler<HTMLButtonElement> | undefined
   children?: React.ReactNode
+  btnType?: 'button' | 'reset' | 'submit' | undefined
 }
 //높이 조정도 필요하면 가져다 쓰세요
 
@@ -31,6 +32,7 @@ export default function ButtonStore({
   children,
   onClickFunction,
   style,
+  btnType,
 }: Props) {
   const selectButton = (): React.ReactNode => {
     switch (buttonStyle) {
@@ -97,7 +99,8 @@ export default function ButtonStore({
         return (
           <button
             className={`${style} bg-yellow-200 border border-black rounded-lg`}
-            onClick={onClickFunction}>
+            onClick={onClickFunction}
+            type={btnType}>
             {children}
           </button>
         )

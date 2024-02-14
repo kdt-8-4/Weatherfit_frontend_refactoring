@@ -1,0 +1,63 @@
+{
+  "feed_data": [
+    {
+      "boardId": 1,
+      "images": [
+        "https://cdn.peacedoorball.blog/wp-content/uploads/2024/01/iu-sends-uaenas-into-whiplash-with-her-new-bleached-hair-ahead-of-2024-comeback-something-big-is-coming.webp",
+        "https://postfiles.pstatic.net/MjAyMDA1MjJfMTUy/MDAxNTkwMDg5Njk3NjEy.WzzdxiwQV_iHROSHjdQ9v1amtfFRmSUwjRoB1iqbpNEg.ruMcbiRKcGhohFv_z91YDvVyjhlCQ2W_9Q28SrhVDCAg.JPEG.knh941010/C820D450-083E-41CC-A00D-0A2F60DC804B-4331-0000014161917C89.jpg?type=w966",
+        "https://i.pinimg.com/564x/18/c0/a6/18c0a61d88e3d75e77039f2de8813f55.jpg"
+      ],
+      "createDate": "2023-08-31 04:29:55",
+      "likeCount": 2,
+      "likelist": [
+        { "likeId": 1, "nickName": "user1" },
+        { "likeId": 2, "nickName": "user2" }
+      ],
+      "nickName": "user1",
+      "temperature": -6,
+      "weather": "clear sky",
+      "weatherIcon": "01d",
+      "content": "안녕 안녕#hi 헬로 #하이 가나다라마바사아자#안녕 차카타파하 안녕안녕안녕 안녕안녕안녕안녕안녕 가나다라마바사아자차 카타파하 가나다라 마바사아자차카타파하 안녕안녕 안녕안녕안녕 안녕안녕안녕 가나다라마바사아자차카타파하",
+      "hashTag": ["hi", "하이", "안녕"],
+      "category": ["후드 집업", "가죽자켓", "컨버스", "운동화", "베레모"],
+      "userImage": "https://cdnimg.melon.co.kr/cm2/artistcrop/images/002/61/143/261143_20210325180240_500.jpg?61e575e8653e5920470a38d1482d7312/melon/optimize/90"
+    },
+    {
+      "boardId": 2,
+      "images": [
+        "https://cdn.peacedoorball.blog/wp-content/uploads/2024/01/iu-sends-uaenas-into-whiplash-with-her-new-bleached-hair-ahead-of-2024-comeback-something-big-is-coming.webp"
+      ],
+      "createDate": "2023-08-30 04:29:53",
+      "likeCount": 1,
+      "likelist": [{ "likeId": 1, "nickName": "user1" }],
+      "nickName": "user1",
+      "temperature": 2,
+      "weather": "rain",
+      "weatherIcon": "10d",
+      "content": "안녕 안녕 #hi 헬로",
+      "hashTag": "hi",
+      "category": ["후드 집업", "가죽자켓", "컨버스", "운동화", "베레모"],
+      "userImage": "https://cdnimg.melon.co.kr/cm2/artistcrop/images/002/61/143/261143_20210325180240_500.jpg?61e575e8653e5920470a38d1482d7312/melon/optimize/90"
+    },
+    {
+      "boardId": 3,
+      "images": [
+        "https://cdn.peacedoorball.blog/wp-content/uploads/2024/01/iu-sends-uaenas-into-whiplash-with-her-new-bleached-hair-ahead-of-2024-comeback-something-big-is-coming.webp"
+      ],
+      "createDate": "2023-09-01 11:30:30",
+      "likeCount": 2,
+      "likelist": [
+        { "likeId": 1, "nickName": "user1" },
+        { "likeId": 2, "nickName": "user2" }
+      ],
+      "nickName": "user2",
+      "temperature": -4,
+      "weather": "cloud",
+      "weatherIcon": "03d",
+      "content": "안녕 안녕 #hi 헬로",
+      "hashTag": "hi",
+      "category": ["후드 집업", "가죽자켓", "컨버스", "운동화", "베레모"],
+      "userImage": "https://cdnimg.melon.co.kr/cm2/artistcrop/images/002/61/143/261143_20210325180240_500.jpg?61e575e8653e5920470a38d1482d7312/melon/optimize/90"
+    }
+  ]
+}

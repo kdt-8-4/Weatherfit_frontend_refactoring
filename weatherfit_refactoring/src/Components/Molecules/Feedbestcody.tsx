@@ -11,7 +11,7 @@ export default function Feedbestcody(){
     }
 
     return (
-        <div>
+        <div className=" mb-1">
             <div className="m-auto flex ">
                 <p className=" font-neurimboGothic whitespace-nowrap mx-1.5 w-[120px]">오늘의 카테고리 :</p>
                 <div className="flex overflow-hidden whitespace-nowrap w-[calc(55px*10)]">

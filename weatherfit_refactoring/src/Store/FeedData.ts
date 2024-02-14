@@ -1,8 +1,8 @@
 import { create } from "zustand";
 
   interface FEEDATASTORE {
-    feedData : FEEDATA[];
-    setFeedData : (reqFeedData : FEEDATA[]) => void; 
+    feedData : FEEDDATA[];
+    setFeedData : (reqFeedData : FEEDDATA[]) => void; 
   }
 
 export const FeedData = create<FEEDATASTORE>((set)=>({

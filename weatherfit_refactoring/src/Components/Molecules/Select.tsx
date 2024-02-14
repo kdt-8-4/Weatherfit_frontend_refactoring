@@ -3,7 +3,7 @@
 
 import IconStore, { IconStyle } from '../Atoms/Icon/IconStore'
 import ButtonStore, { ButtonStyle } from '../Atoms/Button/ButtonStore'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useStore } from '../../Store/Store'
 
 interface Props {
@@ -13,10 +13,21 @@ interface Props {
   onSelect: (subCategory: string[]) => void
 }
 
-export default function Select({ category, subCategories, onSelect }: Props) {
+export default function Select({
+  category,
+  subCategories,
+  initialSelectedSubCategories,
+  onSelect,
+}: Props) {
   const { selectedSubCategories, setSelectedSubCategories } = useStore()
   const [dropDown, setDropDown] = useState(false) // 로컬 상태 사용
   const [imageFlipped, setImageFlipped] = useState(false) // 로컬 상태 사용
+
+  useEffect(() => {
+    if (initialSelectedSubCategories) {
+      setSelectedSubCategories(category, initialSelectedSubCategories)
+    }
+  }, [category, initialSelectedSubCategories, setSelectedSubCategories])
 
   const toggleDropDown = () => {
     setDropDown(!dropDown)

@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { WeatherTempMax } from '@/Store/WeatherMaxTemp'
 import { WeatherTempMin } from '@/Store/WeatherMinTemp'
-import Best3Codi from '../Molecules/Best3Codi'
+import BestThreeCodi from '../Molecules/BestThreeCodi'
 
 export default function MainOrganism() {
   const { temperatureMax } = WeatherTempMax()
@@ -30,9 +30,11 @@ export default function MainOrganism() {
     getBestCodi()
   }, [temperatureMax, temperatureMin])
 
+  console.log(temperatureMax, temperatureMin)
+
   return (
     <>
-      <Best3Codi data={data} />
+      <BestThreeCodi data={data} />
     </>
   )
 }

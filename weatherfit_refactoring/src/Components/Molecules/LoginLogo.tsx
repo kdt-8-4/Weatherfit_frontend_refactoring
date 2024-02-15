@@ -1,6 +1,5 @@
 import ButtonStore from '@/Components/Atoms/Button/ButtonStore'
 import { ButtonStyle } from '@/Components/Atoms/Button/ButtonStore'
-import BoxStore, { BoxStyle } from '../Atoms/Box/BoxStore'
 import { useRouter } from 'next/navigation'
 
 export default function LoginLogo() {
@@ -10,7 +9,7 @@ export default function LoginLogo() {
     router.push('/')
   }
   return (
-    <div className="font-semibold mb-[40px]">
+    <div className="font-semibold mb-[40px] cursor-pointer">
       <p
         className="text-center font-NanumSquareRound mb-[5px]
 ">

@@ -3,6 +3,7 @@ import InputStore, { InputStyle } from '@/Components/Atoms/Input/InputStore'
 import ButtonStore, { ButtonStyle } from '@/Components/Atoms/Button/ButtonStore'
 import ImageUpload from '@/Components/Organisms/ImageUpload'
 import MainOrganism from '@/Components/Organisms/MainOrganism'
+import NavBar from '@/Components/Molecules/NavBar'
 
 export default function Home() {
   return (
@@ -47,6 +48,7 @@ export default function Home() {
         btnText="회원가입"
       />
       <MainOrganism />
+      <NavBar />
     </>
   )
 }

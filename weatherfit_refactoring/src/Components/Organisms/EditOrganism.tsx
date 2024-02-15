@@ -1,10 +1,3 @@
-import DetailContent from '@/Components/Molecules/DetailContent'
-import DetailImage from '@/Components/Molecules/DetailImge'
-import DetailCategory from '../Molecules/DetailCategory'
-import LikeAndComment from '../Molecules/LikeAndComment'
-import DetailProfile from '../Molecules/DetailProfile'
-import DetailEtc from '../Molecules/DetailEtc'
-import NotFound from '@/app/not-found'
 import EditWeather from '../Molecules/EditWeather'
 import TextAreaMolecule from '../Molecules/TextAreaMolecule'
 import EditHeader from './EditHeader'
@@ -20,17 +13,20 @@ export default async function EditOrganism({ boardId }: BOARDID) {
   )
   const data: FEEDDATA_detail = await response.json()
 
+  // data 전체 넘겨주지 말고 필요한 것만 넘겨주기
+
   return (
     <div className="h-screen">
       <EditHeader boardId={boardId} />
       <div className="mx-5 h-full">
         <div className="flex-col items-center justify-center mb-7">
-          <EditWeather data={data} />
-          <ImageUpload data={data} />
+          <EditWeather weatherIcon={data.weatherIcon} />
+          <ImageUpload images={data.images} />
         </div>
-        <TextAreaMolecule data={data} />
+        <TextAreaMolecule initContent={data.content} />
         <hr />
-        <SelectCategory data={data} />
+        <SelectCategory initCategory={data.category} />
+        {/* <SelectCategory initialCategory={data.category}/> */}
       </div>
     </div>
   )

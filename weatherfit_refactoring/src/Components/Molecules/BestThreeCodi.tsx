@@ -2,7 +2,7 @@ import Link from 'next/link'
 import BoxStore, { BoxStyle } from '../Atoms/Box/BoxStore'
 import Image from 'next/image'
 
-export default function Best3Codi({ data }: { data?: FEEDDATA_detail }) {
+export default function BestThreeCodi({ data }: { data?: FEEDDATA_detail }) {
   if (!data || !data.images) {
     return null
   }

@@ -1,6 +1,14 @@
 'use client'
 
-export default function DetailContent({ data }: { data: FEEDDATA_detail }) {
+export default function DetailContent({
+  nickName,
+  content,
+  hashTag,
+}: {
+  nickName: string
+  content: FEEDDATA_detail['content']
+  hashTag: FEEDDATA_detail['hashTag']
+}) {
   const handleHashTagClick = (hashTag: string) => {
     console.log('Clicked hashtag:', hashTag)
   }
@@ -27,7 +35,7 @@ export default function DetailContent({ data }: { data: FEEDDATA_detail }) {
 
       if (index !== splitContent.length - 1) {
         const currentHashTag = matchedHashTags[index]
-        const tagIndex = data.hashTag.indexOf(currentHashTag.slice(1))
+        const tagIndex = hashTag.indexOf(currentHashTag.slice(1))
 
         result.push(
           <span
@@ -46,8 +54,8 @@ export default function DetailContent({ data }: { data: FEEDDATA_detail }) {
   return (
     <div className="font-NanumSquareRound px-1 break-all text-justify w-full">
       {/* 추후에 더보기 접기 버튼 넣어야 할 듯 */}
-      <span className="font-extrabold mr-2">{data.nickName}</span>
-      {extractAndStyleHashtags(data.content)}
+      <span className="font-extrabold mr-2">{nickName}</span>
+      {extractAndStyleHashtags(content)}
     </div>
   )
 }

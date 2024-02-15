@@ -1,5 +1,4 @@
 'use client'
-// 리액트 use 들어간 hook에는 use client 써야함
 
 import IconStore, { IconStyle } from '../Atoms/Icon/IconStore'
 import ButtonStore, { ButtonStyle } from '../Atoms/Button/ButtonStore'
@@ -27,7 +26,7 @@ export default function Select({
     if (initialSelectedSubCategories) {
       setSelectedSubCategories(category, initialSelectedSubCategories)
     }
-  }, [category, initialSelectedSubCategories, setSelectedSubCategories])
+  }, [initialSelectedSubCategories, setSelectedSubCategories, category])
 
   const toggleDropDown = () => {
     setDropDown(!dropDown)
@@ -37,13 +36,14 @@ export default function Select({
   const selectSubCategory = (subCategory: string) => {
     const selected = selectedSubCategories[category] || []
     const index = selected.indexOf(subCategory)
-    let updatedSubCategories: string[] = []
 
+    let updatedSubCategories
     if (index === -1) {
-      updatedSubCategories = [...selected, subCategory]
+      updatedSubCategories = Array.from(new Set([...selected, subCategory]))
     } else {
       updatedSubCategories = selected.filter(item => item !== subCategory)
     }
+
     setSelectedSubCategories(category, updatedSubCategories)
     onSelect(updatedSubCategories)
   }

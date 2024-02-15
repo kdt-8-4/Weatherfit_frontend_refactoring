@@ -3,7 +3,11 @@
 import ButtonStore, { ButtonStyle } from '../Atoms/Button/ButtonStore'
 import { categories } from '../data/CategoryList'
 
-export default function DetailCategory({ data }: { data: FEEDDATA_detail }) {
+export default function DetailCategory({
+  category,
+}: {
+  category: FEEDDATA_detail['category']
+}) {
   const findParentCategory = (subCategory: string): string | null => {
     for (const [parentCategory, subCategories] of Object.entries(categories)) {
       if (subCategories.includes(subCategory)) {
@@ -13,7 +17,7 @@ export default function DetailCategory({ data }: { data: FEEDDATA_detail }) {
     return null
   }
 
-  const categoryGroups: Record<string, string[]> = data.category.reduce(
+  const categoryGroups: Record<string, string[]> = category.reduce(
     (groups: Record<string, string[]>, subCategory) => {
       const parentCategory = findParentCategory(subCategory)
       if (parentCategory && !groups[parentCategory]) {

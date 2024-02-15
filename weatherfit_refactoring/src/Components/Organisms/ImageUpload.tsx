@@ -5,13 +5,23 @@ import { ChangeEvent, useCallback, useEffect, useState } from 'react'
 import { useStore } from '../../Store/Store'
 import ArrayImage from '../Molecules/ArrayImage'
 
-export default function ImageUpload({ data }: { data?: FEEDDATA_detail }) {
-  const { selectedImages, setSelectedImages, setDeletedImages } = useStore()
-  const [existingImages, setExistingImages] = useState<IMAGE[]>([])
-  const initialImages = data?.images
+export default function ImageUpload({
+  images,
+}: {
+  images?: FEEDDATA_detail['images']
+}) {
+  const {
+    selectedImages,
+    setSelectedImages,
+    existingImages,
+    setExistingImages,
+    setDeletedImages,
+  } = useStore()
+  // const [existingImages, setExistingImages] = useState<IMAGE[]>([])
+  const initialImages = images
 
   useEffect(() => {
-    if (data && initialImages) {
+    if (initialImages) {
       setExistingImages(initialImages)
     }
   }, [initialImages])
@@ -38,7 +48,7 @@ export default function ImageUpload({ data }: { data?: FEEDDATA_detail }) {
     }
   }
 
-  const removeImage = (index: number, id?: number) => {
+  const removeImage = (index: number) => {
     if (selectedImages) {
       const newImages = [...selectedImages]
       newImages.splice(index, 1)

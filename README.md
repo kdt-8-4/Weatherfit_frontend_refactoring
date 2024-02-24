@@ -8,7 +8,6 @@
     5. 변경된 페이지 디자인
 
 ## 1. 👔 옷늘날씨 리팩토링의 목적
-<img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/f1b8c2c7-03db-4a87-a4ff-eb1fe1362bcb" width="100">
 - 한눈에 정보가 들어오지 않는 기존 디자인의 문제점 보완
 - 기능 구현 위주로 프로젝트를 진행하며 발생한 문제점 보완
     - 코드의 재사용성과 생산성이 떨어짐 >> 아토믹 디자인 패턴을 도입하며 앞의 문제를 해결

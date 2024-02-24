@@ -9,7 +9,8 @@
 
 ## 1. 👔 옷늘날씨 리팩토링의 목적
 - 한눈에 정보가 들어오지 않는 기존 디자인의 문제점 보완  
-  <tbody>
+
+   <tbody>
     <tr>
         <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/fde559d8-0570-42f7-b759-7a45da95c512" width=300 height="500"/></td>
         <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/3269884b-10b2-46ea-af7a-22b49f149b02" width=50 /></td>

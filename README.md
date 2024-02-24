@@ -14,6 +14,7 @@
         <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/f1f88e81-1356-43eb-8837-759f6758c811" width=300 height="500"/></td>
     </tr>
   </tbody>
+
 - 한눈에 정보가 들어오지 않는 기존 디자인의 문제점 보완
 - 기능 구현 위주로 프로젝트를 진행하며 발생한 문제점 보완
     - 코드의 재사용성과 생산성이 떨어짐 >> 아토믹 디자인 패턴을 도입하며 앞의 문제를 해결

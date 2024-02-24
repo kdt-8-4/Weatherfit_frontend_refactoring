@@ -8,7 +8,7 @@
     5. 변경된 페이지 디자인
 
 ## 1. 👔 옷늘날씨 리팩토링의 목적
-  
+- 한눈에 정보가 들어오지 않는 기존 디자인의 문제점 보완  
   <tbody>
     <tr>
         <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/fde559d8-0570-42f7-b759-7a45da95c512" width=300 height="500"/></td>
@@ -17,7 +17,6 @@
     </tr>
   </tbody>
 
-- 한눈에 정보가 들어오지 않는 기존 디자인의 문제점 보완
 <br/>
 
 - 기능 구현 위주로 프로젝트를 진행하며 발생한 문제점 보완

@@ -8,6 +8,20 @@
     5. 변경된 페이지 디자인
 
 ## 1. 👔 옷늘날씨 리팩토링의 목적
+  <style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    td {
+        text-align: center;
+        vertical-align: middle;
+    }
+    img {
+        display: block;
+        margin: auto;
+    }
+    </style>
   <tbody>
     <tr>
         <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/fde559d8-0570-42f7-b759-7a45da95c512" width=300 height="500"/></td>

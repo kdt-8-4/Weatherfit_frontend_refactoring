@@ -11,7 +11,10 @@
   <tbody>
     <tr>
         <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/fde559d8-0570-42f7-b759-7a45da95c512" width=300 height="500"/></td>
-        <td align="center">  </td>
+        <td align="center"><?xml version="1.0" ?><svg id="Layer_1" style="enable-background:new 0 0 120 120;" version="1.1" viewBox="0 0 120 120" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style type="text/css">
+	.st0{fill:none;}
+	.st1{fill:#386BFF;}
+</style><line class="st0" x1="60" x2="60" y1="-67.7" y2="-73.2"/><g><path class="st1" d="M57.9,23.3l12,36.2c0.1,0.3,0.1,0.6,0,0.9l-12,36.2c-0.5,1.5,1.3,2.6,2.5,1.6l38.9-37.1c0.6-0.6,0.6-1.6,0-2.2   l-39-37.1C59.2,20.7,57.4,21.8,57.9,23.3z"/><path class="st1" d="M61.8,61.1c0.6-0.6,0.6-1.6,0-2.2L22.9,21.8c-1.1-1.1-2.9,0.1-2.5,1.6l12,36.2c0.1,0.3,0.1,0.6,0,0.9l-12,36.2   c-0.5,1.5,1.3,2.6,2.5,1.6L61.8,61.1z"/></g></svg></td>
         <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/f1f88e81-1356-43eb-8837-759f6758c811" width=300 height="500"/></td>
     </tr>
   </tbody>

@@ -11,7 +11,7 @@
   <tbody>
     <tr>
         <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/fde559d8-0570-42f7-b759-7a45da95c512" width=300 height="500"/></td>
-        <td align="center"> <span style="margin-bottom: 250px">👉</span> </td>
+        <td align="center"> <span style="margin-bottom: 250px;">👉</span> </td>
         <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/f1f88e81-1356-43eb-8837-759f6758c811" width=300 height="500"/></td>
     </tr>
   </tbody>

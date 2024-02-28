@@ -1,8 +1,12 @@
 import { CategoryData } from "@/Store/CategoryData"
 import { CategorySelectData } from "@/Store/CategorySelectData";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
-export default function FeedCategorySelect () {
+interface Props {
+    setControl: Dispatch<SetStateAction<boolean>>;
+}
+
+export default function FeedCategorySelect ({setControl} : Props) {
 
     const {categoryData} = CategoryData();
     const {selectData, setSelectData} = CategorySelectData();
@@ -10,23 +14,29 @@ export default function FeedCategorySelect () {
     
 
     const selectCategory = (selectedCategory: string) => {
-        console.log("선택한 카테고리 타이틀", selectedCategory)
+        console.log("선택한 카테고리 타이틀", selectedCategory);
+        // categoryData.find()
+        
     }
 
     const selectCancle = (selectCancle : string) => {
         console.log("삭제할 카테고리 목록", selectCancle);
     }
 
+    const cancleSelectCategory = () => {
+        setControl(false);
+    }
+
     return (
-        <div className="">
+        <div className=" relative z-10">
             <div className=" text-center font-neurimboGothic">
-               <span>Ｘ</span>
+               <span onClick={cancleSelectCategory} >Ｘ</span>
                카테고리 
             </div>
             <div className=" flex whitespace-nowrap">
-                {categoryData.map((val)=>{
+                {categoryData.map((categoryTitle)=>{
                     return(
-                        <p key={val.id} onChange={()=>selectCategory(val.val)} className={categoryTitleStyle}>{val.title}</p>
+                        <p key={categoryTitle.id} onClick={()=>selectCategory(categoryTitle.value)} className={categoryTitleStyle}>{categoryTitle.title}</p>
                     )
                 })}
             </div>

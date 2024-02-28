@@ -32,7 +32,7 @@ export default function FeedCategory() {
                 })
             }
             </div>
-            {tabControl && <FeedCategorySelect />}
+            {tabControl && <FeedCategorySelect setControl={setControl} />}
         </div>
 
 

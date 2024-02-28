@@ -3,10 +3,10 @@
 import Image from 'next/image'
 
 export default function DetailProfile({
-  data,
+  nickName,
   userData,
 }: {
-  data: FEEDDATA_detail
+  nickName: string
   userData: FEEDDATA_detail
 }) {
   return (
@@ -19,7 +19,7 @@ export default function DetailProfile({
         className="rounded-full"
       />
       <div className="flex-col ml-3 pb-1">
-        <p className="text-lg">{data.nickName}</p>
+        <p className="text-lg">{nickName}</p>
         <p className="text-xs text-gray-400">@user_one</p>
         {/* <p className="text-xs text-gray-400">여기 아이디 들어가면 되려나</p> */}
       </div>

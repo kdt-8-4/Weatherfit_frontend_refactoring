@@ -31,8 +31,8 @@ interface UserData {
 interface Props {
   profileImage: string | null
   userInfo: UserData
-  myPost: FEEDATA[]
-  myLikePost: FEEDATA[]
+  myPost: FEEDDATA[]
+  myLikePost: FEEDDATA[]
 }
 
 export default function ProfileInfo({

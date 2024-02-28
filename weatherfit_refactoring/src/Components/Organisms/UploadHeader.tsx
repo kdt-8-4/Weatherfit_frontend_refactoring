@@ -5,9 +5,8 @@ import { WeatherIcon } from '@/Store/WeatherIcon'
 import { WeatherTemp } from '@/Store/WeatherTemp'
 
 export default function UploadHeader() {
-  const { content, hashTags, selectedImages, selectedSubCategories } =
-    useStore()
-  const subCategoriesOnly = Object.values(selectedSubCategories).flat() // 하위 카테고리들만 저장
+  const { content, hashTag, selectedImages, selectedSubCategories } = useStore()
+  const category = Object.values(selectedSubCategories).flat() // 하위 카테고리들만 저장
   const { weatherIcon } = WeatherIcon()
   const { temperature } = WeatherTemp()
 
@@ -15,8 +14,8 @@ export default function UploadHeader() {
     try {
       const formData = new FormData()
       const boardData = {
-        hashTag: hashTags,
-        category: subCategoriesOnly,
+        hashTag,
+        category,
         content,
         temperature,
         weatherIcon: `https://openweathermap.org/img/wn/${weatherIcon}.png`,
@@ -41,10 +40,10 @@ export default function UploadHeader() {
       console.log(response)
       console.log('등록 버튼 클릭')
       console.log('content: ', content) //ok
-      console.log('hashTag: ', hashTags) //ok
+      console.log('hashTag: ', hashTag) //ok
       const images = formData.getAll('images')
       console.log('images: ', images)
-      console.log('selected categories', subCategoriesOnly)
+      console.log('selected categories', category)
     } catch (error) {
       console.error(error)
     }

@@ -43,3 +43,20 @@ interface FEEDDATA_detail {
   hashTag: string[]
   category: string[]
 }
+
+interface SelecList {
+  list_id : number;
+  selectList : string;
+}
+
+
+interface TabMenu {
+  id: number;
+  title?: string;
+  value: string;
+  selectLists : SelecList[];
+}
+
+interface CategoryStore {
+  categoryData : TabMenu[];
+}

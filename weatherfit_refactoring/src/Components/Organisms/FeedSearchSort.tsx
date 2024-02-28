@@ -10,7 +10,7 @@ import FeedSortBase from "../Molecules/FeedSortBase";
 export default function FeedSearchSort(){
 
     return (
-    <div>
+    <div className="relative">
         <FeedLogo textSize="15px" />
         <FeedSearch />
         <Feedbestcody />

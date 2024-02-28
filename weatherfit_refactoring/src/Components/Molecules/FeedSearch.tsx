@@ -7,15 +7,15 @@ import { ChangeEventHandler, useEffect, useState } from "react";
 
 export default function FeedSearch(){
 
-    const [hashValue, setHval] = useState<string>("");
+    const [hashValue, setHashValue] = useState<string>("");
 
     const searchCancle = () => {
-        setHval("");
+        setHashValue("");
     }
 
     const searchHashTag:ChangeEventHandler<HTMLInputElement> = (e:React.ChangeEvent<HTMLInputElement>) => {
         console.log("검색할 내용", e.target.value);
-        setHval(e.target.value);
+        setHashValue(e.target.value);
     }
 
     useEffect(()=>{

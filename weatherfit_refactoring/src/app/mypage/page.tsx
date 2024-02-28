@@ -6,34 +6,13 @@ import ProfileInfo from '@/Components/Molecules/ProfileInfo'
 import ProfileHeader from '@/Components/Organisms/ProfileHeader'
 import ProfileBoard from '@/Components/Organisms/ProfileBoard'
 
-interface IMAGE {
-  boardId: number
-  imageId: number
-  imageUrl: string
-}
-
-interface LIKE {
-  likeId: number
-  nickName: string
-}
-interface FEEDATA {
-  boardId: number
-  images: IMAGE
-  likeCount: number
-  likelist: LIKE[]
-  nickName: string
-  temperature: number
-  weather: string
-  weatherIcon?: string
-}
-
 export default function Mypage() {
   // 회원 정보
   const [userPofile, setUserProfile] = useState<any>(null)
   const [userImage, setUserImage] = useState<string | null>('') // 프로필 이미지
   const [refreshProfile, setRefreshProfile] = useState<boolean>(false) // 회원 정보 변경했을 때
-  const [myPostData, setMyPostData] = useState<FEEDATA[]>([])
-  const [myLikePostData, setMyLikePostData] = useState<FEEDATA[]>([])
+  const [myPostData, setMyPostData] = useState<FEEDDATA[]>([])
+  const [myLikePostData, setMyLikePostData] = useState<FEEDDATA[]>([])
 
   // 회원 정보 불러오기
   useEffect(() => {
@@ -60,7 +39,7 @@ export default function Mypage() {
 
         // 게시물 데이터 가져오기
         const req = await axios.get('https://www.jerneithe.site/board/list')
-        const data: FEEDATA[] = req.data
+        const data: FEEDDATA[] = req.data
 
         const filteredData = data.filter(
           item => item.nickName === userPofile.nickname,

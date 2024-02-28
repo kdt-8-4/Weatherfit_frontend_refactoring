@@ -1,7 +1,6 @@
 import Header from '@/Components/Molecules/Header'
 import WeatherNavbar from '@/Components/Molecules/WeatherNavbar'
 import DetailOrganism from '@/Components/Organisms/DetailOrganism'
-import NotFound from '@/app/not-found'
 
 export default function Detail({ params }: { params: { id: string } }) {
   const { id: boardId } = params

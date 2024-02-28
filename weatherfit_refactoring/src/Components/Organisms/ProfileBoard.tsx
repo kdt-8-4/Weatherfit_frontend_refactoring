@@ -26,8 +26,8 @@ interface FEEDATA {
 }
 
 interface Props {
-  myPost: FEEDATA[]
-  myLikePost: FEEDATA[]
+  myPost: FEEDDATA[]
+  myLikePost: FEEDDATA[]
 }
 
 export default function ProfileBoard({ myPost, myLikePost }: Props) {

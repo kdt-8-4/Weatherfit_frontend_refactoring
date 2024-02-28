@@ -1,9 +1,8 @@
 'use client'
-// 리액트 use 들어간 hook에는 use client 써야함
 
 import IconStore, { IconStyle } from '../Atoms/Icon/IconStore'
 import ButtonStore, { ButtonStyle } from '../Atoms/Button/ButtonStore'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useStore } from '../../Store/Store'
 
 interface Props {
@@ -13,10 +12,21 @@ interface Props {
   onSelect: (subCategory: string[]) => void
 }
 
-export default function Select({ category, subCategories, onSelect }: Props) {
+export default function Select({
+  category,
+  subCategories,
+  initialSelectedSubCategories,
+  onSelect,
+}: Props) {
   const { selectedSubCategories, setSelectedSubCategories } = useStore()
   const [dropDown, setDropDown] = useState(false) // 로컬 상태 사용
   const [imageFlipped, setImageFlipped] = useState(false) // 로컬 상태 사용
+
+  useEffect(() => {
+    if (initialSelectedSubCategories) {
+      setSelectedSubCategories(category, initialSelectedSubCategories)
+    }
+  }, [initialSelectedSubCategories, setSelectedSubCategories, category])
 
   const toggleDropDown = () => {
     setDropDown(!dropDown)
@@ -26,13 +36,14 @@ export default function Select({ category, subCategories, onSelect }: Props) {
   const selectSubCategory = (subCategory: string) => {
     const selected = selectedSubCategories[category] || []
     const index = selected.indexOf(subCategory)
-    let updatedSubCategories: string[] = []
 
+    let updatedSubCategories
     if (index === -1) {
-      updatedSubCategories = [...selected, subCategory]
+      updatedSubCategories = Array.from(new Set([...selected, subCategory]))
     } else {
       updatedSubCategories = selected.filter(item => item !== subCategory)
     }
+
     setSelectedSubCategories(category, updatedSubCategories)
     onSelect(updatedSubCategories)
   }

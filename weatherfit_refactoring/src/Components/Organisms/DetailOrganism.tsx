@@ -7,15 +7,15 @@ import DetailEtc from '../Molecules/DetailEtc'
 import NotFound from '@/app/not-found'
 
 export default async function DetailOrganism({ boardId }: BOARDID) {
-  const response = await fetch(
+  const fetchBoardDataResponse = await fetch(
     `https://www.jerneithe.site/board/detail/${boardId}`,
     {
       method: 'GET',
     },
   )
-  const data: FEEDDATA_detail = await response.json()
+  const fetchBoardData = await fetchBoardDataResponse.json()
 
-  const userResponse = await fetch(
+  const fetchUserDataResponse = await fetch(
     `https://www.jerneithe.site/user/api/userinfo`,
     {
       method: 'POST',
@@ -23,28 +23,33 @@ export default async function DetailOrganism({ boardId }: BOARDID) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        nickName: data.nickName,
+        nickName: fetchBoardData.nickName,
       }),
     },
   )
+  const fetchUserData = await fetchUserDataResponse.json()
 
-  const userData = await userResponse.json()
-  console.log('userData: ', userData)
-
-  if (!data.boardId) return NotFound()
+  if (!fetchBoardData.boardId) NotFound()
   else
     return (
       <div className="space-y-5">
         <div className="mx-5 space-y-3">
           <div className="flex justify-between">
-            <DetailProfile data={data} userData={userData} />
+            <DetailProfile
+              nickName={fetchBoardData.nickName}
+              userData={fetchUserData}
+            />
             <DetailEtc boardId={boardId} />
           </div>
-          <DetailImage data={data} />
+          <DetailImage images={fetchBoardData.images} />
           <LikeAndComment />
-          <DetailContent data={data} />
+          <DetailContent
+            nickName={fetchBoardData.nickName}
+            content={fetchBoardData.content}
+            hashTag={fetchBoardData.hashTag}
+          />
         </div>
-        <DetailCategory data={data} />
+        <DetailCategory category={fetchBoardData.category} />
       </div>
     )
 }

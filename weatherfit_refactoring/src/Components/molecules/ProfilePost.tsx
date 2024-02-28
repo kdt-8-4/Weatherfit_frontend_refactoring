@@ -22,7 +22,7 @@ interface FEEDATA {
 }
 
 interface Props {
-  postData: FEEDATA[]
+  postData: FEEDDATA[]
 }
 
 export default function ProfilePost({ postData }: Props) {

@@ -1,31 +1,33 @@
 import { create } from 'zustand'
-import { categories } from '../Components/data/CategoryList'
 
 interface State {
   content: string
   setContent: (content: string) => void
-  hashTags: string[]
-  setHashTags: (hashTags: string[]) => void
+  hashTag: string[]
+  setHashTag: (hashTag: string[]) => void
   selectedImages: File[]
   setSelectedImages: (selectedImages: File[]) => void
+  existingImages: IMAGE[]
+  setExistingImages: (existingImages: IMAGE[]) => void
   selectedSubCategories: { [category: string]: string[] }
   setSelectedSubCategories: (category: string, subCategories: string[]) => void
-  initialSubCategories: string[][]
-  setInitialSubCategories: () => void
+  initialSubCategories: string[]
+  setInitialSubCategories: (initialSubCategories: string[]) => void
   deletedImages: number[]
   setDeletedImages: (imageId: number) => void
-  // existingImages: Image[]
-  // setExistingImages: (images: Image[]) => void
 }
 
 export const useStore = create<State>(set => ({
   content: '',
   setContent: (content: string) => set(state => ({ ...state, content })),
-  hashTags: [],
-  setHashTags: (hashTags: string[]) => set(state => ({ ...state, hashTags })),
+  hashTag: [],
+  setHashTag: (hashTag: string[]) => set(state => ({ ...state, hashTag })),
   selectedImages: [],
   setSelectedImages: (selectedImages: File[]) =>
     set(state => ({ ...state, selectedImages })),
+  existingImages: [],
+  setExistingImages: (existingImages: IMAGE[]) =>
+    set(state => ({ ...state, existingImages })),
   // 하위 카테고리 관리
   selectedSubCategories: {},
   setSelectedSubCategories: (category: string, subCategories: string[]) =>
@@ -37,10 +39,10 @@ export const useStore = create<State>(set => ({
       },
     })),
   initialSubCategories: [],
-  setInitialSubCategories: () =>
+  setInitialSubCategories: (initialSubCategories: string[]) =>
     set(state => ({
       ...state,
-      initialSubCategories: Array(Object.entries(categories).length).fill([]),
+      initialSubCategories,
     })),
   deletedImages: [],
   setDeletedImages(imageId: number) {
@@ -48,7 +50,4 @@ export const useStore = create<State>(set => ({
       deletedImages: [...state.deletedImages, imageId],
     }))
   },
-  // existingImages: [],
-  // setExistingImages: (existingImages: Image[]) =>
-  //   set(state => ({ ...state, existingImages })),
 }))

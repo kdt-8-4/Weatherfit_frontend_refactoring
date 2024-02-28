@@ -9,9 +9,6 @@ module.exports = {
       'openweathermap.org',
       'cdn.peacedoorball.blog',
       'cdnimg.melon.co.kr',
-      // 외부 url 이미지 로드
-      'postfiles.pstatic.net',
-      'i.pinimg.com',
     ],
   },
 }

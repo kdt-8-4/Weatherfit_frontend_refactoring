@@ -1,10 +1,16 @@
+'use client'
+
 import Select from '../Molecules/Select'
 import { categories } from '@/Components/data/CategoryList'
 import { useCallback } from 'react'
 import { useStore } from '../../Store/Store'
 
-export default function SelectCategory() {
-  const { initialSubCategories, setSelectedSubCategories } = useStore()
+export default function SelectCategory({
+  initCategory,
+}: {
+  initCategory?: FEEDDATA_detail['category']
+}) {
+  const { setSelectedSubCategories } = useStore()
 
   const handleCategorySelect = useCallback(
     (category: string, subCategories: string[]) => {
@@ -15,12 +21,12 @@ export default function SelectCategory() {
 
   return (
     <div className="mt-7">
-      {Object.entries(categories).map(([category, subCategories], index) => (
+      {Object.entries(categories).map(([category, subCategories]) => (
         <Select
           key={category}
           category={category}
           subCategories={subCategories}
-          initialSelectedSubCategories={initialSubCategories[index]}
+          initialSelectedSubCategories={initCategory}
           onSelect={selectedSubCategories =>
             handleCategorySelect(category, selectedSubCategories)
           }

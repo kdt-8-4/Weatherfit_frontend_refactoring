@@ -1,10 +1,30 @@
+'use client'
+
 import InputStore, { InputStyle } from '../Atoms/Input/InputStore'
-import { ChangeEvent, useCallback, useState } from 'react'
+import { ChangeEvent, useCallback, useEffect, useState } from 'react'
 import { useStore } from '../../Store/Store'
 import ArrayImage from '../Molecules/ArrayImage'
 
-export default function ImageUpload() {
-  const { selectedImages, setSelectedImages, setDeletedImages } = useStore()
+export default function ImageUpload({
+  images,
+}: {
+  images?: FEEDDATA_detail['images']
+}) {
+  const {
+    selectedImages,
+    setSelectedImages,
+    existingImages,
+    setExistingImages,
+    setDeletedImages,
+  } = useStore()
+  // const [existingImages, setExistingImages] = useState<IMAGE[]>([])
+  const initialImages = images
+
+  useEffect(() => {
+    if (initialImages) {
+      setExistingImages(initialImages)
+    }
+  }, [initialImages])
 
   const handleImagesSelected = useCallback((files: File[] | null) => {
     setSelectedImages(files ? Array.from(files) : [])
@@ -28,43 +48,43 @@ export default function ImageUpload() {
     }
   }
 
-  const removeImage = (index: number, id?: number) => {
+  const removeImage = (index: number) => {
     if (selectedImages) {
       const newImages = [...selectedImages]
       newImages.splice(index, 1)
       setSelectedImages(newImages)
       handleImagesSelected(newImages)
     }
-    // else if (existingImages) {
-    //   if (id != undefined) {
-    //     setDeletedImages(id) // 상위 컴포넌트에 삭제된 이미지의 URL 전달
-    //   }
-    //   const newImages = [...existingImages]
-    //   newImages.splice(index, 1)
-    //   setExistingImages(newImages)
-    //   onExistingImagesSelected?.(newImages)
-    // }
+  }
+
+  const removeExistingImage = (index: number, id: number) => {
+    if (existingImages) {
+      setDeletedImages(id)
+      const newImages = [...existingImages]
+      newImages.splice(index, 1)
+      setExistingImages(newImages)
+    }
   }
 
   return (
     <div>
       <div className="flex items-center w-full overflow-x-auto overflow-y-hidden whitespace-nowrap">
-        {/* {existingImages &&
+        {existingImages &&
           Array.from(existingImages).map((image, index) => (
             <ArrayImage
               key={index}
               index={index}
               imageUrl={image.imageUrl}
-              removeImage={removeImage}
+              removeImage={() => removeExistingImage(index, image.imageId)}
             />
-          ))} */}
+          ))}
         {selectedImages &&
           Array.from(selectedImages).map((image, index) => (
             <ArrayImage
               key={index}
               index={index}
               imageUrl={URL.createObjectURL(image)}
-              removeImage={removeImage}
+              removeImage={() => removeImage(index)}
             />
           ))}
         <InputStore

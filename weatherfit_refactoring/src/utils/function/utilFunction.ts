@@ -79,3 +79,20 @@ export const alertError = () => {
     },
   })
 }
+
+export const confirmAlert = (title: string) => {
+  return Swal.fire({
+    width: '350px',
+    color: '#000000',
+    title: `<span style="font-size: 20px; font-weight : bolder;"> ${title}</span>`,
+    confirmButtonText: '확인',
+    confirmButtonColor: '#fef08a',
+    didOpen: toast => {
+      let confirmButton = toast.querySelector('.swal2-confirm') as HTMLElement // 타입 변환
+      if (confirmButton) {
+        confirmButton.style.color = '#000000' // 글자색 변경
+        confirmButton.style.fontWeight = 'bolder'
+      }
+    },
+  })
+}

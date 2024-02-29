@@ -43,3 +43,14 @@ interface FEEDDATA_detail {
   hashTag: string[]
   category: string[]
 }
+
+interface CommentType {
+  id: number
+  boardId: number
+  nickname: string
+  content: string
+  createdDate: string
+  createdTime: string
+  replyList: CommentType[]
+  status: number
+}

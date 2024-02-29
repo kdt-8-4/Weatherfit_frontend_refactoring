@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
 import ProfileInfo from '@/Components/Molecules/ProfileInfo'
 import ProfileHeader from '@/Components/Organisms/ProfileHeader'
 import ProfileBoard from '@/Components/Organisms/ProfileBoard'
@@ -19,34 +18,38 @@ export default function Mypage() {
     const fetchData = async () => {
       try {
         // 프로필 데이터 가져오기
-        const response = await axios({
+        const res = await fetch(`https://www.jerneithe.site/user/api/profile`, {
           method: 'POST',
-          url: `https://www.jerneithe.site/user/api/profile`,
           headers: {
-            Authorization: 'Bearer ',
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer',
           },
-          data: {
+          body: JSON.stringify({
             email: localStorage.getItem('user_email'),
-          },
+          }),
         })
 
-        setUserProfile(response.data)
-        setUserImage(response.data.image)
+        const profileRes = await res.json()
 
-        console.log('유저 data: ', response.data)
+        setUserProfile(profileRes)
+        setUserImage(profileRes.image)
+
+        console.log('유저 data: ', profileRes)
 
         // -----------------------------------------
 
         // 게시물 데이터 가져오기
-        const req = await axios.get('https://www.jerneithe.site/board/list')
-        const data: FEEDDATA[] = req.data
+        const boardListRes = await fetch(
+          'https://www.jerneithe.site/board/list',
+        )
+        const boardListdata: FEEDDATA[] = await boardListRes.json()
 
-        const filteredData = data.filter(
+        const filteredData = boardListdata.filter(
           item => item.nickName === userPofile.nickname,
         )
         setMyPostData(filteredData)
 
-        const filteredLikeData = data.filter(item =>
+        const filteredLikeData = boardListdata.filter(item =>
           item.likelist.some(like => like.nickName === userPofile.nickname),
         )
         setMyLikePostData(filteredLikeData)

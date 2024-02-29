@@ -17,7 +17,6 @@ export default function DetailContent({
     const hashTagRegex = /#[^\s#]+/g
     const splitContent = content.split(hashTagRegex)
     const matchedHashTags = content.match(hashTagRegex) || []
-    // -> 3줄 util로 빼주기
 
     const result: JSX.Element[] = []
 

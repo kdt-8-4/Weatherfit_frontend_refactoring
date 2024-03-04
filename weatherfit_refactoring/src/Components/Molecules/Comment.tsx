@@ -1,5 +1,8 @@
 import { useState } from 'react'
 import CommentInput from './CommentInput'
+import { confirmAlert } from '@/utils/function/utilFunction'
+import InputStore, { InputStyle } from '../Atoms/Input/InputStore'
+import ButtonStore, { ButtonStyle } from '../Atoms/Button/ButtonStore'
 
 interface Props {
   comment: CommentType
@@ -19,6 +22,7 @@ export default function Comment({
   const [isEditing, setIsEditing] = useState<boolean>(false)
   const [editContent, setEditContent] = useState<string>('')
 
+  // 답글 등록
   const handleReplySubmit = (e: React.FormEvent) => {
     e.preventDefault()
 
@@ -49,8 +53,14 @@ export default function Comment({
     setContent('')
   }
 
+  // 댓글(또는 답글) 수정
   const handleCommentEdit = (e: React.FormEvent) => {
     e.preventDefault()
+
+    if (editContent.trim() === '') {
+      confirmAlert('내용을 입력해 주세요.')
+      return
+    }
 
     const newComments = [...comments]
     const findComment = (comments: CommentType[]): CommentType[] =>
@@ -63,16 +73,13 @@ export default function Comment({
     setIsEditing(false)
   }
 
+  // 댓글(또는 답글) 삭제
   const handleCommentDelete = () => {
     const newComments = [...comments]
     const findComment = (comments: CommentType[]): CommentType[] =>
       comments.map(c =>
         c.id === comment.id
-          ? {
-              ...c,
-              content: c.replyList.length > 0 ? '삭제된 댓글입니다.' : '',
-              status: c.replyList.length > 0 ? c.status : 0,
-            }
+          ? { ...c, status: 0 }
           : { ...c, replyList: findComment(c.replyList) },
       )
     setComments(findComment(newComments))
@@ -82,28 +89,45 @@ export default function Comment({
     <div>
       {comment.status !== 0 && (
         <>
-          <div className="flex items-center">
+          <div className="flex items-center relative">
             <p className="font-bold">{comment.nickname}</p>
             <p className="text-[#808080] text-[11px] ml-[8px]">
               {comment.createdDate}
             </p>
+            {!isEditing ? (
+              <div className="text-[12px] absolute right-[5px]">
+                <button className="mx-[5px]" onClick={() => setIsEditing(true)}>
+                  수정
+                </button>
+                |
+                <button className="mx-[5px]" onClick={handleCommentDelete}>
+                  삭제
+                </button>
+              </div>
+            ) : null}
           </div>
           {!isEditing ? (
-            <>
-              <p>{comment.content}</p>
-              <button onClick={() => setIsEditing(true)}>Edit</button>
-            </>
+            <p>{comment.content}</p>
           ) : (
             <form onSubmit={handleCommentEdit}>
-              <input
-                type="text"
+              <InputStore
+                inputStyle={InputStyle.INPUT_WHITE}
+                inputType="text"
+                placeholderContents="수정하기..."
                 value={editContent}
-                onChange={e => setEditContent(e.target.value)}
+                onChageFunction={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setEditContent(e.target.value)
+                }
+                style="w-[285px] h-[30px]"
               />
-              <button type="submit">완료</button>
+              <ButtonStore
+                buttonStyle={ButtonStyle.CONFIRM_BTN}
+                style="w-[40px] h-[30px]"
+                btnType="submit">
+                완료
+              </ButtonStore>
             </form>
           )}
-          <button onClick={handleCommentDelete}>Delete</button>
         </>
       )}
       {showReply && comment.status !== 0 && (
@@ -122,6 +146,7 @@ export default function Comment({
             setContent={setContent}
             handleSubmit={handleReplySubmit}
             style="my-[5px]"
+            inputStyle="w-[285px] h-[30px]"
           />
         </div>
       )}

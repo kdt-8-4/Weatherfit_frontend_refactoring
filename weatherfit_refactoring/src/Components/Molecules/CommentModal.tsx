@@ -39,6 +39,7 @@ export default function CommentModal({ onClickFunction }: Props) {
     ])
   }, [])
 
+  // 댓글 등록
   const handleCommentSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
@@ -122,6 +123,7 @@ export default function CommentModal({ onClickFunction }: Props) {
             setContent={setContent}
             handleSubmit={handleCommentSubmit}
             style="m-[10px] absolute bottom-[5px]"
+            inputStyle="w-[325px] h-[30px]"
           />
         </div>
       </div>

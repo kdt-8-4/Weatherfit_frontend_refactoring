@@ -60,3 +60,14 @@ interface TabMenu {
 interface CategoryStore {
   categoryData : TabMenu[];
 }
+
+interface CommentType {
+  id: number
+  boardId: number
+  nickname: string
+  content: string
+  createdDate: string
+  createdTime: string
+  replyList: CommentType[]
+  status: number
+}

@@ -4,11 +4,14 @@ import ButtonStore, { ButtonStyle } from '@/Components/Atoms/Button/ButtonStore'
 import ImageUpload from '@/Components/Organisms/ImageUpload'
 import MainOrganism from '@/Components/Organisms/MainOrganism'
 import NavBar from '@/Components/Molecules/NavBar'
+import LikeAndComment from '@/Components/Molecules/LikeAndComment'
+import WeatherInfo from '@/Components/Molecules/WeatherInfo'
 
 export default function Home() {
   return (
     <>
-      <IconStore iconStyle={IconStyle.UNLIKE} size={16} />
+      <WeatherInfo />
+      {/* <IconStore iconStyle={IconStyle.UNLIKE} size={16} />
       <InputStore
         inputStyle={InputStyle.INPUT_WHITE}
         inputType="text"
@@ -48,7 +51,8 @@ export default function Home() {
         btnText="회원가입"
       />
       <MainOrganism />
-      <NavBar />
+      <LikeAndComment />
+      <NavBar /> */}
     </>
   )
 }

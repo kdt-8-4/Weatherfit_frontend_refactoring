@@ -16,25 +16,30 @@ export default function FeedCategorySelect ({setControl} : Props) {
 
     const selectCategory = (selectedCategory: string) => {
         console.log("선택한 카테고리 타이틀", selectedCategory);
-        
         const filtering:TabMenu[] = categoryData.filter((categorydata) => categorydata.value == selectedCategory)
         setCategoryList(filtering[0].selectLists)
-        
-        
-        
     }
 
     const categorySearch = (inputData : string) => {
-        // const copy = [...]
-        console.log("검색할 카테고리 데이터", inputData)
+        setSelectData([...selectData, inputData])
     }
 
     const selectCancle = (selectCancle : string) => {
-        console.log("삭제할 카테고리 목록", selectCancle);
+        const filterCansleCategory:string[] = selectData.filter((selectdata) => selectdata != selectCancle)
+        console.log("삭제할 카테고리", selectCancle);
+        setSelectData(filterCansleCategory)
     }
 
     const cancleSelectCategory = () => {
         setControl(false);
+    }
+
+    const resetCategory = () => {
+        setSelectData([])
+    }
+
+    const searchCategory = () => {
+        // 상위 컴포넌트에서 함수 받아온후 바로 실행해버리자
     }
 
     return (
@@ -46,32 +51,40 @@ export default function FeedCategorySelect ({setControl} : Props) {
             <div className=" flex whitespace-nowrap space-x-6 mx-8 font-gmarketsans">
                 {categoryData.map((categoryTitle)=>{
                     return(
-                        <button key={categoryTitle.id} onClick={()=>selectCategory(categoryTitle.value)} className={categoryTitleStyle}>{categoryTitle.title}</button>
+                        <button key={categoryTitle.id} 
+                        onClick={()=>selectCategory(categoryTitle.value)} 
+                        className={categoryTitleStyle}>
+                            {categoryTitle.title}
+                        </button>
                     )
                 })}
             </div>
-            <div className="h-[75%]">
+            <div className="h-[400px]">
                 {categoryList && 
                     categoryList.map((categoryList)=>{
                         return(
-                            <button key={categoryList.list_id} className="m-2 p-1 border-[1px] border-black" onClick={()=>categorySearch(categoryList.selectList)}>{categoryList.selectList}</button>
+                            <button key={categoryList.list_id} 
+                            className="m-2 p-1 border-[1px] rounded-lg border-black  font-NanumSquareRound" 
+                            onClick={()=>categorySearch(categoryList.selectList)}>
+                                {categoryList.selectList}
+                            </button>
                         )
                     })
                 }
             </div>
-            <div className="flex">
-                {selectData.map((val, index)=>{
+            <div className="flex overflow-x-auto h-[50px]">
+                {selectData.map((data, index)=>{
                     return(
-                        <p key={index}>
-                            {val}
-                            <button onClick={()=>selectCancle(val)}> x</button>
+                        <p key={index} className=" whitespace-nowrap m-2 p-1 border-[1px] rounded-lg border-black  font-NanumSquareRound">
+                            {data}
+                            <button onClick={()=>selectCancle(data)}> x</button>
                         </p>
                     )
                 })}
             </div>
             <div className=" font-gmarketsans flex">
-                <button className=" bg-white w-[25%]  border-[1px] mx-1 p-1">초기화</button>
-                <button className="bg-blue-300 w-[70%] text-white mx-1 p-1">선택 카테고리 검색하기</button>
+                <button className=" bg-white w-[25%]  border-[1px] mx-1 p-1" onClick={resetCategory}>초기화</button>
+                <button className="bg-blue-300 w-[70%] text-white mx-1 p-1" onClick={searchCategory}>선택 카테고리 검색하기</button>
             </div>
         </div>
     )

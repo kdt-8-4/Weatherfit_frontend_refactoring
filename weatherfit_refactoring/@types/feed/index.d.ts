@@ -44,6 +44,23 @@ interface FEEDDATA_detail {
   category: string[]
 }
 
+interface SelecList {
+  list_id : number;
+  selectList : string;
+}
+
+
+interface TabMenu {
+  id: number;
+  title?: string;
+  value: string;
+  selectLists : SelecList[];
+}
+
+interface CategoryStore {
+  categoryData : TabMenu[];
+}
+
 interface CommentType {
   id: number
   boardId: number

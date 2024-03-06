@@ -7,7 +7,7 @@ export default async function FeedContents() {
   const feedContentsData: FEEDDATA[] = await feedDataFetch.json()
 
   return (
-    <div className="mt-5 flex flex-wrap">
+    <div className="mt-5 flex flex-wrap relative">
       {feedContentsData.map(feedDataArr => {
         return (
           <div key={feedDataArr.boardId}>

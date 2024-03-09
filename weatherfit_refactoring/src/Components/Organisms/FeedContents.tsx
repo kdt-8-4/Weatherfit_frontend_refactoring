@@ -1,9 +1,12 @@
 import FeedContent from '../Molecules/FeedContent'
+import { FeedData } from '@/Store/FeedData'
 
 export default async function FeedContents() {
+  // const {feedData ,setFeedData} = FeedData()
+  
   const feedDataFetch = await fetch('https://www.jerneithe.site/board/list', {
     method: 'GET',
-  })
+  })  
   const feedContentsData: FEEDDATA[] = await feedDataFetch.json()
 
   return (

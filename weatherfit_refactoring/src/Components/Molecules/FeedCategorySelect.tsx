@@ -38,8 +38,24 @@ export default function FeedCategorySelect ({setControl} : Props) {
         setSelectData([])
     }
 
-    const searchCategory = () => {
+    const searchCategory = async() => {
         // 상위 컴포넌트에서 함수 받아온후 바로 실행해버리자
+        console.log(selectData)
+        let url:string = "https://www.jerneithe.site//board/search?categories="
+        for (let i = 0; i < selectData.length; i++){
+            url += selectData[i]
+        }
+        url += "&hashtags=";
+        console.log(url)
+        const callSearchData = await fetch(url,{
+            method: "GET"
+        })
+
+        const callSearchDataToJson = await callSearchData.json()
+
+        console.log("카테고리 검색 데이터", callSearchDataToJson)
+
+        
     }
 
     return (
@@ -77,7 +93,7 @@ export default function FeedCategorySelect ({setControl} : Props) {
                     return(
                         <p key={index} className=" whitespace-nowrap m-2 p-1 border-[1px] rounded-lg border-black  font-NanumSquareRound">
                             {data}
-                            <button onClick={()=>selectCancle(data)}> x</button>
+                            <button onClick={()=>selectCancle(data)} className="ml-2"> x</button>
                         </p>
                     )
                 })}

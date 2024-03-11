@@ -1,7 +1,6 @@
 'use client'
 
-import React, { useState, MouseEventHandler } from 'react'
-import { ButtonStyle } from '../Atoms/Button/ButtonStore'
+import React, { useState } from 'react'
 import ProfileEditModal from './ProfileEditModal'
 import Header from '../Molecules/Header'
 import { IconStyle } from '../Atoms/Icon/IconStore'

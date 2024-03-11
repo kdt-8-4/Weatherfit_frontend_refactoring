@@ -4,27 +4,6 @@ import React, { useState } from 'react'
 import ProfilePostBar from '../Molecules/ProfilePostBar'
 import ProfilePost from '../Molecules/ProfilePost'
 
-interface IMAGE {
-  boardId: number
-  imageId: number
-  imageUrl: string
-}
-
-interface LIKE {
-  likeId: number
-  nickName: string
-}
-interface FEEDATA {
-  boardId: number
-  images: IMAGE
-  likeCount: number
-  likelist: LIKE[]
-  nickName: string
-  temperature: number
-  weather: string
-  weatherIcon?: string
-}
-
 interface Props {
   myPost: FEEDDATA[]
   myLikePost: FEEDDATA[]

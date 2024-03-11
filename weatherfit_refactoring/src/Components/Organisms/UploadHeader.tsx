@@ -31,9 +31,7 @@ export default function UploadHeader() {
         body: formData,
         headers: {
           'Content-Type': 'multipart/form-data',
-          // Authorization: 'Bearer ' + logintoken,
-          Authorization:
-            'Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDY3OTA5MDEsImV4cCI6MTcwNjgwMTcwMSwic3ViIjoi7YWM7Iqk7YSwNTUifQ.sdm2nHun06cOIeWzXFv8xSbuuhY_yCsiRT7Upu1vtIs',
+          // Authorization: 'Bearer ' + accessToken,
         },
       })
 
@@ -54,7 +52,7 @@ export default function UploadHeader() {
       <Header
         title="등록하기"
         buttonStyleCase={ButtonStyle.TEXT_BTN}
-        btnText="등록"
+        btnText="완료"
         onClickFunction={handleOnClick}
       />
     </>

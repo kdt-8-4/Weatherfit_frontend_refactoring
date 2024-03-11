@@ -36,7 +36,7 @@ export default function EditHeader(boardId: BOARDID) {
           body: formData,
           headers: {
             'Content-Type': 'multipart/form-data',
-            // Authorization: 'Bearer ' + logintoken,
+            // Authorization: 'Bearer ' + accessToken,
           },
         },
       )

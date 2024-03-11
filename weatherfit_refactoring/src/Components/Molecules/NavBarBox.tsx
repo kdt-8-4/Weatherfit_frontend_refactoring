@@ -25,8 +25,8 @@ export default function NavBarBox({ iconStyle, title, url }: Props) {
     ? IconStyle[`${iconStyle}_FILL` as keyof typeof IconStyle]
     : IconStyle[iconStyle]
   const activeTextStyle = isActive
-    ? 'font-Cafe24SsurroundAir text-[11px] font-bold'
-    : 'font-Cafe24SsurroundAir text-[11px]'
+    ? 'font-Cafe24SsurroundAir text-[11px] font-bold mt-[3px]'
+    : 'font-Cafe24SsurroundAir text-[11px] mt-[3px]'
 
   return (
     <Link href={url} className="flex flex-col items-center cursor-pointer">

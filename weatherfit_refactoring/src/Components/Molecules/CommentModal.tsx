@@ -97,36 +97,34 @@ export default function CommentModal({ onClickFunction }: Props) {
   }
 
   return (
-    <>
-      <div className="fixed top-0 left-0 w-[100%] h-[100%] bg-[#bababa4f] z-[100]">
-        <div className="fixed bottom-0 bg-[#ffffff] w-[390px] h-[65%] rounded-t-lg z-[200] font-Cafe24SsurroundAir">
-          <div className="flex justify-between m-[5px] font-bold">
-            <p className="w-[100%] text-center">댓글</p>
-            <p onClick={onClickFunction}>X</p>
-          </div>
-          <hr />
-          <div className="m-[10px] h-[320px] overflow-auto">
-            {/* 댓글 목록 부분 */}
-            {comments
-              .filter(comment => comment.status !== 0)
-              .map(comment => (
-                <Comment
-                  key={comment.id}
-                  comment={comment}
-                  comments={comments}
-                  setComments={setComments}
-                />
-              ))}
-          </div>
-          <CommentInput
-            content={content}
-            setContent={setContent}
-            handleSubmit={handleCommentSubmit}
-            style="m-[10px] absolute bottom-[5px]"
-            inputStyle="w-[325px] h-[30px]"
-          />
+    <div className="fixed top-0 left-0 m-0 w-[100%] h-[100%] bg-[#bababa4f] z-[100]">
+      <div className="fixed bottom-0 bg-[#ffffff] w-[390px] h-[65%] rounded-t-lg z-[200] font-Cafe24SsurroundAir">
+        <div className="flex justify-between m-[5px] font-bold">
+          <p className="w-[100%] text-center">댓글</p>
+          <p onClick={onClickFunction}>X</p>
         </div>
+        <hr />
+        <div className="m-[10px] h-[320px] overflow-auto">
+          {/* 댓글 목록 부분 */}
+          {comments
+            .filter(comment => comment.status !== 0)
+            .map(comment => (
+              <Comment
+                key={comment.id}
+                comment={comment}
+                comments={comments}
+                setComments={setComments}
+              />
+            ))}
+        </div>
+        <CommentInput
+          content={content}
+          setContent={setContent}
+          handleSubmit={handleCommentSubmit}
+          style="m-[10px] absolute bottom-[5px]"
+          inputStyle="w-[325px] h-[30px]"
+        />
       </div>
-    </>
+    </div>
   )
 }

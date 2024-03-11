@@ -8,7 +8,6 @@ import { FormEvent, useState } from 'react'
 export default function LoginForm() {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
-  const [token, setToken] = useState<string>('')
   const router = useRouter()
 
   const handleLogin = async (e: FormEvent) => {
@@ -23,34 +22,26 @@ export default function LoginForm() {
     }
 
     try {
-      // const res = await fetch(`https://www.jerneithe.site/user/login/api`, {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify({ email, password }),
-      // })
-      // const loginRes = await res.json()
-      // console.log('로그인 res: ', res)
-      // console.log('로그인 loginRes: ', loginRes)
+      const res = await fetch(`https://www.jerneithe.site/user/login/api`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      })
+      const loginRes = await res.json()
+      console.log('로그인 res: ', res)
+      console.log('로그인 loginRes: ', loginRes)
 
-      // alert(`${loginRes.nickname}님 환영합니다!`)
+      confirmAlert(`${loginRes.nickname}님 환영합니다!`)
 
-      console.log('로그인 클릭')
-      console.log('email: ', email)
-      console.log('pw: ', password)
-
-      // 백엔드 연결 후 할 것
       // 토큰을 쿠키에 저장
-      // document.cookie = `accessToken=${loginRes.token}; path=/`;
+      document.cookie = `accessToken=${loginRes.token}; path=/`
 
       // 이메일을 로컬스토리지에 저장
-      // localStorage.setItem("user_email", loginRes.email);
+      localStorage.setItem('user_email', loginRes.email)
 
-      // 이거 필요한가요?
-      // setToken(loginRes.token)
-
-      //router.push("/")
+      router.push('/')
     } catch (error) {
       console.log('로그인 에러: ', error)
       setEmail('')

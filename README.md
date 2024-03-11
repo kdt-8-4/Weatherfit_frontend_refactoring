@@ -8,14 +8,29 @@
     5. 변경된 페이지 디자인
 
 ## 1. 👔 옷늘날씨 리팩토링의 목적
+- 한눈에 정보가 들어오지 않는 기존 디자인의 문제점 보완  
 
-- 한눈에 정보가 들어오지 않는 기존 디자인의 문제점 보완
+   <tbody>
+    <tr>
+        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/fde559d8-0570-42f7-b759-7a45da95c512" width=300 height="500"/></td>
+        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/3269884b-10b2-46ea-af7a-22b49f149b02" width=50 /></td>
+        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/f1f88e81-1356-43eb-8837-759f6758c811" width=300 height="500"/></td>
+    </tr>
+  </tbody>
+
+<br/>
+
 - 기능 구현 위주로 프로젝트를 진행하며 발생한 문제점 보완
     - 코드의 재사용성과 생산성이 떨어짐 >> 아토믹 디자인 패턴을 도입하며 앞의 문제를 해결
     - 성능에 초점을 맞추지 못해 사용자 경험이 떨어짐 >> LIGHTHOUSE 등을 이용해 성능을 검사하며 프로젝트 진행
-- 모든 피드 게시물을 불러와 보여주는 기존 페드 페이지의 데이터 로딩 방식이 SNS에 맞지 않을 뿐더러 사용자 경험을 떨어뜨림 >> React Query와 useInfiniteQuery로 무한 스크롤을 구현하여 해결
-- Next.js에서 axios를 사용하면 데이터 캐싱 기능을 지원해주지 않기 때문에 성능이 떨어짐 >> Next.js에서 자체적으로 데이터 캐싱 기능을 지원해주는 fetch를 사용하셔 성능 개선
-- Scss를 사용하면 클래스명이 겹처 스타일이 깨지는 경우가 발생
+
+- 모든 피드 게시물을 불러와 보여주는 기존 페드 페이지의 데이터 로딩 방식이 SNS에 맞지 않을 뿐더러 사용자 경험을 떨어뜨림
+    - React Query와 useInfiniteQuery로 무한 스크롤을 구현하여 해결
+
+- Next.js에서 axios를 사용하면 데이터 캐싱 기능을 지원해주지 않기 때문에 성능이 떨어짐
+    - Next.js에서 자체적으로 데이터 캐싱 기능을 지원해주는 fetch를 사용하셔 성능 개선
+
+- 클래스명 혹은 아이디가 겹처 스타일이 깨지는 경우가 발생
     - Tailwind CSS를 사용하여 사전에 문제 발생 가능성 삭제
 
 ## 2. 👥 팀원 소개 및 담당 역할

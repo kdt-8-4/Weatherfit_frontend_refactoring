@@ -42,7 +42,9 @@ export default function InputStore({
       case InputStyle.INPUT_SEARCH:
         return (
           <input
-            type="text"
+            value={value}
+            onChange={onChageFunction}
+            type={inputType}
             className={`rounded-lg bg-white border-gray-500 p-1 ${style}`}
             placeholder={placeholderContents}
           />

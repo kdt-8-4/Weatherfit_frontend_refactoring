@@ -16,7 +16,6 @@ export enum ButtonStyle {
 }
 
 interface Props {
-  btnText?: string
   buttonStyle: ButtonStyle
   fontsize?: string //회원가입 버튼에서 사용 회원가입 다 만들고 크기가 지정됐다면 그냥 지정해주고 없애주세요
   style?: string
@@ -27,7 +26,6 @@ interface Props {
 //높이 조정도 필요하면 가져다 쓰세요
 
 export default function ButtonStore({
-  btnText,
   buttonStyle,
   children,
   onClickFunction,
@@ -130,7 +128,7 @@ export default function ButtonStore({
       case ButtonStyle.TEXT_BTN:
         return (
           <button className={`${style}`} onClick={onClickFunction}>
-            {btnText}
+            {children}
           </button>
         )
       default:

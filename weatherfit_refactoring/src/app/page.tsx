@@ -50,9 +50,9 @@ export default function Home() {
         style="font-neurimboGothic text-[32px]"
         btnText="회원가입"
       />
-      <MainOrganism />
+  <MainOrganism /> */}
       <LikeAndComment />
-      <NavBar /> */}
+      <NavBar />
     </>
   )
 }

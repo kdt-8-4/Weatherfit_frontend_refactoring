@@ -13,8 +13,6 @@ export default async function EditOrganism({ boardId }: BOARDID) {
   )
   const data: FEEDDATA_detail = await response.json()
 
-  // data 전체 넘겨주지 말고 필요한 것만 넘겨주기
-
   return (
     <div className="h-screen">
       <EditHeader boardId={boardId} />
@@ -26,7 +24,6 @@ export default async function EditOrganism({ boardId }: BOARDID) {
         <TextAreaMolecule initContent={data.content} />
         <hr />
         <SelectCategory initCategory={data.category} />
-        {/* <SelectCategory initialCategory={data.category}/> */}
       </div>
     </div>
   )

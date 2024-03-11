@@ -37,7 +37,6 @@ interface FEEDDATA_detail {
   temperature: number
   weather: string
   weatherIcon: string
-  // 임시 detail용
   userImage: string | StaticImport
   content: string
   hashTag: string[]

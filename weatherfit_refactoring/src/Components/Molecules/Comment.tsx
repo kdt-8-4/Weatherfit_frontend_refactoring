@@ -96,13 +96,19 @@ export default function Comment({
             </p>
             {!isEditing ? (
               <div className="text-[12px] absolute right-[5px]">
-                <button className="mx-[5px]" onClick={() => setIsEditing(true)}>
+                <ButtonStore
+                  buttonStyle={ButtonStyle.TEXT_BTN}
+                  style="mx-[5px]"
+                  onClickFunction={() => setIsEditing(true)}>
                   수정
-                </button>
+                </ButtonStore>
                 |
-                <button className="mx-[5px]" onClick={handleCommentDelete}>
+                <ButtonStore
+                  buttonStyle={ButtonStyle.TEXT_BTN}
+                  style="mx-[5px]"
+                  onClickFunction={handleCommentDelete}>
                   삭제
-                </button>
+                </ButtonStore>
               </div>
             ) : null}
           </div>

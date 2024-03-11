@@ -10,7 +10,7 @@ export default function Upload() {
   return (
     <div className="h-screen">
       <UploadHeader />
-      <div className="mx-5 h-full">
+      <div className="mx-5 h-full mt-[50px]">
         <div className="flex-col items-center justify-center mb-7">
           <UploadWeather />
           <ImageUpload />

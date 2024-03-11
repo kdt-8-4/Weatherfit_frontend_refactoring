@@ -54,13 +54,13 @@ export default function EditHeader(boardId: BOARDID) {
   }
 
   return (
-    <>
+    <div className="fixed w-full top-0 z-10">
       <Header
         title="수정하기"
         buttonStyleCase={ButtonStyle.TEXT_BTN}
         btnText="완료"
         onClickFunction={handleOnClick}
       />
-    </>
+    </div>
   )
 }

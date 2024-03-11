@@ -46,9 +46,9 @@ export default function Header({
         <ButtonStore
           buttonStyle={buttonStyleCase}
           style="mr-[10px] font-NanumSquareRound text-xs"
-          btnText={btnText}
-          onClickFunction={onClickFunction}
-        />
+          onClickFunction={onClickFunction}>
+          {btnText}
+        </ButtonStore>
       ) : iconStyleCase ? (
         <IconStore
           iconStyle={iconStyleCase}

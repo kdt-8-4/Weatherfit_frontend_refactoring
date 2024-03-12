@@ -29,7 +29,7 @@ export default function Header({
     title === '옷늘날씨' ? () => router.push('/') : undefined // 또는 다른 함수
 
   return (
-    <div className="relative flex items-center justify-between h-[50px] my-1 pb-1">
+    <div className="relative flex items-center justify-between h-[50px] m-0 pb-1 bg-white">
       <IconStore
         iconStyle={IconStyle.PREV2}
         size={20}
@@ -46,9 +46,9 @@ export default function Header({
         <ButtonStore
           buttonStyle={buttonStyleCase}
           style="mr-[10px] font-NanumSquareRound text-xs"
-          btnText={btnText}
-          onClickFunction={onClickFunction}
-        />
+          onClickFunction={onClickFunction}>
+          {btnText}
+        </ButtonStore>
       ) : iconStyleCase ? (
         <IconStore
           iconStyle={iconStyleCase}

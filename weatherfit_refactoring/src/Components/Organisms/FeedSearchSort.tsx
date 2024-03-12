@@ -2,7 +2,7 @@ import ButtonStore, { ButtonStyle } from "../Atoms/Button/ButtonStore";
 
 import FeedLogo from "../Molecules/FeedLogo";
 import FeedSearch from "../Molecules/FeedSearch";
-import Feedbestcody from "../Molecules/Feedbestcody";
+import FeedTopCategory from "../Molecules/FeedTopCategory";
 import WeatherNavbar from "../Molecules/WeatherNavbar";
 import FeedCategory from "../Molecules/FeedCategory";
 import FeedSortBase from "../Molecules/FeedSortBase";
@@ -13,7 +13,7 @@ export default function FeedSearchSort(){
     <div className="relative">
         <FeedLogo textSize="15px" />
         <FeedSearch />
-        <Feedbestcody />
+        <FeedTopCategory />
         <WeatherNavbar/>
         <FeedCategory/>
         <FeedSortBase/>

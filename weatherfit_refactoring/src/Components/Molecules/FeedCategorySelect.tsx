@@ -2,6 +2,10 @@ import { CategoryData } from "@/Store/CategoryData"
 import { CategorySelectData } from "@/Store/CategorySelectData";
 import { unstable_getStaticParams } from "next/dist/build/templates/pages";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import InputStore, { InputStyle } from "../Atoms/Input/InputStore";
+import { WeatherTempMax } from '@/Store/WeatherMaxTemp'
+import { WeatherTempMin } from '@/Store/WeatherMinTemp'
+
 
 interface Props {
     setControl: Dispatch<SetStateAction<boolean>>;
@@ -13,6 +17,8 @@ export default function FeedCategorySelect ({setControl} : Props) {
     const {selectData, setSelectData} = CategorySelectData();
     const [categoryTitleStyle, setCategoryTitleStyle] = useState<string>("");
     const [categoryList, setCategoryList] = useState<SelecList[]>([]);
+    const { temperatureMin, setTempMin } = WeatherTempMin()
+    const { temperatureMax, setTempMax } = WeatherTempMax()
 
     const selectCategory = (selectedCategory: string) => {
         console.log("선택한 카테고리 타이틀", selectedCategory);
@@ -54,12 +60,20 @@ export default function FeedCategorySelect ({setControl} : Props) {
         const callSearchDataToJson = await callSearchData.json()
 
         console.log("카테고리 검색 데이터", callSearchDataToJson)
-
+        setControl(false);
         
     }
 
+    const setMaxTempFunc = (e:React.ChangeEvent<HTMLInputElement>) => { 
+        setTempMax(parseInt(e.target.value))
+    }
+
+    const setMinTempFunc = (e:React.ChangeEvent<HTMLInputElement>) => {
+        setTempMin(parseInt(e.target.value))
+    }
+
     return (
-        <div className=" absolute z-50 bg-white w-[100vw] h-[600px]  ">
+        <div className=" absolute z-50 bg-white w-[100vw] h-[620px]  ">
             <div className="text-center font-neurimboGothic my-2">
                <button onClick={cancleSelectCategory} className="mr-[150px]">Ｘ</button>
                <span className="mr-[140px]">카테고리</span> 
@@ -87,6 +101,21 @@ export default function FeedCategorySelect ({setControl} : Props) {
                         )
                     })
                 }
+            </div>
+            <div className="flex m-2">
+                <p className=" font-neurimboGothic whitespace-nowrap">온도 설정 : </p>
+                <InputStore inputStyle={InputStyle.INPUT_WHITE} 
+                onChageFunction={setMaxTempFunc} 
+                value={temperatureMax}
+                placeholderContents="최고온도를 입력해주세요."
+                style=" w-[70px] h-[30px] text-[13px] ml-2 mr-1"
+                /><span className=" font-neurimboGothic">℃</span>
+                <InputStore inputStyle={InputStyle.INPUT_WHITE} 
+                onChageFunction={setMinTempFunc} 
+                value={temperatureMin}
+                placeholderContents="최저온도를 입력해주세요."
+                style=" w-[70px] h-[30px] text-[13px] ml-2 mr-1"
+                /><span className=" font-neurimboGothic">℃</span>
             </div>
             <div className="flex overflow-x-auto h-[50px]">
                 {selectData.map((data, index)=>{

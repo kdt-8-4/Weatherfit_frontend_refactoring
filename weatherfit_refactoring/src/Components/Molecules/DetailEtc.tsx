@@ -56,15 +56,15 @@ export default function DetailEtc(boardId: BOARDID) {
           <ButtonStore
             buttonStyle={ButtonStyle.TEXT_BTN}
             onClickFunction={handleEdit}
-            style="hover:bg-gray-100 px-2 py-1"
-            btnText="수정"
-          />
+            style="hover:bg-gray-100 px-2 py-1">
+            수정
+          </ButtonStore>
           <ButtonStore
             buttonStyle={ButtonStyle.TEXT_BTN}
             onClickFunction={handleDelete}
-            style="hover:bg-gray-100 px-2 py-1"
-            btnText="삭제"
-          />
+            style="hover:bg-gray-100 px-2 py-1">
+            삭제
+          </ButtonStore>
         </div>
       )}
     </>

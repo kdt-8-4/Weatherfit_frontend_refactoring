@@ -20,7 +20,7 @@ export default function SelectCategory({
   )
 
   return (
-    <div className="mt-7">
+    <div className="my-7">
       {Object.entries(categories).map(([category, subCategories]) => (
         <Select
           key={category}

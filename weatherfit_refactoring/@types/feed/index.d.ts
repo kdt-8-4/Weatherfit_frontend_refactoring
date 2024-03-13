@@ -70,3 +70,9 @@ interface CommentType {
   replyList: CommentType[]
   status: number
 }
+
+
+interface LIKE {
+  likeId : number;
+  nickName: string;
+}

@@ -11,7 +11,7 @@ interface Props {
   inputStyle: InputStyle
   inputType?: string
   placeholderContents?: string
-  value?: string
+  value?: string | number
   style?: string
   onChageFunction?:
     | FormEventHandler<HTMLDivElement>

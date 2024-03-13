@@ -3,6 +3,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import IconStore, { IconStyle } from '../Atoms/Icon/IconStore'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import TextStore, { TextStyle } from '../Atoms/Text/TextStore'
 
 interface Props {
   iconStyle: keyof typeof IconStyle
@@ -25,13 +26,15 @@ export default function NavBarBox({ iconStyle, title, url }: Props) {
     ? IconStyle[`${iconStyle}_FILL` as keyof typeof IconStyle]
     : IconStyle[iconStyle]
   const activeTextStyle = isActive
-    ? 'font-Cafe24SsurroundAir text-[11px] font-bold mt-[3px]'
-    : 'font-Cafe24SsurroundAir text-[11px] mt-[3px]'
+    ? 'text-[11px] font-bold mt-[3px]'
+    : 'text-[11px] mt-[3px]'
 
   return (
     <Link href={url} className="flex flex-col items-center cursor-pointer">
       <IconStore iconStyle={activeIconStyle} size={22} />
-      <p className={activeTextStyle}>{title}</p>
+      <TextStore textStyle={TextStyle.CAFE_TEXT} style={activeTextStyle}>
+        {title}
+      </TextStore>
     </Link>
   )
 }

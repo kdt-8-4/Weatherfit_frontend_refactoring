@@ -3,17 +3,62 @@
 import Image from 'next/image'
 import IconStore, { IconStyle } from '../Atoms/Icon/IconStore'
 import Link from 'next/link'
+import { FeedData } from '@/Store/FeedData'
+
 
 interface Props {
-  feedData: FEEDDATA
+  DataforFeed: FEEDDATA
 }
-export default function FeedContent({ feedData }: Props) {
-  const date = new Date(feedData.createDate)
-  const createDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDay()}`
+export default function FeedContent({ DataforFeed }: Props) {
+  const {feedData, setFeedData} = FeedData()
+  const date = new Date(DataforFeed.createDate);
+  const createDate:string = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDay()}`;
+  const nickName:string = "황동준";
+  const loginToken:string = "로그인 토큰 프로바이더 생성 후 적용"
+
+  const likeChecker = ( likelist:LIKE[], nickName:string ) => {
+    if( likelist.some((list) => list.nickName === nickName ) ) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  const isUserLiked:boolean = likeChecker( DataforFeed.likelist, nickName); 
+
+  const likeUpdate = () => {
+    
+  }
+
+  const clickLike = async() => {
+    const sendToLikeAPI = `https://www.jerneithe.site/board/like/${DataforFeed.boardId}`
+    try {
+      const res = await fetch(sendToLikeAPI, {
+        method: "POST",
+        headers: { 
+          Authorization: "Bearer " + loginToken, 
+          "Content-Type": "application/json",
+        }
+      })
+
+      if (res.ok) {
+        console.log("좋아요 변경 성공");
+        // 성공적으로 처리된 경우 추가적인 작업 수행
+      } else {
+        console.error("좋아요 변경 실패:", res.status);
+        // 실패한 경우에 대한 처리
+      }
+    
+    } catch (error) {
+      console.error("좋아요 변경 실패:", error);
+    }
+
+
+  }
 
   return (
     <>
-      {feedData.images && (
+      {DataforFeed.images && (
         <div className=" bg-E4E4E6 rounded-xl mx-2 my-2 w-[179px] h-[350px]">
           <div className="flex justify-between m-auto w-[90%] py-2">
             <div className="flex">
@@ -30,7 +75,7 @@ export default function FeedContent({ feedData }: Props) {
               </div>
               <div className=" ml-1">
                 <p className=" font-Cafe24SsurroundAir text-[13px]">
-                  {feedData.nickName}
+                  {DataforFeed.nickName}
                 </p>
                 <p className=" font-NanumSquareRound text-[10px]">
                   {createDate}
@@ -41,10 +86,10 @@ export default function FeedContent({ feedData }: Props) {
               <IconStore iconStyle={IconStyle.ETC} size={30} />
             </div>
           </div>
-          <Link href={`/detail/${feedData.boardId}`}>
+          <Link href={`/detail/${DataforFeed.boardId}`}>
             <div className=" relative m-auto w-[90%] h-[218px]">
               <Image
-                src={feedData.images.imageUrl}
+                src={DataforFeed.images.imageUrl}
                 alt="코디 사진"
                 sizes="auto"
                 fill
@@ -56,20 +101,25 @@ export default function FeedContent({ feedData }: Props) {
             <div className="flex">
               <div className="relative">
                 <IconStore
-                  iconStyle={IconStyle.LIKE}
+                  iconStyle={
+                    isUserLiked ?
+                    IconStyle.LIKE :
+                    IconStyle.UNLIKE
+                  }
                   size={25}
                   style="relative top-[26%]"
+                  onClickFunction={clickLike}
                 />
               </div>
               <div className="relative font-Cafe24SsurroundAir text-[13px]">
                 <p className=" absolute top-[50%] translate-y-[-50%] w-[100%] h-auto">
-                  {feedData.likeCount}
+                  {DataforFeed.likeCount}
                 </p>
               </div>
             </div>
             <div>
               <Image
-                src={feedData.weatherIcon}
+                src={DataforFeed.weatherIcon}
                 alt="weatherIcon"
                 width={40}
                 height={40}
@@ -77,7 +127,7 @@ export default function FeedContent({ feedData }: Props) {
               />
               <div>
                 <p className="font-Cafe24SsurroundAir text-xs text-center">
-                  {feedData.temperature}℃
+                  {DataforFeed.temperature}℃
                 </p>
               </div>
             </div>

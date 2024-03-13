@@ -20,6 +20,7 @@ export enum IconStyle {
   LOWEST = 'LOWEST',
   HIGHEST = 'HIGHEST',
   SEARCH = 'SEARCH',
+  SEARCH_FILL = 'SEARCH_FILL',
 }
 
 interface Props {
@@ -226,6 +227,17 @@ export default function IconStore({
           />
         )
       case IconStyle.SEARCH:
+        return (
+          <Image
+            src={'/icon_svg/search.svg'}
+            alt="search"
+            width={size}
+            height={size}
+            className={`${style}`}
+            onClick={onClickFunction}
+          />
+        )
+      case IconStyle.SEARCH_FILL:
         return (
           <Image
             src={'/icon_svg/search.svg'}

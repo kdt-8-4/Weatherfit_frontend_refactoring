@@ -4,11 +4,13 @@ import InputStore, { InputStyle } from '@/Components/Atoms/Input/InputStore'
 import { confirmAlert } from '@/utils/function/utilFunction'
 import { useRouter } from 'next/navigation'
 import { FormEvent, useState } from 'react'
+import { useAuth } from '../../../contexts/AuthContext'
 
 export default function LoginForm() {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const router = useRouter()
+  const { login } = useAuth()
 
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault()
@@ -30,16 +32,11 @@ export default function LoginForm() {
         body: JSON.stringify({ email, password }),
       })
       const loginRes = await res.json()
-      console.log('로그인 res: ', res)
       console.log('로그인 loginRes: ', loginRes)
 
+      login(loginRes.email, loginRes.token)
+
       confirmAlert(`${loginRes.nickname}님 환영합니다!`)
-
-      // 토큰을 쿠키에 저장
-      document.cookie = `accessToken=${loginRes.token}; path=/`
-
-      // 이메일을 로컬스토리지에 저장
-      localStorage.setItem('user_email', loginRes.email)
 
       router.push('/')
     } catch (error) {

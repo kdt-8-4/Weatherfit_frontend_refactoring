@@ -5,6 +5,7 @@ import ButtonStore, { ButtonStyle } from '../Atoms/Button/ButtonStore'
 import BoxStore, { BoxStyle } from '../Atoms/Box/BoxStore'
 import { MouseEventHandler } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 interface Props {
   title: string
@@ -15,7 +16,7 @@ interface Props {
   onClickFunction2?: () => void
 }
 
-export default function Header({
+export default function MainHeader({
   title,
   btnText,
   iconStyleCase,
@@ -30,35 +31,17 @@ export default function Header({
 
   return (
     <div className="relative flex items-center justify-between h-[50px] my-1 pb-1">
-      <IconStore
-        iconStyle={IconStyle.PREV2}
-        size={20}
-        style="ml-[10px] cursor-pointer"
-        onClickFunction={() => window.history.back()}
-      />
       <BoxStore
         boxStyle={BoxStyle.BOX_BLUE}
         style={`absolute left-1/2 transform -translate-x-1/2 px-2 h-[30px] font-neurimboGothic text-[22px] pb-[7px] shadow-[7px_7px_1px] flex items-center ${title === '옷늘날씨' ? 'cursor-pointer' : ''}`}
         onClickFunction={onClickToMain}>
         {title}
       </BoxStore>
-      {buttonStyleCase ? (
-        <ButtonStore
-          buttonStyle={buttonStyleCase}
-          style="mr-[10px] font-NanumSquareRound text-xs"
-          onClickFunction={onClickFunction}>
-          {btnText}
-        </ButtonStore>
-      ) : iconStyleCase ? (
-        <IconStore
-          iconStyle={iconStyleCase}
-          size={17}
-          style="mr-[10px] cursor-pointer"
-          onClickFunction={onClickFunction2}
-        />
-      ) : (
-        <div className="hidden"></div>
-      )}
+      <Link
+        href={`/login`}
+        className="absolute right-[19px] font-gmarketsans text-black">
+        로그인
+      </Link>
     </div>
   )
 }

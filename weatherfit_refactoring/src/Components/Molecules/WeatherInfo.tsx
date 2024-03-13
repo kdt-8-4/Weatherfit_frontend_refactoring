@@ -5,6 +5,7 @@ import { WeatherTempMin } from '@/Store/WeatherMinTemp'
 import { WeatherTemp } from '@/Store/WeatherTemp'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import TextStore, { TextStyle } from '../Atoms/Text/TextStore'
 
 type WeatherType =
   | 'Clear'
@@ -39,6 +40,18 @@ export default function WeatherInfo() {
     Clouds: '흐림',
     Fog: '안개',
     Haze: '실안개',
+  }
+
+  const weatherImage = {
+    Clear: 'clear.png',
+    Rain: 'rain.png',
+    Thunderstorm: 'thunderstorm.png',
+    Snow: 'snow.png',
+    Mist: 'mist.png',
+    Drizzle: 'rain.png',
+    Clouds: 'clouds.png',
+    Fog: 'mist.png',
+    Haze: 'mist.png',
   }
 
   useEffect(() => {
@@ -94,25 +107,33 @@ export default function WeatherInfo() {
 
   return (
     <div className="relative h-[300px] flex justify-center">
-      <Image
-        src={`/images/clear.png`}
-        alt="weatherimage"
-        width={390}
-        height={280}
-      />
+      {weat && (
+        <Image
+          src={`/images/${weatherImage[weat]}`}
+          alt="weatherimage"
+          width={390}
+          height={300}
+        />
+      )}
       <div className="absolute top-[140px] flex flex-col items-center">
-        <p className="font-Cafe24SsurroundAir text-[#616161] text-[14px]">
+        <TextStore
+          textStyle={TextStyle.GMARKET_TEXT}
+          style="text-[#616161] text-[14px]">
           {address}
-        </p>
-        <p className="font-NanumSquareRound text-white text-[45px]">
+        </TextStore>
+        <TextStore
+          textStyle={TextStyle.NANUM_TEXT}
+          style="text-white text-[45px]">
           {temperature} ℃
-        </p>
-        <p className="font-gmarketsans text-[#A8C6EC]">
+        </TextStore>
+        <TextStore textStyle={TextStyle.GMARKET_TEXT} style="text-black">
           {weat && weatherValue[weat as keyof typeof weatherValue]}
-        </p>
-        <p className="font-Cafe24SsurroundAir text-[#616161] text-[14px]">
+        </TextStore>
+        <TextStore
+          textStyle={TextStyle.GMARKET_TEXT}
+          style="text-[#616161] text-[14px]">
           최고 {temperatureMax}℃ / 최저 {temperatureMin}℃
-        </p>
+        </TextStore>
       </div>
     </div>
   )

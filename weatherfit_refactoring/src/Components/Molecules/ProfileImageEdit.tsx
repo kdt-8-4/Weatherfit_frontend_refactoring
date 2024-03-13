@@ -102,7 +102,7 @@ export default function ProfileImageEdit() {
       </div>
       <ButtonStore
         buttonStyle={ButtonStyle.CATEGORY_BTN_Y}
-        style="font-neurimboGothic">
+        style="font-neurimboGothic px-[7px]">
         이미지 수정
       </ButtonStore>
       {/* <button type="submit" className="font-gmarketsans">

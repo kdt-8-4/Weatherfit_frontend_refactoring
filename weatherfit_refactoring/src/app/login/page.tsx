@@ -14,9 +14,9 @@ export default function Login() {
         <LoginForm />
         <ButtonStore
           buttonStyle={ButtonStyle.TEXT_BTN}
-          style="font-NanumSquareRound text-[gray]"
-          btnText="회원가입"
-        />
+          style="font-NanumSquareRound text-[gray]">
+          회원가입
+        </ButtonStore>
         <EasyLogin />
       </div>
       <NavBar />

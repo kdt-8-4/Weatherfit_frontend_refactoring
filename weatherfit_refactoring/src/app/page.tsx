@@ -1,3 +1,4 @@
+'use client'
 import IconStore, { IconStyle } from '../Components/Atoms/Icon/IconStore'
 import InputStore, { InputStyle } from '@/Components/Atoms/Input/InputStore'
 import ButtonStore, { ButtonStyle } from '@/Components/Atoms/Button/ButtonStore'
@@ -6,12 +7,15 @@ import MainOrganism from '@/Components/Organisms/MainOrganism'
 import NavBar from '@/Components/Molecules/NavBar'
 import LikeAndComment from '@/Components/Molecules/LikeAndComment'
 import WeatherInfo from '@/Components/Molecules/WeatherInfo'
+import MainHeader from '@/Components/Molecules/MainHeader'
 
 export default function Home() {
   return (
     <>
+      <MainHeader title="옷늘날씨" />
       <WeatherInfo />
-      {/* <IconStore iconStyle={IconStyle.UNLIKE} size={16} />
+      {/*
+      <IconStore iconStyle={IconStyle.UNLIKE} size={16} />
       <InputStore
         inputStyle={InputStyle.INPUT_WHITE}
         inputType="text"
@@ -50,8 +54,9 @@ export default function Home() {
         style="font-neurimboGothic text-[32px]"
         btnText="회원가입"
       />
-  <MainOrganism /> */}
-      <LikeAndComment />
+  <MainOrganism />
+           <LikeAndComment />
+       */}
       <NavBar />
     </>
   )

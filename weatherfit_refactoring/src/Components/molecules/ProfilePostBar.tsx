@@ -31,7 +31,7 @@ export default function ProfilePostBar({ onFeedClick, onLikeClick }: Props) {
               ? ButtonStyle.DEFAULT_BTN_FILL
               : ButtonStyle.DEFAULT_BTN
           }
-          style="font-neurimboGothic w-[100px]"
+          style="font-neurimboGothic w-[100px] pb-[5px]"
           onClickFunction={handleFeedClike}>
           피드
         </ButtonStore>
@@ -41,7 +41,7 @@ export default function ProfilePostBar({ onFeedClick, onLikeClick }: Props) {
               ? ButtonStyle.DEFAULT_BTN_FILL
               : ButtonStyle.DEFAULT_BTN
           }
-          style="font-neurimboGothic w-[100px]"
+          style="font-neurimboGothic w-[100px] pb-[5px]"
           onClickFunction={handleLikeClick}>
           좋아요
         </ButtonStore>

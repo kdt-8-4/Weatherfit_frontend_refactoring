@@ -2,6 +2,7 @@
 
 import ButtonStore, { ButtonStyle } from '../Atoms/Button/ButtonStore'
 import { categories } from '../data/CategoryList'
+import { useRouter } from 'next/navigation'
 
 export default function DetailCategory({
   category,
@@ -31,8 +32,22 @@ export default function DetailCategory({
     {},
   )
 
-  const handleSelectCategory = () => {
+  const router = useRouter()
+
+  const handleSelectCategory = async (category: string) => {
     // 카테고리 선택한 거 누르면 검색된 페이지로 이동하게
+    console.log('Clicked Category', category)
+    const categoryUrl = `https://www.jerneithe.site/board/search?categories=${category}`
+    try {
+      const callData = await fetch(categoryUrl, {
+        method: 'GET',
+      })
+      const toJson = await callData.json()
+      setFeedData(toJson)
+      router.push('/feed')
+    } catch (error) {
+      console.error('데이터 호출 실패', error)
+    }
   }
 
   return (
@@ -44,7 +59,7 @@ export default function DetailCategory({
             {subCategories.map((subCategory, index) => (
               <ButtonStore
                 key={index}
-                onClickFunction={handleSelectCategory}
+                onClickFunction={() => handleSelectCategory(subCategory)}
                 buttonStyle={ButtonStyle.CATEGORY_BTN_Y}
                 style="mr-2 text-sm flex ">
                 {subCategory}
@@ -55,4 +70,7 @@ export default function DetailCategory({
       )}
     </div>
   )
+}
+function setFeedData(toJson: any) {
+  throw new Error('Function not implemented.')
 }

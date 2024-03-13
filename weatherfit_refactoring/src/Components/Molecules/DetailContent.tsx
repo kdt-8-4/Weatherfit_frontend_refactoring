@@ -1,4 +1,6 @@
 'use client'
+import { FeedData } from '@/Store/FeedData'
+import { useRouter } from 'next/navigation'
 
 export default function DetailContent({
   nickName,
@@ -9,8 +11,22 @@ export default function DetailContent({
   content: FEEDDATA_detail['content']
   hashTag: FEEDDATA_detail['hashTag']
 }) {
-  const handleHashTagClick = (hashTag: string) => {
+  const { setFeedData } = FeedData()
+  const router = useRouter()
+
+  const handleHashTagClick = async (hashTag: string) => {
     console.log('Clicked hashtag:', hashTag)
+    const hashTagUrl = `https://www.jerneithe.site/board/search?hashtags=${hashTag}`
+    try {
+      const callData = await fetch(hashTagUrl, {
+        method: 'GET',
+      })
+      const toJson = await callData.json()
+      setFeedData(toJson)
+      router.push('/feed')
+    } catch (error) {
+      console.error('데이터 호출 실패', error)
+    }
   }
 
   const extractAndStyleHashtags = (content: string) => {

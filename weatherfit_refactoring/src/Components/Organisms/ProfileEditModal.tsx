@@ -35,7 +35,7 @@ export default function ProfileEditModal({ onClickFunction }: Props) {
           <ProfileImageEdit />
           <hr className="my-[10px]" />
           {/* 이메일, 이름, 닉네임 부분 */}
-          <div>
+          <div className="flex flex-col items-center">
             <ProfileModalInfo title="이메일" value="user@test.com" />
             <ProfileModalInfo title="이름" value="가나다" />
             <ProfileModalInfo title="닉네임" value="깜찍이" />
@@ -47,24 +47,24 @@ export default function ProfileEditModal({ onClickFunction }: Props) {
               <p className="font-gmarketsans text-[11px] mb-[10px]">
                 비밀번호 (8~20자 영문, 숫자, 특수기호 조합)
               </p>
-              <div className="mb-[5px]">
+              <div className="flex flex-col items-center mb-[5px]">
                 <InputStore
                   inputStyle={InputStyle.INPUT_WHITE}
                   inputType="password"
                   placeholderContents="현재 비밀번호"
-                  style="w-[40vw] h-[4vh] text-[12px] mb-[5px]"
+                  style="w-[50vw] h-[4vh] text-[12px] mb-[5px]"
                 />
                 <InputStore
                   inputStyle={InputStyle.INPUT_WHITE}
                   inputType="password"
                   placeholderContents="변경 비밀번호"
-                  style="w-[40vw] h-[4vh] text-[12px] mb-[5px]"
+                  style="w-[50vw] h-[4vh] text-[12px] mb-[5px]"
                 />
                 <InputStore
                   inputStyle={InputStyle.INPUT_WHITE}
                   inputType="password"
                   placeholderContents="변경 비밀번호 재확인"
-                  style="w-[40vw] h-[4vh] text-[12px] mb-[5px]"
+                  style="w-[50vw] h-[4vh] text-[12px] mb-[5px]"
                 />
               </div>
             </div>

@@ -5,10 +5,12 @@ import { confirmAlert } from '@/utils/function/utilFunction'
 import { useRouter } from 'next/navigation'
 import { FormEvent, useState } from 'react'
 import { useAuth } from '../../../contexts/AuthContext'
+import AuthUserEmailStore from '@/Store/AuthUserEmail'
 
 export default function LoginForm() {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
+  const { userEmail, setUserEmail } = AuthUserEmailStore()
   const router = useRouter()
   const { login } = useAuth()
 
@@ -34,7 +36,9 @@ export default function LoginForm() {
       const loginRes = await res.json()
       console.log('로그인 loginRes: ', loginRes)
 
-      login(loginRes.email, loginRes.token)
+      setUserEmail(loginRes.email)
+
+      // login(loginRes.email, loginRes.token)
 
       confirmAlert(`${loginRes.nickname}님 환영합니다!`)
 

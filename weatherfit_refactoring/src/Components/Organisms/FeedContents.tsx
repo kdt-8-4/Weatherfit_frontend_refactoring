@@ -15,6 +15,7 @@ export default function FeedContents({response}:Props) {
   const { temperatureMin } = WeatherTempMin()
   const { temperatureMax } = WeatherTempMax()
 
+
   useEffect(() => {
     console.log("받아온 feedData", response)
     const copyResponse:FEEDDATA[] =  [...response]

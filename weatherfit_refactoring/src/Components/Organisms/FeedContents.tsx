@@ -13,7 +13,8 @@ interface Props {
 export default function FeedContents({response}:Props) {
   const {feedData, setFeedData} = FeedData()
   const { temperatureMin } = WeatherTempMin()
-    const { temperatureMax } = WeatherTempMax()
+  const { temperatureMax } = WeatherTempMax()
+
 
   useEffect(() => {
     console.log("받아온 feedData", response)
@@ -31,7 +32,7 @@ export default function FeedContents({response}:Props) {
       {feedData.map(feedDataArr => {
         return (
           <div key={feedDataArr.boardId}>
-            <FeedContent feedData={feedDataArr} />
+            <FeedContent DataforFeed={feedDataArr} />
           </div>
         )
       })}

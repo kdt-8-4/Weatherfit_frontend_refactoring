@@ -6,7 +6,6 @@ export default function LikeAndComment() {
     <div className="flex">
       <IconStore iconStyle={IconStyle.UNLIKE} size={25} />
       <CommentIcon />
-      {/* <IconStore iconStyle={IconStyle.COMMENTS} size={25} /> */}
     </div>
   )
 }

@@ -19,11 +19,14 @@ interface Props {
   buttonStyle: ButtonStyle
   fontsize?: string //회원가입 버튼에서 사용 회원가입 다 만들고 크기가 지정됐다면 그냥 지정해주고 없애주세요
   style?: string
-  onClickFunction?: MouseEventHandler<HTMLButtonElement> | undefined
+  onClickFunction?: () =>
+    | Promise<void>
+    | void
+    | MouseEventHandler<HTMLButtonElement>
+    | undefined
   children?: React.ReactNode
   btnType?: 'button' | 'reset' | 'submit' | undefined
 }
-//높이 조정도 필요하면 가져다 쓰세요
 
 export default function ButtonStore({
   buttonStyle,

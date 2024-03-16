@@ -30,6 +30,7 @@ export const handleNext = (
   })
 }
 
+// sweetalert 함수
 export const deleteAlert = () => {
   return Swal.fire({
     title: '게시물 삭제',

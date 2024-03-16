@@ -1,7 +1,5 @@
-
 import MainOrganism from '@/Components/Organisms/MainOrganism'
 import NavBar from '@/Components/Molecules/NavBar'
-import LikeAndComment from '@/Components/Molecules/LikeAndComment'
 import WeatherInfo from '@/Components/Molecules/WeatherInfo'
 import MainHeader from '@/Components/Molecules/MainHeader'
 

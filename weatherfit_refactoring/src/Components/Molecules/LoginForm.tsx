@@ -4,15 +4,13 @@ import InputStore, { InputStyle } from '@/Components/Atoms/Input/InputStore'
 import { confirmAlert } from '@/utils/function/utilFunction'
 import { useRouter } from 'next/navigation'
 import { FormEvent, useState } from 'react'
-import { useAuth } from '../../../contexts/AuthContext'
-import AuthUserEmailStore from '@/Store/AuthUserEmail'
+import { AuthUserStore } from '@/Store/AuthUser'
 
 export default function LoginForm() {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
-  const { userEmail, setUserEmail } = AuthUserEmailStore()
+  const { setUserEmail } = AuthUserStore()
   const router = useRouter()
-  const { login } = useAuth()
 
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault()
@@ -36,9 +34,8 @@ export default function LoginForm() {
       const loginRes = await res.json()
       console.log('로그인 loginRes: ', loginRes)
 
+      document.cookie = `accessToken=${loginRes.token}; path=/`
       setUserEmail(loginRes.email)
-
-      // login(loginRes.email, loginRes.token)
 
       confirmAlert(`${loginRes.nickname}님 환영합니다!`)
 

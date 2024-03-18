@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import ReactQueryProvider from '../utils/provider/ReactQueryProvider'
 import './globals.css'
-import { AuthProvider } from '../../contexts/AuthContext'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,9 +15,7 @@ export default function RootLayout({
   return (
     <html>
       <body>
-        <AuthProvider>
-          <ReactQueryProvider>{children}</ReactQueryProvider>
-        </AuthProvider>
+        <ReactQueryProvider>{children}</ReactQueryProvider>
       </body>
     </html>
   )

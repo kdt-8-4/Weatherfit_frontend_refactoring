@@ -17,10 +17,8 @@ export default function NavBarBox({ iconStyle, title, url }: Props) {
   const [isActive, setIsActive] = useState<boolean>(false)
 
   useEffect(() => {
-    console.log('pathname: ', pathname)
     setIsActive(pathname === url)
   }, [pathname])
-  console.log('isActive: ', isActive)
 
   const activeIconStyle = isActive
     ? IconStyle[`${iconStyle}_FILL` as keyof typeof IconStyle]

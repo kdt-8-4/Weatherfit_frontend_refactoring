@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react'
 import ProfileInfo from '@/Components/Molecules/ProfileInfo'
 import ProfileHeader from '@/Components/Organisms/ProfileHeader'
 import ProfileBoard from '@/Components/Organisms/ProfileBoard'
-import AuthUserEmailStore from '@/Store/AuthUserEmail'
 
 export default function Mypage() {
   // 회원 정보
@@ -13,9 +12,7 @@ export default function Mypage() {
   const [refreshProfile, setRefreshProfile] = useState<boolean>(false) // 회원 정보 변경했을 때
   const [myPostData, setMyPostData] = useState<FEEDDATA[]>([])
   const [myLikePostData, setMyLikePostData] = useState<FEEDDATA[]>([])
-  const { userEmail, setUserEmail } = AuthUserEmailStore()
 
-  console.log('user email: ', userEmail)
   // 회원 정보 불러오기
   // useEffect(() => {
   //   const fetchData = async () => {

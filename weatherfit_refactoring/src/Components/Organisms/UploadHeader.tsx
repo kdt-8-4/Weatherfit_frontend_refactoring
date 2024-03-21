@@ -3,12 +3,14 @@ import Header from '../Molecules/Header'
 import { useStore } from '../../Store/Store'
 import { WeatherIcon } from '@/Store/WeatherIcon'
 import { WeatherTemp } from '@/Store/WeatherTemp'
+import { AuthTokenStore } from '@/Store/AuthToken'
 
 export default function UploadHeader() {
   const { content, hashTag, selectedImages, selectedSubCategories } = useStore()
   const category = Object.values(selectedSubCategories).flat() // 하위 카테고리들만 저장
   const { weatherIcon } = WeatherIcon()
   const { temperature } = WeatherTemp()
+  const { accesstoken } = AuthTokenStore()
 
   const handleOnClick = async () => {
     try {
@@ -31,7 +33,7 @@ export default function UploadHeader() {
         body: formData,
         headers: {
           'Content-Type': 'multipart/form-data',
-          // Authorization: 'Bearer ' + accessToken,
+          Authorization: 'Bearer ' + accesstoken,
         },
       })
 

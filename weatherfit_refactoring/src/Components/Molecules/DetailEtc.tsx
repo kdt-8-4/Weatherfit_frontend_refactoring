@@ -5,9 +5,11 @@ import IconStore, { IconStyle } from '../Atoms/Icon/IconStore'
 import ButtonStore, { ButtonStyle } from '../Atoms/Button/ButtonStore'
 import { usePathname, useRouter } from 'next/navigation'
 import { deleteAlert, deleteOkAlert } from '@/utils/function/utilFunction'
+import { AuthTokenStore } from '@/Store/AuthToken'
 
 export default function DetailEtc(boardId: BOARDID) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const { accesstoken } = AuthTokenStore()
   const router = useRouter()
   const currentUrl = usePathname()
   const handleEdit = () => {
@@ -23,9 +25,7 @@ export default function DetailEtc(boardId: BOARDID) {
             {
               method: 'DELETE',
               headers: {
-                // Authorization: 'Bearer ' + logintoken,
-                Authorization:
-                  'Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDY3OTA5MDEsImV4cCI6MTcwNjgwMTcwMSwic3ViIjoi7YWM7Iqk7YSwNTUifQ.sdm2nHun06cOIeWzXFv8xSbuuhY_yCsiRT7Upu1vtIs',
+                Authorization: 'Bearer ' + accesstoken,
               },
             },
           )

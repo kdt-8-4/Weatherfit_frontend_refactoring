@@ -68,7 +68,6 @@ export default function DetailContent({
 
   return (
     <div className="font-NanumSquareRound px-1 break-all text-justify w-full">
-      {/* 추후에 더보기 접기 버튼 넣어야 할 듯 */}
       <span className="font-extrabold mr-2">{nickName}</span>
       {extractAndStyleHashtags(content)}
     </div>

@@ -3,6 +3,7 @@
 import { ButtonStyle } from '../Atoms/Button/ButtonStore'
 import Header from '../Molecules/Header'
 import { useStore } from '../../Store/Store'
+import { AuthTokenStore } from '@/Store/AuthToken'
 
 export default function EditHeader(boardId: BOARDID) {
   const {
@@ -12,6 +13,7 @@ export default function EditHeader(boardId: BOARDID) {
     selectedSubCategories,
     deletedImages,
   } = useStore()
+  const { accesstoken } = AuthTokenStore()
   const category = Object.values(selectedSubCategories).flat() // 하위 카테고리들만 저장
 
   const handleOnClick = async () => {
@@ -36,7 +38,7 @@ export default function EditHeader(boardId: BOARDID) {
           body: formData,
           headers: {
             'Content-Type': 'multipart/form-data',
-            // Authorization: 'Bearer ' + accessToken,
+            Authorization: 'Bearer ' + accesstoken,
           },
         },
       )

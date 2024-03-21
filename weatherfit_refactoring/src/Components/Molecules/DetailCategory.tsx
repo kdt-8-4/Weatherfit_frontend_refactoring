@@ -71,6 +71,7 @@ export default function DetailCategory({
     </div>
   )
 }
+
 function setFeedData(toJson: any) {
   throw new Error('Function not implemented.')
 }

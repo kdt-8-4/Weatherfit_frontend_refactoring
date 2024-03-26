@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useDebugValue, useEffect, useState } from 'react'
 import CommentInput from './CommentInput'
 import { confirmAlert } from '@/utils/function/utilFunction'
 import InputStore, { InputStyle } from '../Atoms/Input/InputStore'
 import ButtonStore, { ButtonStyle } from '../Atoms/Button/ButtonStore'
+import { AuthTokenStore } from '@/Store/AuthToken'
 
 interface Props {
   comment: CommentType
@@ -21,40 +22,116 @@ export default function Comment({
   const [showReply, setShowReply] = useState<boolean>(false)
   const [isEditing, setIsEditing] = useState<boolean>(false)
   const [editContent, setEditContent] = useState<string>('')
+  const { accesstoken, setAccessToken } = AuthTokenStore()
+
+  useEffect(() => {
+    setAccessToken()
+  }, [])
 
   // 답글 등록
-  const handleReplySubmit = (e: React.FormEvent) => {
+  const handleReplySubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
-    const newComments = [...comments]
-    const findComment = (comments: CommentType[]): CommentType[] =>
-      comments.map(c =>
-        c.id === comment.id
-          ? {
-              ...c,
-              replyList: [
-                ...c.replyList,
-                {
-                  id: Date.now(),
-                  boardId: c.boardId,
-                  nickname: comment.nickname,
-                  content,
-                  createdDate: '2024-02-20',
-                  createdTime: '12:00',
-                  replyList: [],
-                  status: 1,
-                },
-              ],
-            }
-          : { ...c, replyList: findComment(c.replyList) },
-      )
-    setComments(findComment(newComments))
+    if (content.trim() === '') {
+      confirmAlert('내용을 입력해 주세요.')
+      return
+    }
 
-    setContent('')
+    try {
+      const res = await fetch('https://www.jerneithe.site/comment/reply', {
+        method: 'POST',
+        headers: {
+          Authorization: 'Bearer ' + accesstoken, // accessToken 수정 필요
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          commentId: comment.id,
+          content: content,
+        }),
+      })
+
+      const data = await res.json()
+
+      console.log('답글 data: ', data)
+
+      const newComments = [...comments]
+      const findComment = (comments: CommentType[]): CommentType[] =>
+        comments.map(c =>
+          c.id === comment.id
+            ? {
+                ...c,
+                replyList: [
+                  ...c.replyList,
+                  {
+                    id: data.id,
+                    boardId: c.boardId,
+                    nickname: comment.nickname,
+                    content,
+                    createdDate: data.createdDate,
+                    createdTime: data.createdTime,
+                    replyList: [],
+                    status: 1,
+                  },
+                ],
+              }
+            : { ...c, replyList: findComment(c.replyList) },
+        )
+      setComments(findComment(newComments))
+
+      setContent('')
+    } catch (err) {
+      console.log('답글 작성 오류: ', err)
+    }
   }
 
-  // 댓글(또는 답글) 수정
-  const handleCommentEdit = (e: React.FormEvent) => {
+  // ----------------------------------------------------------------------
+  // 댓글 수정
+  const editComment = async (id: number, newContent: string) => {
+    try {
+      const res = await fetch('https://www.jerneithe.site/comment/modify', {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + accesstoken,
+        },
+        body: JSON.stringify({
+          id: id,
+          content: newContent,
+        }),
+      })
+      const data = await res.json()
+      console.log('댓글 수정 결과: ', data)
+    } catch (err) {
+      console.log('댓글 수정 오류:', err)
+    }
+  }
+
+  // 답글 수정
+  const editReply = async (id: number, newContent: string) => {
+    try {
+      const res = await fetch(
+        'https://www.jerneithe.site/comment/modify/reply',
+        {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + accesstoken,
+          },
+          body: JSON.stringify({
+            id: id,
+            content: newContent,
+          }),
+        },
+      )
+      const data = await res.json()
+      console.log('답글 수정 결과: ', data)
+    } catch (err) {
+      console.log('답글 수정 오류:', err)
+    }
+  }
+
+  // 수정
+  const handleCommentEdit = async (e: React.FormEvent) => {
     e.preventDefault()
 
     if (editContent.trim() === '') {
@@ -62,6 +139,11 @@ export default function Comment({
       return
     }
 
+    if (!isReply) {
+      await editComment(comment.id, editContent)
+    } else {
+      await editReply(comment.id, editContent)
+    }
     const newComments = [...comments]
     const findComment = (comments: CommentType[]): CommentType[] =>
       comments.map(c =>
@@ -73,8 +155,53 @@ export default function Comment({
     setIsEditing(false)
   }
 
-  // 댓글(또는 답글) 삭제
-  const handleCommentDelete = () => {
+  // ----------------------------------------------------------------------
+  // 댓글 삭제
+  const deleteComment = async (id: number) => {
+    try {
+      const res = await fetch(
+        `https://www.jerneithe.site/comment/remove?commentId=${id}`,
+        {
+          method: 'DELETE',
+          headers: {
+            Authorization: 'Bearer ' + accesstoken,
+          },
+        },
+      )
+      const data = await res.json()
+      console.log('댓글 삭제 결과: ', data)
+    } catch (err) {
+      console.log('댓글 삭제 오류: ', err)
+    }
+  }
+
+  // 답글 삭제
+  const deleteReply = async (id: number) => {
+    try {
+      const res = await fetch(
+        `https://www.jerneithe.site/comment/remove/reply?replyId=${id}`,
+        {
+          method: 'DELETE',
+          headers: {
+            Authorization: 'Bearer ' + accesstoken,
+          },
+        },
+      )
+      const data = await res.json()
+      console.log('답글 삭제 결과: ', data)
+    } catch (err) {
+      console.log('답글 삭제 오류: ', err)
+    }
+  }
+
+  // 삭제
+  const handleCommentDelete = async () => {
+    if (!isReply) {
+      await deleteComment(comment.id)
+    } else {
+      await deleteReply(comment.id)
+    }
+
     const newComments = [...comments]
     const findComment = (comments: CommentType[]): CommentType[] =>
       comments.map(c =>
@@ -94,6 +221,7 @@ export default function Comment({
             <p className="text-[#808080] text-[11px] ml-[8px]">
               {comment.createdDate}
             </p>
+            {/* 수정 부분 */}
             {!isEditing ? (
               <div className="text-[12px] absolute right-[5px]">
                 <ButtonStore
@@ -115,24 +243,14 @@ export default function Comment({
           {!isEditing ? (
             <p>{comment.content}</p>
           ) : (
-            <form onSubmit={handleCommentEdit}>
-              <InputStore
-                inputStyle={InputStyle.INPUT_WHITE}
-                inputType="text"
-                placeholderContents="수정하기..."
-                value={editContent}
-                onChageFunction={(e: React.ChangeEvent<HTMLInputElement>) =>
-                  setEditContent(e.target.value)
-                }
-                style="w-[285px] h-[30px]"
-              />
-              <ButtonStore
-                buttonStyle={ButtonStyle.CONFIRM_BTN}
-                style="w-[40px] h-[30px]"
-                btnType="submit">
-                완료
-              </ButtonStore>
-            </form>
+            <CommentInput
+              handleSubmit={handleCommentEdit}
+              content={editContent}
+              setContent={setEditContent}
+              inputStyle="w-[285px] h-[30px]"
+              btnText="완료"
+              place="수정하기..."
+            />
           )}
         </>
       )}
@@ -153,15 +271,18 @@ export default function Comment({
             handleSubmit={handleReplySubmit}
             style="my-[5px]"
             inputStyle="w-[285px] h-[30px]"
+            btnText="게시"
+            place="닉네임(으)로 작성..."
           />
         </div>
       )}
       {!isReply && comment.status !== 0 && (
-        <button
-          className="text-[12px]"
-          onClick={() => setShowReply(!showReply)}>
+        <ButtonStore
+          buttonStyle={ButtonStyle.TEXT_BTN}
+          style="text-[12px]"
+          onClickFunction={() => setShowReply(!showReply)}>
           {showReply ? '- 답글 숨기기 -' : '- 답글 보기 -'}
-        </button>
+        </ButtonStore>
       )}
     </div>
   )

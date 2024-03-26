@@ -1,4 +1,5 @@
 import Swal from 'sweetalert2'
+import Cookies from 'js-cookie'
 
 export const extractHashtags = (content: string): string[] => {
   const regex = /#(\S+)/g // # 다음에 공백이 아닌 모든 문자를 해시태그로 간주하는 정규식
@@ -28,6 +29,28 @@ export const handleNext = (
     if (prevIndex === imagesLength - 1) return 0
     else return prevIndex + 1
   })
+}
+
+export const loginCheck = (
+  value: string | undefined,
+  setCheck: (value: boolean) => void,
+  setLoading: (value: boolean) => void,
+) => {
+  if (value === undefined) {
+    setCheck(false)
+    setLoading(false)
+  } else {
+    setCheck(true)
+    setLoading(false)
+  }
+}
+
+export const logout = () => {
+  if (confirm('로그아웃 하시겠습니까?')) {
+    Cookies.remove('accessToken')
+    confirmAlert('로그아웃 되었습니다.')
+    window.location.href = '/'
+  }
 }
 
 // sweetalert 함수

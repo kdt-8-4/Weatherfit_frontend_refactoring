@@ -4,14 +4,56 @@ import React, { useEffect, useState } from 'react'
 import ProfileInfo from '@/Components/Molecules/ProfileInfo'
 import ProfileHeader from '@/Components/Organisms/ProfileHeader'
 import ProfileBoard from '@/Components/Organisms/ProfileBoard'
+import { AuthTokenStore } from '@/Store/AuthToken'
+import { LoadingStore } from '@/Store/Loading'
+import { CheckStore } from '@/Store/Check'
+import { loginCheck } from '@/utils/function/utilFunction'
+import Loading from '@/Components/Organisms/Loading'
+import NoLogin from '@/Components/Organisms/NoLogin'
+import { AuthUserStore } from '@/Store/AuthUser'
 
 export default function Mypage() {
+  // 사용법 참고
+  const { loading, setLoading } = LoadingStore()
+  const { accesstoken, setAccessToken } = AuthTokenStore()
+  const { check, setCheck } = CheckStore()
+  const { userEmail } = AuthUserStore()
+
+  useEffect(() => {
+    setAccessToken()
+    loginCheck(accesstoken, setCheck, setLoading)
+  }, [accesstoken])
+
   // 회원 정보
-  const [userPofile, setUserProfile] = useState<any>(null)
-  const [userImage, setUserImage] = useState<string | null>('') // 프로필 이미지
+  // const [userPofile, setUserProfile] = useState<any>(null)
+  // const [userImage, setUserImage] = useState<string | null>('') // 프로필 이미지
   const [refreshProfile, setRefreshProfile] = useState<boolean>(false) // 회원 정보 변경했을 때
-  const [myPostData, setMyPostData] = useState<FEEDDATA[]>([])
-  const [myLikePostData, setMyLikePostData] = useState<FEEDDATA[]>([])
+  // const [myPostData, setMyPostData] = useState<FEEDDATA[]>([])
+  // const [myLikePostData, setMyLikePostData] = useState<FEEDDATA[]>([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // 프로필 데이터 가져오기
+        const res = await fetch(`https://www.jerneithe.site/user/api/profile`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer' + accesstoken,
+          },
+          body: JSON.stringify({
+            email: userEmail,
+          }),
+        })
+
+        const profileRes = await res.json()
+        console.log('회원정보: ', profileRes)
+      } catch (err) {
+        console.log('회원정보 에러: ', err)
+      }
+    }
+    fetchData()
+  }, [refreshProfile])
 
   // 회원 정보 불러오기
   // useEffect(() => {
@@ -62,14 +104,20 @@ export default function Mypage() {
 
   return (
     <>
-      <ProfileHeader />
+      {/* 사용법 참고 */}
+      {loading ? (
+        <Loading />
+      ) : (
+        <>{check ? <div>로그인 함 </div> : <NoLogin />} </>
+      )}
+      {/* <ProfileHeader />
       <ProfileInfo
         profileImage={userImage}
         userInfo={userPofile}
         myPost={myPostData}
         myLikePost={myLikePostData}
       />
-      <ProfileBoard myPost={myPostData} myLikePost={myLikePostData} />
+      <ProfileBoard myPost={myPostData} myLikePost={myLikePostData} /> */}
     </>
   )
 }

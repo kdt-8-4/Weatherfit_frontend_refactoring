@@ -5,6 +5,8 @@ interface Props {
   content: string
   setContent: React.Dispatch<React.SetStateAction<string>>
   handleSubmit: (e: React.FormEvent) => void
+  place: string
+  btnText: string
   style?: string
   inputStyle?: string
 }
@@ -13,6 +15,8 @@ export default function CommentInput({
   content,
   setContent,
   handleSubmit,
+  place,
+  btnText,
   style,
   inputStyle,
 }: Props) {
@@ -21,7 +25,7 @@ export default function CommentInput({
       <InputStore
         inputStyle={InputStyle.INPUT_WHITE}
         inputType="text"
-        placeholderContents="닉네임(으)로 작성..."
+        placeholderContents={place}
         style={inputStyle}
         onChageFunction={(e: React.ChangeEvent<HTMLInputElement>) =>
           setContent(e.target.value)
@@ -32,7 +36,7 @@ export default function CommentInput({
         buttonStyle={ButtonStyle.CONFIRM_BTN}
         style="w-[40px] h-[30px]"
         btnType="submit">
-        게시
+        {btnText}
       </ButtonStore>
     </form>
   )

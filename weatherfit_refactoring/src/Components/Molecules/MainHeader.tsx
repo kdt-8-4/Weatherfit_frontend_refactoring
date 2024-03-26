@@ -3,28 +3,30 @@
 import IconStore, { IconStyle } from '../Atoms/Icon/IconStore'
 import ButtonStore, { ButtonStyle } from '../Atoms/Button/ButtonStore'
 import BoxStore, { BoxStyle } from '../Atoms/Box/BoxStore'
-import { MouseEventHandler } from 'react'
+import { MouseEventHandler, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { CheckStore } from '@/Store/Check'
+import { LoadingStore } from '@/Store/Loading'
+import { AuthTokenStore } from '@/Store/AuthToken'
+import { loginCheck, logout } from '@/utils/function/utilFunction'
 
 interface Props {
   title: string
-  btnText?: string
-  iconStyleCase?: IconStyle
-  buttonStyleCase?: ButtonStyle
-  onClickFunction?: MouseEventHandler<HTMLButtonElement> | undefined
-  onClickFunction2?: () => void
 }
 
-export default function MainHeader({
-  title,
-  btnText,
-  iconStyleCase,
-  buttonStyleCase,
-  onClickFunction,
-  onClickFunction2,
-}: Props) {
+export default function MainHeader({ title }: Props) {
+  const { loading, setLoading } = LoadingStore()
+  const { accesstoken, setAccessToken } = AuthTokenStore()
+  const { check, setCheck } = CheckStore()
+
+  useEffect(() => {
+    setAccessToken()
+    loginCheck(accesstoken, setCheck, setLoading)
+  }, [accesstoken])
   const router = useRouter()
+
+  console.log(`토큰: ${accesstoken} 체크: ${check}`)
 
   const onClickToMain =
     title === '옷늘날씨' ? () => router.push('/') : undefined // 또는 다른 함수
@@ -37,11 +39,20 @@ export default function MainHeader({
         onClickFunction={onClickToMain}>
         {title}
       </BoxStore>
-      <Link
-        href={`/login`}
-        className="absolute right-[19px] font-gmarketsans text-black">
-        로그인
-      </Link>
+      {check ? (
+        <ButtonStore
+          buttonStyle={ButtonStyle.TEXT_BTN}
+          style="absolute right-[19px] font-gmarketsans text-black"
+          onClickFunction={logout}>
+          로그아웃
+        </ButtonStore>
+      ) : (
+        <Link
+          href={`/login`}
+          className="absolute right-[19px] font-gmarketsans text-black">
+          로그인
+        </Link>
+      )}
     </div>
   )
 }

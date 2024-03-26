@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import Comment from './Comment'
 import CommentInput from './CommentInput'
 import { confirmAlert } from '@/utils/function/utilFunction'
+import { AuthTokenStore } from '@/Store/AuthToken'
 
 interface Props {
   onClickFunction: () => void
@@ -11,33 +12,15 @@ interface Props {
 export default function CommentModal({ onClickFunction }: Props) {
   const [comments, setComments] = useState<CommentType[]>([])
   const [content, setContent] = useState<string>('')
+  const { accesstoken, setAccessToken } = AuthTokenStore()
 
   useEffect(() => {
-    // 더미 데이터
-    setComments([
-      {
-        id: 1,
-        boardId: 1,
-        nickname: 'user1',
-        content: 'This is a comment',
-        createdDate: '2024-02-20',
-        createdTime: '12:00',
-        replyList: [
-          {
-            id: 2,
-            boardId: 1,
-            nickname: 'user2',
-            content: 'This is a reply',
-            createdDate: '2024-02-20',
-            createdTime: '12:01',
-            replyList: [],
-            status: 1,
-          },
-        ],
-        status: 1,
-      },
-    ])
+    setAccessToken()
   }, [])
+
+  useEffect(() => {
+    console.log('댓글 목록 업데이트: ', comments)
+  }, [comments])
 
   // 댓글 등록
   const handleCommentSubmit = async (e: React.FormEvent) => {
@@ -49,44 +32,33 @@ export default function CommentModal({ onClickFunction }: Props) {
     }
 
     try {
-      // const res = await fetch('https://www.jerneithe.site/comment/write', {
-      //   method: 'POST',
-      //   headers: {
-      //     Authorization: 'Bearer ' + 'accessToken', // accessToken 수정 필요
-      //   },
-      //   body: JSON.stringify({
-      //     boardId: 'localBoardId', // localBoardId 수정 필요
-      //     content: content,
-      //   }),
-      // })
+      const res = await fetch('https://www.jerneithe.site/comment/write', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + accesstoken,
+        },
+        body: JSON.stringify({
+          boardId: 1, // localBoardId 수정 필요
+          content: content,
+        }),
+      })
 
-      // const data = await res.json()
+      const data = await res.json()
 
-      // setComments([
-      //   ...comments,
-      //   {
-      //     id: data.id,
-      //     boardId: data.boardId,
-      //     nickname: data.nickname,
-      //     content: content,
-      //     createdDate: data.createdDate,
-      //     createdTime: data.createdTime,
-      //     replyList: [],
-      //     status: data.status,
-      //   },
-      // ])
+      console.log('댓글 data: ', data)
 
       setComments([
         ...comments,
         {
-          id: comments.length + 1,
-          boardId: 1,
-          nickname: '닉네임',
+          id: data.id,
+          boardId: data.boardId,
+          nickname: data.nickname,
           content: content,
-          createdDate: '2024-02-25',
-          createdTime: '12:01',
+          createdDate: data.createdDate,
+          createdTime: data.createdTime,
           replyList: [],
-          status: 1,
+          status: data.status,
         },
       ])
 
@@ -125,6 +97,8 @@ export default function CommentModal({ onClickFunction }: Props) {
           handleSubmit={handleCommentSubmit}
           style="m-[10px] absolute bottom-[5px]"
           inputStyle="w-[325px] h-[30px]"
+          btnText="게시"
+          place="닉네임(으)로 작성..."
         />
       </div>
     </div>

@@ -16,6 +16,17 @@ export default function CommentModal({ onClickFunction }: Props) {
 
   useEffect(() => {
     setAccessToken()
+    const commentData = async () => {
+      try {
+        const res = await fetch('/dummy_data/comment.json')
+        const resData = await res.json()
+        console.log('res: ', resData)
+        setComments(resData.comments_data)
+      } catch (err) {
+        console.log('err:', err)
+      }
+    }
+    commentData()
   }, [])
 
   useEffect(() => {

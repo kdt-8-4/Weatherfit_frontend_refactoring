@@ -23,6 +23,7 @@ export default function Comment({
   const [isEditing, setIsEditing] = useState<boolean>(false)
   const [editContent, setEditContent] = useState<string>('')
   const { accesstoken, setAccessToken } = AuthTokenStore()
+  const decoded_nickname = 'cute_ssu'
 
   useEffect(() => {
     setAccessToken()
@@ -213,7 +214,7 @@ export default function Comment({
   }
 
   return (
-    <div>
+    <div className="my-[10px]">
       {comment.status !== 0 && (
         <>
           <div className="flex items-center relative">
@@ -222,7 +223,7 @@ export default function Comment({
               {comment.createdDate}
             </p>
             {/* 수정 부분 */}
-            {!isEditing ? (
+            {comment.nickname === decoded_nickname && !isEditing ? (
               <div className="text-[12px] absolute right-[5px]">
                 <ButtonStore
                   buttonStyle={ButtonStyle.TEXT_BTN}
@@ -241,7 +242,7 @@ export default function Comment({
             ) : null}
           </div>
           {!isEditing ? (
-            <p>{comment.content}</p>
+            <p className="my-[1px]">{comment.content}</p>
           ) : (
             <CommentInput
               handleSubmit={handleCommentEdit}
@@ -279,7 +280,7 @@ export default function Comment({
       {!isReply && comment.status !== 0 && (
         <ButtonStore
           buttonStyle={ButtonStyle.TEXT_BTN}
-          style="text-[12px]"
+          style="text-[12px] text-[#808080] mt-[5px]"
           onClickFunction={() => setShowReply(!showReply)}>
           {showReply ? '- 답글 숨기기 -' : '- 답글 보기 -'}
         </ButtonStore>

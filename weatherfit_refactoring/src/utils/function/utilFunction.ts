@@ -48,9 +48,33 @@ export const loginCheck = (
 export const logout = () => {
   if (confirm('로그아웃 하시겠습니까?')) {
     Cookies.remove('accessToken')
+    localStorage.removeItem('user_email')
+    localStorage.removeItem('login_Time')
     confirmAlert('로그아웃 되었습니다.')
     window.location.href = '/'
   }
+}
+
+export const autoLogout = () => {
+  const loginTimeString = localStorage.getItem('login_Time')
+  const currentTime = new Date().getTime()
+
+  if (loginTimeString) {
+    const loginTime = Number(loginTimeString)
+    if (currentTime - loginTime > 30000) {
+      Cookies.remove('accessToken')
+      localStorage.removeItem('user_email')
+      localStorage.removeItem('login_Time')
+      confirmAlert('1시간이 경과하여 로그아웃 되었습니다.')
+      window.location.href = '/'
+    }
+  }
+}
+
+export const strongPassword = (str: string) => {
+  return /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(
+    str,
+  )
 }
 
 // sweetalert 함수

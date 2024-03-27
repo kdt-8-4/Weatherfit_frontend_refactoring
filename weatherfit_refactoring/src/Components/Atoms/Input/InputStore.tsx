@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { FocusEventHandler, FormEventHandler } from 'react'
+import { FocusEventHandler, FormEventHandler, KeyboardEventHandler } from 'react'
 
 export enum InputStyle {
   INPUT_WHITE = 'INPUT_WHITE',
@@ -8,16 +8,17 @@ export enum InputStyle {
 }
 
 interface Props {
-  inputStyle: InputStyle
-  inputType?: string
-  placeholderContents?: string
-  value?: string | number
-  style?: string
+  inputStyle: InputStyle;
+  inputType?: string;
+  placeholderContents?: string;
+  value?: string | number;
+  style?: string;
   onChageFunction?:
     | FormEventHandler<HTMLDivElement>
     | React.ChangeEventHandler<HTMLInputElement>
-    | undefined
-  onBlur?: FocusEventHandler<HTMLDivElement>
+    | undefined;
+  onBlur?: FocusEventHandler<HTMLDivElement>;
+  onKeyDown?: KeyboardEventHandler<HTMLDivElement>
 }
 
 export default function InputStore({
@@ -27,6 +28,7 @@ export default function InputStore({
   style,
   onChageFunction,
   onBlur,
+  onKeyDown,
   value,
 }: Props) {
   const selectInput = (): React.ReactNode => {
@@ -37,6 +39,7 @@ export default function InputStore({
             value={value}
             onChange={onChageFunction}
             onBlur={onBlur}
+            onKeyDown={onKeyDown}
             type={inputType}
             className={`border rounded-lg bg-white border-gray-500 p-1 ${style}`}
             placeholder={placeholderContents}

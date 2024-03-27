@@ -15,6 +15,9 @@ interface State {
   setInitialSubCategories: (initialSubCategories: string[]) => void
   deletedImages: number[]
   setDeletedImages: (imageId: number) => void
+  // 좋아요
+  isLiked: boolean
+  toggleLikeState: () => void
 }
 
 export const useStore = create<State>(set => ({
@@ -50,4 +53,6 @@ export const useStore = create<State>(set => ({
       deletedImages: [...state.deletedImages, imageId],
     }))
   },
+  isLiked: false,
+  toggleLikeState: () => set(state => ({ isLiked: !state.isLiked })),
 }))

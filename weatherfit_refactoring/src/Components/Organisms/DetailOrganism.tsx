@@ -1,12 +1,16 @@
 import DetailContent from '@/Components/Molecules/DetailContent'
-import DetailImage from '@/Components/Molecules/DetailImge'
+import DetailImage from '@/Components/Molecules/DetailImage'
 import DetailCategory from '../Molecules/DetailCategory'
 import LikeAndComment from '../Molecules/LikeAndComment'
 import DetailProfile from '../Molecules/DetailProfile'
 import DetailEtc from '../Molecules/DetailEtc'
 import NotFound from '@/app/not-found'
 
-export default async function DetailOrganism({ boardId }: BOARDID) {
+export default async function DetailOrganism({
+  boardId,
+}: {
+  boardId: BOARDID
+}) {
   const fetchBoardDataResponse = await fetch(
     `https://www.jerneithe.site/board/detail/${boardId}`,
     {
@@ -39,10 +43,10 @@ export default async function DetailOrganism({ boardId }: BOARDID) {
               nickName={fetchBoardData.nickName}
               userData={fetchUserData}
             />
-            <DetailEtc boardId={boardId} />
+            <DetailEtc boardId={boardId} nickName={fetchBoardData.nickName} />
           </div>
           <DetailImage images={fetchBoardData.images} />
-          <LikeAndComment />
+          <LikeAndComment boardId={boardId} />
           <DetailContent
             nickName={fetchBoardData.nickName}
             content={fetchBoardData.content}

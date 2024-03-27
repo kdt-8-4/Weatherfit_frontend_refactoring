@@ -7,17 +7,24 @@ import { extractHashtags } from '@/utils/function/utilFunction'
 
 export default function TextAreaMolecule({
   initContent,
+  mode,
 }: {
   initContent?: FEEDDATA_detail['content']
+  mode: 'edit' | 'upload'
 }) {
   const { content, setContent, setHashTag } = useStore()
   const textAreaRef = useRef<HTMLTextAreaElement>(null)
 
   useEffect(() => {
-    if (initContent) {
+    // Edit 모드일 때는 initContent로 초기화
+    if (mode === 'edit' && initContent) {
       setContent(initContent)
     }
-  }, [setContent])
+    // Upload 모드일 때는 내용을 비워준다
+    if (mode === 'upload') {
+      setContent('')
+    }
+  }, [initContent, mode, setContent])
 
   const handleChange = () => {
     if (textAreaRef.current) {

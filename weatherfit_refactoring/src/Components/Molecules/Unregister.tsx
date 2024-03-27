@@ -1,21 +1,33 @@
-import axios from 'axios'
-
-// Props로 UserInfo에서 email 있어야 함
+import { AuthTokenStore } from '@/Store/AuthToken'
+import { AuthUserStore } from '@/Store/AuthUser'
+import { confirmAlert } from '@/utils/function/utilFunction'
+import Cookies from 'js-cookie'
+import ButtonStore, { ButtonStyle } from '../Atoms/Button/ButtonStore'
 
 export default function Unregister() {
+  const { accesstoken } = AuthTokenStore()
+  const { userEmail } = AuthUserStore()
+
   const handleUnregister = async () => {
     try {
       if (confirm('정말로 탈퇴하시겠습니까?')) {
-        const response = await axios({
-          method: 'DELETE',
-          // url: `https://www.jerneithe.site/user/api/profile/remove/${email}`,
-          headers: {
-            Authorization: 'Bearer ',
+        const res = await fetch(
+          `https://www.jerneithe.site/user/api/profile/remove/${userEmail}`,
+          {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: 'Bearer' + accesstoken,
+            },
           },
-        })
-        console.log('회원 탈퇴 response: ', response)
-        // 쿠키에 로그인 토큰 삭제
-        alert('그동안 옷늘날씨를 이용해 주셔서 감사합니다.')
+        )
+
+        const unregisterRes = await res.json()
+
+        console.log('회원 탈퇴 response: ', unregisterRes)
+        Cookies.remove('accessToken')
+        localStorage.removeItem('user_email')
+        confirmAlert('그동안 옷늘날씨를 이용해 주셔서 감사합니다.')
         window.location.href = '/'
       }
     } catch (error) {
@@ -25,12 +37,13 @@ export default function Unregister() {
 
   return (
     <>
-      <button
-        type="button"
-        className="underline text-[#808080] text-[10px] font-gmarketsans cursor-pointer"
-        onClick={handleUnregister}>
+      <ButtonStore
+        buttonStyle={ButtonStyle.TEXT_BTN}
+        btnType="button"
+        onClickFunction={handleUnregister}
+        style="underline text-[#808080] text-[10px] font-gmarketsans">
         회원탈퇴
-      </button>
+      </ButtonStore>
     </>
   )
 }

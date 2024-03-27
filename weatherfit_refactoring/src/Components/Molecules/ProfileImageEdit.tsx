@@ -1,46 +1,57 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import IconStore, { IconStyle } from '../Atoms/Icon/IconStore'
 import Image from 'next/image'
-import axios from 'axios'
 import ButtonStore, { ButtonStyle } from '@/Components/Atoms/Button/ButtonStore'
+import { AuthUserStore } from '@/Store/AuthUser'
+import { AuthTokenStore } from '@/Store/AuthToken'
 
 export default function ProfileImageEdit() {
   // const [selectedImage, setSelectedImage] = useState(userProfileImage)
   const [selectedImage, setSelectedImage] = useState(null)
+  const { userEmail } = AuthUserStore()
+  const { accesstoken } = AuthTokenStore()
 
   // 파일 비동기 전송
-  // const handleImageSubmit = async () => {
-  //   try {
-  //     if (confirm('이미지를 수정하시겠습니까?')) {
-  //       const formData = new FormData()
-  //       if (selectedImage) {
-  //         formData.append('image', selectedImage) // 이미지 파일을 FormData에 추가
-  //       }
+  const handleImageSubmit = async () => {
+    try {
+      if (confirm('이미지를 수정하시겠습니까?')) {
+        const formData = new FormData()
+        if (selectedImage) {
+          formData.append('image', selectedImage) // 이미지 파일을 FormData에 추가
+        }
 
-  //       formData.append('email', email)
+        if (userEmail !== null) {
+          formData.append('email', userEmail)
+        }
 
-  //       for (let [key, value] of formData.entries()) {
-  //         console.log(`${key}: ${value}`)
-  //       }
+        // formData.append('email', userEmail)
 
-  //       const response = await axios.patch(
-  //         `https://www.jerneithe.site/user/api/profile/modify/image`,
-  //         formData,
-  //         {
-  //           headers: {
-  //             'Content-Type': 'multipart/form-data',
-  //           },
-  //         },
-  //       )
+        for (let [key, value] of formData.entries()) {
+          console.log(`${key}: ${value}`)
+        }
 
-  //       console.log('이미지 수정 Data:', response.data)
+        const res = await fetch(
+          `https://www.jerneithe.site/user/api/profile/modify/image`,
+          {
+            method: 'PATCH',
+            headers: {
+              'Content-Type': 'multipart/form-data',
+              Authorization: 'Bearer' + accesstoken,
+            },
+            body: formData,
+          },
+        )
 
-  //       // 모달 닫히는 함수 실행하기
-  //     }
-  //   } catch (error) {
-  //     console.error('이미지 업로드 에러: ', error)
-  //   }
-  // }
+        const imageRes = await res.json()
+
+        console.log('이미지 수정 결과:', imageRes)
+
+        // 모달 닫히는 함수 실행하기
+      }
+    } catch (error) {
+      console.error('이미지 업로드 에러: ', error)
+    }
+  }
 
   const handleImageUpload = (e: any) => {
     const file = e.target.files[0]
@@ -92,7 +103,7 @@ export default function ProfileImageEdit() {
           onChange={handleImageUpload}
           style={{ display: 'none' }}
         />
-        <label htmlFor="imageUploadInput" className="mx-[5px]">
+        <label htmlFor="imageUploadInput" className="mx-[5px] cursor-pointer">
           이미지 선택
         </label>
         |
@@ -102,12 +113,11 @@ export default function ProfileImageEdit() {
       </div>
       <ButtonStore
         buttonStyle={ButtonStyle.CATEGORY_BTN_Y}
-        style="font-neurimboGothic px-[7px]">
+        btnType="submit"
+        onClickFunction={handleImageSubmit}
+        style="font-neurimboGothic px-[10px] pb-[5px]">
         이미지 수정
       </ButtonStore>
-      {/* <button type="submit" className="font-gmarketsans">
-        이미지 수정
-      </button> */}
     </div>
   )
 }

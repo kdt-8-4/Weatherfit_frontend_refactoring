@@ -38,6 +38,10 @@ export default function LoginForm() {
 
       document.cookie = `accessToken=${loginRes.token}; path=/`
       setUserEmail(loginRes.email)
+      
+      const loginTime = new Date().getTime()
+      localStorage.setItem('login_Time', `${loginTime}`)
+
       setUserNick(loginRes.nickname)
       confirmAlert(`${loginRes.nickname}님 환영합니다!`)
 

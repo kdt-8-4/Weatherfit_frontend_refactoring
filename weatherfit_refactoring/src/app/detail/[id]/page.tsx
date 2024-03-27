@@ -2,7 +2,7 @@ import Header from '@/Components/Molecules/Header'
 import WeatherNavbar from '@/Components/Molecules/WeatherNavbar'
 import DetailOrganism from '@/Components/Organisms/DetailOrganism'
 
-export default function Detail({ params }: { params: { id: string } }) {
+export default function Detail({ params }: { params: { id: BOARDID } }) {
   const { id: boardId } = params
 
   return (

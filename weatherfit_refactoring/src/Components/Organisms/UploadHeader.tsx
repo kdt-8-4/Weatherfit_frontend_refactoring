@@ -13,6 +13,16 @@ export default function UploadHeader() {
   const { accesstoken } = AuthTokenStore()
 
   const handleOnClick = async () => {
+    if (selectedImages.length === 0) {
+      alert('업로드 된 사진이 없습니다.')
+      return // 함수를 여기서 종료하여 더 이상 진행하지 않습니다.
+    }
+
+    if (category.length === 0) {
+      alert('선택된 카테고리가 없습니다.')
+      return // 함수를 여기서 종료합니다.
+    }
+
     try {
       const formData = new FormData()
       const boardData = {
@@ -37,13 +47,12 @@ export default function UploadHeader() {
         },
       })
 
-      console.log(response)
-      console.log('등록 버튼 클릭')
-      console.log('content: ', content) //ok
-      console.log('hashTag: ', hashTag) //ok
-      const images = formData.getAll('images')
-      console.log('images: ', images)
-      console.log('selected categories', category)
+      if (response.ok) {
+        alert('업로드 되었습니다.')
+        window.location.href = `/feed`
+      } else {
+        alert('업로드에 실패했습니다. 다시 시도해주세요.')
+      }
     } catch (error) {
       console.error(error)
     }

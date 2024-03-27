@@ -1,4 +1,5 @@
 'use client'
+import DOMPurify from 'dompurify'
 import { FeedData } from '@/Store/FeedData'
 import { useRouter } from 'next/navigation'
 
@@ -37,27 +38,28 @@ export default function DetailContent({
     const result: JSX.Element[] = []
 
     splitContent.forEach((current, index) => {
-      const replacedContent = current
+      const cleanedContent = DOMPurify.sanitize(current)
         .replace(/\n/g, '<br />')
         .replace(/ /g, '&nbsp;')
 
       result.push(
         <span
           key={`content-${index}`}
-          dangerouslySetInnerHTML={{ __html: replacedContent }} // HTML 문자열을 설정하여 줄바꿈 인식
+          dangerouslySetInnerHTML={{ __html: cleanedContent }} // HTML 문자열을 설정하여 줄바꿈 인식
         />,
       )
 
       if (index !== splitContent.length - 1) {
         const currentHashTag = matchedHashTags[index]
-        const tagIndex = hashTag.indexOf(currentHashTag.slice(1))
+        const cleanedHashTag = DOMPurify.sanitize(currentHashTag)
+        const tagIndex = hashTag.indexOf(cleanedHashTag.slice(1))
 
         result.push(
           <span
             key={`hashtag-${index}`}
             className={tagIndex !== -1 ? 'text-blue-400 cursor-pointer' : ''}
-            onClick={() => handleHashTagClick(currentHashTag)}>
-            {currentHashTag}
+            onClick={() => handleHashTagClick(cleanedHashTag)}>
+            {cleanedHashTag}
           </span>,
         )
       }
@@ -68,7 +70,6 @@ export default function DetailContent({
 
   return (
     <div className="font-NanumSquareRound px-1 break-all text-justify w-full">
-      {/* 추후에 더보기 접기 버튼 넣어야 할 듯 */}
       <span className="font-extrabold mr-2">{nickName}</span>
       {extractAndStyleHashtags(content)}
     </div>

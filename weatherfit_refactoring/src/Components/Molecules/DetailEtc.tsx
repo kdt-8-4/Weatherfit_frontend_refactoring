@@ -1,15 +1,29 @@
 'use client'
 
 import { useState } from 'react'
+import jwt from 'jsonwebtoken'
 import IconStore, { IconStyle } from '../Atoms/Icon/IconStore'
 import ButtonStore, { ButtonStyle } from '../Atoms/Button/ButtonStore'
 import { usePathname, useRouter } from 'next/navigation'
 import { deleteAlert, deleteOkAlert } from '@/utils/function/utilFunction'
+import { AuthTokenStore } from '@/Store/AuthToken'
 
-export default function DetailEtc(boardId: BOARDID) {
+export default function DetailEtc({
+  boardId,
+  nickName,
+}: {
+  boardId: BOARDID
+  nickName: string
+}) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const { accesstoken } = AuthTokenStore()
+  const decodedToken = accesstoken
+    ? (jwt.decode(accesstoken) as { [key: string]: any })
+    : null
+  const decoded_nickName = decodedToken?.sub
   const router = useRouter()
   const currentUrl = usePathname()
+
   const handleEdit = () => {
     router.push(`${currentUrl}/edit`)
   }
@@ -23,9 +37,7 @@ export default function DetailEtc(boardId: BOARDID) {
             {
               method: 'DELETE',
               headers: {
-                // Authorization: 'Bearer ' + logintoken,
-                Authorization:
-                  'Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDY3OTA5MDEsImV4cCI6MTcwNjgwMTcwMSwic3ViIjoi7YWM7Iqk7YSwNTUifQ.sdm2nHun06cOIeWzXFv8xSbuuhY_yCsiRT7Upu1vtIs',
+                Authorization: 'Bearer ' + accesstoken,
               },
             },
           )
@@ -45,12 +57,15 @@ export default function DetailEtc(boardId: BOARDID) {
 
   return (
     <>
-      <IconStore
-        iconStyle={IconStyle.ETC}
-        style="cursor-pointer"
-        size={25}
-        onClickFunction={() => setIsDropdownOpen(!isDropdownOpen)}
-      />
+      {' '}
+      {decoded_nickName === nickName ? (
+        <IconStore
+          iconStyle={IconStyle.ETC}
+          style="cursor-pointer"
+          size={25}
+          onClickFunction={() => setIsDropdownOpen(!isDropdownOpen)}
+        />
+      ) : null}
       {isDropdownOpen && (
         <div className="absolute top-[160px] right-[12px] bg-white flex flex-col space-y-1 font-NanumSquareRound text-sm">
           <ButtonStore

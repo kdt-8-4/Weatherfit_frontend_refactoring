@@ -7,8 +7,10 @@ import ArrayImage from '../Molecules/ArrayImage'
 
 export default function ImageUpload({
   images,
+  mode,
 }: {
   images?: FEEDDATA_detail['images']
+  mode: 'edit' | 'upload'
 }) {
   const {
     selectedImages,
@@ -17,14 +19,16 @@ export default function ImageUpload({
     setExistingImages,
     setDeletedImages,
   } = useStore()
-  // const [existingImages, setExistingImages] = useState<IMAGE[]>([])
-  const initialImages = images
 
   useEffect(() => {
-    if (initialImages) {
-      setExistingImages(initialImages)
+    if (mode === 'edit' && images) {
+      setExistingImages(images)
+    } else if (mode === 'upload') {
+      // Upload 모드에서는 선택된 이미지와 기존 이미지 모두 초기화
+      setSelectedImages([])
+      setExistingImages([])
     }
-  }, [initialImages])
+  }, [mode, images, setExistingImages, setSelectedImages])
 
   const handleImagesSelected = useCallback((files: File[] | null) => {
     setSelectedImages(files ? Array.from(files) : [])

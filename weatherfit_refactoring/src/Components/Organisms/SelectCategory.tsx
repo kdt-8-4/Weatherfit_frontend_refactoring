@@ -7,8 +7,10 @@ import { useStore } from '../../Store/Store'
 
 export default function SelectCategory({
   initCategory,
+  mode,
 }: {
   initCategory?: FEEDDATA_detail['category']
+  mode: 'edit' | 'upload'
 }) {
   const { setSelectedSubCategories } = useStore()
 
@@ -26,7 +28,9 @@ export default function SelectCategory({
           key={category}
           category={category}
           subCategories={subCategories}
-          initialSelectedSubCategories={initCategory}
+          initialSelectedSubCategories={
+            mode === 'edit' ? initCategory : undefined
+          }
           onSelect={selectedSubCategories =>
             handleCategorySelect(category, selectedSubCategories)
           }

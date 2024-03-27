@@ -5,11 +5,13 @@ import { confirmAlert } from '@/utils/function/utilFunction'
 import { useRouter } from 'next/navigation'
 import { FormEvent, useState } from 'react'
 import { AuthUserStore } from '@/Store/AuthUser'
+import { AuthUserNickStore } from '@/Store/AuthUserNick'
 
 export default function LoginForm() {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const { setUserEmail } = AuthUserStore()
+  const { setUserNick } = AuthUserNickStore()
   const router = useRouter()
 
   const handleLogin = async (e: FormEvent) => {
@@ -36,7 +38,7 @@ export default function LoginForm() {
 
       document.cookie = `accessToken=${loginRes.token}; path=/`
       setUserEmail(loginRes.email)
-
+      setUserNick(loginRes.nickname)
       confirmAlert(`${loginRes.nickname}님 환영합니다!`)
 
       router.push('/')

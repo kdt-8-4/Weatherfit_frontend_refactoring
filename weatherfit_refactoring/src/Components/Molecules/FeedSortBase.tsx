@@ -1,5 +1,4 @@
 "use client"
-
 import { FeedSort } from "@/Store/FeedSort";
 import { FeedData } from "@/Store/FeedData";
 
@@ -7,6 +6,7 @@ export default function FeedSortBase(){
 
     const {feedSort ,setFeedSort} = FeedSort();
     const {feedData, setFeedData} = FeedData();
+
 
     const sortByLikes = () => {
         const sorted = [...feedData].sort((a, b) => b.likeCount - a.likeCount);
@@ -49,7 +49,6 @@ export default function FeedSortBase(){
             setFeedSort("OLD");
             sortByOldest();
         }
-        
     }
 
     return (

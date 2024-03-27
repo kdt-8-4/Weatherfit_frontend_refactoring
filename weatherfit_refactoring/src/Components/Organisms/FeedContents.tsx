@@ -28,7 +28,7 @@ export default function FeedContents({response}:Props) {
   }, []);
 
   return (
-    <div className="mt-5 flex flex-wrap relative">
+    <div className={`mt-5 flex flex-wrap relative`}>
       {feedData.map(feedDataArr => {
         return (
           <div key={feedDataArr.boardId}>

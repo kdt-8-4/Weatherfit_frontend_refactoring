@@ -3,6 +3,7 @@
 import { ButtonStyle } from '../Atoms/Button/ButtonStore'
 import Header from '../Molecules/Header'
 import { useStore } from '../../Store/Store'
+import { AuthTokenStore } from '@/Store/AuthToken'
 
 export default function EditHeader(boardId: BOARDID) {
   const {
@@ -12,9 +13,20 @@ export default function EditHeader(boardId: BOARDID) {
     selectedSubCategories,
     deletedImages,
   } = useStore()
+  const { accesstoken } = AuthTokenStore()
   const category = Object.values(selectedSubCategories).flat() // 하위 카테고리들만 저장
 
   const handleOnClick = async () => {
+    if (selectedImages.length === 0) {
+      alert('업로드 된 사진이 없습니다.')
+      return // 함수를 여기서 종료하여 더 이상 진행하지 않습니다.
+    }
+
+    if (category.length === 0) {
+      alert('선택된 카테고리가 없습니다.')
+      return // 함수를 여기서 종료합니다.
+    }
+
     try {
       const formData = new FormData()
       const boardData = {
@@ -36,18 +48,17 @@ export default function EditHeader(boardId: BOARDID) {
           body: formData,
           headers: {
             'Content-Type': 'multipart/form-data',
-            // Authorization: 'Bearer ' + accessToken,
+            Authorization: 'Bearer ' + accesstoken,
           },
         },
       )
 
-      console.log(response)
-      console.log('수정 버튼 클릭')
-      console.log('content: ', content)
-      console.log('hashTag: ', hashTag)
-      const images = formData.getAll('images')
-      console.log('images: ', images)
-      console.log('category', category)
+      if (response.ok) {
+        alert('수정이 완료되었습니다.')
+        window.location.href = `/detail/${boardId}`
+      } else {
+        alert('수정에 실패했습니다. 다시 시도해주세요.')
+      }
     } catch (error) {
       console.error(error)
     }

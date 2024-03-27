@@ -2,20 +2,19 @@
 import ButtonStore, { ButtonStyle } from "../Atoms/Button/ButtonStore"
 import { CategoryData } from "@/Store/CategoryData"
 import IconStore, { IconStyle } from "../Atoms/Icon/IconStore";
-import { useState } from "react";
 import FeedCategorySelect from "./FeedCategorySelect";
-
+import { CategoryControl } from "@/Store/CategoryControl";
 
 export default function FeedCategory() {
     
     const {categoryData} = CategoryData();
-    const [tabControl, setControl] = useState<boolean>(false);
+    const {categoryControl, setCategoryControl} = CategoryControl()
 
     const tabBooleanControl = () => {
-        if(tabControl == false) {
-            setControl(true);
+        if(categoryControl == false) {
+            setCategoryControl(true);
         } else {
-            setControl(false);
+            setCategoryControl(false);
         }
     }
 
@@ -32,7 +31,7 @@ export default function FeedCategory() {
                 })
             }
             </div>
-            {tabControl && <FeedCategorySelect setControl={setControl} />}
+            {categoryControl && <FeedCategorySelect/>}
         </div>
 
 

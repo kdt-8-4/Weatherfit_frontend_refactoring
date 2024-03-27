@@ -3,6 +3,8 @@
 import Image from 'next/image'
 import IconStore, { IconStyle } from '../Atoms/Icon/IconStore'
 import Link from 'next/link'
+import { AuthTokenStore } from '@/Store/AuthToken'
+import { AuthUserNickStore } from '@/Store/AuthUserNick'
 import { FeedData } from '@/Store/FeedData'
 
 
@@ -13,10 +15,10 @@ export default function FeedContent({ DataforFeed }: Props) {
   const {feedData, setFeedData} = FeedData()
   const date = new Date(DataforFeed.createDate);
   const createDate:string = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDay()}`;
-  const nickName:string = "황동준";
-  const loginToken:string = "로그인 토큰 프로바이더 생성 후 적용"
+  const { accesstoken } = AuthTokenStore()
+  const { userNick } = AuthUserNickStore()
 
-  const likeChecker = ( likelist:LIKE[], nickName:string ) => {
+  const likeChecker = ( likelist:LIKE[], nickName:string | null ) => {
     if( likelist.some((list) => list.nickName === nickName ) ) {
       return true
     } else {
@@ -24,20 +26,17 @@ export default function FeedContent({ DataforFeed }: Props) {
     }
   }
 
-  const isUserLiked:boolean = likeChecker( DataforFeed.likelist, nickName); 
+  const isUserLiked:boolean = likeChecker( DataforFeed.likelist, userNick ); 
 
-  const likeUpdate = () => {
-    
-  }
 
   const clickLike = async() => {
     const sendToLikeAPI = `https://www.jerneithe.site/board/like/${DataforFeed.boardId}`
     try {
       const res = await fetch(sendToLikeAPI, {
         method: "POST",
-        headers: { 
-          Authorization: "Bearer " + loginToken, 
+        headers: {  
           "Content-Type": "application/json",
+          Authorization: "Bearer " + accesstoken,
         }
       })
 

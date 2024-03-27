@@ -73,7 +73,7 @@ export default function Select({
                   : ButtonStyle.CATEGORY_BTN_Y
               }
               key={index}
-              style="mr-2 my-1.5"
+              style="mr-2 my-1.5 px-2 py-0.5"
               onClickFunction={() => selectSubCategory(subCategory)}>
               {subCategory}
             </ButtonStore>

@@ -17,7 +17,7 @@ interface Props {
 export default function ProfileEditModal({ onClickFunction }: Props) {
   return (
     <div className="fixed top-0 left-0 w-[100%] h-[100%] bg-[#00000066] z-[100] flex justify-center items-center">
-      <div className="bg-[#ffffff] w-[70vw] h-[75vh] rounded-md z-[200]">
+      <div className="bg-[#ffffff] w-[70vw] h-[67vh] rounded-md z-[200]">
         {/* 헤더 부분 */}
         <div className="flex justify-center items-center relative my-[10px]">
           <IconStore
@@ -46,7 +46,7 @@ export default function ProfileEditModal({ onClickFunction }: Props) {
           {/* 비밀번호 부분 */}
           <ProfilePwEdit />
           <hr className="my-[10px]" />
-          <div className="flex items-center justify-center flex-col">
+          <div className="flex items-center justify-evenly flex-col h-[92px]">
             <Logout />
             <Unregister />
           </div>

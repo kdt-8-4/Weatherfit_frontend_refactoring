@@ -31,6 +31,31 @@ export default function Mypage() {
   // const [myPostData, setMyPostData] = useState<FEEDDATA[]>([])
   // const [myLikePostData, setMyLikePostData] = useState<FEEDDATA[]>([])
 
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       // 프로필 데이터 가져오기
+  //       const res = await fetch(`https://www.jerneithe.site/user/api/profile`, {
+  //         method: 'POST',
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //           Authorization: 'Bearer' + accesstoken,
+  //         },
+  //         body: JSON.stringify({
+  //           email: userEmail,
+  //         }),
+  //       })
+
+  //       const profileRes = await res.json()
+  //       console.log('회원정보: ', profileRes)
+  //     } catch (err) {
+  //       console.log('회원정보 에러: ', err)
+  //     }
+  //   }
+  //   fetchData()
+  // }, [refreshProfile])
+
+  // 회원 정보 불러오기
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -47,69 +72,40 @@ export default function Mypage() {
         })
 
         const profileRes = await res.json()
-        console.log('회원정보: ', profileRes)
-      } catch (err) {
-        console.log('회원정보 에러: ', err)
+
+        // setUserProfile(profileRes)
+        // setUserImage(profileRes.image)
+
+        console.log('회원정보 data: ', profileRes)
+
+        // -----------------------------------------
+
+        // 게시물 데이터 가져오기
+        // const boardListRes = await fetch(
+        //   'https://www.jerneithe.site/board/list',
+        // )
+        // const boardListdata: FEEDDATA[] = await boardListRes.json()
+
+        // const filteredData = boardListdata.filter(
+        //   item => item.nickName === userPofile.nickname,
+        // )
+        // setMyPostData(filteredData)
+
+        // const filteredLikeData = boardListdata.filter(item =>
+        //   item.likelist.some(like => like.nickName === userPofile.nickname),
+        // )
+        // setMyLikePostData(filteredLikeData)
+      } catch (error) {
+        console.error('데이터 로딩 에러: ', error)
       }
     }
     fetchData()
   }, [refreshProfile])
 
-  // 회원 정보 불러오기
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       // 프로필 데이터 가져오기
-  //       const res = await fetch(`https://www.jerneithe.site/user/api/profile`, {
-  //         method: 'POST',
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //           Authorization: 'Bearer',
-  //         },
-  //         body: JSON.stringify({
-  //           email: localStorage.getItem('user_email'),
-  //         }),
-  //       })
-
-  //       const profileRes = await res.json()
-
-  //       setUserProfile(profileRes)
-  //       setUserImage(profileRes.image)
-
-  //       console.log('유저 data: ', profileRes)
-
-  //       // -----------------------------------------
-
-  //       // 게시물 데이터 가져오기
-  //       const boardListRes = await fetch(
-  //         'https://www.jerneithe.site/board/list',
-  //       )
-  //       const boardListdata: FEEDDATA[] = await boardListRes.json()
-
-  //       const filteredData = boardListdata.filter(
-  //         item => item.nickName === userPofile.nickname,
-  //       )
-  //       setMyPostData(filteredData)
-
-  //       const filteredLikeData = boardListdata.filter(item =>
-  //         item.likelist.some(like => like.nickName === userPofile.nickname),
-  //       )
-  //       setMyLikePostData(filteredLikeData)
-  //     } catch (error) {
-  //       console.error('데이터 로딩 에러: ', error)
-  //     }
-  //   }
-  //   fetchData()
-  // }, [refreshProfile])
-
   return (
     <>
       {/* 사용법 참고 */}
-      {loading ? (
-        <Loading />
-      ) : (
-        <>{check ? <div>로그인 함 </div> : <NoLogin />} </>
-      )}
+      {loading ? <Loading /> : <>{check ? <ProfileHeader /> : <NoLogin />} </>}
       {/* <ProfileHeader />
       <ProfileInfo
         profileImage={userImage}

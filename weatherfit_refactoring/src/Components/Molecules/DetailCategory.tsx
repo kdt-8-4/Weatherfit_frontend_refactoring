@@ -61,7 +61,7 @@ export default function DetailCategory({
                 key={index}
                 onClickFunction={() => handleSelectCategory(subCategory)}
                 buttonStyle={ButtonStyle.CATEGORY_BTN_Y}
-                style="mr-2 text-sm flex ">
+                style="mr-2 text-sm flex px-1.5 py-0.5">
                 {subCategory}
               </ButtonStore>
             ))}

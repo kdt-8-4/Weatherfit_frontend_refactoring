@@ -6,6 +6,7 @@ import DetailProfile from '../Molecules/DetailProfile'
 import DetailEtc from '../Molecules/DetailEtc'
 import NotFound from '@/app/not-found'
 
+
 export default async function DetailOrganism({
   boardId,
 }: {
@@ -46,7 +47,7 @@ export default async function DetailOrganism({
             <DetailEtc boardId={boardId} nickName={fetchBoardData.nickName} />
           </div>
           <DetailImage images={fetchBoardData.images} />
-          <LikeAndComment boardId={boardId} />
+          <LikeAndComment boardId={boardId} likelist={fetchBoardData.likelist} />
           <DetailContent
             nickName={fetchBoardData.nickName}
             content={fetchBoardData.content}

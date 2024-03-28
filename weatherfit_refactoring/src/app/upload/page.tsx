@@ -12,6 +12,7 @@ import { CheckStore } from '@/Store/Check'
 import { AuthTokenStore } from '@/Store/AuthToken'
 import { loginCheck } from '@/utils/function/utilFunction'
 import { useEffect } from 'react'
+import NavBar from '@/Components/Molecules/NavBar'
 
 export default function Upload() {
   const { loading, setLoading } = LoadingStore()
@@ -41,6 +42,7 @@ export default function Upload() {
                 <hr />
                 <SelectCategory mode="upload" />
               </div>
+              {/* <NavBar /> */}
             </div>
           ) : (
             <NoLogin />

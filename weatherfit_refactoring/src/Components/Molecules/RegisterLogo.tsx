@@ -11,7 +11,7 @@ export default function RegisterLogo(){
     }
     
     return (
-        <div>
+        <header>
             <BoxStore
                 boxStyle={BoxStyle.BOX_BLUE}
                 style={`absolute left-1/2 transform -translate-x-1/2 px-2 h-[25px] font-neurimboGothic text-[18px] pb-[7px] shadow-[7px_7px_1px] flex items-center cursor-pointer`}
@@ -21,6 +21,6 @@ export default function RegisterLogo(){
             <p className=" font-neurimboGothic text-center mt-[45px] text-[28px]">
                 회 원 가 입        
             </p>
-        </div>
+        </header>
     )
 }

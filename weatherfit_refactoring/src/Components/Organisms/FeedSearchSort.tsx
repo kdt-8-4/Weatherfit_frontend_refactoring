@@ -12,10 +12,12 @@ export default function FeedSearchSort(){
     return (
     <div className="relative">
         <FeedLogo textSize="15px" />
-        <FeedSearch />
-        <FeedTopCategory />
-        <WeatherNavbar/>
-        <FeedCategory/>
-        <FeedSortBase/>
+        <nav>
+            <FeedSearch />
+            <FeedTopCategory />
+            <WeatherNavbar/>
+            <FeedCategory/>
+            <FeedSortBase/>
+        </nav>
     </div>)
 }

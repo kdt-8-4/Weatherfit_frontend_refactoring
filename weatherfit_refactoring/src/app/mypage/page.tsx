@@ -72,8 +72,8 @@ export default function Mypage() {
 
   //       const profileRes = await res.json()
 
-  //       // setUserProfile(profileRes)
-  //       // setUserImage(profileRes.image)
+  //       setUserInfo(profileRes)
+  //       setProfileImage(profileRes.image)
 
   //       console.log('회원정보 data: ', profileRes)
 

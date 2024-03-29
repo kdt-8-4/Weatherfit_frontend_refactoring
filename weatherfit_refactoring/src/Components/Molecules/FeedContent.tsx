@@ -7,53 +7,48 @@ import { AuthTokenStore } from '@/Store/AuthToken'
 import { AuthUserNickStore } from '@/Store/AuthUserNick'
 import { FeedData } from '@/Store/FeedData'
 
-
 interface Props {
   DataforFeed: FEEDDATA
 }
 export default function FeedContent({ DataforFeed }: Props) {
-  const {feedData, setFeedData} = FeedData()
-  const date = new Date(DataforFeed.createDate);
-  const createDate:string = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDay()}`;
+  const { feedData, setFeedData } = FeedData()
+  const date = new Date(DataforFeed.createDate)
+  const createDate: string = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDay()}`
   const { accesstoken } = AuthTokenStore()
   const { userNick } = AuthUserNickStore()
 
-  const likeChecker = ( likelist:LIKE[], nickName:string | null ) => {
-    if( likelist.some((list) => list.nickName === nickName ) ) {
+  const likeChecker = (likelist: LIKE[], nickName: string | null) => {
+    if (likelist.some(list => list.nickName === nickName)) {
       return true
     } else {
       return false
     }
   }
 
-  const isUserLiked:boolean = likeChecker( DataforFeed.likelist, userNick ); 
+  const isUserLiked: boolean = likeChecker(DataforFeed.likelist, userNick)
 
-
-  const clickLike = async() => {
+  const clickLike = async () => {
     const sendToLikeAPI = `https://www.jerneithe.site/board/like/${DataforFeed.boardId}`
     try {
       const res = await fetch(sendToLikeAPI, {
-        method: "POST",
-        headers: {  
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + accesstoken,
-        }
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + accesstoken,
+        },
       })
 
       if (res.ok) {
-        console.log("좋아요 변경 성공");
+        console.log('좋아요 변경 성공')
         // 성공적으로 처리된 경우 추가적인 작업 수행
       } else {
         // throw new Error('Network response was not ok.')
-        console.error("좋아요 변경 실패:", res.status);
+        console.error('좋아요 변경 실패:', res.status)
         // 실패한 경우에 대한 처리
       }
-    
     } catch (error) {
-      console.error("좋아요 변경 실패:", error);
+      console.error('좋아요 변경 실패:', error)
     }
-
-
   }
 
   return (
@@ -98,11 +93,7 @@ export default function FeedContent({ DataforFeed }: Props) {
             <div className="flex">
               <div className="relative">
                 <IconStore
-                  iconStyle={
-                    isUserLiked ?
-                    IconStyle.LIKE :
-                    IconStyle.UNLIKE
-                  }
+                  iconStyle={isUserLiked ? IconStyle.LIKE : IconStyle.UNLIKE}
                   size={25}
                   style="relative top-[26%]"
                   onClickFunction={clickLike}

@@ -273,7 +273,7 @@ export default function Comment({
             style="my-[5px]"
             inputStyle="w-[285px] h-[30px]"
             btnText="게시"
-            place="닉네임(으)로 작성..."
+            place="황동준(으)로 작성..."
           />
         </div>
       )}

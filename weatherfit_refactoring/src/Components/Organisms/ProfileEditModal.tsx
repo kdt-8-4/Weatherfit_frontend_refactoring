@@ -17,7 +17,7 @@ interface Props {
 export default function ProfileEditModal({ onClickFunction }: Props) {
   return (
     <div className="fixed top-0 left-0 w-[100%] h-[100%] bg-[#00000066] z-[100] flex justify-center items-center">
-      <div className="bg-[#ffffff] w-[70vw] h-[67vh] rounded-md z-[200]">
+      <div className="bg-[#ffffff] w-[70vw] h-[600px] rounded-md z-[200]">
         {/* 헤더 부분 */}
         <div className="flex justify-center items-center relative my-[10px]">
           <IconStore
@@ -38,9 +38,9 @@ export default function ProfileEditModal({ onClickFunction }: Props) {
           <hr className="my-[10px]" />
           {/* 이메일, 이름, 닉네임 부분 */}
           <div className="flex flex-col items-center">
-            <ProfileModalInfo title="이메일" value="user@test.com" />
-            <ProfileModalInfo title="이름" value="가나다" />
-            <ProfileModalInfo title="닉네임" value="깜찍이" />
+            <ProfileModalInfo title="이메일" value="user1@test.com" />
+            <ProfileModalInfo title="이름" value="황동준" />
+            <ProfileModalInfo title="닉네임" value="황동준" />
           </div>
           <hr className="my-[10px]" />
           {/* 비밀번호 부분 */}

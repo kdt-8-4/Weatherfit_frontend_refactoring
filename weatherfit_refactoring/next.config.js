@@ -9,6 +9,9 @@ module.exports = {
       'openweathermap.org',
       'cdn.peacedoorball.blog',
       'cdnimg.melon.co.kr',
+      'www.google.com',
+      'image.ytn.co.kr',
+      'cdn-icons-png.flaticon.com',
     ],
   },
 }

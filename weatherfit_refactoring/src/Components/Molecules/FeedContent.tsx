@@ -59,7 +59,7 @@ export default function FeedContent({ DataforFeed }: Props) {
   return (
     <>
       {DataforFeed.images && (
-        <div className=" bg-E4E4E6 rounded-xl mx-2 my-2 w-[179px] h-[350px]">
+        <article className=" bg-E4E4E6 rounded-xl mx-2 my-2 w-[179px] h-[350px]">
           <div className="flex justify-between m-auto w-[90%] py-2">
             <div className="flex">
               <div className=" relative w-[40px] h-[40px]">
@@ -129,7 +129,7 @@ export default function FeedContent({ DataforFeed }: Props) {
               </div>
             </div>
           </div>
-        </div>
+        </article>
       )}
     </>
   )

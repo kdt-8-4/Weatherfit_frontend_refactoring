@@ -40,16 +40,6 @@ export default function ProfileInfo({
         </div>
         <p className="font-bold">{userInfo.nickname}</p>
       </div>
-      {/* -------------------------------지우기 */}
-      {/* <div className="flex items-center flex-col font-Cafe24SsurroundAir text-sm">
-        <p className="font-bold">내 게시물</p>
-        <p>{myPost.length}</p>
-      </div>
-      <div className="flex items-center flex-col font-Cafe24SsurroundAir text-sm">
-        <p className="font-bold">좋아요 한 게시물</p>
-        <p>{myLikePost.length}</p>
-      </div> */}
-      {/* -------------------------------------- */}
       <PostCount title="내 게시물" count={myPost.length} />
       <PostCount title="좋아요 한 게시물" count={myLikePost.length} />
     </div>

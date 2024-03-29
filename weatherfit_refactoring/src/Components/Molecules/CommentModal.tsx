@@ -109,7 +109,7 @@ export default function CommentModal({ onClickFunction }: Props) {
           style="m-[10px] absolute bottom-[5px]"
           inputStyle="w-[325px] h-[30px]"
           btnText="게시"
-          place="닉네임(으)로 작성..."
+          place="황동준(으)로 작성..."
         />
       </div>
     </div>

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import ProfileInfo from '@/Components/Molecules/ProfileInfo'
 import ProfileHeader from '@/Components/Organisms/ProfileHeader'
 import ProfileBoard from '@/Components/Organisms/ProfileBoard'
+import NavBar from '@/Components/Molecules/NavBar'
 import { AuthTokenStore } from '@/Store/AuthToken'
 import { LoadingStore } from '@/Store/Loading'
 import { CheckStore } from '@/Store/Check'
@@ -102,38 +103,31 @@ export default function Mypage() {
 
   return (
     <>
-      <ProfileHeader />
-      {userInfo && (
-        <ProfileInfo
-          profileImage={profileImage}
-          userInfo={userInfo}
-          myPost={myPostData}
-          myLikePost={myLikePostData}
-        />
-      )}
-      <ProfileBoard myPost={myPostData} myLikePost={myLikePostData} />
-      {/* {loading ? (
+      {loading ? (
         <Loading />
       ) : (
         <>
           {check ? (
             <>
               <ProfileHeader />
-              {userInfo && (
-                <ProfileInfo
-                  profileImage={profileImage}
-                  userInfo={userInfo}
-                  myPost={myPostData}
-                  myLikePost={myLikePostData}
-                />
-              )}
-              <ProfileBoard myPost={myPostData} myLikePost={myLikePostData} />
+              <main>
+                {userInfo && (
+                  <ProfileInfo
+                    profileImage={profileImage}
+                    userInfo={userInfo}
+                    myPost={myPostData}
+                    myLikePost={myLikePostData}
+                  />
+                )}
+                <ProfileBoard myPost={myPostData} myLikePost={myLikePostData} />
+                <NavBar />
+              </main>
             </>
           ) : (
             <NoLogin />
           )}
         </>
-      )} */}
+      )}
     </>
   )
 }

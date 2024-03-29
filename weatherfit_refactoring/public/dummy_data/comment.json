@@ -1,0 +1,115 @@
+{
+  "comments_data": [
+    {
+      "id": 1,
+      "boardId": 1,
+      "nickname": "감자",
+      "content": "멋있어요",
+      "createdDate": "2024-03-12",
+      "createdTime": "12:25",
+      "replyList": [
+        {
+          "id": 2,
+          "boardId": 1,
+          "nickname": "고구마",
+          "content": "ㅇㅈ",
+          "createdDate": "2024-03-12",
+          "createdTime": "13:25",
+          "replyList": [],
+          "status": 1
+        }
+      ],
+      "status": 1
+    },
+    {
+      "id": 3,
+      "boardId": 1,
+      "nickname": "마케터",
+      "content": "협찬 관련으로 DM 드렸습니다. 확인 부탁드려요^^",
+      "createdDate": "2024-03-12",
+      "createdTime": "12:32",
+      "replyList": [],
+      "status": 1
+    },
+    {
+      "id": 4,
+      "boardId": 1,
+      "nickname": "strong_minsu",
+      "content": "상의 정보 좀요",
+      "createdDate": "2024-03-12",
+      "createdTime": "13:33",
+      "replyList": [],
+      "status": 1
+    },
+    {
+      "id": 5,
+      "boardId": 1,
+      "nickname": "cute_ssu",
+      "content": "우왕",
+      "createdDate": "2024-03-12",
+      "createdTime": "16:25",
+      "replyList": [],
+      "status": 1
+    },
+    {
+      "id": 6,
+      "boardId": 1,
+      "nickname": "hae_hae",
+      "content": "스타일이 좋아요",
+      "createdDate": "2024-03-12",
+      "createdTime": "17:54",
+      "replyList": [],
+      "status": 1
+    },
+    {
+      "id": 7,
+      "boardId": 1,
+      "nickname": "ho_ho",
+      "content": "쏘 큣..♥",
+      "createdDate": "2024-03-12",
+      "createdTime": "18:12",
+      "replyList": [],
+      "status": 1
+    },
+    {
+      "id": 8,
+      "boardId": 1,
+      "nickname": "마라탕",
+      "content": "혹시 인스타 하시나요?",
+      "createdDate": "2024-03-12",
+      "createdTime": "20:03",
+      "replyList": [],
+      "status": 1
+    },
+    {
+      "id": 9,
+      "boardId": 1,
+      "nickname": "부리부리",
+      "content": "안 더우신가요?",
+      "createdDate": "2024-03-13",
+      "createdTime": "03:15",
+      "replyList": [],
+      "status": 1
+    },
+    {
+      "id": 10,
+      "boardId": 1,
+      "nickname": "황동준",
+      "content": "날씨랑 잘 어울려요!",
+      "createdDate": "2024-03-14",
+      "createdTime": "23:15",
+      "replyList": [],
+      "status": 1
+    },
+    {
+      "id": 11,
+      "boardId": 1,
+      "nickname": "코디네이터",
+      "content": "손민수 했더니 지금 날씨에 딱이에요ㅎㅎ",
+      "createdDate": "2024-03-15",
+      "createdTime": "11:25",
+      "replyList": [],
+      "status": 1
+    }
+  ]
+}

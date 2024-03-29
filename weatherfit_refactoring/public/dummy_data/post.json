@@ -5,7 +5,11 @@
       "nickName": "hae_hae",
       "likeCount": 2,
       "temperature": -6,
-      "images": "",
+      "images": {
+        "boardId": 1,
+        "imageId": 1,
+        "imageUrl": "/images/codi2.jpg"
+      },
       "category": ["후드 집업", "가죽자켓", "컨버스", "운동화", "베레모"],
       "hashTag": ["hi", "하이", "안녕"],
       "weatherIcon": "01d",
@@ -23,7 +27,11 @@
       "nickName": "hae_hae",
       "likeCount": 2,
       "temperature": -6,
-      "images": "",
+      "images": {
+        "boardId": 1,
+        "imageId": 1,
+        "imageUrl": "/images/codi1.jpg"
+      },
       "category": ["후드 집업", "가죽자켓", "컨버스", "운동화", "베레모"],
       "hashTag": ["hi", "하이", "안녕"],
       "weatherIcon": "01d",
@@ -35,11 +43,15 @@
       "modifiedDate": "2023-08-31 04:29:55"
     },
     {
-      "boardId": 1,
+      "boardId": 2,
       "nickName": "hae_hae",
       "likeCount": 2,
       "temperature": -6,
-      "images": "",
+      "images": {
+        "boardId": 2,
+        "imageId": 1,
+        "imageUrl": "/images/codi2.jpg"
+      },
       "category": ["후드 집업", "가죽자켓", "컨버스", "운동화", "베레모"],
       "hashTag": ["hi", "하이", "안녕"],
       "weatherIcon": "01d",

@@ -17,7 +17,7 @@ export default function DetailImage({
 
   return (
     <div className="flex justify-center items-center">
-      <div className="relative w-[250px] h-[350px]">
+      <div className="relative w-[350px] h-[350px]">
         <Image
           key={images[index].imageId}
           src={images[index].imageUrl}
@@ -25,7 +25,7 @@ export default function DetailImage({
           objectFit="cover"
           sizes="auto"
           alt={`image-${index}`}
-          className="rounded-xl m-2"
+          className="rounded-xl"
         />
       </div>
       {images.length > 1 && (

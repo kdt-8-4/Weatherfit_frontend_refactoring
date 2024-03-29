@@ -33,7 +33,7 @@ export default function BestThreeCodi({ data }: { data?: FEEDDATA_detail }) {
             />
           </BoxStore>
         </Link>
-        // 유저 정보 넣어야 함
+        // 유저 정보
       ))}
     </div>
   )

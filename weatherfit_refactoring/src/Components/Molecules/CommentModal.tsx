@@ -14,20 +14,21 @@ export default function CommentModal({ onClickFunction }: Props) {
   const [content, setContent] = useState<string>('')
   const { accesstoken, setAccessToken } = AuthTokenStore()
 
-  useEffect(() => {
-    setAccessToken()
-    const commentData = async () => {
-      try {
-        const res = await fetch('/dummy_data/comment.json')
-        const resData = await res.json()
-        console.log('res: ', resData)
-        setComments(resData.comments_data)
-      } catch (err) {
-        console.log('err:', err)
-      }
-    }
-    commentData()
-  }, [])
+  // 댓글 더미 데이터
+  // useEffect(() => {
+  //   setAccessToken()
+  //   const commentData = async () => {
+  //     try {
+  //       const res = await fetch('/dummy_data/comment.json')
+  //       const resData = await res.json()
+  //       console.log('res: ', resData)
+  //       setComments(resData.comments_data)
+  //     } catch (err) {
+  //       console.log('err:', err)
+  //     }
+  //   }
+  //   commentData()
+  // }, [])
 
   useEffect(() => {
     console.log('댓글 목록 업데이트: ', comments)
@@ -109,7 +110,7 @@ export default function CommentModal({ onClickFunction }: Props) {
           style="m-[10px] absolute bottom-[5px]"
           inputStyle="w-[325px] h-[30px]"
           btnText="게시"
-          place="황동준(으)로 작성..."
+          place="닉네임(으)로 작성..."
         />
       </div>
     </div>

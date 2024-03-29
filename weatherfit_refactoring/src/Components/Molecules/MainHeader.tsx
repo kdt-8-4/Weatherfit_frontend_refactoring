@@ -42,14 +42,14 @@ export default function MainHeader({ title }: Props) {
       {check ? (
         <ButtonStore
           buttonStyle={ButtonStyle.TEXT_BTN}
-          style="absolute right-[19px] font-gmarketsans text-black"
+          style="absolute right-[19px] font-gmarketsans text-black mt-[7px]"
           onClickFunction={logout}>
           로그아웃
         </ButtonStore>
       ) : (
         <Link
           href={`/login`}
-          className="absolute right-[19px] font-gmarketsans text-black">
+          className="absolute right-[19px] font-gmarketsans text-black mt-[7px]">
           로그인
         </Link>
       )}

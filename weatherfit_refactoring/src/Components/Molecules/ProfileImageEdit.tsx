@@ -77,7 +77,7 @@ export default function ProfileImageEdit() {
               alt="Current"
               width={100}
               height={100}
-              className="profile_image_icon_1"
+              className="rounded-[50%]"
             />
           ) : (
             <Image
@@ -85,13 +85,13 @@ export default function ProfileImageEdit() {
               alt="Uploaded"
               width={100}
               height={100}
-              className="profile_image_icon_1"
+              className="rounded-[50%]"
             />
           )
         ) : (
           <IconStore
             iconStyle={IconStyle.MY_PROFILE_FILL}
-            size={80}
+            size={100}
             style="border-[3px] border-solid border-gray rounded-full"
           />
         )}

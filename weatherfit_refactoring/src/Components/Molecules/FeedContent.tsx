@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { AuthTokenStore } from '@/Store/AuthToken'
 import { AuthUserNickStore } from '@/Store/AuthUserNick'
 import { FeedData } from '@/Store/FeedData'
+import { useFetchMutation } from '@/utils/useFetch/useFetchMutation'
 
 interface Props {
   DataforFeed: FEEDDATA
@@ -26,29 +27,26 @@ export default function FeedContent({ DataforFeed }: Props) {
   }
 
   const isUserLiked: boolean = likeChecker(DataforFeed.likelist, userNick)
+  const sendToLikeAPI = `https://www.jerneithe.site/board/like/${DataforFeed.boardId}`
+  const sendToLikeOption = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + accesstoken,
+    },
+  }
 
-  const clickLike = async () => {
-    const sendToLikeAPI = `https://www.jerneithe.site/board/like/${DataforFeed.boardId}`
-    try {
-      const res = await fetch(sendToLikeAPI, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: 'Bearer ' + accesstoken,
-        },
-      })
+  const { mutate, isLoading, error } = useFetchMutation(sendToLikeAPI)
 
-      if (res.ok) {
+  const clickLike = () => {
+    mutate(sendToLikeOption, {
+      onSuccess: () => {
         console.log('좋아요 변경 성공')
-        // 성공적으로 처리된 경우 추가적인 작업 수행
-      } else {
-        // throw new Error('Network response was not ok.')
-        console.error('좋아요 변경 실패:', res.status)
-        // 실패한 경우에 대한 처리
-      }
-    } catch (error) {
-      console.error('좋아요 변경 실패:', error)
-    }
+      },
+      onError: error => {
+        console.error('좋아요 변경 실패:', error)
+      },
+    })
   }
 
   return (

@@ -39,7 +39,7 @@ export default function MainOrganism() {
   // console.log(temperatureMax, temperatureMin)
 
   return (
-    <>
+    <main>
       <div className="w-full text-center">다른 캐스터들은 이렇게 입었어요!</div>
       <div className="w-full  flex flex-col items-center">
         <Image
@@ -51,6 +51,6 @@ export default function MainOrganism() {
         <span>BEST 3</span>
       </div>
       <BestThreeCodi data={data} />
-    </>
+    </main>
   )
 }

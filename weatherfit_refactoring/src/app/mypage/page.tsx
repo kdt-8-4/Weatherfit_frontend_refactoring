@@ -119,15 +119,17 @@ export default function Mypage() {
           {check ? (
             <>
               <ProfileHeader />
-              {userInfo && (
-                <ProfileInfo
-                  profileImage={profileImage}
-                  userInfo={userInfo}
-                  myPost={myPostData}
-                  myLikePost={myLikePostData}
-                />
-              )}
-              <ProfileBoard myPost={myPostData} myLikePost={myLikePostData} />
+              <main>
+                {userInfo && (
+                  <ProfileInfo
+                    profileImage={profileImage}
+                    userInfo={userInfo}
+                    myPost={myPostData}
+                    myLikePost={myLikePostData}
+                  />
+                )}
+                <ProfileBoard myPost={myPostData} myLikePost={myLikePostData} />
+              </main>
             </>
           ) : (
             <NoLogin />

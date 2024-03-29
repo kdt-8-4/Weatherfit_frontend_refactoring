@@ -1,7 +1,10 @@
 import ButtonStore, { ButtonStyle } from '@/Components/Atoms/Button/ButtonStore'
 
 export default function EasyLogin() {
-  const GoogleLogin = () => {}
+  const GoogleLogin = () => {
+    window.location.href =
+      'https://accounts.google.com/o/oauth2/v2/auth?client_id=453423602833-7db2b1dbicre47rkcrpfgn20nd16l9rs.apps.googleusercontent.com&redirect_uri=https://weatherfit-frontend.vercel.app/socialregister&response_type=token&scope=email'
+  }
 
   return (
     <div className="mt-[30px] flex flex-col items-center">
@@ -12,6 +15,7 @@ export default function EasyLogin() {
       <ButtonStore
         buttonStyle={ButtonStyle.GOOGLE_BTN}
         style="font-NanumSquareRound w-[85vw]"
+        onClickFunction={GoogleLogin}
       />
     </div>
   )

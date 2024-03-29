@@ -1,4 +1,5 @@
 import Header from '@/Components/Molecules/Header'
+import NavBar from '@/Components/Molecules/NavBar'
 import WeatherNavbar from '@/Components/Molecules/WeatherNavbar'
 import DetailOrganism from '@/Components/Organisms/DetailOrganism'
 
@@ -10,6 +11,7 @@ export default function Detail({ params }: { params: { id: BOARDID } }) {
       <Header title="옷늘날씨" />
       <WeatherNavbar />
       <DetailOrganism boardId={boardId} />
+      <NavBar />
     </div>
   )
 }

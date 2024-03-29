@@ -23,7 +23,7 @@ export default function Comment({
   const [isEditing, setIsEditing] = useState<boolean>(false)
   const [editContent, setEditContent] = useState<string>('')
   const { accesstoken, setAccessToken } = AuthTokenStore()
-  const decoded_nickname = 'cute_ssu'
+  const decoded_nickname = '황동준'
 
   useEffect(() => {
     setAccessToken()

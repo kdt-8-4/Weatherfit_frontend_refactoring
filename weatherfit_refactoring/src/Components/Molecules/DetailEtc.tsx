@@ -57,7 +57,6 @@ export default function DetailEtc({
 
   return (
     <>
-      {' '}
       {decoded_nickName === nickName ? (
         <IconStore
           iconStyle={IconStyle.ETC}

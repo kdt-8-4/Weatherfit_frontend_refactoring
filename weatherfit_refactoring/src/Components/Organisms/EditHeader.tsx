@@ -19,12 +19,12 @@ export default function EditHeader(boardId: BOARDID) {
   const handleOnClick = async () => {
     if (selectedImages.length === 0) {
       alert('업로드 된 사진이 없습니다.')
-      return // 함수를 여기서 종료하여 더 이상 진행하지 않습니다.
+      return null
     }
 
     if (category.length === 0) {
       alert('선택된 카테고리가 없습니다.')
-      return // 함수를 여기서 종료합니다.
+      return null
     }
 
     try {

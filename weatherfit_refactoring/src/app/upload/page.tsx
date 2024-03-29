@@ -33,16 +33,15 @@ export default function Upload() {
           {check ? (
             <div className="h-screen">
               <UploadHeader />
-              <div className="mx-5 h-full mt-[50px]">
-                <div className="flex-col items-center justify-center mb-7">
+              <main className="mx-5 h-full mt-[50px]">
+                <section className="flex-col items-center justify-center mb-7">
                   <UploadWeather />
                   <ImageUpload mode="upload" />
-                </div>
+                </section>
                 <TextAreaMolecule mode="upload" />
                 <hr />
                 <SelectCategory mode="upload" />
-              </div>
-              {/* <NavBar /> */}
+              </main>
             </div>
           ) : (
             <NoLogin />

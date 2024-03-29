@@ -43,7 +43,7 @@ export default function ProfilePost({ postData }: Props) {
         ))
       ) : (
         <>
-          <p className="post_box_p">게시물을 등록해주세요.</p>
+          <p className="post_box_p">게시물이 없습니다.</p>
         </>
       )} */}
       <div className="bg-[salmon] rounded-lg"></div>

@@ -20,8 +20,8 @@ export default function FeedCategory() {
 
 
     return (
-        <div>
-            <div onClick={tabBooleanControl} className=" font-NanumSquareRound flex flex-nowrap overflow-y-scroll my-1">
+        <nav>
+            <div onClick={tabBooleanControl} className=" font-NanumSquareRound flex flex-nowrap my-1">
             {
                 categoryData.map((val) => {
                     return<ButtonStore buttonStyle={ButtonStyle.CATEGORY_BTN} key={val.id} style="h-[30px] p-1 m-1 flex whitespace-nowrap">
@@ -32,7 +32,7 @@ export default function FeedCategory() {
             }
             </div>
             {categoryControl && <FeedCategorySelect/>}
-        </div>
+        </nav>
 
 
     )

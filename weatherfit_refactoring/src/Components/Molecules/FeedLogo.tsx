@@ -16,7 +16,7 @@ export default function FeedLogo({textSize}:Props){
     }
 
     return(
-        <div className="flex mt-3 text-center">
+        <header className="flex mt-3 text-center">
             <IconStore
                 iconStyle={IconStyle.PREV2}
                 size={20}
@@ -30,6 +30,6 @@ export default function FeedLogo({textSize}:Props){
                 >
                 옷늘날씨
             </ButtonStore>
-        </div>
+        </ header>
     )
 }

@@ -1,6 +1,8 @@
 import ButtonStore, { ButtonStyle } from '@/Components/Atoms/Button/ButtonStore'
 
 export default function EasyLogin() {
+  const GoogleLogin = () => {}
+
   return (
     <div className="mt-[30px] flex flex-col items-center">
       <hr className="w-[100%] h-[1px] block relative bottom-[-12px] border-none bg-[gray] " />

@@ -81,7 +81,7 @@ export default function RegisterForm(){
     }
 
     return(
-        <div
+        <main
             className=" mt-[30px] h-[600px] w-[350px]"
         >
             <RegisterEmailVerify 
@@ -122,6 +122,6 @@ export default function RegisterForm(){
             </ButtonStore>
 
 
-        </div>
+        </main>
     )
 }

@@ -17,7 +17,7 @@ export default function FeedContents({ response }: Props) {
 
   useEffect(() => {
     console.log('받아온 feedData', response)
-    const copyResponse: FEEDDATA[] = [...response]
+    const copyResponse: FEEDDATA[] = response ?? []
     const filterByTemp = copyResponse.filter(
       copyRes =>
         copyRes.temperature >= temperatureMin &&
@@ -28,7 +28,7 @@ export default function FeedContents({ response }: Props) {
 
   return (
     <main className={`mt-5 flex flex-wrap relative`}>
-      {feedData.map(feedDataArr => {
+      {feedData?.map(feedDataArr => {
         return (
           <div key={feedDataArr.boardId}>
             <FeedContent DataforFeed={feedDataArr} />

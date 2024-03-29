@@ -44,20 +44,19 @@ interface FEEDDATA_detail {
 }
 
 interface SelecList {
-  list_id : number;
-  selectList : string;
+  list_id: number
+  selectList: string
 }
 
-
 interface TabMenu {
-  id: number;
-  title?: string;
-  value: string;
-  selectLists : SelecList[];
+  id: number
+  title?: string
+  value: string
+  selectLists: SelecList[]
 }
 
 interface CategoryStore {
-  categoryData : TabMenu[];
+  categoryData: TabMenu[]
 }
 
 interface CommentType {
@@ -71,8 +70,14 @@ interface CommentType {
   status: number
 }
 
-
 interface LIKE {
-  likeId : number;
-  nickName: string;
+  likeId: number
+  nickName: string
+}
+
+interface UserData {
+  nickname: string
+  name: string
+  email: string
+  pw: string
 }

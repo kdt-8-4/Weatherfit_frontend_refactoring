@@ -1,5 +1,6 @@
 'use client'
 
+import TextStore, { TextStyle } from '../Atoms/Text/TextStore'
 import { useEffect, useState } from 'react'
 import { WeatherTempMax } from '@/Store/WeatherMaxTemp'
 import { WeatherTempMin } from '@/Store/WeatherMinTemp'
@@ -40,15 +41,19 @@ export default function MainOrganism() {
 
   return (
     <>
-      <div className="w-full text-center">다른 캐스터들은 이렇게 입었어요!</div>
-      <div className="w-full  flex flex-col items-center">
+      <div className="w-full  flex flex-col items-center mt-[40px]">
+        <TextStore
+          textStyle={TextStyle.NANUM_TEXT}
+          style="mb-[20px] text-[20px]">
+          다른 캐스터들은 이렇게 입었어요!
+        </TextStore>
         <Image
           src="https://cdn-icons-png.flaticon.com/128/8371/8371286.png"
           alt="crown"
           width={30}
           height={30}
         />
-        <span>BEST 3</span>
+        <span className=" font-NanumSquareRound">BEST 3</span>
       </div>
       <BestThreeCodi data={data} />
     </>

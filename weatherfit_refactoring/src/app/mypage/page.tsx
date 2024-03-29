@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import ProfileInfo from '@/Components/Molecules/ProfileInfo'
 import ProfileHeader from '@/Components/Organisms/ProfileHeader'
 import ProfileBoard from '@/Components/Organisms/ProfileBoard'
+import NavBar from '@/Components/Molecules/NavBar'
 import { AuthTokenStore } from '@/Store/AuthToken'
 import { LoadingStore } from '@/Store/Loading'
 import { CheckStore } from '@/Store/Check'
@@ -112,6 +113,7 @@ export default function Mypage() {
         />
       )}
       <ProfileBoard myPost={myPostData} myLikePost={myLikePostData} />
+      <NavBar />
       {/* {loading ? (
         <Loading />
       ) : (

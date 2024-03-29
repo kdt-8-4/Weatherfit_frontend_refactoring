@@ -7,7 +7,9 @@ import { AuthTokenStore } from '@/Store/AuthToken'
 
 export default function ProfileImageEdit() {
   // const [selectedImage, setSelectedImage] = useState(userProfileImage)
-  const [selectedImage, setSelectedImage] = useState(null)
+  const [selectedImage, setSelectedImage] = useState<string | null>(
+    'https://cdnimg.melon.co.kr/cm2/artistcrop/images/002/61/143/261143_20210325180240_500.jpg?61e575e8653e5920470a38d1482d7312/melon/optimize/90',
+  )
   const { userEmail } = AuthUserStore()
   const { accesstoken } = AuthTokenStore()
 

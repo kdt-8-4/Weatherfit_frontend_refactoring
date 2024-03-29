@@ -16,7 +16,7 @@ export default async function EditOrganism({ boardId }: BOARDID) {
   return (
     <div className="h-screen">
       <EditHeader boardId={boardId} />
-      <div className="mx-5 h-full mt-[50px]">
+      <main className="mx-5 h-full mt-[50px]">
         <div className="flex-col items-center justify-center mb-7">
           <EditWeather weatherIcon={data.weatherIcon} />
           <ImageUpload images={data.images} mode="edit" />
@@ -24,7 +24,7 @@ export default async function EditOrganism({ boardId }: BOARDID) {
         <TextAreaMolecule initContent={data.content} mode="edit" />
         <hr />
         <SelectCategory initCategory={data.category} mode="edit" />
-      </div>
+      </main>
     </div>
   )
 }

@@ -102,7 +102,7 @@ export default function Mypage() {
 
   return (
     <>
-      <ProfileHeader />
+      {/* <ProfileHeader />
       {userInfo && (
         <ProfileInfo
           profileImage={profileImage}
@@ -111,29 +111,31 @@ export default function Mypage() {
           myLikePost={myLikePostData}
         />
       )}
-      <ProfileBoard myPost={myPostData} myLikePost={myLikePostData} />
-      {/* {loading ? (
+      <ProfileBoard myPost={myPostData} myLikePost={myLikePostData} /> */}
+      {loading ? (
         <Loading />
       ) : (
         <>
           {check ? (
             <>
               <ProfileHeader />
-              {userInfo && (
-                <ProfileInfo
-                  profileImage={profileImage}
-                  userInfo={userInfo}
-                  myPost={myPostData}
-                  myLikePost={myLikePostData}
-                />
-              )}
-              <ProfileBoard myPost={myPostData} myLikePost={myLikePostData} />
+              <main>
+                {userInfo && (
+                  <ProfileInfo
+                    profileImage={profileImage}
+                    userInfo={userInfo}
+                    myPost={myPostData}
+                    myLikePost={myLikePostData}
+                  />
+                )}
+                <ProfileBoard myPost={myPostData} myLikePost={myLikePostData} />
+              </main>
             </>
           ) : (
             <NoLogin />
           )}
         </>
-      )} */}
+      )}
     </>
   )
 }

@@ -22,7 +22,7 @@ export default function BestThreeCodi({ data }: { data?: FEEDDATA_detail }) {
   return (
     <div className="flex space-x-2 w-full justify-center cursor-pointer">
       {data.images.map((image, index) => (
-        <Link href={`/detail/${data.boardId}`}>
+        <Link href={`feed/detail/${data.boardId}`}>
           <BoxStore boxStyle={BoxStyle.BOX_IMAGE} key={index}>
             <Image
               src={image.imageUrl}

@@ -55,7 +55,7 @@ export default function EditHeader(boardId: BOARDID) {
 
       if (response.ok) {
         alert('수정이 완료되었습니다.')
-        window.location.href = `/detail/${boardId}`
+        window.location.href = `feed/detail/${boardId}`
       } else {
         alert('수정에 실패했습니다. 다시 시도해주세요.')
       }

@@ -36,10 +36,10 @@ export default function FeedContent({ DataforFeed }: Props) {
     },
   }
 
-  const { mutate, isLoading, error } = useFetchMutation(sendToLikeAPI)
+  const { mutate: sendToLike } = useFetchMutation(sendToLikeAPI)
 
   const clickLike = () => {
-    mutate(sendToLikeOption, {
+    sendToLike(sendToLikeOption, {
       onSuccess: () => {
         console.log('좋아요 변경 성공')
       },

@@ -1,9 +1,5 @@
 import EditOrganism from '@/Components/Organisms/EditOrganism'
 
-// type Params {
-
-// }
-
 export default function Edit({ params }: { params: { id: string } }) {
   const { id: boardId } = params
 

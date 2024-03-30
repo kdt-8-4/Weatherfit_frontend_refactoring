@@ -1,7 +1,6 @@
 import { useMutation } from 'react-query'
 
 // 비동기 통신을 위한 함수
-// options에 method와 body를 포함시켜 동적으로 처리할 수 있도록 수정
 async function fetcher(url: string, options: RequestInit) {
   const response = await fetch(url, {
     ...options,
@@ -20,7 +19,6 @@ async function fetcher(url: string, options: RequestInit) {
 }
 
 // 커스텀 훅
-// options에는 method와 body를 포함할 수 있도록 수정
 export function useFetchMutation<T>(url: string) {
   return useMutation<T, Error, RequestInit>(options => fetcher(url, options))
 }

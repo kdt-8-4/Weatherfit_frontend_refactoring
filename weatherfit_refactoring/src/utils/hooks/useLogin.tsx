@@ -1,12 +1,9 @@
-'use client'
-import ButtonStore, { ButtonStyle } from '@/Components/Atoms/Button/ButtonStore'
-import InputStore, { InputStyle } from '@/Components/Atoms/Input/InputStore'
-import { confirmAlert } from '@/utils/function/utilFunction'
+import { confirmAlert } from '../function/utilFunction'
 import { useRouter } from 'next/navigation'
 import { FormEvent, useState } from 'react'
-import { AuthUserStore } from '@/Store/AuthUser'
-import { AuthUserNickStore } from '@/Store/AuthUserNick'
-import { useFetchMutation } from '@/utils/useFetch/useFetchMutation'
+import { AuthUserStore } from '../../Store/AuthUser'
+import { AuthUserNickStore } from '../..//Store/AuthUserNick'
+import { useFetchMutation } from '../useFetch/useFetchMutation'
 
 interface LoginResponse {
   token: string
@@ -14,7 +11,13 @@ interface LoginResponse {
   nickname: string
 }
 
-export default function LoginForm() {
+export function useLogin({
+  email,
+  password,
+}: {
+  email: string
+  password: string
+}) {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const { setUserEmail } = AuthUserStore()
@@ -64,40 +67,11 @@ export default function LoginForm() {
     })
   }
 
-  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value)
+  return {
+    setEmail,
+    setPassword,
+    handleLogin,
+    email,
+    password,
   }
-
-  const handlePwChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value)
-  }
-
-  return (
-    <form
-      className="flex flex-col justify-evenly w-[85vw] h-[30vh]"
-      onSubmit={handleLogin}>
-      <InputStore
-        value={email}
-        onChageFunction={handleEmailChange}
-        inputStyle={InputStyle.INPUT_WHITE}
-        inputType="text"
-        placeholderContents="이메일"
-        style="font-NanumSquareRound h-[38px] border-[#abacad]"
-      />
-      <InputStore
-        value={password}
-        onChageFunction={handlePwChange}
-        inputStyle={InputStyle.INPUT_WHITE}
-        inputType="password"
-        placeholderContents="비밀번호"
-        style="font-NanumSquareRound h-[38px] border-[#abacad]"
-      />
-      <ButtonStore
-        buttonStyle={ButtonStyle.CONFIRM_BTN}
-        style="font-neurimboGothic text-[22px] pb-[6px]"
-        btnType="submit">
-        로그인
-      </ButtonStore>
-    </form>
-  )
 }

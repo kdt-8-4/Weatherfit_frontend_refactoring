@@ -5,6 +5,7 @@ import { confirmAlert, strongPassword } from '@/utils/function/utilFunction'
 import bcrypt from 'bcryptjs'
 import { AuthUserStore } from '@/Store/AuthUser'
 import { AuthTokenStore } from '@/Store/AuthToken'
+import { useFetchMutation } from '@/utils/useFetch/useFetchMutation'
 
 export default function ProfilePwEdit() {
   const [currentPw, setCurrentPw] = useState<string>('')
@@ -47,30 +48,31 @@ export default function ProfilePwEdit() {
       return
     }
 
-    try {
-      if (confirm('비밀번호를 수정하시겠습니까?')) {
-        const res = await fetch(
-          `https://www.jerneithe.site/user/api/profile/modify`,
-          {
-            method: 'PATCH',
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: 'Bearer' + accesstoken,
-            },
-            body: JSON.stringify({
-              email: userEmail,
-              password: newPw,
-            }),
-          },
-        )
-        const pwRes = await res.json()
-
-        console.log('비밀번호 수정 결과: ', pwRes)
-      }
-    } catch (err) {
-      console.log('비밀번호 수정 오류: ', err)
+    const editPasswordUrl = 'https://www.jerneithe.site/user/api/profile/modify'
+    const editPasswordOptions = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer' + accesstoken,
+      },
+      body: JSON.stringify({
+        email: userEmail,
+        password: newPw,
+      }),
+    }
+    const { mutate: editPassword } = useFetchMutation(editPasswordUrl)
+    if (confirm('비밀번호를 수정하시겠습니까?')) {
+      editPassword(editPasswordOptions, {
+        onSuccess: (data: any) => {
+          console.log('비밀번호 수정 확인', data)
+        },
+        onError: error => {
+          console.log('비밀번호 수정 오류', error)
+        },
+      })
     }
   }
+
   return (
     <form className="flex flex-col" onSubmit={handlePwEditSubmit}>
       <div>

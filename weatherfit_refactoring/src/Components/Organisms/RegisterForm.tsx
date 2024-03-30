@@ -7,6 +7,7 @@ import { confirmAlert } from '@/utils/function/utilFunction'
 import RegisterEmailVerify from '../Molecules/RegisterEmailVerify'
 import RegisterNickname from '../Molecules/RegisterNickname'
 import Registerpw from '../Molecules/Registerpw'
+import { useFetchMutation } from '@/utils/useFetch/useFetchMutation'
 
 export default function RegisterForm() {
   const router = useRouter()
@@ -44,30 +45,27 @@ export default function RegisterForm() {
       nickname: nickname,
       password: password,
     }
-    if (permisson) {
-      try {
-        const send_verifycode = await fetch(
-          'https://www.jerneithe.site/user/signup',
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(registerInfo),
-          },
-        )
+    const registerUrl = 'https://www.jerneithe.site/user/signup'
+    const registerOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(registerInfo),
+    }
 
-        if (send_verifycode.ok) {
-          confirmAlert('옷늘 캐스터 등록 완료!')
+    if (permisson) {
+      const { mutate: register } = useFetchMutation(registerUrl)
+      register(registerOptions, {
+        onSuccess: () => {
+          confirmAlert('옷늘 캐스터 등록되었습니다.')
           router.push('/')
-        } else {
-          console.error('에러 발생', send_verifycode.status)
-          confirmAlert('모든 정보를 입력해야 \n등록이 가능합니다.')
-        }
-      } catch (error) {
-        console.error('에러 발생', error)
-        confirmAlert('모든 정보를 입력해야 \n등록이 가능합니다.')
-      }
+        },
+        onError: error => {
+          console.log(error)
+          confirmAlert('입력하지 않은 정보가 있습니다.')
+        },
+      })
     } else {
       confirmAlert('이메일 인증을 완료해주세요.')
     }

@@ -7,32 +7,25 @@ import { WeatherTempMin } from '@/Store/WeatherMinTemp'
 import BestThreeCodi from '../Molecules/BestThreeCodi'
 import bestCodi from '../../../public/dummy_data/bestCodi.json'
 import Image from 'next/image'
+import { useFetchGet } from '@/utils/useFetch/useFetchGet'
 
 export default function MainOrganism() {
   const { temperatureMax } = WeatherTempMax()
   const { temperatureMin } = WeatherTempMin()
 
   const [data, setData] = useState<FEEDDATA_detail | undefined>()
-  // const [data, setData] = useState<FEEDDATA_detail[]>(
-  //   bestCodi as unknown as FEEDDATA_detail[],
-  // )
-  // console.log(data)
-
+  const bestCodiQueryKey = 'bestThreeCodis'
+  const bestCodiUrl = `https://www.jerneithe.site/board/tops?temp_min=${temperatureMax}&temp_max=${temperatureMin}`
+  const bestCodiOptions = { method: 'GET' }
+  const { data: bestCodis, error } = useFetchGet(
+    bestCodiQueryKey,
+    bestCodiUrl,
+    bestCodiOptions,
+  )
   useEffect(() => {
-    const getBestCodi = async () => {
-      try {
-        const response = await fetch(
-          `https://www.jerneithe.site/board/tops?temp_min=${temperatureMax}&temp_max=${temperatureMin}`,
-          {
-            method: 'GET',
-          },
-        )
-
-        const data = await response.json()
-        setData(data)
-      } catch (error) {
-        console.error(error)
-      }
+    const getBestCodi = () => {
+      setData(bestCodis)
+      if (error) console.log('코디 불러오기 실패', error)
     }
     getBestCodi()
   }, [temperatureMax, temperatureMin])

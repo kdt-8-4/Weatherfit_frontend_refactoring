@@ -11,14 +11,7 @@ import NotFound from '@/app/not-found'
 import Loading from './Loading'
 
 export default function DetailOrganism({ boardId }: { boardId: BOARDID }) {
-  // const fetchBoardDataResponse = await fetch(
-  //   `https://www.jerneithe.site/board/detail/${boardId}`,
-  //   {
-  //     method: 'GET',
-  //   },
-  // )
-  // const fetchBoardData = await fetchBoardDataResponse.json()
-
+  // 게시물 데이터 받아오기
   const boardDataQueryKey = 'boardData'
   const boardDataUrl = `https://www.jerneithe.site/board/detail/${boardId}`
   const boardDataOption = { method: 'GET' }
@@ -28,20 +21,7 @@ export default function DetailOrganism({ boardId }: { boardId: BOARDID }) {
     error: boardError,
   } = useFetchGet(boardDataQueryKey, boardDataUrl, boardDataOption)
 
-  // const fetchUserDataResponse = await fetch(
-  //   `https://www.jerneithe.site/user/api/userinfo`,
-  //   {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({
-  //       nickName: fetchBoardData.nickName,
-  //     }),
-  //   },
-  // )
-  // const fetchUserData = await fetchUserDataResponse.json()
-
+  // 사용자 데이터 받아오기
   const [fetchUserData, setFetchUserData] = useState<FEEDDATA_detail | null>(
     null,
   )
@@ -56,8 +36,8 @@ export default function DetailOrganism({ boardId }: { boardId: BOARDID }) {
     }),
   }
 
-  const { mutate } = useFetchMutation<FEEDDATA_detail>(userDataUrl)
-  mutate(userDataOption, {
+  const { mutate: getUserData } = useFetchMutation<FEEDDATA_detail>(userDataUrl)
+  getUserData(userDataOption, {
     onSuccess: data => {
       console.log('사용자 데이터:', data)
       setFetchUserData(data)

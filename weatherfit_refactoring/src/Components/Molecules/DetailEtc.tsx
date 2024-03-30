@@ -7,6 +7,7 @@ import ButtonStore, { ButtonStyle } from '../Atoms/Button/ButtonStore'
 import { usePathname, useRouter } from 'next/navigation'
 import { deleteAlert, deleteOkAlert } from '@/utils/function/utilFunction'
 import { AuthTokenStore } from '@/Store/AuthToken'
+import { useFetchMutation } from '@/utils/useFetch/useFetchMutation'
 
 export default function DetailEtc({
   boardId,
@@ -28,29 +29,29 @@ export default function DetailEtc({
     router.push(`${currentUrl}/edit`)
   }
 
+  const deleteBoardUrl = `https://www.jerneithe.site/board/delete/${boardId}`
+  const deleteBoardOptions = {
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Bearer ' + accesstoken,
+    },
+  }
+  const { mutate: deleteBoard, isLoading } = useFetchMutation(deleteBoardUrl)
+
   const handleDelete = () => {
-    deleteAlert().then(async result => {
-      if (result.isConfirmed) {
-        try {
-          const response = await fetch(
-            `https://www.jerneithe.site/board/delete/${boardId}`,
-            {
-              method: 'DELETE',
-              headers: {
-                Authorization: 'Bearer ' + accesstoken,
-              },
-            },
-          )
-          const data = await response.json()
-          console.log(data.result)
-          if (response.ok) {
+    deleteAlert().then(result => {
+      if (result.isConfirmed && isLoading) {
+        deleteBoard(deleteBoardOptions, {
+          onSuccess: () => {
+            alert('게시글이 삭제되었습니다.')
             deleteOkAlert().then(() => {
               router.push('/feed')
             })
-          }
-        } catch (error) {
-          console.error('Error: ', error)
-        }
+          },
+          onError: error => {
+            console.error('Error: ', error)
+          },
+        })
       }
     })
   }

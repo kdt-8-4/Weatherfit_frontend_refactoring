@@ -8,12 +8,6 @@ import Loading from '@/Components/Organisms/Loading'
 import NotFound from '../not-found'
 
 export default function Feedpage() {
-  // const feedDataFetch = await fetch('https://www.jerneithe.site/board/list', {
-  //   method: 'GET',
-  // })
-
-  // const feedContentsData: FEEDDATA[] = await feedDataFetch.json()
-
   const feedQueryKey = 'feedContents'
   const feedUrl = 'https://www.jerneithe.site/board/list'
   const feedOption = { method: 'GET' }

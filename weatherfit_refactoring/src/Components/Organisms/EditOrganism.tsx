@@ -1,17 +1,21 @@
+import { useFetchGet } from '@/utils/useFetch/useFetchGet'
 import EditWeather from '../Molecules/EditWeather'
 import TextAreaMolecule from '../Molecules/TextAreaMolecule'
 import EditHeader from './EditHeader'
 import ImageUpload from './ImageUpload'
 import SelectCategory from './SelectCategory'
+import Loading from './Loading'
 
-export default async function EditOrganism({ boardId }: BOARDID) {
-  const response = await fetch(
-    `https://www.jerneithe.site/board/detail/${boardId}`,
-    {
-      method: 'GET',
-    },
+export default function EditOrganism({ boardId }: BOARDID) {
+  const boardDetailQueryKey = 'boardDetail'
+  const boardDetailUrl = `https://www.jerneithe.site/board/detail/${boardId}`
+  const boardDetailOptions = { method: 'GET' }
+
+  const { data } = useFetchGet<FEEDDATA_detail>(
+    boardDetailQueryKey,
+    boardDetailUrl,
+    boardDetailOptions,
   )
-  const data: FEEDDATA_detail = await response.json()
 
   return (
     <div className="h-screen">

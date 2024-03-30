@@ -14,7 +14,7 @@ export default function UploadHeader() {
   const { accesstoken } = AuthTokenStore()
 
   const uploadUrl = 'https://www.jerneithe.site/board/write'
-  const { mutate, isLoading, error } = useFetchMutation(uploadUrl)
+  const { mutate: uploadBoard } = useFetchMutation(uploadUrl)
 
   const handleOnClick = async () => {
     if (selectedImages.length === 0) {
@@ -41,13 +41,12 @@ export default function UploadHeader() {
       formData.append('images', image)
     })
 
-    mutate(
+    uploadBoard(
       {
         method: 'POST',
         body: formData,
         headers: {
           Authorization: 'Bearer ' + accesstoken,
-          // 'Content-Type': 'multipart/form-data' 헤더 생략. 브라우저가 자동으로 처리
         },
       },
       {

@@ -1,16 +1,16 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import ProfileInfo from '@/Components/Molecules/ProfileInfo'
-import ProfileHeader from '@/Components/Organisms/ProfileHeader'
-import ProfileBoard from '@/Components/Organisms/ProfileBoard'
-import NavBar from '@/Components/Molecules/NavBar'
+import ProfileInfo from '@/Components/Organisms/mypage/ProfileInfo'
+import ProfileHeader from '@/Components/Molecules/header/ProfileHeader'
+import ProfileBoard from '@/Components/Organisms/mypage/ProfileBoard'
+import NavBar from '@/Components/Molecules/bar/NavBar'
 import { AuthTokenStore } from '@/Store/AuthToken'
 import { LoadingStore } from '@/Store/Loading'
 import { CheckStore } from '@/Store/Check'
 import { loginCheck } from '@/utils/function/utilFunction'
-import Loading from '@/Components/Organisms/Loading'
-import NoLogin from '@/Components/Organisms/NoLogin'
+import Loading from '@/Components/Molecules/check/Loading'
+import NoLogin from '@/Components/Molecules/check/NoLogin'
 import { AuthUserStore } from '@/Store/AuthUser'
 
 export default function Mypage() {
@@ -36,11 +36,11 @@ export default function Mypage() {
     const fetchData = async () => {
       try {
         // 프로필 더미 데이터 가져오기
-        const res = await fetch('/dummy_data/userprofile.json')
-        const profileRes = await res.json()
-        console.log('회원정보: ', profileRes.userprofile_data)
-        setUserInfo(profileRes.userprofile_data)
-        setProfileImage(profileRes.profileimage_data.profileImage)
+        const profileres = await fetch('/dummy_data/userprofile.json')
+        const profiledata = await profileres.json()
+        console.log('회원정보: ', profiledata.userprofile_data)
+        setUserInfo(profiledata.userprofile_data)
+        setProfileImage(profiledata.profileimage_data.profileImage)
 
         const postres = await fetch('dummy_data/post.json')
         const postdata = await postres.json()
@@ -103,7 +103,20 @@ export default function Mypage() {
 
   return (
     <>
-      {loading ? (
+      <ProfileHeader />
+      <main className="h-[80.5vh] overflow-y-auto">
+        {userInfo && (
+          <ProfileInfo
+            profileImage={profileImage}
+            userInfo={userInfo}
+            myPost={myPostData}
+            myLikePost={myLikePostData}
+          />
+        )}
+        <ProfileBoard myPost={myPostData} myLikePost={myLikePostData} />
+      </main>
+      <NavBar />
+      {/* {loading ? (
         <Loading />
       ) : (
         <>
@@ -120,14 +133,14 @@ export default function Mypage() {
                   />
                 )}
                 <ProfileBoard myPost={myPostData} myLikePost={myLikePostData} />
-                <NavBar />
               </main>
+              <NavBar />
             </>
           ) : (
             <NoLogin />
           )}
         </>
-      )}
+      )} */}
     </>
   )
 }

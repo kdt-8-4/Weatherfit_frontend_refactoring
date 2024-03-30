@@ -1,18 +1,18 @@
 'use client'
 
-import ImageUpload from '@/Components/Organisms/ImageUpload'
-import TextAreaMolecule from '@/Components/Molecules/TextAreaMolecule'
-import SelectCategory from '@/Components/Organisms/SelectCategory'
-import UploadHeader from '@/Components/Organisms/UploadHeader'
-import UploadWeather from '@/Components/Molecules/UploadWeather'
-import Loading from '@/Components/Organisms/Loading'
-import NoLogin from '@/Components/Organisms/NoLogin'
+import ImageUpload from '@/Components/Molecules/post/ImageUpload'
+import TextAreaMolecule from '@/Components/Molecules/post/TextAreaMolecule'
+import SelectCategory from '@/Components/Molecules/post/SelectCategory'
+import UploadHeader from '@/Components/Molecules/header/UploadHeader'
+import UploadWeather from '@/Components/Molecules/post/UploadWeather'
+import Loading from '@/Components/Molecules/check/Loading'
+import NoLogin from '@/Components/Molecules/check/NoLogin'
 import { LoadingStore } from '@/Store/Loading'
 import { CheckStore } from '@/Store/Check'
 import { AuthTokenStore } from '@/Store/AuthToken'
 import { loginCheck } from '@/utils/function/utilFunction'
 import { useEffect } from 'react'
-import NavBar from '@/Components/Molecules/NavBar'
+import NavBar from '@/Components/Molecules/bar/NavBar'
 
 export default function Upload() {
   const { loading, setLoading } = LoadingStore()

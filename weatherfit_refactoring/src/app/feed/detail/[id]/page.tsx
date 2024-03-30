@@ -1,7 +1,7 @@
-import Header from '@/Components/Molecules/Header'
-import NavBar from '@/Components/Molecules/NavBar'
+import Header from '@/Components/Molecules/header/Header'
+import NavBar from '@/Components/Molecules/bar/NavBar'
 import WeatherNavbar from '@/Components/Molecules/WeatherNavbar'
-import DetailOrganism from '@/Components/Organisms/DetailOrganism'
+import DetailOrganism from '@/Components/Organisms/detail/DetailOrganism'
 
 export default function Detail({ params }: { params: { id: BOARDID } }) {
   const { id: boardId } = params

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import ReactQueryProvider from '../utils/provider/ReactQueryProvider'
+import WebView from '@/Components/WebView/WebView'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -15,7 +16,9 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
-        <ReactQueryProvider>{children}</ReactQueryProvider>
+        <ReactQueryProvider>
+          <WebView>{children}</WebView>
+        </ReactQueryProvider>
       </body>
     </html>
   )

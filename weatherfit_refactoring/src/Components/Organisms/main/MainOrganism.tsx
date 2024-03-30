@@ -40,7 +40,7 @@ export default function MainOrganism() {
   console.log(temperatureMax, temperatureMin)
 
   return (
-    <main>
+    <section>
       <div className="w-full  flex flex-col items-center mt-[40px]">
         <TextStore
           textStyle={TextStyle.NANUM_TEXT}
@@ -57,6 +57,6 @@ export default function MainOrganism() {
         <span className=" font-NanumSquareRound">BEST 3</span>
       </div>
       <BestThreeCodi data={data} />
-    </main>
+    </section>
   )
 }

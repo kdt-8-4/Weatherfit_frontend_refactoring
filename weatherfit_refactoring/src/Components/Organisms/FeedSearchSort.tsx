@@ -1,7 +1,6 @@
 import ButtonStore, { ButtonStyle } from '../Atoms/Button/ButtonStore'
 
 import Header from '../Molecules/Header'
-import FeedLogo from '../Molecules/FeedLogo'
 import FeedSearch from '../Molecules/FeedSearch'
 import FeedTopCategory from '../Molecules/FeedTopCategory'
 import WeatherNavbar from '../Molecules/WeatherNavbar'

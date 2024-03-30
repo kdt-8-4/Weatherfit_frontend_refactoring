@@ -1,6 +1,6 @@
-import FeedSearchSort from '@/Components/Organisms/FeedSearchSort'
-import FeedContents from '@/Components/Organisms/FeedContents'
-import NavBar from '@/Components/Molecules/NavBar'
+import FeedSearchSort from '@/Components/Organisms/feed/FeedSearchSort'
+import FeedContents from '@/Components/Molecules/post/FeedContents'
+import NavBar from '@/Components/Molecules/bar/NavBar'
 
 export default async function Feedpage() {
   const feedDataFetch = await fetch('https://www.jerneithe.site/board/list', {

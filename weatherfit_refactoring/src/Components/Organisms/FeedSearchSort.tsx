@@ -1,11 +1,11 @@
 import ButtonStore, { ButtonStyle } from '../Atoms/Button/ButtonStore'
 
-import Header from '../Molecules/Header'
-import FeedSearch from '../Molecules/FeedSearch'
-import FeedTopCategory from '../Molecules/FeedTopCategory'
+import Header from '../Molecules/header/Header'
 import WeatherNavbar from '../Molecules/WeatherNavbar'
 import FeedCategory from '../Molecules/FeedCategory'
-import FeedSortBase from '../Molecules/FeedSortBase'
+import FeedSearch from '../Molecules/post/FeedSearch'
+import FeedSortBase from '../Molecules/post/FeedSortBase'
+import FeedTopCategory from '../Molecules/post/FeedTopCategory'
 
 export default function FeedSearchSort() {
   return (

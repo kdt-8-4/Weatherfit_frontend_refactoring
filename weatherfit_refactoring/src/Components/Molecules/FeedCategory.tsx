@@ -2,7 +2,7 @@
 import ButtonStore, { ButtonStyle } from '../Atoms/Button/ButtonStore'
 import { CategoryData } from '@/Store/CategoryData'
 import IconStore, { IconStyle } from '../Atoms/Icon/IconStore'
-import FeedCategorySelect from './FeedCategorySelect'
+import FeedCategorySelect from './post/FeedCategorySelect'
 import { CategoryControl } from '@/Store/CategoryControl'
 
 export default function FeedCategory() {

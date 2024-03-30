@@ -7,9 +7,9 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { confirmAlert } from '@/utils/function/utilFunction'
-import RegisterLogo from '@/Components/Molecules/RegisterLogo'
-import RegisterNickname from '@/Components/Molecules/RegisterNickname'
-import NavBar from '@/Components/Molecules/NavBar'
+import RegisterLogo from '@/Components/Molecules/logo/RegisterLogo'
+import RegisterNickname from '@/Components/Organisms/register/RegisterNickname'
+import NavBar from '@/Components/Molecules/bar/NavBar'
 
 interface GOOGLEDATA {
   email: string

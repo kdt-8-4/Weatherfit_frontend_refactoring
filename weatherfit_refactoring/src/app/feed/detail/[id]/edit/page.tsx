@@ -1,4 +1,4 @@
-import EditOrganism from '@/Components/Organisms/EditOrganism'
+import EditOrganism from '@/Components/Organisms/edit/EditOrganism'
 
 // type Params {
 

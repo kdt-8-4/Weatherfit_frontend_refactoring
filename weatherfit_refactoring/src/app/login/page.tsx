@@ -2,18 +2,18 @@
 
 import ButtonStore, { ButtonStyle } from '@/Components/Atoms/Button/ButtonStore'
 import { useRouter } from 'next/navigation'
-import EasyLogin from '@/Components/Molecules/EasyLogin'
-import LoginForm from '@/Components/Molecules/LoginForm'
-import LoginLogo from '@/Components/Molecules/LoginLogo'
-import NavBar from '@/Components/Molecules/NavBar'
+import EasyLogin from '@/Components/Organisms/login/EasyLogin'
+import LoginForm from '@/Components/Molecules/user/LoginForm'
+import LoginLogo from '@/Components/Molecules/logo/LoginLogo'
+import NavBar from '@/Components/Molecules/bar/NavBar'
 
 export default function Login() {
   const router = useRouter()
-  
+
   const ClickToRegister = () => {
     router.push('/register')
   }
-  
+
   return (
     <>
       <div className="flex flex-col items-center mt-[75px]">

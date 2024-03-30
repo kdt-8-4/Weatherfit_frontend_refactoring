@@ -7,8 +7,10 @@ export default function Home() {
   return (
     <>
       <MainHeader title="옷늘날씨" />
-      <WeatherInfo />
-      <MainOrganism />
+      <main>
+        <WeatherInfo />
+        <MainOrganism />
+      </main>
       <NavBar />
     </>
   )

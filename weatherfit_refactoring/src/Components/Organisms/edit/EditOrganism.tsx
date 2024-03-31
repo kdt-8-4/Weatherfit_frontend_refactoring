@@ -1,4 +1,4 @@
-import EditWeather from '../../Molecules/post/EditWeather'
+import Weather from '../../Molecules/post/Weather'
 import TextAreaMolecule from '../../Molecules/post/TextAreaMolecule'
 import EditHeader from '../../Molecules/header/EditHeader'
 import ImageUpload from '../../Molecules/post/ImageUpload'
@@ -16,9 +16,9 @@ export default async function EditOrganism({ boardId }: BOARDID) {
   return (
     <div className="h-screen">
       <EditHeader boardId={boardId} />
-      <main className="mx-5 h-full mt-[50px]">
+      <main className="mx-5 h-full mt-[50px] overflow-y-auto">
         <div className="flex-col items-center justify-center mb-7">
-          <EditWeather weatherIcon={data.weatherIcon} />
+          <Weather initialWeatherIcon={data.weatherIcon} />
           <ImageUpload images={data.images} mode="edit" />
         </div>
         <TextAreaMolecule initContent={data.content} mode="edit" />

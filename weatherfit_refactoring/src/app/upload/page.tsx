@@ -1,12 +1,12 @@
 'use client'
 
-import ImageUpload from '@/Components/Organisms/ImageUpload'
-import TextAreaMolecule from '@/Components/Molecules/TextAreaMolecule'
-import SelectCategory from '@/Components/Organisms/SelectCategory'
-import UploadHeader from '@/Components/Organisms/UploadHeader'
-import UploadWeather from '@/Components/Molecules/UploadWeather'
-import Loading from '@/Components/Organisms/Loading'
-import NoLogin from '@/Components/Organisms/NoLogin'
+import ImageUpload from '@/Components/Molecules/post/ImageUpload'
+import TextAreaMolecule from '@/Components/Molecules/post/TextAreaMolecule'
+import SelectCategory from '@/Components/Molecules/post/SelectCategory'
+import UploadHeader from '@/Components/Molecules/header/UploadHeader'
+import Weather from '@/Components/Molecules/post/Weather'
+import Loading from '@/Components/Molecules/check/Loading'
+import NoLogin from '@/Components/Molecules/check/NoLogin'
 import { LoadingStore } from '@/Store/Loading'
 import { CheckStore } from '@/Store/Check'
 import { AuthTokenStore } from '@/Store/AuthToken'
@@ -32,15 +32,17 @@ export default function Upload() {
           {check ? (
             <div className="h-screen">
               <UploadHeader />
-              <div className="mx-5 h-full mt-[50px]">
-                <div className="flex-col items-center justify-center mb-7">
-                  <UploadWeather />
+              <main className="mx-5 h-full mt-[50px] overflow-y-auto">
+                <section className="flex-col items-center justify-center mb-7">
+                  <Weather />
                   <ImageUpload mode="upload" />
-                </div>
-                <TextAreaMolecule mode="upload" />
-                <hr />
-                <SelectCategory mode="upload" />
-              </div>
+                </section>
+                <section>
+                  <TextAreaMolecule mode="upload" />
+                  <hr />
+                  <SelectCategory mode="upload" />
+                </section>
+              </main>
             </div>
           ) : (
             <NoLogin />

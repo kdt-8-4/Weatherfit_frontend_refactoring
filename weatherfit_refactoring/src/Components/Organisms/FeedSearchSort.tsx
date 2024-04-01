@@ -1,21 +1,23 @@
-import ButtonStore, { ButtonStyle } from "../Atoms/Button/ButtonStore";
+import ButtonStore, { ButtonStyle } from '../Atoms/Button/ButtonStore'
 
-import FeedLogo from "../Molecules/FeedLogo";
-import FeedSearch from "../Molecules/FeedSearch";
-import FeedTopCategory from "../Molecules/FeedTopCategory";
-import WeatherNavbar from "../Molecules/WeatherNavbar";
-import FeedCategory from "../Molecules/FeedCategory";
-import FeedSortBase from "../Molecules/FeedSortBase";
+import Header from '../Molecules/header/Header'
+import WeatherNavbar from '../Molecules/WeatherNavbar'
+import FeedCategory from '../Molecules/FeedCategory'
+import FeedSearch from '../Molecules/post/FeedSearch'
+import FeedSortBase from '../Molecules/post/FeedSortBase'
+import FeedTopCategory from '../Molecules/post/FeedTopCategory'
 
-export default function FeedSearchSort(){
-
-    return (
+export default function FeedSearchSort() {
+  return (
     <div className="relative">
-        <FeedLogo textSize="15px" />
+      <Header title="옷늘날씨" buttonStyleCase={ButtonStyle.TEXT_BTN} />
+      <nav>
         <FeedSearch />
         <FeedTopCategory />
-        <WeatherNavbar/>
-        <FeedCategory/>
-        <FeedSortBase/>
-    </div>)
+        <WeatherNavbar />
+        <FeedCategory />
+        <FeedSortBase />
+      </nav>
+    </div>
+  )
 }

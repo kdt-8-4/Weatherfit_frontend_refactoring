@@ -21,12 +21,12 @@ export default function ProfileBoard({ myPost, myLikePost }: Props) {
   }
 
   return (
-    <>
+    <section>
       <ProfilePostBar
         onFeedClick={handleFeedClick}
         onLikeClick={handleLikeClick}
       />
       <ProfilePost postData={isFeedSelected ? myPost : myLikePost} />
-    </>
+    </section>
   )
 }

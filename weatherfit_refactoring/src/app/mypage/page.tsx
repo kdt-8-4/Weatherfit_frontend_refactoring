@@ -103,8 +103,8 @@ export default function Mypage() {
 
   return (
     <>
-      <ProfileHeader />
-      <main className="h-[80.5vh] overflow-y-auto scrollbar-hide">
+      {/* <ProfileHeader />
+      <main className="flex-1 overflow-y-auto">
         {userInfo && (
           <ProfileInfo
             profileImage={profileImage}
@@ -113,19 +113,17 @@ export default function Mypage() {
             myLikePost={myLikePostData}
           />
         )}
-        <section>
           <ProfileBoard myPost={myPostData} myLikePost={myLikePostData} />
-        </section>
       </main>
-      <NavBar />
-      {/* {loading ? (
+      <NavBar /> */}
+      {loading ? (
         <Loading />
       ) : (
         <>
           {check ? (
             <>
               <ProfileHeader />
-              <main>
+              <main className="flex-1 overflow-y-auto">
                 {userInfo && (
                   <ProfileInfo
                     profileImage={profileImage}
@@ -142,7 +140,7 @@ export default function Mypage() {
             <NoLogin />
           )}
         </>
-      )} */}
+      )}
     </>
   )
 }

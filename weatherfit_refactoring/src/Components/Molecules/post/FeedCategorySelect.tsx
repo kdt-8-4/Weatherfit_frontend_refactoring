@@ -70,6 +70,7 @@ export default function FeedCategorySelect() {
   }
 
   return (
+
     <div className=" absolute z-50 bg-white w-[100vw] h-[620px]  ">
       <section className="text-center font-neurimboGothic my-2">
         <button
@@ -79,6 +80,7 @@ export default function FeedCategorySelect() {
         </button>
         <span className="mr-[140px]">카테고리</span>
       </section>
+
 
       <section>
         <section className=" flex whitespace-nowrap space-x-6 mx-8 font-gmarketsans">
@@ -92,6 +94,20 @@ export default function FeedCategorySelect() {
               </button>
             )
           })}
+        </section>
+
+        <section className="h-[70vh]">
+          {categoryList &&
+            categoryList.map(categoryList => {
+              return (
+                <button
+                  key={categoryTitle.id}
+                  onClick={() => selectCategory(categoryTitle.value)}
+                  className={categoryTitleStyle}>
+                  {categoryTitle.title}
+                </button>
+              )
+            })}
         </section>
 
         <section className="h-[400px]">

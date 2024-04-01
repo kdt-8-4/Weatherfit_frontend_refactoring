@@ -65,8 +65,9 @@ export default function FeedSearch() {
   }
 
   return (
+
     <article className=" flex py-[10px] px-[10px]">
-      <div className="flex border rounded-[9px] mx-1">
+      <div className="flex border rounded-[9px] mx-1 w-[300px]">
         <InputStore
           value={hashValue}
           onChageFunction={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -76,7 +77,7 @@ export default function FeedSearch() {
           inputStyle={InputStyle.INPUT_SEARCH}
           inputType="text"
           placeholderContents="#해시태그를 입력하세요"
-          style="font-gmarketsans font-thin outline-none text-[14px] w-[65vw] h-[38px] mx-1"
+          style="font-gmarketsans font-thin outline-none text-[14px] w-[85%] h-[38px] mx-1"
         />
         <IconStore
           iconStyle={IconStyle.SEARCH}

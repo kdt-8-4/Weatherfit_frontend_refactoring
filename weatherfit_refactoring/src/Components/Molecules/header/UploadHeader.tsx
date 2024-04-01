@@ -59,13 +59,13 @@ export default function UploadHeader() {
   }
 
   return (
-    <div className="fixed w-full top-0 z-10">
+    <header className="fixed w-full top-0 z-10">
       <Header
         title="등록하기"
         buttonStyleCase={ButtonStyle.TEXT_BTN}
         btnText="완료"
         onClickFunction={handleOnClick}
       />
-    </div>
+    </header>
   )
 }

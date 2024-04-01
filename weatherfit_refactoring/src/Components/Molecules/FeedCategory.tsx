@@ -18,6 +18,7 @@ export default function FeedCategory() {
   }
 
   return (
+
     <section>
       <div
         onClick={tabBooleanControl}
@@ -36,5 +37,6 @@ export default function FeedCategory() {
       </div>
       {categoryControl && <FeedCategorySelect />}
     </section>
+
   )
 }

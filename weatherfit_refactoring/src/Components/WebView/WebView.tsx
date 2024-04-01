@@ -19,7 +19,9 @@ export default function WebView({ children }: { children: ReactNode }) {
             디자인 같이 해주세요ㅠㅠ
           </div>
         </aside>
-        <div className="w-[400px] min-h-[844px] border-2">{children}</div>
+        <div className="w-[400px] min-h-[844px] border-2 relative">
+          {children}
+        </div>
       </div>
     </div>
   )

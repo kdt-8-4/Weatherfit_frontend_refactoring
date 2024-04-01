@@ -70,7 +70,7 @@ export default function FeedCategorySelect() {
   }
 
   return (
-    <div className=" absolute z-50 bg-white w-[100vw] h-[620px]  ">
+    <div className=" absolute top-0 z-50 bg-white w-[100%] h-[100vh] rounded-t-3xl ">
       <div className="text-center font-neurimboGothic my-2">
         <button
           onClick={() => setCategoryControl(false)}
@@ -93,7 +93,7 @@ export default function FeedCategorySelect() {
         })}
       </div>
 
-      <div className="h-[400px]">
+      <div className="h-[70vh]">
         {categoryList &&
           categoryList.map(categoryList => {
             return (

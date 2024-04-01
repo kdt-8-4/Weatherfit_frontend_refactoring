@@ -82,7 +82,7 @@ export default function ProfilePwEdit() {
             inputStyle={InputStyle.INPUT_WHITE}
             inputType="password"
             placeholderContents="현재 비밀번호"
-            style="w-[50vw] h-[4vh] text-[12px] mb-[5px]"
+            style="w-[95%] h-[30px] text-[12px] mb-[5px]"
             value={currentPw}
             onChageFunction={(e: React.ChangeEvent<HTMLInputElement>) =>
               setCurrentPw(e.target.value)
@@ -92,7 +92,7 @@ export default function ProfilePwEdit() {
             inputStyle={InputStyle.INPUT_WHITE}
             inputType="password"
             placeholderContents="변경 비밀번호"
-            style="w-[50vw] h-[4vh] text-[12px] mb-[5px]"
+            style="w-[95%] h-[30px] text-[12px] mb-[5px]"
             value={newPw}
             onChageFunction={(e: React.ChangeEvent<HTMLInputElement>) =>
               setNewPw(e.target.value)
@@ -102,7 +102,7 @@ export default function ProfilePwEdit() {
             inputStyle={InputStyle.INPUT_WHITE}
             inputType="password"
             placeholderContents="변경 비밀번호 재확인"
-            style="w-[50vw] h-[4vh] text-[12px] mb-[5px]"
+            style="w-[95%] h-[30px] text-[12px] mb-[5px]"
             value={confirmPw}
             onChageFunction={(e: React.ChangeEvent<HTMLInputElement>) =>
               setConfirmPw(e.target.value)

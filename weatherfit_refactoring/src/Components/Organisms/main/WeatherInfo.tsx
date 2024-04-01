@@ -106,7 +106,7 @@ export default function WeatherInfo() {
   console.log('주소: ', address)
 
   return (
-    <section className="relative h-[300px] flex justify-center">
+    <article className="relative h-[300px] flex justify-center">
       {weat && (
         <Image
           src={`/images/${weatherImage[weat]}`}
@@ -135,6 +135,6 @@ export default function WeatherInfo() {
           최고 {temperatureMax}℃ / 최저 {temperatureMin}℃
         </TextStore>
       </div>
-    </section>
+    </article>
   )
 }

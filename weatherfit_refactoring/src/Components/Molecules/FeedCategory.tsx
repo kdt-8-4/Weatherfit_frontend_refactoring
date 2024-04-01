@@ -18,7 +18,7 @@ export default function FeedCategory() {
   }
 
   return (
-    <nav>
+    <section>
       <div
         onClick={tabBooleanControl}
         className=" font-NanumSquareRound flex flex-nowrap my-1">
@@ -35,6 +35,6 @@ export default function FeedCategory() {
         })}
       </div>
       {categoryControl && <FeedCategorySelect />}
-    </nav>
+    </section>
   )
 }

@@ -178,7 +178,7 @@ export default function SocialRegister() {
           </Link>
         </>
       ) : (
-        <div className="flex flex-col items-center mt-[30px]">
+        <main className="flex flex-col items-center mt-[30px]">
           <RegisterLogo />
           <InputStore
             inputStyle={InputStyle.INPUT_WHITE}
@@ -199,7 +199,7 @@ export default function SocialRegister() {
             옷늘 캐스터 등록
           </ButtonStore>
           <NavBar />
-        </div>
+        </main>
       )}
     </>
   )

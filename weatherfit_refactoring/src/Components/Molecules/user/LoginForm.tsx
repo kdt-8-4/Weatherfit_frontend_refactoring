@@ -38,7 +38,7 @@ export default function LoginForm() {
 
       document.cookie = `accessToken=${loginRes.token}; path=/`
       setUserEmail(loginRes.email)
-      
+
       const loginTime = new Date().getTime()
       localStorage.setItem('login_Time', `${loginTime}`)
 
@@ -63,7 +63,7 @@ export default function LoginForm() {
 
   return (
     <form
-      className="flex flex-col justify-evenly w-[85vw] h-[30vh]"
+      className="flex flex-col justify-evenly w-[332px] h-[198px]"
       onSubmit={handleLogin}>
       <InputStore
         value={email}

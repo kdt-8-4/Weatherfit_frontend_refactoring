@@ -111,7 +111,7 @@ export default function WeatherInfo() {
         <Image
           src={`/images/${weatherImage[weat]}`}
           alt="weatherimage"
-          width={390}
+          width={400}
           height={300}
         />
       )}

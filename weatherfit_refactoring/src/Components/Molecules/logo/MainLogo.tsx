@@ -1,10 +1,9 @@
+'use client'
 import BoxStore, { BoxStyle } from '@/Components/Atoms/Box/BoxStore'
-import ButtonStore from '@/Components/Atoms/Button/ButtonStore'
-import { ButtonStyle } from '@/Components/Atoms/Button/ButtonStore'
 import TextStore, { TextStyle } from '@/Components/Atoms/Text/TextStore'
 import { useRouter } from 'next/navigation'
 
-export default function LoginLogo() {
+export default function MainLogo() {
   const router = useRouter()
 
   const onClickToMain = () => {

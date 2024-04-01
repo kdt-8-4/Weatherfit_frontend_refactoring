@@ -30,7 +30,7 @@ export default function Upload() {
       ) : (
         <>
           {check ? (
-            <div className="h-screen">
+            <div className="relative h-screen">
               <UploadHeader />
               <main className="mx-5 h-full mt-[50px] overflow-y-auto">
                 <section className="flex-col items-center justify-center mb-7">

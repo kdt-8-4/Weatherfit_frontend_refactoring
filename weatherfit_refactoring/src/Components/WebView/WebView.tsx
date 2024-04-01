@@ -1,9 +1,6 @@
 'use client'
 
 import { ReactNode, useEffect, useState } from 'react'
-import TextStore, { TextStyle } from '../Atoms/Text/TextStore'
-import BoxStore, { BoxStyle } from '../Atoms/Box/BoxStore'
-import LoginLogo from '../Molecules/logo/MainLogo'
 import MainLogo from '../Molecules/logo/MainLogo'
 
 export default function WebView({ children }: { children: ReactNode }) {
@@ -11,7 +8,7 @@ export default function WebView({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const handleResize = () => {
-      setScreenWide(window.innerWidth > 800)
+      setScreenWide(window.innerWidth > 1100)
     }
 
     handleResize()
@@ -36,7 +33,7 @@ export default function WebView({ children }: { children: ReactNode }) {
           </div>
         </div>
       ) : (
-        <div className="m-auto">{children}</div>
+        <div className="m-auto w-[395px] min-h-[844px]">{children}</div>
       )}
     </div>
   )

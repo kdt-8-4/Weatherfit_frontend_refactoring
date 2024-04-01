@@ -19,17 +19,21 @@ export default function Login() {
     <>
       <div className="flex flex-col items-center mt-[75px]">
         <MainLogo />
-        <LoginForm />
-        <TextStore textStyle={TextStyle.NANUM_TEXT} style="text-[gray]">
-          아직 회원이 아니신가요?
-        </TextStore>
-        <ButtonStore
-          buttonStyle={ButtonStyle.TEXT_BTN}
-          onClickFunction={ClickToRegister}
-          style="font-NanumSquareRound text-[#93c5fd]">
-          회원가입
-        </ButtonStore>
-        <EasyLogin />
+        <main>
+          <LoginForm />
+          <section>
+            <TextStore textStyle={TextStyle.NANUM_TEXT} style="text-[gray]">
+              아직 회원이 아니신가요?
+            </TextStore>
+            <ButtonStore
+              buttonStyle={ButtonStyle.TEXT_BTN}
+              onClickFunction={ClickToRegister}
+              style="font-NanumSquareRound text-[gray]">
+              회원가입
+            </ButtonStore>
+            <EasyLogin />
+          </section>
+        </main>
       </div>
       <NavBar />
     </>

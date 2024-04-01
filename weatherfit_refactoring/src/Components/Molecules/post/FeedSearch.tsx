@@ -65,7 +65,8 @@ export default function FeedSearch() {
   }
 
   return (
-    <div className=" flex py-[10px] px-[10px]">
+
+    <article className=" flex py-[10px] px-[10px]">
       <div className="flex border rounded-[9px] mx-1 w-[300px]">
         <InputStore
           value={hashValue}
@@ -91,6 +92,6 @@ export default function FeedSearch() {
         onClickFunction={hashTagArrayClear}>
         취소
       </ButtonStore>
-    </div>
+    </article>
   )
 }

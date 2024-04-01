@@ -18,14 +18,18 @@ export default function Login() {
     <>
       <div className="flex flex-col items-center mt-[75px]">
         <LoginLogo />
-        <LoginForm />
-        <ButtonStore
-          buttonStyle={ButtonStyle.TEXT_BTN}
-          onClickFunction={ClickToRegister}
-          style="font-NanumSquareRound text-[gray]">
-          회원가입
-        </ButtonStore>
-        <EasyLogin />
+        <main>
+          <LoginForm />
+          <section>
+            <ButtonStore
+              buttonStyle={ButtonStyle.TEXT_BTN}
+              onClickFunction={ClickToRegister}
+              style="font-NanumSquareRound text-[gray]">
+              회원가입
+            </ButtonStore>
+            <EasyLogin />
+          </section>
+        </main>
       </div>
       <NavBar />
     </>

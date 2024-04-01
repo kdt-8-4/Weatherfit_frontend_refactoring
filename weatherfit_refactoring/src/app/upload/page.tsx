@@ -38,9 +38,11 @@ export default function Upload() {
                   <UploadWeather />
                   <ImageUpload mode="upload" />
                 </section>
-                <TextAreaMolecule mode="upload" />
-                <hr />
-                <SelectCategory mode="upload" />
+                <section>
+                  <TextAreaMolecule mode="upload" />
+                  <hr />
+                  <SelectCategory mode="upload" />
+                </section>
               </main>
             </div>
           ) : (

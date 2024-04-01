@@ -11,7 +11,7 @@ export default function LoginLogo() {
     router.push('/')
   }
   return (
-    <div className="font-semibold mb-[40px] cursor-pointer">
+    <header className="font-semibold mb-[40px] cursor-pointer">
       <TextStore textStyle={TextStyle.NANUM_TEXT} style="text-center mb-[5px]">
         기온별 옷차림은,
       </TextStore>
@@ -21,6 +21,6 @@ export default function LoginLogo() {
         onClickFunction={onClickToMain}>
         옷늘날씨
       </BoxStore>
-    </div>
+    </header>
   )
 }

@@ -104,7 +104,7 @@ export default function Mypage() {
   return (
     <>
       <ProfileHeader />
-      <main className="h-[80.5vh] overflow-y-auto">
+      <main className="h-[80.5vh] overflow-y-auto scrollbar-hide">
         {userInfo && (
           <ProfileInfo
             profileImage={profileImage}

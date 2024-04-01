@@ -70,35 +70,20 @@ export default function FeedCategorySelect() {
   }
 
   return (
-
-    <div className=" absolute z-50 bg-white w-[100vw] h-[620px]  ">
-      <section className="text-center font-neurimboGothic my-2">
-        <button
-          onClick={() => setCategoryControl(false)}
-          className="mr-[150px]">
-          Ｘ
-        </button>
-        <span className="mr-[140px]">카테고리</span>
-      </section>
-
-
-      <section>
-        <section className=" flex whitespace-nowrap space-x-6 mx-8 font-gmarketsans">
-          {categoryData.map(categoryTitle => {
-            return (
-              <button
-                key={categoryTitle.id}
-                onClick={() => selectCategory(categoryTitle.value)}
-                className={categoryTitleStyle}>
-                {categoryTitle.title}
-              </button>
-            )
-          })}
+    <div className="fixed top-0 left-0 w-[100%] h-[100%] bg-[#00000066] z-[100] flex justify-center items-center">
+      <div className="absolute top-0 z-50 bg-white w-[400px] h-[600px] rounded-[10px]">
+        <section className="text-center font-neurimboGothic my-2">
+          <button
+            onClick={() => setCategoryControl(false)}
+            className="mr-[150px]">
+            Ｘ
+          </button>
+          <span className="mr-[140px]">카테고리</span>
         </section>
 
-        <section className="h-[70vh]">
-          {categoryList &&
-            categoryList.map(categoryList => {
+        <section>
+          <section className=" flex whitespace-nowrap space-x-6 mx-8 font-gmarketsans">
+            {categoryData.map(categoryTitle => {
               return (
                 <button
                   key={categoryTitle.id}
@@ -108,74 +93,75 @@ export default function FeedCategorySelect() {
                 </button>
               )
             })}
+          </section>
+
+          <section className="h-[70vh]">
+            {categoryList &&
+              categoryList.map(categoryList => {
+                return (
+                  <button
+                    key={categoryList.list_id}
+                    className="m-2 p-1 border-[1px] rounded-lg border-black  font-NanumSquareRound"
+                    onClick={() => categorySearch(categoryList.selectList)}>
+                    {categoryList.selectList}
+                  </button>
+                )
+              })}
+          </section>
         </section>
 
-        <section className="h-[400px]">
-          {categoryList &&
-            categoryList.map(categoryList => {
-              return (
-                <button
-                  key={categoryList.list_id}
-                  className="m-2 p-1 border-[1px] rounded-lg border-black  font-NanumSquareRound"
-                  onClick={() => categorySearch(categoryList.selectList)}>
-                  {categoryList.selectList}
+        <section className="flex m-2">
+          <p className=" font-neurimboGothic whitespace-nowrap">온도 설정 : </p>
+          <InputStore
+            inputStyle={InputStyle.INPUT_WHITE}
+            onChageFunction={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setLocalTempMax(parseInt(e.target.value))
+            }
+            value={localTempMax || ''}
+            placeholderContents="최고온도를 입력해주세요."
+            style=" w-[70px] h-[30px] text-[13px] ml-2 mr-1"
+          />
+          <span className=" font-neurimboGothic">℃</span>
+          <InputStore
+            inputStyle={InputStyle.INPUT_WHITE}
+            onChageFunction={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setLocalTempMin(parseInt(e.target.value))
+            }
+            value={localTempMin || ''}
+            placeholderContents="최저온도를 입력해주세요."
+            style=" w-[70px] h-[30px] text-[13px] ml-2 mr-1"
+          />
+          <span className=" font-neurimboGothic">℃</span>
+        </section>
+
+        <section className="flex overflow-x-auto h-[50px]">
+          {selectData.map((data, index) => {
+            return (
+              <p
+                key={index}
+                className=" whitespace-nowrap m-2 p-1 border-[1px] rounded-lg border-black  font-NanumSquareRound">
+                {data}
+                <button onClick={() => selectCancle(data)} className="ml-2">
+                  {' '}
+                  x
                 </button>
-              )
-            })}
+              </p>
+            )
+          })}
         </section>
-      </section>
-
-      <section className="flex m-2">
-        <p className=" font-neurimboGothic whitespace-nowrap">온도 설정 : </p>
-        <InputStore
-          inputStyle={InputStyle.INPUT_WHITE}
-          onChageFunction={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setLocalTempMax(parseInt(e.target.value))
-          }
-          value={localTempMax || ''}
-          placeholderContents="최고온도를 입력해주세요."
-          style=" w-[70px] h-[30px] text-[13px] ml-2 mr-1"
-        />
-        <span className=" font-neurimboGothic">℃</span>
-        <InputStore
-          inputStyle={InputStyle.INPUT_WHITE}
-          onChageFunction={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setLocalTempMin(parseInt(e.target.value))
-          }
-          value={localTempMin || ''}
-          placeholderContents="최저온도를 입력해주세요."
-          style=" w-[70px] h-[30px] text-[13px] ml-2 mr-1"
-        />
-        <span className=" font-neurimboGothic">℃</span>
-      </section>
-
-      <section className="flex overflow-x-auto h-[50px]">
-        {selectData.map((data, index) => {
-          return (
-            <p
-              key={index}
-              className=" whitespace-nowrap m-2 p-1 border-[1px] rounded-lg border-black  font-NanumSquareRound">
-              {data}
-              <button onClick={() => selectCancle(data)} className="ml-2">
-                {' '}
-                x
-              </button>
-            </p>
-          )
-        })}
-      </section>
-      <section className=" font-gmarketsans flex">
-        <button
-          className=" bg-white w-[25%]  border-[1px] mx-1 p-1"
-          onClick={() => setSelectData([])}>
-          초기화
-        </button>
-        <button
-          className="bg-blue-300 w-[70%] text-white mx-1 p-1"
-          onClick={searchCategory}>
-          선택 카테고리 검색하기
-        </button>
-      </section>
+        <section className=" font-gmarketsans flex">
+          <button
+            className=" bg-white w-[25%]  border-[1px] mx-1 p-1"
+            onClick={() => setSelectData([])}>
+            초기화
+          </button>
+          <button
+            className="bg-blue-300 w-[70%] text-white mx-1 p-1"
+            onClick={searchCategory}>
+            선택 카테고리 검색하기
+          </button>
+        </section>
+      </div>
     </div>
   )
 }

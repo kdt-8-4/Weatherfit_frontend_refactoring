@@ -71,7 +71,7 @@ export default function ImageUpload({
   }
 
   return (
-    <div>
+    <section>
       <div className="flex items-center w-full overflow-x-auto overflow-y-hidden whitespace-nowrap">
         {existingImages &&
           Array.from(existingImages).map((image, index) => (
@@ -96,6 +96,6 @@ export default function ImageUpload({
           onChageFunction={handleImageChange}
         />
       </div>
-    </div>
+    </section>
   )
 }

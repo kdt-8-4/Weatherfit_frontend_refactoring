@@ -46,7 +46,7 @@ export default function FeedSortBase() {
   }
 
   return (
-    <div className="flex flex-row-reverse border-b-[1px] py-[5px]">
+    <section className="flex flex-row-reverse border-b-[1px] py-[5px]">
       <select
         className=" font-NanumSquareRound font-semibold outline-none text-[14px] px-1"
         onChange={handleSort}>
@@ -54,6 +54,6 @@ export default function FeedSortBase() {
         <option>추천순</option>
         <option>오래된순</option>
       </select>
-    </div>
+    </section>
   )
 }

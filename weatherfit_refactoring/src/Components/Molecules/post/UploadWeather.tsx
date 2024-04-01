@@ -7,7 +7,7 @@ export default function UploadWeather() {
   const { weatherIcon } = WeatherIcon()
 
   return (
-    <div className="flex mb-3 items-center w-fit">
+    <article className="flex mb-3 items-center w-fit">
       <p className="font-gmarketsans pt-[5px] mr-3 text-sm">업로드 날씨</p>
       <Image
         src={`https://openweathermap.org/img/wn/${weatherIcon}.png`}
@@ -16,6 +16,6 @@ export default function UploadWeather() {
         height={20}
         loading="lazy"
       />
-    </div>
+    </article>
   )
 }

@@ -1,0 +1,49 @@
+[
+  {
+    "boardId": 8,
+    "images": [
+      "https://image.ytn.co.kr/general/jpg/2017/1018/201710181100063682_d.jpg"
+    ],
+    "createDate": "",
+    "likeCount": 1,
+    "likelist": [],
+    "nickName": "테스터55",
+    "temperature": 0,
+    "weather": "rainy",
+    "weatherIcon": "",
+    "userImage": "string | StaticImport",
+    "content": "",
+    "hashTag": [""],
+    "category": [""]
+  },
+  {
+    "boardId": 7,
+    "images": ["/images/codi1.jpg"],
+    "createDate": "",
+    "likeCount": 1,
+    "likelist": [],
+    "nickName": "황동준",
+    "temperature": 0,
+    "weather": "rainy",
+    "weatherIcon": "",
+    "userImage": "string | StaticImport",
+    "content": "",
+    "hashTag": [""],
+    "category": [""]
+  },
+  {
+    "boardId": 11,
+    "images": ["/images/codi2.jpg"],
+    "createDate": "",
+    "likeCount": 1,
+    "likelist": [],
+    "nickName": "테스터55",
+    "temperature": 0,
+    "weather": "rainy",
+    "weatherIcon": "",
+    "userImage": "string | StaticImport",
+    "content": "",
+    "hashTag": [""],
+    "category": [""]
+  }
+]

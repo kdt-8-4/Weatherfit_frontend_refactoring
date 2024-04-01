@@ -132,8 +132,8 @@ export default function WeatherNavbar() {
   }, [])
 
   return (
-    <div className="flex justify-between items-center text-[12px] border-t border-b border-slate-100 px-2">
-      <div className="flex items-center">
+    <article className="flex justify-between items-center text-[12px] border-t border-b border-slate-100 px-2">
+      <section className="flex items-center">
         <Image
           src={`https://openweathermap.org/img/wn/${weatherIcon}.png`}
           alt="weatherIcon"
@@ -142,15 +142,15 @@ export default function WeatherNavbar() {
           loading="lazy"
         />
         <span className="font-gmarketsans font-thin pt-1">{temperature}℃</span>
-      </div>
-      <div className="px-1">
+      </section>
+      <section className="px-1">
         <span className="font-gmarketsans font-thin px-1">
           최고 {temperatureMax}℃
         </span>
         <span className="font-gmarketsans font-thin px-1">
           최저 {temperatureMin}℃
         </span>
-      </div>
-    </div>
+      </section>
+    </article>
   )
 }

@@ -70,44 +70,62 @@ export default function FeedCategorySelect() {
   }
 
   return (
+
     <div className=" absolute z-50 bg-white w-[100vw] h-[620px]  ">
-      <div className="text-center font-neurimboGothic my-2">
+      <section className="text-center font-neurimboGothic my-2">
         <button
           onClick={() => setCategoryControl(false)}
           className="mr-[150px]">
           Ｘ
         </button>
         <span className="mr-[140px]">카테고리</span>
-      </div>
+      </section>
 
-      <div className=" flex whitespace-nowrap space-x-6 mx-8 font-gmarketsans">
-        {categoryData.map(categoryTitle => {
-          return (
-            <button
-              key={categoryTitle.id}
-              onClick={() => selectCategory(categoryTitle.value)}
-              className={categoryTitleStyle}>
-              {categoryTitle.title}
-            </button>
-          )
-        })}
-      </div>
 
-      <div className="h-[400px]">
-        {categoryList &&
-          categoryList.map(categoryList => {
+      <section>
+        <section className=" flex whitespace-nowrap space-x-6 mx-8 font-gmarketsans">
+          {categoryData.map(categoryTitle => {
             return (
               <button
-                key={categoryList.list_id}
-                className="m-2 p-1 border-[1px] rounded-lg border-black  font-NanumSquareRound"
-                onClick={() => categorySearch(categoryList.selectList)}>
-                {categoryList.selectList}
+                key={categoryTitle.id}
+                onClick={() => selectCategory(categoryTitle.value)}
+                className={categoryTitleStyle}>
+                {categoryTitle.title}
               </button>
             )
           })}
-      </div>
+        </section>
 
-      <div className="flex m-2">
+        <section className="h-[70vh]">
+          {categoryList &&
+            categoryList.map(categoryList => {
+              return (
+                <button
+                  key={categoryTitle.id}
+                  onClick={() => selectCategory(categoryTitle.value)}
+                  className={categoryTitleStyle}>
+                  {categoryTitle.title}
+                </button>
+              )
+            })}
+        </section>
+
+        <section className="h-[400px]">
+          {categoryList &&
+            categoryList.map(categoryList => {
+              return (
+                <button
+                  key={categoryList.list_id}
+                  className="m-2 p-1 border-[1px] rounded-lg border-black  font-NanumSquareRound"
+                  onClick={() => categorySearch(categoryList.selectList)}>
+                  {categoryList.selectList}
+                </button>
+              )
+            })}
+        </section>
+      </section>
+
+      <section className="flex m-2">
         <p className=" font-neurimboGothic whitespace-nowrap">온도 설정 : </p>
         <InputStore
           inputStyle={InputStyle.INPUT_WHITE}
@@ -129,8 +147,9 @@ export default function FeedCategorySelect() {
           style=" w-[70px] h-[30px] text-[13px] ml-2 mr-1"
         />
         <span className=" font-neurimboGothic">℃</span>
-      </div>
-      <div className="flex overflow-x-auto h-[50px]">
+      </section>
+
+      <section className="flex overflow-x-auto h-[50px]">
         {selectData.map((data, index) => {
           return (
             <p
@@ -144,8 +163,8 @@ export default function FeedCategorySelect() {
             </p>
           )
         })}
-      </div>
-      <div className=" font-gmarketsans flex">
+      </section>
+      <section className=" font-gmarketsans flex">
         <button
           className=" bg-white w-[25%]  border-[1px] mx-1 p-1"
           onClick={() => setSelectData([])}>
@@ -156,7 +175,7 @@ export default function FeedCategorySelect() {
           onClick={searchCategory}>
           선택 카테고리 검색하기
         </button>
-      </div>
+      </section>
     </div>
   )
 }

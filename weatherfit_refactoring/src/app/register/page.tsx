@@ -5,10 +5,12 @@ import NavBar from '@/Components/Molecules/bar/NavBar'
 
 export default function Register() {
   return (
-    <div className="flex flex-col items-center mt-[30px]">
-      <RegisterLogo />
-      <RegisterForm />
+    <>
+      <div className="relative flex flex-col items-center mt-[30px]">
+        <RegisterLogo />
+        <RegisterForm />
+      </div>
       <NavBar />
-    </div>
+    </>
   )
 }

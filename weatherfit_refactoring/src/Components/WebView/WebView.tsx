@@ -31,7 +31,9 @@ export default function WebView({ children }: { children: ReactNode }) {
           <aside className="w-[400px] min-h-[844px] bg-white ">
             <MainLogo />
           </aside>
-          <div className="w-[400px] min-h-[844px] border-2">{children}</div>
+          <div className="w-[400px] min-h-[844px] border-2 relative">
+            {children}
+          </div>
         </div>
       ) : (
         <div className="m-auto">{children}</div>

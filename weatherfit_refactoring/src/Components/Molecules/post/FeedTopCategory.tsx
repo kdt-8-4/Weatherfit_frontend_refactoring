@@ -38,7 +38,7 @@ export default function FeedTopCategory() {
   }
 
   return (
-    <div className=" mb-1">
+    <section className=" mb-1">
       <div className="m-auto flex ">
         <p className=" font-neurimboGothic whitespace-nowrap mx-1.5 w-[120px]">
           오늘의 카테고리 :
@@ -57,6 +57,6 @@ export default function FeedTopCategory() {
           })}
         </div>
       </div>
-    </div>
+    </section>
   )
 }

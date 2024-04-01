@@ -11,13 +11,13 @@ export default function FeedSearchSort() {
   return (
     <div className="relative">
       <Header title="옷늘날씨" buttonStyleCase={ButtonStyle.TEXT_BTN} />
-      <nav>
+      <header>
         <FeedSearch />
         <FeedTopCategory />
         <WeatherNavbar />
         <FeedCategory />
         <FeedSortBase />
-      </nav>
+      </header>
     </div>
   )
 }

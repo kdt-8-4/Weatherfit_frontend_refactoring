@@ -113,7 +113,9 @@ export default function Mypage() {
             myLikePost={myLikePostData}
           />
         )}
-        <ProfileBoard myPost={myPostData} myLikePost={myLikePostData} />
+        <section>
+          <ProfileBoard myPost={myPostData} myLikePost={myLikePostData} />
+        </section>
       </main>
       <NavBar />
       {/* {loading ? (

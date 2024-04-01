@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import { FormEvent, useState } from 'react'
 import { AuthUserStore } from '@/Store/AuthUser'
 import { AuthUserNickStore } from '@/Store/AuthUserNick'
+import TextStore, { TextStyle } from '@/Components/Atoms/Text/TextStore'
 
 export default function LoginForm() {
   const [email, setEmail] = useState<string>('')
@@ -61,34 +62,51 @@ export default function LoginForm() {
     setPassword(e.target.value)
   }
 
+  const ClickToRegister = () => {
+    router.push('/register')
+  }
+
   return (
-    <section>
-      <form
-        className="flex flex-col justify-evenly w-[85vw] h-[30vh]"
-        onSubmit={handleLogin}>
-        <InputStore
-          value={email}
-          onChageFunction={handleEmailChange}
-          inputStyle={InputStyle.INPUT_WHITE}
-          inputType="text"
-          placeholderContents="이메일"
-          style="font-NanumSquareRound h-[38px] border-[#abacad]"
-        />
-        <InputStore
-          value={password}
-          onChageFunction={handlePwChange}
-          inputStyle={InputStyle.INPUT_WHITE}
-          inputType="password"
-          placeholderContents="비밀번호"
-          style="font-NanumSquareRound h-[38px] border-[#abacad]"
-        />
+    <>
+      <section>
+        <form
+          className="flex flex-col justify-evenly w-[332px] h-[198px]"
+          onSubmit={handleLogin}>
+          <InputStore
+            value={email}
+            onChageFunction={handleEmailChange}
+            inputStyle={InputStyle.INPUT_WHITE}
+            inputType="text"
+            placeholderContents="이메일"
+            style="font-NanumSquareRound h-[38px] border-[#abacad]"
+          />
+          <InputStore
+            value={password}
+            onChageFunction={handlePwChange}
+            inputStyle={InputStyle.INPUT_WHITE}
+            inputType="password"
+            placeholderContents="비밀번호"
+            style="font-NanumSquareRound h-[38px] border-[#abacad]"
+          />
+          <ButtonStore
+            buttonStyle={ButtonStyle.CONFIRM_BTN}
+            style="font-neurimboGothic text-[22px] pb-[6px]"
+            btnType="submit">
+            로그인
+          </ButtonStore>
+        </form>
+      </section>
+      <section className="flex flex-row justify-center text-[14px]">
+        <TextStore textStyle={TextStyle.NANUM_TEXT} style="text-[gray]">
+          아직 회원이 아니신가요?
+        </TextStore>
         <ButtonStore
-          buttonStyle={ButtonStyle.CONFIRM_BTN}
-          style="font-neurimboGothic text-[22px] pb-[6px]"
-          btnType="submit">
-          로그인
+          buttonStyle={ButtonStyle.TEXT_BTN}
+          onClickFunction={ClickToRegister}
+          style="font-NanumSquareRound text-[#93c5fd] mx-[7px]">
+          회원가입
         </ButtonStore>
-      </form>
-    </section>
+      </section>
+    </>
   )
 }

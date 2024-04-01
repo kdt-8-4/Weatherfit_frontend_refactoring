@@ -17,6 +17,7 @@ type WeatherType =
   | 'Clouds'
   | 'Fog'
   | 'Haze'
+  | 'Sand'
 
 export default function WeatherInfo() {
   const API_KEY = 'fa3eba61f243af3e8e69086462763172'
@@ -40,6 +41,7 @@ export default function WeatherInfo() {
     Clouds: '흐림',
     Fog: '안개',
     Haze: '실안개',
+    Sand: '황사',
   }
 
   const weatherImage = {
@@ -52,6 +54,7 @@ export default function WeatherInfo() {
     Clouds: 'clouds.png',
     Fog: 'mist.png',
     Haze: 'mist.png',
+    Sand: 'sand.png',
   }
 
   useEffect(() => {

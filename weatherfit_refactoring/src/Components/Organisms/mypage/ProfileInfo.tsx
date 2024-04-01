@@ -19,7 +19,7 @@ export default function ProfileInfo({
   console.log('userInfo: ', userInfo)
   console.log('userImage: ', profileImage)
   return (
-    <div className="flex items-center justify-evenly my-[10px]">
+    <article className="flex items-center justify-evenly my-[10px]">
       <div className="flex items-center flex-col font-Cafe24SsurroundAir">
         <div className="h-[80px] rounded-[50%] w-[80px]">
           {profileImage == null ? (
@@ -42,6 +42,6 @@ export default function ProfileInfo({
       </div>
       <PostCount title="내 게시물" count={myPost.length} />
       <PostCount title="좋아요 한 게시물" count={myLikePost.length} />
-    </div>
+    </article>
   )
 }

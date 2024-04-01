@@ -1,0 +1,66 @@
+{
+  "mypost_data": [
+    {
+      "boardId": 1,
+      "nickName": "hae_hae",
+      "likeCount": 2,
+      "temperature": -6,
+      "images": {
+        "boardId": 1,
+        "imageId": 1,
+        "imageUrl": "/images/codi2.jpg"
+      },
+      "category": ["후드 집업", "가죽자켓", "컨버스", "운동화", "베레모"],
+      "hashTag": ["hi", "하이", "안녕"],
+      "weatherIcon": "01d",
+      "likelist": [
+        { "likeId": 1, "nickName": "user1" },
+        { "likeId": 2, "nickName": "user2" }
+      ],
+      "createDate": "2023-08-31 04:29:55",
+      "modifiedDate": "2023-08-31 04:29:55"
+    }
+  ],
+  "mylikepost_data": [
+    {
+      "boardId": 1,
+      "nickName": "hae_hae",
+      "likeCount": 2,
+      "temperature": -6,
+      "images": {
+        "boardId": 1,
+        "imageId": 1,
+        "imageUrl": "/images/codi1.jpg"
+      },
+      "category": ["후드 집업", "가죽자켓", "컨버스", "운동화", "베레모"],
+      "hashTag": ["hi", "하이", "안녕"],
+      "weatherIcon": "01d",
+      "likelist": [
+        { "likeId": 1, "nickName": "user1" },
+        { "likeId": 2, "nickName": "user2" }
+      ],
+      "createDate": "2023-08-31 04:29:55",
+      "modifiedDate": "2023-08-31 04:29:55"
+    },
+    {
+      "boardId": 2,
+      "nickName": "hae_hae",
+      "likeCount": 2,
+      "temperature": -6,
+      "images": {
+        "boardId": 2,
+        "imageId": 1,
+        "imageUrl": "/images/codi2.jpg"
+      },
+      "category": ["후드 집업", "가죽자켓", "컨버스", "운동화", "베레모"],
+      "hashTag": ["hi", "하이", "안녕"],
+      "weatherIcon": "01d",
+      "likelist": [
+        { "likeId": 1, "nickName": "user1" },
+        { "likeId": 2, "nickName": "user2" }
+      ],
+      "createDate": "2023-08-31 04:29:55",
+      "modifiedDate": "2023-08-31 04:29:55"
+    }
+  ]
+}

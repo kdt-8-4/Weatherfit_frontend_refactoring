@@ -71,8 +71,8 @@ export default function FeedCategorySelect() {
 
   return (
     <div className="fixed top-0 left-0 w-[100%] h-[100%] bg-[#00000066] z-[100] flex justify-center items-center">
-      <div className="absolute top-0 z-50 bg-white w-[400px] h-[600px] rounded-[10px]">
-        <section className="text-center font-neurimboGothic my-2">
+      <div className="absolute bottom-0 z-50 bg-white w-[390px] h-[610px] rounded-[10px]">
+        <section className="text-center font-neurimboGothic mt-2 mb-[10px]">
           <button
             onClick={() => setCategoryControl(false)}
             className="mr-[150px]">
@@ -81,8 +81,10 @@ export default function FeedCategorySelect() {
           <span className="mr-[140px]">카테고리</span>
         </section>
 
+        <hr />
+
         <section>
-          <section className=" flex whitespace-nowrap space-x-6 mx-8 font-gmarketsans">
+          <section className=" flex whitespace-nowrap space-x-6 mx-8 mt-3 font-gmarketsans">
             {categoryData.map(categoryTitle => {
               return (
                 <button
@@ -95,7 +97,7 @@ export default function FeedCategorySelect() {
             })}
           </section>
 
-          <section className="h-[70vh]">
+          <section className="h-[385px]">
             {categoryList &&
               categoryList.map(categoryList => {
                 return (
@@ -151,12 +153,12 @@ export default function FeedCategorySelect() {
         </section>
         <section className=" font-gmarketsans flex">
           <button
-            className=" bg-white w-[25%]  border-[1px] mx-1 p-1"
+            className=" bg-white w-[25%]  border-[1px] ml-2 mr-1 p-1"
             onClick={() => setSelectData([])}>
             초기화
           </button>
           <button
-            className="bg-blue-300 w-[70%] text-white mx-1 p-1"
+            className="bg-blue-300 w-[70%] text-white mr-1 p-1"
             onClick={searchCategory}>
             선택 카테고리 검색하기
           </button>

@@ -44,3 +44,10 @@
   Cafe24SsurroundAir
   neurimboGothic
 */
+
+body {
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+  display: none;
+}

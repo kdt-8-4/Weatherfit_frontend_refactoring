@@ -1,15 +1,15 @@
 import { ButtonStyle } from '../../Atoms/Button/ButtonStore'
 import Header from './Header'
 import { useStore } from '../../../Store/Store'
-import { WeatherIcon } from '@/Store/WeatherIcon'
+import { WeatherContext } from '../../../../contexts/WeatherContext'
 import { WeatherTemp } from '@/Store/WeatherTemp'
 import { AuthTokenStore } from '@/Store/AuthToken'
+import { useContext } from 'react'
 
 export default function UploadHeader() {
   const { content, hashTag, selectedImages, selectedSubCategories } = useStore()
   const category = Object.values(selectedSubCategories).flat() // 하위 카테고리들만 저장
-  const { weatherIcon } = WeatherIcon()
-  const { temperature } = WeatherTemp()
+  const { icon, tempNow } = useContext(WeatherContext)
   const { accesstoken } = AuthTokenStore()
 
   const handleOnClick = async () => {
@@ -29,8 +29,8 @@ export default function UploadHeader() {
         hashTag,
         category,
         content,
-        temperature,
-        weatherIcon: `https://openweathermap.org/img/wn/${weatherIcon}.png`,
+        temperature: tempNow,
+        weatherIcon: `https://openweathermap.org/img/wn/${icon}.png`,
       }
 
       formData.append('board', JSON.stringify(boardData))
@@ -57,6 +57,14 @@ export default function UploadHeader() {
       console.error(error)
     }
   }
+
+  console.log(
+    `hashTag ${hashTag} ,
+    category ${category}, 
+    content ${content}, 
+    temperature ${tempNow}, 
+    weatherIcon ${icon}`,
+  )
 
   return (
     <Header

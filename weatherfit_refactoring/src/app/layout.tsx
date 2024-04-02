@@ -16,6 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
+      <title>옷늘날씨</title>
       <body>
         <ReactQueryProvider>
           <WebView>

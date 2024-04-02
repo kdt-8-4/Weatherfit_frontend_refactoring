@@ -13,7 +13,7 @@ interface Props {
 export default function FeedContent({ DataforFeed }: Props) {
   const { feedData, setFeedData } = FeedData()
   const date = new Date(DataforFeed.createDate)
-  const createDate: string = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDay()}`
+  const createDate: string = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
   const { accesstoken } = AuthTokenStore()
   const { userNick } = AuthUserNickStore()
 

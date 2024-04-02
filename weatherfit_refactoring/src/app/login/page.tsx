@@ -1,5 +1,3 @@
-'use client'
-
 import ButtonStore, { ButtonStyle } from '@/Components/Atoms/Button/ButtonStore'
 import { useRouter } from 'next/navigation'
 import EasyLogin from '@/Components/Organisms/login/EasyLogin'
@@ -9,30 +7,13 @@ import TextStore, { TextStyle } from '@/Components/Atoms/Text/TextStore'
 import MainLogo from '@/Components/Molecules/logo/MainLogo'
 
 export default function Login() {
-  const router = useRouter()
-
-  const ClickToRegister = () => {
-    router.push('/register')
-  }
-
   return (
     <>
-      <div className="flex flex-col items-center mt-[75px]">
+      <div className="flex flex-col items-center relative top-[25%]">
         <MainLogo />
         <main>
           <LoginForm />
-          <section>
-            <TextStore textStyle={TextStyle.NANUM_TEXT} style="text-[gray]">
-              아직 회원이 아니신가요?
-            </TextStore>
-            <ButtonStore
-              buttonStyle={ButtonStyle.TEXT_BTN}
-              onClickFunction={ClickToRegister}
-              style="font-NanumSquareRound text-[gray]">
-              회원가입
-            </ButtonStore>
-            <EasyLogin />
-          </section>
+          <EasyLogin />
         </main>
       </div>
       <NavBar />

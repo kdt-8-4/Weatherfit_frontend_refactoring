@@ -6,64 +6,216 @@ interface Props {
 
 export default function ProfilePost({ postData }: Props) {
   return (
-    <div className="grid grid-rows-[25vh_25vh_25vh] grid-cols-[1fr_1fr_1fr] gap-[1%] p-[10px]">
-      <Image
-        src={'/images/codi1.jpg'}
-        alt="게시물 이미지"
-        width={120}
-        height={180}
-        className="rounded-lg"
-      />
-      <Image
-        src={'/images/codi2.jpg'}
-        alt="게시물 이미지"
-        width={120}
-        height={180}
-        className="rounded-lg"
-      />
-      <Image
-        src={'/images/codi1.jpg'}
-        alt="게시물 이미지"
-        width={120}
-        height={180}
-        className="rounded-lg"
-      />
-      <Image
-        src={'/images/codi2.jpg'}
-        alt="게시물 이미지"
-        width={120}
-        height={180}
-        className="rounded-lg"
-      />
-      <Image
-        src={'/images/codi1.jpg'}
-        alt="게시물 이미지"
-        width={120}
-        height={180}
-        className="rounded-lg"
-      />
-      <Image
-        src={'/images/codi2.jpg'}
-        alt="게시물 이미지"
-        width={120}
-        height={180}
-        className="rounded-lg"
-      />
-      <Image
-        src={'/images/codi1.jpg'}
-        alt="게시물 이미지"
-        width={120}
-        height={180}
-        className="rounded-lg"
-      />
-      <Image
-        src={'/images/codi2.jpg'}
-        alt="게시물 이미지"
-        width={120}
-        height={180}
-        className="rounded-lg"
-      />
-      {/* <div className="bg-[salmon] rounded-lg"></div> */}
+    // <div>
+    // <div className="grid grid-rows-[25vh_25vh_25vh] grid-cols-[1fr_1fr_1fr] gap-[1%] p-[10px]">
+    <div className="relative grid auto-rows-[180px] grid-cols-[1fr_1fr_1fr] gap-[3px] p-[10px]">
+      <div className="relative w-full h-full">
+        <Image
+          src={'/images/codi1.jpg'}
+          alt="게시물 이미지"
+          layout="fill"
+          objectFit="cover"
+          className="rounded-lg"
+        />
+      </div>
+      <div className="relative w-full h-full">
+        <Image
+          src={'/images/codi2.jpg'}
+          alt="게시물 이미지"
+          layout="fill"
+          objectFit="cover"
+          className="rounded-lg"
+        />
+      </div>
+      <div className="relative w-full h-full">
+        <Image
+          src={'/images/codi1.jpg'}
+          alt="게시물 이미지"
+          layout="fill"
+          objectFit="cover"
+          className="rounded-lg"
+        />
+      </div>
+      <div className="relative w-full h-full">
+        <Image
+          src={'/images/codi2.jpg'}
+          alt="게시물 이미지"
+          layout="fill"
+          objectFit="cover"
+          className="rounded-lg"
+        />
+      </div>
+      <div className="relative w-full h-full">
+        <Image
+          src={'/images/codi1.jpg'}
+          alt="게시물 이미지"
+          layout="fill"
+          objectFit="cover"
+          className="rounded-lg"
+        />
+      </div>
+      <div className="relative w-full h-full">
+        <Image
+          src={'/images/codi2.jpg'}
+          alt="게시물 이미지"
+          layout="fill"
+          objectFit="cover"
+          className="rounded-lg"
+        />
+      </div>
+      <div className="relative w-full h-full">
+        <Image
+          src={'/images/codi1.jpg'}
+          alt="게시물 이미지"
+          layout="fill"
+          objectFit="cover"
+          className="rounded-lg"
+        />
+      </div>
+      <div className="relative w-full h-full">
+        <Image
+          src={'/images/codi2.jpg'}
+          alt="게시물 이미지"
+          layout="fill"
+          objectFit="cover"
+          className="rounded-lg"
+        />
+      </div>
+      <div className="relative w-full h-full">
+        <Image
+          src={'/images/codi1.jpg'}
+          alt="게시물 이미지"
+          layout="fill"
+          objectFit="cover"
+          className="rounded-lg"
+        />
+      </div>
+      <div className="relative w-full h-full">
+        <Image
+          src={'/images/codi2.jpg'}
+          alt="게시물 이미지"
+          layout="fill"
+          objectFit="cover"
+          className="rounded-lg"
+        />
+      </div>
+      <div className="relative w-full h-full">
+        <Image
+          src={'/images/codi1.jpg'}
+          alt="게시물 이미지"
+          layout="fill"
+          objectFit="cover"
+          className="rounded-lg"
+        />
+      </div>
+      <div className="relative w-full h-full">
+        <Image
+          src={'/images/codi2.jpg'}
+          alt="게시물 이미지"
+          layout="fill"
+          objectFit="cover"
+          className="rounded-lg"
+        />
+      </div>
+      <div className="relative w-full h-full">
+        <Image
+          src={'/images/codi1.jpg'}
+          alt="게시물 이미지"
+          layout="fill"
+          objectFit="cover"
+          className="rounded-lg"
+        />
+      </div>
+      <div className="relative w-full h-full">
+        <Image
+          src={'/images/codi2.jpg'}
+          alt="게시물 이미지"
+          layout="fill"
+          objectFit="cover"
+          className="rounded-lg"
+        />
+      </div>
+      <div className="relative w-full h-full">
+        <Image
+          src={'/images/codi1.jpg'}
+          alt="게시물 이미지"
+          layout="fill"
+          objectFit="cover"
+          className="rounded-lg"
+        />
+      </div>
+      <div className="relative w-full h-full">
+        <Image
+          src={'/images/codi2.jpg'}
+          alt="게시물 이미지"
+          layout="fill"
+          objectFit="cover"
+          className="rounded-lg"
+        />
+      </div>
+      <div className="relative w-full h-full">
+        <Image
+          src={'/images/codi1.jpg'}
+          alt="게시물 이미지"
+          layout="fill"
+          objectFit="cover"
+          className="rounded-lg"
+        />
+      </div>
+      <div className="relative w-full h-full">
+        <Image
+          src={'/images/codi2.jpg'}
+          alt="게시물 이미지"
+          layout="fill"
+          objectFit="cover"
+          className="rounded-lg"
+        />
+      </div>
+      <div className="relative w-full h-full">
+        <Image
+          src={'/images/codi1.jpg'}
+          alt="게시물 이미지"
+          layout="fill"
+          objectFit="cover"
+          className="rounded-lg"
+        />
+      </div>
+      <div className="relative w-full h-full">
+        <Image
+          src={'/images/codi2.jpg'}
+          alt="게시물 이미지"
+          layout="fill"
+          objectFit="cover"
+          className="rounded-lg"
+        />
+      </div>
+      <div className="relative w-full h-full">
+        <Image
+          src={'/images/codi1.jpg'}
+          alt="게시물 이미지"
+          layout="fill"
+          objectFit="cover"
+          className="rounded-lg"
+        />
+      </div>
+      <div className="relative w-full h-full">
+        <Image
+          src={'/images/codi2.jpg'}
+          alt="게시물 이미지"
+          layout="fill"
+          objectFit="cover"
+          className="rounded-lg"
+        />
+      </div>
+      <div className="relative w-full h-full">
+        <Image
+          src={'/images/codi1.jpg'}
+          alt="게시물 이미지"
+          layout="fill"
+          objectFit="cover"
+          className="rounded-lg"
+        />
+      </div>
     </div>
     // <>
     //   {postData.length > 0 ? (

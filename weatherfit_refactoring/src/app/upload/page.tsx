@@ -12,6 +12,7 @@ import { CheckStore } from '@/Store/Check'
 import { AuthTokenStore } from '@/Store/AuthToken'
 import { loginCheck } from '@/utils/function/utilFunction'
 import { useEffect } from 'react'
+import NavBar from '@/Components/Molecules/bar/NavBar'
 
 export default function Upload() {
   const { loading, setLoading } = LoadingStore()
@@ -30,9 +31,9 @@ export default function Upload() {
       ) : (
         <>
           {check ? (
-            <div className="relative h-screen">
+            <>
               <UploadHeader />
-              <main className="mx-5 h-full mt-[50px] overflow-y-auto">
+              <main className="flex-1 mx-5 overflow-y-auto">
                 <section className="flex-col items-center justify-center mb-7">
                   <Weather />
                   <ImageUpload mode="upload" />
@@ -43,7 +44,8 @@ export default function Upload() {
                   <SelectCategory mode="upload" />
                 </section>
               </main>
-            </div>
+              <NavBar />
+            </>
           ) : (
             <NoLogin />
           )}

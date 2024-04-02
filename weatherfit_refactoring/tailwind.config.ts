@@ -3,7 +3,7 @@ import type { Config } from 'tailwindcss'
 const config: Config = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/Components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
@@ -19,27 +19,27 @@ const config: Config = {
         NanumSquareRound: ['NanumSquareRound'],
         neurimboGothic: ['neurimboGothicRegular'],
       },
-      colors:{
-        "A8C6EC": "#A8C6EC",
-        "F4E58F": "#F4E58F",
-        "E4E4E6": "#E4E4E6",
+      colors: {
+        A8C6EC: '#A8C6EC',
+        F4E58F: '#F4E58F',
+        E4E4E6: '#E4E4E6',
       },
-      keyframes:{
+      keyframes: {
         autoPlay: {
-          '0%' : {
+          '0%': {
             transition: 'transform 0s ease-out',
             transform: 'translateX(0)',
           },
-          '100%' : {
-            transform: 'translateX(calc(-55px * 5))'
-          }
-        }
+          '100%': {
+            transform: 'translateX(calc(-55px * 5))',
+          },
+        },
       },
-      animation:{
-        topCategory : "autoPlay 10s linear infinite",
-      }
+      animation: {
+        topCategory: 'autoPlay 10s linear infinite',
+      },
     },
   },
-  plugins: [require("tailwind-scrollbar-hide")],
+  plugins: [require('tailwind-scrollbar-hide')],
 }
 export default config

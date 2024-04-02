@@ -12,6 +12,10 @@ module.exports = {
       'www.google.com',
       'image.ytn.co.kr',
       'cdn-icons-png.flaticon.com',
+      'image.msscdn.net',
+      'static.lookpin.co.kr',
+      'i.pinimg.com',
+      'thumbnail.10x10.co.kr',
     ],
   },
 }

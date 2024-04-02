@@ -1,0 +1,226 @@
+[
+  {
+    "boardId": 1,
+    "category": ["숏 패딩", "컨버스"],
+    "createDate": "2024-02-13T08:00:00.000Z",
+    "hashTag": ["카페", "행복", "겨울"],
+    "images": {
+      "boardId": 1,
+      "imageId": 1,
+      "imageUrl": "https://weatherfit-board-image.s3.amazonaws.com/20240202190456_weatherfit_KakaoTalk_20240110_112549788_02.jpg"
+    },
+    "likeCount": 2,
+    "likelist": [
+      {
+        "likeId": 1,
+        "nickName": "김첨지"
+      },
+      {
+        "likeId": 2,
+        "nickName": "lifeis_Happy"
+      }
+    ],
+    "modifiedDate": "2024-02-15T08:00:00.000Z",
+    "nickName": "홍길동",
+    "temperature": 1.2,
+    "weatherIcon": "https://openweathermap.org/img/wn/13d.png"
+  },
+  {
+    "boardId": 2,
+    "category": ["후드 집업", "가죽자켓", "컨버스", "운동화", "베레모"],
+    "createDate": "2024-02-14T08:00:00.000Z",
+    "hashTag": ["카페", "행복", "겨울", "과", "가을", "사이"],
+    "images": {
+      "boardId": 2,
+      "imageId": 2,
+      "imageUrl": "https://i.pinimg.com/564x/18/c0/a6/18c0a61d88e3d75e77039f2de8813f55.jpg"
+    },
+    "likeCount": 2,
+    "likelist": [
+      {
+        "likeId": 1,
+        "nickName": "김첨지"
+      },
+      {
+        "likeId": 2,
+        "nickName": "lifeis_Happy"
+      }
+    ],
+    "modifiedDate": "2024-02-16T08:00:00.000Z",
+    "nickName": "smile_",
+    "temperature": 5.1,
+    "weatherIcon": "https://openweathermap.org/img/wn/04n.png"
+  },
+  {
+    "boardId": 3,
+    "category": ["후드티", "데님 팬츠", "운동화"],
+    "createDate": "2024-02-15T08:00:00.000Z",
+    "hashTag": ["운동", "휴식"],
+    "images": {
+      "boardId": 3,
+      "imageId": 3,
+      "imageUrl": "https://weatherfit-board-image.s3.amazonaws.com/20240201212413_weatherfit_KakaoTalk_20240110_135244442_06.jpg"
+    },
+    "likeCount": 2,
+    "likelist": [
+      {
+        "likeId": 1,
+        "nickName": "홍길동"
+      },
+      {
+        "likeId": 2,
+        "nickName": "lifeis_Happy"
+      }
+    ],
+    "modifiedDate": "2024-02-17T08:00:00.000Z",
+    "nickName": "홍길동",
+    "temperature": 11.1,
+    "weatherIcon": "https://openweathermap.org/img/wn/02d.png"
+  },
+  {
+    "boardId": 4,
+    "category": ["니트/스웨터", "코튼 팬츠", "스니커즈"],
+    "createDate": "2024-02-16T08:00:00.000Z",
+    "hashTag": ["날씨", "행복", "가을"],
+    "images": {
+      "boardId": 4,
+      "imageId": 4,
+      "imageUrl": "https://image.msscdn.net/thumbnails/display/images/magazinesnap/2023/12/27/45dded706d0d4a07839aa7011dfbc2f8.jpg?w=780"
+    },
+    "likeCount": 2,
+    "likelist": [
+      {
+        "likeId": 1,
+        "nickName": "김첨지"
+      },
+      {
+        "likeId": 2,
+        "nickName": "smile_boy"
+      }
+    ],
+    "modifiedDate": "2024-02-18T08:00:00.000Z",
+    "nickName": "김첨지",
+    "temperature": 12.8,
+    "weatherIcon": "https://openweathermap.org/img/wn/04n.png"
+  },
+  {
+    "boardId": 5,
+    "category": ["맨투맨", "코튼 팬츠", "운동화"],
+    "createDate": "2024-02-17T08:00:00.000Z",
+    "hashTag": ["운동", "휴식", "가을"],
+    "images": {
+      "boardId": 5,
+      "imageId": 5,
+      "imageUrl": "https://static.lookpin.co.kr/20230929090736-be9a/9f08fe9f1ee44d29b3291807d02683bf.jpg"
+    },
+    "likeCount": 3,
+    "likelist": [
+      {
+        "likeId": 1,
+        "nickName": "홍길동"
+      },
+      {
+        "likeId": 2,
+        "nickName": "lifeis_Happy"
+      },
+      {
+        "likeId": 3,
+        "nickName": "김첨지"
+      }
+    ],
+    "modifiedDate": "2024-02-18T08:00:00.000Z",
+    "nickName": "lifeis_Happy",
+    "temperature": 12.1,
+    "weatherIcon": "https://openweathermap.org/img/wn/01d.png"
+  },
+  {
+    "boardId": 6,
+    "category": ["반팔티", "스니커즈"],
+    "createDate": "2024-02-02T19:04:56.077557",
+    "hashTag": ["봄", "즐거운 하루"],
+    "images": {
+      "boardId": 6,
+      "imageId": 6,
+      "imageUrl": "https://thumbnail.10x10.co.kr/webimage/image/add1/437/A004370845_01.jpg?cmd=thumb&w=400&h=400&fit=true&ws=false"
+    },
+    "likeCount": 2,
+    "likelist": [
+      {
+        "likeId": 1,
+        "nickName": "김첨지"
+      },
+      {
+        "likeId": 2,
+        "nickName": "smile_boy"
+      }
+    ],
+    "modifiedDate": "2024-03-19T08:00:00.000Z",
+    "nickName": "like_day",
+    "temperature": 21,
+    "weatherIcon": "https://openweathermap.org/img/wn/04n.png"
+  },
+  {
+    "boardId": 7,
+    "category": ["니트/스웨터", "데님 팬츠", "부츠"],
+    "createDate": "2024-02-19T08:00:00.000Z",
+    "hashTag": ["가을", "패션"],
+    "images": {
+      "boardId": 7,
+      "imageId": 7,
+      "imageUrl": "https://image.msscdn.net/thumbnails/display/images/usersnap/2023/12/06/5bbfb7490a7e4df4ba3cfdaa5ebe9f9d.jpg?w=780"
+    },
+    "likeCount": 4,
+    "likelist": [
+      {
+        "likeId": 1,
+        "nickName": "이강"
+      },
+      {
+        "likeId": 2,
+        "nickName": "김첨지"
+      },
+      {
+        "likeId": 3,
+        "nickName": "smile_boy"
+      },
+      {
+        "likeId": 4,
+        "nickName": "홍길동"
+      }
+    ],
+    "modifiedDate": "2024-02-20T08:00:00.000Z",
+    "nickName": "이강",
+    "temperature": 9.1,
+    "weatherIcon": "https://openweathermap.org/img/wn/04d.png"
+  },
+  {
+    "boardId": 8,
+    "category": ["후드티", "조거 팬츠", "컨버스"],
+    "createDate": "2024-02-20T08:00:00.000Z",
+    "hashTag": ["운동", "휴식", "봄"],
+    "images": {
+      "boardId": 8,
+      "imageId": 8,
+      "imageUrl": "https://image.msscdn.net/images/goods_img/20210304/1826182/1826182_5_500.jpg"
+    },
+    "likeCount": 3,
+    "likelist": [
+      {
+        "likeId": 1,
+        "nickName": "lifeis_Happy"
+      },
+      {
+        "likeId": 2,
+        "nickName": "이강"
+      },
+      {
+        "likeId": 3,
+        "nickName": "김첨지"
+      }
+    ],
+    "modifiedDate": "2024-02-21T08:00:00.000Z",
+    "nickName": "smile_boy",
+    "temperature": 14.5,
+    "weatherIcon": "https://openweathermap.org/img/wn/01n.png"
+  }
+]

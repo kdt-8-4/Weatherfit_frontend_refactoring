@@ -32,7 +32,7 @@ export default function MainHeader({ title }: Props) {
     title === '옷늘날씨' ? () => router.push('/') : undefined // 또는 다른 함수
 
   return (
-    <header className="relative flex items-center justify-between h-[50px] my-1 pb-1">
+    <header className="relative flex items-center justify-between min-h-[50px] my-1 pb-1">
       <BoxStore
         boxStyle={BoxStyle.BOX_BLUE}
         style={`absolute left-1/2 transform -translate-x-1/2 px-2 h-[30px] font-neurimboGothic text-[22px] pb-[7px] shadow-[7px_7px_1px] flex items-center ${title === '옷늘날씨' ? 'cursor-pointer' : ''}`}

@@ -10,10 +10,10 @@ export default async function Feedpage() {
   const feedContentsData: FEEDDATA[] = await feedDataFetch.json()
 
   return (
-    <>
+    <div className="flex-2 overflow-y-auto mb-1">
       <FeedSearchSort />
       <FeedContents response={feedContentsData} />
       <NavBar />
-    </>
+    </div>
   )
 }

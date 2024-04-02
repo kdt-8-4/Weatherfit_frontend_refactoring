@@ -50,6 +50,7 @@ export const logout = () => {
     Cookies.remove('accessToken')
     localStorage.removeItem('user_email')
     localStorage.removeItem('login_Time')
+    localStorage.removeItem('user_nickname')
     confirmAlert('로그아웃 되었습니다.')
     window.location.href = '/'
   }

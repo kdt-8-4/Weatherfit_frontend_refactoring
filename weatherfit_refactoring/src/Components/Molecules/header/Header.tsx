@@ -11,7 +11,7 @@ interface Props {
   btnText?: string
   iconStyleCase?: IconStyle
   buttonStyleCase?: ButtonStyle
-  onClickFunction?: MouseEventHandler<HTMLButtonElement> | undefined
+  onClickFunction?: MouseEventHandler<HTMLButtonElement>
   onClickFunction2?: () => void
 }
 

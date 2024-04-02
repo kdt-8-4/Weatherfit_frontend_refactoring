@@ -19,10 +19,11 @@ export default function FeedContents({ response }: Props) {
     console.log('받아온 feedData', response)
     const copyResponse: FEEDDATA[] = [...response]
     const filterByTemp = copyResponse.filter(
-      copyRes =>
-        copyRes.temperature >= temperatureMin &&
-        copyRes.temperature <= temperatureMax,
+      copyResponse =>
+        copyResponse.temperature >= temperatureMin &&
+        copyResponse.temperature <= temperatureMax,
     )
+
     setFeedData(response)
   }, [])
 

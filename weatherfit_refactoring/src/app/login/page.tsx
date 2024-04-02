@@ -9,7 +9,7 @@ import MainLogo from '@/Components/Molecules/logo/MainLogo'
 export default function Login() {
   return (
     <>
-      <div className="flex flex-col items-center relative top-[25%]">
+      <div className="flex flex-col items-center relative top-[20%]">
         <MainLogo />
         <main>
           <LoginForm />

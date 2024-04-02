@@ -1,16 +1,34 @@
 'use client'
 import { ReactNode, createContext, useEffect, useState } from 'react'
 
+type WeatherType =
+  | 'Clear'
+  | 'Rain'
+  | 'Thunderstorm'
+  | 'Snow'
+  | 'Mist'
+  | 'Drizzle'
+  | 'Clouds'
+  | 'Fog'
+  | 'Haze'
+  | 'Sand'
 interface WeatherProvider {
-  icon: string | undefined
-  tempNow: number | undefined
-  tempMax: number | undefined
-  tempMin: number | undefined
+  icon: string | null
+  tempNow: number | null
+  tempMax: number | null
+  tempMin: number | null
+  address: string | null
+  weather: WeatherType | null
 }
 
-export const WeatherContext = createContext<WeatherProvider | undefined>(
-  undefined,
-)
+export const WeatherContext = createContext<WeatherProvider>({
+  icon: null,
+  tempMax: null,
+  tempMin: null,
+  tempNow: null,
+  address: null,
+  weather: null,
+})
 
 export const WeatherProvider = ({ children }: { children: ReactNode }) => {
   const [temperature, setTemp] = useState<number>()
@@ -19,7 +37,8 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
   const [weatherIcon, setIcon] = useState<string>()
   const [latitude_state, setLatitude] = useState<number>()
   const [longitude_state, setLongitude] = useState<number>()
-  const [address, setAddress] = useState<string | undefined>()
+  const [address, setAddress] = useState<string>()
+  const [weather, setWeather] = useState<WeatherType>()
 
   // API Keys
   // openweathermap
@@ -50,7 +69,6 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const getWeather = async () => {
-      console.log('위도', latitude_state, '경도', longitude_state)
       try {
         // OpenWeatherMap에서 위치 기반 날씨 정보 불러오기
         const weatherResponse = await fetch(
@@ -60,6 +78,7 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
 
         // 날씨 정보 저장하기
         setIcon(weatherData.weather[0].icon)
+        setWeather(weatherData.weather[0].main)
         setTemp(weatherData.main.temp.toFixed(1))
         setTempMax(weatherData.main.temp_max.toFixed(1))
         setTempMin(weatherData.main.temp_min.toFixed(1))
@@ -92,18 +111,29 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
       }
     }
 
-    if (address) getAddress()
+    getAddress()
   }, [temperatureMin])
 
   return (
-    <WeatherContext.Provider
-      value={{
-        icon: weatherIcon,
-        tempMax: temperatureMax,
-        tempMin: temperatureMin,
-        tempNow: temperature,
-      }}>
-      {children}
-    </WeatherContext.Provider>
+    <>
+      {weatherIcon &&
+        temperature &&
+        temperatureMax &&
+        weather &&
+        temperatureMin &&
+        address && (
+          <WeatherContext.Provider
+            value={{
+              icon: weatherIcon,
+              weather: weather,
+              address: address,
+              tempMax: temperatureMax,
+              tempMin: temperatureMin,
+              tempNow: temperature,
+            }}>
+            {children}
+          </WeatherContext.Provider>
+        )}
+    </>
   )
 }

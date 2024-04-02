@@ -11,7 +11,7 @@ export default function WebView({ children }: { children: ReactNode }) {
           <FeedSearch />
         </div>
       </aside>
-      <div className="flex flex-col w-[400px] border-2 pb-[66px]">
+      <div className="flex flex-col w-[400px] border-2 pb-[66px] relative">
         {children}
       </div>
     </div>

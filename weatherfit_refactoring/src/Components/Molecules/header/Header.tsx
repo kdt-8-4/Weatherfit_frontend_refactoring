@@ -11,10 +11,7 @@ interface Props {
   btnText?: string
   iconStyleCase?: IconStyle
   buttonStyleCase?: ButtonStyle
-  onClickFunction?: () =>
-    | Promise<void>
-    | void
-    | MouseEventHandler<HTMLButtonElement>
+  onClickFunction?: MouseEventHandler<HTMLButtonElement>
   onClickFunction2?: () => void
 }
 

@@ -6,11 +6,13 @@ import Link from 'next/link'
 import { AuthTokenStore } from '@/Store/AuthToken'
 import { AuthUserNickStore } from '@/Store/AuthUserNick'
 import { FeedData } from '@/Store/FeedData'
+import { useEffect, useState } from 'react'
 
 interface Props {
   DataforFeed: FEEDDATA
+  blurDataUrl: string
 }
-export default function FeedContent({ DataforFeed }: Props) {
+export default function FeedContent({ DataforFeed, blurDataUrl }: Props) {
   const { feedData, setFeedData } = FeedData()
   const date = new Date(DataforFeed.createDate)
   const createDate: string = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
@@ -86,6 +88,8 @@ export default function FeedContent({ DataforFeed }: Props) {
                 sizes="auto"
                 fill
                 className="border border-black rounded-xl"
+                placeholder="blur"
+                blurDataURL={blurDataUrl}
               />
             </div>
           </Link>

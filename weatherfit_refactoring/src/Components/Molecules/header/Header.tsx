@@ -12,7 +12,7 @@ interface Props {
   iconStyleCase?: IconStyle
   buttonStyleCase?: ButtonStyle
   onClickFunction?: () => void
-  onClickFunction2?: () => void
+  // onClickFunction2?: () => void
 }
 
 export default function Header({
@@ -21,7 +21,7 @@ export default function Header({
   iconStyleCase,
   buttonStyleCase,
   onClickFunction,
-  onClickFunction2,
+  // onClickFunction2,
 }: Props) {
   const router = useRouter()
 

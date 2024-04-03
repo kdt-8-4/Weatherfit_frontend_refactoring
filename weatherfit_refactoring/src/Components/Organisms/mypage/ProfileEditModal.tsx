@@ -12,9 +12,10 @@ import ProfilePwEdit from './ProfilePwEdit'
 
 interface Props {
   onClickFunction?: () => void
+  userInfo: UserData
 }
 
-export default function ProfileEditModal({ onClickFunction }: Props) {
+export default function ProfileEditModal({ onClickFunction, userInfo }: Props) {
   return (
     <div className="fixed top-0 left-0 w-[100%] h-[100%] bg-[#00000066] z-[100] flex justify-center items-center">
       <div className="bg-[#ffffff] w-[340px] h-[600px] rounded-md z-[200]">
@@ -34,17 +35,17 @@ export default function ProfileEditModal({ onClickFunction }: Props) {
         </div>
         <div className="p-[20px]">
           {/* 이미지 부분 */}
-          <ProfileImageEdit />
+          <ProfileImageEdit image={userInfo.image} />
           <hr className="my-[10px]" />
           {/* 이메일, 이름, 닉네임 부분 */}
           <div className="flex flex-col items-center">
-            <ProfileModalInfo title="이메일" value="user1@test.com" />
-            <ProfileModalInfo title="이름" value="황동준" />
-            <ProfileModalInfo title="닉네임" value="황동준" />
+            <ProfileModalInfo title="이메일" value={userInfo.email} />
+            <ProfileModalInfo title="이름" value={userInfo.name} />
+            <ProfileModalInfo title="닉네임" value={userInfo.nickname} />
           </div>
           <hr className="my-[10px]" />
           {/* 비밀번호 부분 */}
-          <ProfilePwEdit />
+          <ProfilePwEdit pw={userInfo.password} />
           <hr className="my-[10px]" />
           <div className="flex items-center justify-evenly flex-col h-[92px]">
             <Logout />

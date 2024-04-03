@@ -5,11 +5,15 @@ import ButtonStore, { ButtonStyle } from '@/Components/Atoms/Button/ButtonStore'
 import { AuthUserStore } from '@/Store/AuthUser'
 import { AuthTokenStore } from '@/Store/AuthToken'
 
-export default function ProfileImageEdit() {
-  // const [selectedImage, setSelectedImage] = useState(userProfileImage)
-  const [selectedImage, setSelectedImage] = useState<string | null>(
-    'https://cdnimg.melon.co.kr/cm2/artistcrop/images/002/61/143/261143_20210325180240_500.jpg?61e575e8653e5920470a38d1482d7312/melon/optimize/90',
-  )
+interface Props {
+  image: string | null
+}
+
+export default function ProfileImageEdit({ image }: Props) {
+  const [selectedImage, setSelectedImage] = useState(image)
+  // const [selectedImage, setSelectedImage] = useState<string | null>(
+  //   'https://cdnimg.melon.co.kr/cm2/artistcrop/images/002/61/143/261143_20210325180240_500.jpg?61e575e8653e5920470a38d1482d7312/melon/optimize/90',
+  // )
   const { userEmail } = AuthUserStore()
   const { accesstoken } = AuthTokenStore()
 
@@ -38,7 +42,7 @@ export default function ProfileImageEdit() {
             method: 'PATCH',
             headers: {
               'Content-Type': 'multipart/form-data',
-              Authorization: 'Bearer' + accesstoken,
+              Authorization: 'Bearer ' + accesstoken,
             },
             body: formData,
           },

@@ -25,7 +25,7 @@ export default function ProfileHeader({ userInfo }: Props) {
       <Header
         title="프로필"
         iconStyleCase={IconStyle.SETTING}
-        onClickFunction2={handleModalOpen}
+        onClickFunction={handleModalOpen}
       />
       {isModalOpen && (
         <ProfileEditModal

@@ -13,6 +13,7 @@ export default function UploadHeader() {
   const { accesstoken } = AuthTokenStore()
 
   const handleOnClick = async () => {
+    console.log('clicked')
     if (selectedImages.length === 0) {
       alert('업로드 된 사진이 없습니다.')
       return // 함수를 여기서 종료하여 더 이상 진행하지 않습니다.
@@ -57,14 +58,6 @@ export default function UploadHeader() {
       console.error(error)
     }
   }
-
-  console.log(
-    `hashTag ${hashTag} ,
-    category ${category}, 
-    content ${content}, 
-    temperature ${tempNow}, 
-    weatherIcon ${icon}`,
-  )
 
   return (
     <Header

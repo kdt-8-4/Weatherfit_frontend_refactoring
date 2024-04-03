@@ -11,8 +11,8 @@ interface Props {
   btnText?: string
   iconStyleCase?: IconStyle
   buttonStyleCase?: ButtonStyle
-  onClickFunction?: MouseEventHandler<HTMLButtonElement>
-  onClickFunction2?: () => void
+  onClickFunction?: () => void
+  // onClickFunction2?: () => void
 }
 
 export default function Header({
@@ -21,7 +21,7 @@ export default function Header({
   iconStyleCase,
   buttonStyleCase,
   onClickFunction,
-  onClickFunction2,
+  // onClickFunction2,
 }: Props) {
   const router = useRouter()
 
@@ -46,7 +46,7 @@ export default function Header({
         <ButtonStore
           buttonStyle={buttonStyleCase}
           style="mr-[10px] font-NanumSquareRound text-xs"
-          onClickFunction={() => onClickFunction}>
+          onClickFunction={onClickFunction}>
           {btnText}
         </ButtonStore>
       ) : iconStyleCase ? (
@@ -54,7 +54,7 @@ export default function Header({
           iconStyle={iconStyleCase}
           size={17}
           style="mr-[10px] cursor-pointer"
-          onClickFunction={onClickFunction2}
+          onClickFunction={onClickFunction}
         />
       ) : (
         <div className="hidden"></div>

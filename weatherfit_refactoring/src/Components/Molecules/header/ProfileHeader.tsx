@@ -5,7 +5,11 @@ import ProfileEditModal from '../../Organisms/mypage/ProfileEditModal'
 import Header from './Header'
 import { IconStyle } from '../../Atoms/Icon/IconStore'
 
-export default function ProfileHeader() {
+interface Props {
+  userInfo: UserData
+}
+
+export default function ProfileHeader({ userInfo }: Props) {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const handleModalOpen = () => {
@@ -23,7 +27,12 @@ export default function ProfileHeader() {
         iconStyleCase={IconStyle.SETTING}
         onClickFunction2={handleModalOpen}
       />
-      {isModalOpen && <ProfileEditModal onClickFunction={handleModalClose} />}
+      {isModalOpen && (
+        <ProfileEditModal
+          onClickFunction={handleModalClose}
+          userInfo={userInfo}
+        />
+      )}
     </>
   )
 }

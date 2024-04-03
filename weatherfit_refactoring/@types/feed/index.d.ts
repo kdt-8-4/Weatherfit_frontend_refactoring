@@ -79,5 +79,6 @@ interface UserData {
   nickname: string
   name: string
   email: string
-  pw: string
+  password: string
+  image: string | null
 }

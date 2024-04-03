@@ -1,264 +1,46 @@
+import TextStore, { TextStyle } from '@/Components/Atoms/Text/TextStore'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 interface Props {
   postData: FEEDDATA[]
 }
 
 export default function ProfilePost({ postData }: Props) {
+  const router = useRouter()
+
+  const goDetail = async (board_id: number) => {
+    localStorage.setItem('getBoardId_local', JSON.stringify(board_id))
+    router.push('/detail')
+  }
   return (
-    // <div>
-    // <div className="grid grid-rows-[25vh_25vh_25vh] grid-cols-[1fr_1fr_1fr] gap-[1%] p-[10px]">
-    <div className="relative grid auto-rows-[180px] grid-cols-[1fr_1fr_1fr] gap-[3px] p-[10px]">
-      <div className="relative w-full h-full">
-        <Image
-          src={'/images/codi1.jpg'}
-          alt="게시물 이미지"
-          layout="fill"
-          objectFit="cover"
-          className="rounded-lg"
-        />
-      </div>
-      <div className="relative w-full h-full">
-        <Image
-          src={'/images/codi2.jpg'}
-          alt="게시물 이미지"
-          layout="fill"
-          objectFit="cover"
-          className="rounded-lg"
-        />
-      </div>
-      <div className="relative w-full h-full">
-        <Image
-          src={'/images/codi1.jpg'}
-          alt="게시물 이미지"
-          layout="fill"
-          objectFit="cover"
-          className="rounded-lg"
-        />
-      </div>
-      <div className="relative w-full h-full">
-        <Image
-          src={'/images/codi2.jpg'}
-          alt="게시물 이미지"
-          layout="fill"
-          objectFit="cover"
-          className="rounded-lg"
-        />
-      </div>
-      <div className="relative w-full h-full">
-        <Image
-          src={'/images/codi1.jpg'}
-          alt="게시물 이미지"
-          layout="fill"
-          objectFit="cover"
-          className="rounded-lg"
-        />
-      </div>
-      <div className="relative w-full h-full">
-        <Image
-          src={'/images/codi2.jpg'}
-          alt="게시물 이미지"
-          layout="fill"
-          objectFit="cover"
-          className="rounded-lg"
-        />
-      </div>
-      <div className="relative w-full h-full">
-        <Image
-          src={'/images/codi1.jpg'}
-          alt="게시물 이미지"
-          layout="fill"
-          objectFit="cover"
-          className="rounded-lg"
-        />
-      </div>
-      <div className="relative w-full h-full">
-        <Image
-          src={'/images/codi2.jpg'}
-          alt="게시물 이미지"
-          layout="fill"
-          objectFit="cover"
-          className="rounded-lg"
-        />
-      </div>
-      <div className="relative w-full h-full">
-        <Image
-          src={'/images/codi1.jpg'}
-          alt="게시물 이미지"
-          layout="fill"
-          objectFit="cover"
-          className="rounded-lg"
-        />
-      </div>
-      <div className="relative w-full h-full">
-        <Image
-          src={'/images/codi2.jpg'}
-          alt="게시물 이미지"
-          layout="fill"
-          objectFit="cover"
-          className="rounded-lg"
-        />
-      </div>
-      <div className="relative w-full h-full">
-        <Image
-          src={'/images/codi1.jpg'}
-          alt="게시물 이미지"
-          layout="fill"
-          objectFit="cover"
-          className="rounded-lg"
-        />
-      </div>
-      <div className="relative w-full h-full">
-        <Image
-          src={'/images/codi2.jpg'}
-          alt="게시물 이미지"
-          layout="fill"
-          objectFit="cover"
-          className="rounded-lg"
-        />
-      </div>
-      <div className="relative w-full h-full">
-        <Image
-          src={'/images/codi1.jpg'}
-          alt="게시물 이미지"
-          layout="fill"
-          objectFit="cover"
-          className="rounded-lg"
-        />
-      </div>
-      <div className="relative w-full h-full">
-        <Image
-          src={'/images/codi2.jpg'}
-          alt="게시물 이미지"
-          layout="fill"
-          objectFit="cover"
-          className="rounded-lg"
-        />
-      </div>
-      <div className="relative w-full h-full">
-        <Image
-          src={'/images/codi1.jpg'}
-          alt="게시물 이미지"
-          layout="fill"
-          objectFit="cover"
-          className="rounded-lg"
-        />
-      </div>
-      <div className="relative w-full h-full">
-        <Image
-          src={'/images/codi2.jpg'}
-          alt="게시물 이미지"
-          layout="fill"
-          objectFit="cover"
-          className="rounded-lg"
-        />
-      </div>
-      <div className="relative w-full h-full">
-        <Image
-          src={'/images/codi1.jpg'}
-          alt="게시물 이미지"
-          layout="fill"
-          objectFit="cover"
-          className="rounded-lg"
-        />
-      </div>
-      <div className="relative w-full h-full">
-        <Image
-          src={'/images/codi2.jpg'}
-          alt="게시물 이미지"
-          layout="fill"
-          objectFit="cover"
-          className="rounded-lg"
-        />
-      </div>
-      <div className="relative w-full h-full">
-        <Image
-          src={'/images/codi1.jpg'}
-          alt="게시물 이미지"
-          layout="fill"
-          objectFit="cover"
-          className="rounded-lg"
-        />
-      </div>
-      <div className="relative w-full h-full">
-        <Image
-          src={'/images/codi2.jpg'}
-          alt="게시물 이미지"
-          layout="fill"
-          objectFit="cover"
-          className="rounded-lg"
-        />
-      </div>
-      <div className="relative w-full h-full">
-        <Image
-          src={'/images/codi1.jpg'}
-          alt="게시물 이미지"
-          layout="fill"
-          objectFit="cover"
-          className="rounded-lg"
-        />
-      </div>
-      <div className="relative w-full h-full">
-        <Image
-          src={'/images/codi2.jpg'}
-          alt="게시물 이미지"
-          layout="fill"
-          objectFit="cover"
-          className="rounded-lg"
-        />
-      </div>
-      <div className="relative w-full h-full">
-        <Image
-          src={'/images/codi1.jpg'}
-          alt="게시물 이미지"
-          layout="fill"
-          objectFit="cover"
-          className="rounded-lg"
-        />
-      </div>
-    </div>
-    // <>
-    //   {postData.length > 0 ? (
-    //     <div className="grid grid-rows-[25vh_25vh_25vh] grid-cols-[1fr_1fr_1fr] gap-[1%] p-[10px]">
-    //       {postData.map(item => (
-    //         <div key={item.boardId} className="rounded-lg w-[120px] h-[180px]">
-    //           {item.images && (
-    //             <Image
-    //               src={item.images.imageUrl}
-    //               alt="게시물 이미지"
-    //               width={120}
-    //               height={180}
-    //               className="rounded-lg"
-    //             />
-    //           )}
-    //         </div>
-    //       ))}
-    //     </div>
-    //   ) : (
-    //     <p className="post_box_p">게시물이 없습니다.</p>
-    //   )}
-    // </>
-    // <div className="grid grid-rows-[25vh_25vh_25vh] grid-cols-[1fr_1fr_1fr] gap-[1%] p-[10px]">
-    //   {postData.length > 0 ? (
-    //     postData.map(item => (
-    //       <div key={item.boardId} className="rounded-lg">
-    //         {item.images && (
-    //           <Image
-    //             src={item.images.imageUrl}
-    //             alt="게시물 이미지"
-    //             width={120}
-    //             height={180}
-    //             className="rounded-lg"
-    //           />
-    //         )}
-    //       </div>
-    //     ))
-    //   ) : (
-    //     <>
-    //       <p className="post_box_p">게시물이 없습니다.</p>
-    //     </>
-    //   )}
-    //   {/* <div className="bg-[salmon] rounded-lg"></div> */}
-    // </div>
+    <>
+      {postData.length > 0 ? (
+        <div className="relative grid auto-rows-[180px] grid-cols-[1fr_1fr_1fr] gap-[3px] p-[10px]">
+          {postData.map(item => (
+            <div
+              key={item.boardId}
+              className="relative w-full h-full cursor-pointer"
+              onClick={() => goDetail(item.boardId)}>
+              {item.images && (
+                <Image
+                  src={item.images.imageUrl}
+                  alt="게시물 이미지"
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-lg"
+                />
+              )}
+            </div>
+          ))}
+        </div>
+      ) : (
+        <TextStore
+          textStyle={TextStyle.CAFE_TEXT}
+          style="pt-[10%] text-center text-lg font-bold">
+          게시물이 없습니다.
+        </TextStore>
+      )}
+    </>
   )
 }

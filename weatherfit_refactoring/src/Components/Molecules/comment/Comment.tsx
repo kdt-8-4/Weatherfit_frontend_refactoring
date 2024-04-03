@@ -4,6 +4,7 @@ import { confirmAlert } from '@/utils/function/utilFunction'
 import InputStore, { InputStyle } from '../../Atoms/Input/InputStore'
 import ButtonStore, { ButtonStyle } from '../../Atoms/Button/ButtonStore'
 import { AuthTokenStore } from '@/Store/AuthToken'
+import { AuthUserNickStore } from '@/Store/AuthUserNick'
 
 interface Props {
   comment: CommentType
@@ -23,7 +24,7 @@ export default function Comment({
   const [isEditing, setIsEditing] = useState<boolean>(false)
   const [editContent, setEditContent] = useState<string>('')
   const { accesstoken, setAccessToken } = AuthTokenStore()
-  const decoded_nickname = '황동준'
+  const { userNick } = AuthUserNickStore()
 
   useEffect(() => {
     setAccessToken()
@@ -223,7 +224,7 @@ export default function Comment({
               {comment.createdDate}
             </p>
             {/* 수정 부분 */}
-            {comment.nickname === decoded_nickname && !isEditing ? (
+            {comment.nickname === userNick && !isEditing ? (
               <div className="text-[12px] absolute right-[5px]">
                 <ButtonStore
                   buttonStyle={ButtonStyle.TEXT_BTN}
@@ -273,7 +274,7 @@ export default function Comment({
             style="my-[5px]"
             inputStyle="w-[285px] h-[30px]"
             btnText="게시"
-            place="황동준(으)로 작성..."
+            place={`${userNick}으로 작성...`}
           />
         </div>
       )}

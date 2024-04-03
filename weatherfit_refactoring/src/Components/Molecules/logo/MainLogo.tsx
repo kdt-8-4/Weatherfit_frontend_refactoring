@@ -10,8 +10,10 @@ export default function MainLogo() {
     router.push('/')
   }
   return (
-    <section className="font-semibold mb-[40px] cursor-pointer">
-      <TextStore textStyle={TextStyle.NANUM_TEXT} style="text-center mb-[5px]">
+    <section className="mb-[40px] cursor-pointer">
+      <TextStore
+        textStyle={TextStyle.NANUM_TEXT}
+        style="text-center font-semibold mb-[5px]">
         기온별 옷차림은,
       </TextStore>
       <BoxStore

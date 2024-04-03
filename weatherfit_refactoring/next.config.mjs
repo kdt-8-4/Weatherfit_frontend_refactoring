@@ -1,8 +1,14 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {}
+import withPlaiceholder from '@plaiceholder/next'
 
-module.exports = {
+/**
+ * @type {import('next').NextConfig}
+ */
+
+const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
   images: {
+    formats: ['image/avif', 'image/webp'],
     domains: [
       'weatherfit-board-image.s3.amazonaws.com',
       'heesung-s3.s3.ap-northeast-2.amazonaws.com',
@@ -16,6 +22,10 @@ module.exports = {
       'static.lookpin.co.kr',
       'i.pinimg.com',
       'thumbnail.10x10.co.kr',
+      'encrypted-tbn0.gstatic.com',
+      'image.musinsa.com',
     ],
   },
 }
+
+export default withPlaiceholder(nextConfig)

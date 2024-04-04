@@ -210,7 +210,7 @@
       <td align="center">회원가입 페이지</td>
     </tr>
     <tr>
-        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/7dcd0f08-d95e-4e9f-8aed-fc78f8d61551" width=300/></td>
+        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/03c3d801-2c69-47ff-8534-8fe5cc049c3e" width=300/></td>
     </tr>
   </tbody>
 </table>

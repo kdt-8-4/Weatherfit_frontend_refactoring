@@ -88,8 +88,8 @@ export default function FeedContent({ DataforFeed, blurDataUrl }: Props) {
                 sizes="auto"
                 fill
                 className="border border-black rounded-xl"
-                // placeholder="blur"
-                // blurDataURL={blurDataUrl}
+                placeholder="blur"
+                blurDataURL={blurDataUrl}
               />
             </div>
           </Link>

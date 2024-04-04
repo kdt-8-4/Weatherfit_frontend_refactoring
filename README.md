@@ -60,6 +60,7 @@
 - 피드 페이지
 - 일반 회원가입 페이지
 - 구글 회원가입 페이지
+- 웹 반응형 페이지
 
 🦾 **기능**
 
@@ -277,6 +278,22 @@
     <tr>
         <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/1c5310ad-f916-44f1-a9ca-6eeed3052006" width=300/></td>
         <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/4342c983-68fc-4942-953c-b962f887280f" width=300/></td>
+    </tr>
+  </tbody>
+</table>
+- 자신의 회원 정보를 수정할 수 있고, 업로드한 코디와 좋아요한 코디를 확인할 수 있습니다.<br/>
+
+### 기타 페이지
+
+<table>
+  <tbody>
+    <tr>
+      <td align="center">웹 반응형 페이지</td>
+      <td align="center">로그인 권환 페이지</td>
+    </tr>
+    <tr>
+        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/c87b056e-9471-4dc7-9f77-d113cbb7995b" width=600/></td>
+        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/d721efee-3ec4-42c4-b06d-aeb2232fb42b" width=300/></td>
     </tr>
   </tbody>
 </table>

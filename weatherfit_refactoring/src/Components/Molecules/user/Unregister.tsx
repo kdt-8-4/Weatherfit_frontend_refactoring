@@ -17,7 +17,7 @@ export default function Unregister() {
             method: 'DELETE',
             headers: {
               'Content-Type': 'application/json',
-              Authorization: 'Bearer' + accesstoken,
+              Authorization: 'Bearer ' + accesstoken,
             },
           },
         )
@@ -27,6 +27,8 @@ export default function Unregister() {
         console.log('회원 탈퇴 response: ', unregisterRes)
         Cookies.remove('accessToken')
         localStorage.removeItem('user_email')
+        localStorage.removeItem('user_nickname')
+        localStorage.removeItem('login_Time')
         confirmAlert('그동안 옷늘날씨를 이용해 주셔서 감사합니다.')
         window.location.href = '/'
       }

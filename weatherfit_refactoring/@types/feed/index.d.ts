@@ -3,6 +3,11 @@ interface LIKE {
   nickName: string
 }
 
+interface BlurData {
+  boardId: number
+  blurUrl: string
+}
+
 interface IMAGE {
   boardId: number
   imageId: number
@@ -79,5 +84,6 @@ interface UserData {
   nickname: string
   name: string
   email: string
-  pw: string
+  password: string
+  image: string | null
 }

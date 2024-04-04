@@ -6,17 +6,16 @@ import bcrypt from 'bcryptjs'
 import { AuthUserStore } from '@/Store/AuthUser'
 import { AuthTokenStore } from '@/Store/AuthToken'
 
-export default function ProfilePwEdit() {
+interface Props {
+  pw: string
+}
+
+export default function ProfilePwEdit({ pw }: Props) {
   const [currentPw, setCurrentPw] = useState<string>('')
   const [newPw, setNewPw] = useState<string>('')
   const [confirmPw, setConfirmPw] = useState<string>('')
-  const [pw, setPw] = useState<string>('1234')
   const { userEmail } = AuthUserStore()
-  const { accesstoken, setAccessToken } = AuthTokenStore()
-
-  useEffect(() => {
-    setAccessToken()
-  }, [accesstoken])
+  const { accesstoken } = AuthTokenStore()
 
   const handlePwEditSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -26,8 +25,8 @@ export default function ProfilePwEdit() {
       return
     }
 
-    // const isPwMatch = await bcrypt.compare(currentPw, pw)
-    if (currentPw !== pw) {
+    const isPwMatch = await bcrypt.compare(currentPw, pw)
+    if (!isPwMatch) {
       confirmAlert('현재 비밀번호가 틀립니다.')
       return
     }
@@ -55,7 +54,7 @@ export default function ProfilePwEdit() {
             method: 'PATCH',
             headers: {
               'Content-Type': 'application/json',
-              Authorization: 'Bearer' + accesstoken,
+              Authorization: 'Bearer ' + accesstoken,
             },
             body: JSON.stringify({
               email: userEmail,

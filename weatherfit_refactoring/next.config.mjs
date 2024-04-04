@@ -8,6 +8,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
+    formats: ['image/avif', 'image/webp'],
     domains: [
       'weatherfit-board-image.s3.amazonaws.com',
       'heesung-s3.s3.ap-northeast-2.amazonaws.com',

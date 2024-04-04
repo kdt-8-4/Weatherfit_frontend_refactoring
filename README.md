@@ -20,77 +20,7 @@
 
 <br/>
 
-- 기능 구현 위주로 프로젝트를 진행하며 발생한 문제점 보완
-    - 코드의 재사용성과 생산성이 떨어짐 >> 아토믹 디자인 패턴을 도입하며 앞의 문제를 해결
-    - 성능에 초점을 맞추지 못해 사용자 경험이 떨어짐 >> LIGHTHOUSE 등을 이용해 성능을 검사하며 프로젝트 진행
-    - 웹 표준과 웹 접근성을 고려하지 못함 >> 웹 표준과 웹 접근성에 대해 공부하고 적용
-
-- Next.js에서 axios를 사용하면 데이터 캐싱 기능을 지원해주지 않기 때문에 성능이 떨어짐
-    - Next.js에서 자체적으로 데이터 캐싱 기능을 지원해주는 fetch를 사용하셔 성능 개선
-
-- 클래스명 혹은 아이디가 겹처 스타일이 깨지는 경우가 발생
-    - Tailwind CSS를 사용하여 사전에 문제 발생 가능성 삭제
-
-## 2. 👥 팀원 소개 및 담당 역할
-
-<table align="center">
-  <tbody>
-    <tr>
-      <td align="center"><a href="https://github.com/nebulaBdj"><img src="https://github.com/nebulaBdj.png" width="100px;" alt=""/><br /><b>황동준</b></a><br /></td>
-      <td align="center"><a href="https://github.com/kr-nius"><img src="https://github.com/kr-nius.png" width="100px;" alt=""/><br /><b>전주현</b></a><br /></td>
-      <td align="center"><a href="https://github.com/hyeiis"><img src="https://github.com/hyeiis.png" width="100px;" alt=""/><br /><b>박혜원</b></a><br /></td>
-    </tr>
-    <tr>
-      <td align="center">Frontend<br/>팀장<br/></td>
-      <td align="center">Frontend</td>
-      <td align="center">Frontend</td>
-    </tr>
-  </tbody>
-</table>
-
-> ### 황동준
-
-🎨 **디자인**
-
-- 아토믹 디자인 패턴 총괄
-    - 전체 아톰 설계 및 디자인 패턴 프로세스 담당
-
-📜 **페이지**
-
-- 피드 페이지
-- 일반 회원가입 페이지
-- 구글 회원가입 페이지
-
-🦾 **기능**
-
-- 위치에 맞는 날씨 정보 가져와 화면에 띄우기
-- 로그인 토큰 전역 관리
-- 해시태그로 게시물 검색하기
-- 카테고리 선택 시 선택에 맞는 게시물 보여주기
-- 온도 설정 시 온도에 맞는 게시물 보여주기
-- 일반 회원가입 구현
-- 구글 소셜 회원가입 구현
-
-> ### 박혜원
-
-📜 **페이지**
-
-- 업로드 페이지
-- 상세 페이지 & 게시글 수정 페이지
-- 메인 페이지 베스트 코디 확인 파트
-
-🦾 **기능**
-
-- 날씨 정보를 포함하여 게시물 정보 전달하는 업로드 기능 구현
-- 게시물 상세 정보 불러오기
-- 로그인 토큰에서 사용자 닉네임을 가져와 사용자가 업로드한 게시물 구분하여 수정 기능 구현
-- 가장 좋아요가 많이 눌린 게시물 3개 메인 페이지에 불러오기
-
-> ### 전주현
-
-🎨 **디자인**
-
-- 디자인 총괄
+- 기능 구현 위주로 프로젝트를 진행하며 발생한 문제점 보용
 
 📜 **페이지**
 

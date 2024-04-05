@@ -1,17 +1,19 @@
+'use client'
+
 import { CategoryData } from '@/Store/CategoryData'
 import { CategorySelectData } from '@/Store/CategorySelectData'
-import { unstable_getStaticParams } from 'next/dist/build/templates/pages'
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import InputStore, { InputStyle } from '../../Atoms/Input/InputStore'
-import { WeatherTempMax } from '@/Store/WeatherMaxTemp'
-import { WeatherTempMin } from '@/Store/WeatherMinTemp'
+import { FeedData } from '@/Store/FeedData'
+import { WeatherContext } from '../../../../contexts/WeatherContext'
 import { CategoryControl } from '@/Store/CategoryControl'
 
 export default function FeedCategorySelect() {
+  const { setFeedData } = FeedData()
   const { categoryData } = CategoryData()
-  const { setTempMin } = WeatherTempMin()
-  const { setTempMax } = WeatherTempMax()
-  const { categoryControl, setCategoryControl } = CategoryControl()
+  const { tempMax, tempMin, setTempMax, setTempMin } =
+    useContext(WeatherContext)
+  const { setCategoryControl } = CategoryControl()
   const { selectData, setSelectData } = CategorySelectData()
 
   const [categoryTitleStyle, setCategoryTitleStyle] = useState<string>('')
@@ -30,7 +32,9 @@ export default function FeedCategorySelect() {
 
   //하위 카테고리 선택시 검색 데이터에 넣기
   const categorySearch = (inputData: string) => {
-    setSelectData([...selectData, inputData])
+    if (!selectData.includes(inputData)) {
+      setSelectData([...selectData, inputData])
+    }
   }
 
   //검색 데이터에서 삭제 버튼을 누른 카테고리 없애기
@@ -42,36 +46,67 @@ export default function FeedCategorySelect() {
     setSelectData(filterCansleCategory)
   }
 
-  const searchCategory = async () => {
-    // 상위 컴포넌트에서 함수 받아온후 바로 실행해버리자
-    console.log(selectData)
-    let url: string = 'https://www.jerneithe.site//board/search?categories='
-    for (let i = 0; i < selectData.length; i++) {
-      url += selectData[i]
+  const tempFileter = (searchResponse: FEEDDATA[]) => {
+    // console.log('받은 데이터', searchResponse)
+    // console.log('온도', tempMax, tempMin)
+    // console.log('로컬 온도', localTempMax, localTempMin)
+
+    let max: number = tempMax || 40
+    let min: number = tempMin || -20
+
+    if (localTempMax !== null) {
+      max = localTempMax
     }
+
+    if (localTempMin !== null) {
+      min = localTempMin
+    }
+
+    console.log('필터에 적용할 온도', max, min)
+    if (max !== null && min !== null) {
+      console.log(searchResponse)
+
+      const filterByTemp = searchResponse.filter(
+        searchData =>
+          searchData.temperature >= min && searchData.temperature <= max,
+      )
+
+      console.log('온도 적용', filterByTemp)
+      setFeedData(filterByTemp)
+    }
+  }
+
+  const searchCategory = async () => {
+    console.log('실행', selectData)
+    let url: string = 'https://www.jerneithe.site/board/search?categories='
+    const selectDataToList = selectData.join(',')
+    url += selectDataToList
+
     console.log(url)
     const callSearchData = await fetch(url, {
       method: 'GET',
     })
 
-    const callSearchDataToJson = await callSearchData.json()
+    const callSearchDataToJson: FEEDDATA[] = await callSearchData.json()
 
     console.log('카테고리 검색 데이터', callSearchDataToJson)
 
-    if (localTempMax != undefined) {
+    if (localTempMax !== null) {
       setTempMax(localTempMax)
     }
 
-    if (localTempMin != undefined) {
+    if (localTempMin !== null) {
       setTempMin(localTempMin)
     }
 
+    tempFileter(callSearchDataToJson)
     setCategoryControl(false)
   }
 
   return (
     <div className="fixed top-0 left-0 w-[100%] h-[100%] bg-[#00000066] z-[100] flex justify-center items-center">
       <div className="absolute bottom-0 z-50 bg-white w-[390px] h-[610px] rounded-[10px]">
+        {/* 카테고리 헤더 */}
         <section className="text-center font-neurimboGothic mt-2 mb-[10px]">
           <button
             onClick={() => setCategoryControl(false)}
@@ -83,6 +118,7 @@ export default function FeedCategorySelect() {
 
         <hr />
 
+        {/* 카테고리 리스트 */}
         <section>
           <section className=" flex whitespace-nowrap space-x-6 mx-8 mt-3 font-gmarketsans">
             {categoryData.map(categoryTitle => {
@@ -97,6 +133,7 @@ export default function FeedCategorySelect() {
             })}
           </section>
 
+          {/* 카테고리 하위 목록 */}
           <section className="h-[385px]">
             {categoryList &&
               categoryList.map(categoryList => {
@@ -112,6 +149,7 @@ export default function FeedCategorySelect() {
           </section>
         </section>
 
+        {/* 온도 설정 */}
         <section className="flex m-2">
           <p className=" font-neurimboGothic whitespace-nowrap">온도 설정 : </p>
           <InputStore
@@ -136,6 +174,7 @@ export default function FeedCategorySelect() {
           <span className=" font-neurimboGothic">℃</span>
         </section>
 
+        {/* 선택한 카테고리 목록 */}
         <section className="flex overflow-x-auto h-[50px]">
           {selectData.map((data, index) => {
             return (
@@ -151,6 +190,8 @@ export default function FeedCategorySelect() {
             )
           })}
         </section>
+
+        {/* 카테고리 버튼 */}
         <section className=" font-gmarketsans flex">
           <button
             className=" bg-white w-[25%]  border-[1px] ml-2 mr-1 p-1"

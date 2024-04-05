@@ -1,5 +1,12 @@
 'use client'
-import { ReactNode, createContext, useEffect, useState } from 'react'
+import {
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  createContext,
+  useEffect,
+  useState,
+} from 'react'
 
 type WeatherType =
   | 'Clear'
@@ -19,6 +26,8 @@ interface WeatherProvider {
   tempMin: number | null
   address: string | null
   weather: WeatherType | null
+  setTempMax: Dispatch<SetStateAction<number | undefined>>
+  setTempMin: Dispatch<SetStateAction<number | undefined>>
 }
 
 export const WeatherContext = createContext<WeatherProvider>({
@@ -28,6 +37,8 @@ export const WeatherContext = createContext<WeatherProvider>({
   tempNow: null,
   address: null,
   weather: null,
+  setTempMax: () => {},
+  setTempMin: () => {},
 })
 
 export const WeatherProvider = ({ children }: { children: ReactNode }) => {
@@ -130,6 +141,8 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
               tempMax: temperatureMax,
               tempMin: temperatureMin,
               tempNow: temperature,
+              setTempMax,
+              setTempMin,
             }}>
             {children}
           </WeatherContext.Provider>

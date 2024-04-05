@@ -1,5 +1,5 @@
 'use client'
-import { useContext, useEffect, useState } from 'react'
+import { useContext } from 'react'
 import Image from 'next/image'
 import { WeatherContext } from '../../../contexts/WeatherContext'
 

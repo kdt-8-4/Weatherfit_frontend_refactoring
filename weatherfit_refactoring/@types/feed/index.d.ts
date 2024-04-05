@@ -1,6 +1,6 @@
 interface LIKE {
   likeId: number
-  nickName: string
+  nickName: string | null
 }
 
 interface BlurData {

@@ -34,6 +34,7 @@ export default function FeedTopCategory() {
       },
     )
     const clickCategoryDataToJson: FEEDDATA[] = await clickCategoryData.json()
+    console.log('받은 탑 카테고리 데이터', clickCategoryDataToJson)
     setFeedData(clickCategoryDataToJson)
   }
 
@@ -43,13 +44,13 @@ export default function FeedTopCategory() {
         <p className=" font-neurimboGothic whitespace-nowrap mx-1.5 w-[120px]">
           오늘의 카테고리 :
         </p>
-        <div className="flex overflow-hidden whitespace-nowrap w-[calc(55px*10)]">
+        <div className="flex overflow-hidden whitespace-nowrap w-[calc(100px*10)]">
           {topCate.concat(topCate).map((topcategory, index) => {
             return (
               <ButtonStore
                 key={index}
                 buttonStyle={ButtonStyle.CATEGORY_BTN_CHECKED}
-                style="font-NanumSquareRound mx-1 p-1 w-[60px] h-[30px] relative animate-topCategory"
+                style="font-NanumSquareRound mx-1 p-1 w-[100px] h-[30px] relative animate-topCategory"
                 onClickFunction={() => gotoCategory(topcategory)}>
                 {topcategory}
               </ButtonStore>

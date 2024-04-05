@@ -2,7 +2,7 @@ import { ButtonStyle } from '../../Atoms/Button/ButtonStore'
 import Header from './Header'
 import { useStore } from '../../../Store/Store'
 import { WeatherContext } from '../../../../contexts/WeatherContext'
-import { WeatherTemp } from '@/Store/WeatherTemp'
+import { confirmAlert } from '@/utils/function/utilFunction'
 import { AuthTokenStore } from '@/Store/AuthToken'
 import { useContext } from 'react'
 
@@ -15,12 +15,12 @@ export default function UploadHeader() {
   const handleOnClick = async () => {
     console.log('clicked')
     if (selectedImages.length === 0) {
-      alert('업로드 된 사진이 없습니다.')
+      confirmAlert('업로드 된 사진이 없습니다.')
       return // 함수를 여기서 종료하여 더 이상 진행하지 않습니다.
     }
 
     if (category.length === 0) {
-      alert('선택된 카테고리가 없습니다.')
+      confirmAlert('선택된 카테고리가 없습니다.')
       return // 함수를 여기서 종료합니다.
     }
 
@@ -43,16 +43,15 @@ export default function UploadHeader() {
         method: 'POST',
         body: formData,
         headers: {
-          'Content-Type': 'multipart/form-data',
           Authorization: 'Bearer ' + accesstoken,
         },
       })
 
       if (response.ok) {
-        alert('업로드 되었습니다.')
+        confirmAlert('업로드 되었습니다.')
         window.location.href = `/feed`
       } else {
-        alert('업로드에 실패했습니다. 다시 시도해주세요.')
+        confirmAlert('업로드에 실패했습니다. 다시 시도해주세요.')
       }
     } catch (error) {
       console.error(error)

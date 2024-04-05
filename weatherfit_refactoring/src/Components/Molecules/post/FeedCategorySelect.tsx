@@ -51,8 +51,8 @@ export default function FeedCategorySelect() {
     // console.log('온도', tempMax, tempMin)
     // console.log('로컬 온도', localTempMax, localTempMin)
 
-    let max: number | null = tempMax
-    let min: number | null = tempMin
+    let max: number = tempMax || 40
+    let min: number = tempMin || -20
 
     if (localTempMax !== null) {
       max = localTempMax
@@ -62,6 +62,7 @@ export default function FeedCategorySelect() {
       min = localTempMin
     }
 
+    console.log('필터에 적용할 온도', max, min)
     if (max !== null && min !== null) {
       console.log(searchResponse)
 

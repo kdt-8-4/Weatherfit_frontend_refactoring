@@ -3,10 +3,10 @@
 import IconStore, { IconStyle } from '../../Atoms/Icon/IconStore'
 import InputStore, { InputStyle } from '../../Atoms/Input/InputStore'
 import ButtonStore, { ButtonStyle } from '../../Atoms/Button/ButtonStore'
-import { ChangeEventHandler, useEffect, useState } from 'react'
+import { useState } from 'react'
 import { FeedData } from '@/Store/FeedData'
 
-export default function FeedSearch() {
+export default function FeedSearchMain() {
   const { feedData, setFeedData } = FeedData()
   const [hashValue, setHashValue] = useState<string>('')
 

@@ -6,15 +6,15 @@ import getBase64 from '@/utils/image_lazy_loding/getBase64'
 
 export default async function Feedpage() {
   // 게시물 관련 백엔드 복구 시 사용
-  const feedDataFetch = await fetch('https://www.jerneithe.site/board/list', {
-    method: 'GET',
-    cache: 'no-store',
-  })
+  // const feedDataFetch = await fetch('https://www.jerneithe.site/board/list', {
+  //   method: 'GET',
+  //   cache: 'no-store',
+  // })
 
-  const feedContentsData: FEEDDATA[] = await feedDataFetch.json()
+  // const feedContentsData: FEEDDATA[] = await feedDataFetch.json()
   // console.log(feedContentsData)
   //임시 데이터
-  // const feedContentsData: FEEDDATA[] = localFeedData
+  const feedContentsData: FEEDDATA[] = localFeedData
 
   // 받아온 데이터에서 이미지를 블러 이미지로 변환해 준 후
   // boardId와 함께 배열에 넣어주기

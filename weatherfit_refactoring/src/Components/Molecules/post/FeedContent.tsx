@@ -21,74 +21,74 @@ export default function FeedContent({ DataforFeed, blurDataUrl }: Props) {
   const { accesstoken } = AuthTokenStore()
   const { userNick } = AuthUserNickStore()
 
-  // const likeChecker = (likelist: LIKE[], nickName: string | null) => {
-  //   return likelist.some(list => list.nickName === nickName)
-  // }
+  const likeChecker = (likelist: LIKE[], nickName: string | null) => {
+    return likelist.some(list => list.nickName === nickName)
+  }
 
-  // useEffect(() => {
-  //   setIsUserLiked(likeChecker(DataforFeed.likelist, userNick))
-  // }, [])
+  useEffect(() => {
+    setIsUserLiked(likeChecker(DataforFeed.likelist, userNick))
+  }, [])
 
   const clickLike = async () => {
     if (userNick === null) {
       confirmAlert('로그인 후\n 좋아요를 누를 수 있습니다.')
     }
 
-    //   const sendToLikeAPI = `https://www.jerneithe.site/board/like/${DataforFeed.boardId}`
-    //   try {
-    //     const res = await fetch(sendToLikeAPI, {
-    //       method: 'POST',
-    //       headers: {
-    //         Authorization: 'Bearer ' + accesstoken,
-    //       },
-    //     })
+    const sendToLikeAPI = `https://www.jerneithe.site/board/like/${DataforFeed.boardId}`
+    try {
+      const res = await fetch(sendToLikeAPI, {
+        method: 'POST',
+        headers: {
+          Authorization: 'Bearer ' + accesstoken,
+        },
+      })
 
-    //     if (res.ok) {
-    //       console.log('좋아요 변경 성공')
-    //       // 성공적으로 처리된 경우
-    //       //feedData 복사
-    //       const updateFeedData: FEEDDATA[] = [...feedData]
+      if (res.ok) {
+        console.log('좋아요 변경 성공')
+        // 성공적으로 처리된 경우
+        //feedData 복사
+        const updateFeedData: FEEDDATA[] = [...feedData]
 
-    //       //해당 컴포넌트에 넘어온 boardId와 일치하는
-    //       const userLikedIndex = updateFeedData.findIndex(
-    //         feed => feed.boardId === DataforFeed.boardId,
-    //       )
-    //       const isLiked = likeChecker(
-    //         updateFeedData[userLikedIndex].likelist,
-    //         userNick,
-    //       )
+        //해당 컴포넌트에 넘어온 boardId와 일치하는
+        const userLikedIndex = updateFeedData.findIndex(
+          feed => feed.boardId === DataforFeed.boardId,
+        )
+        const isLiked = likeChecker(
+          updateFeedData[userLikedIndex].likelist,
+          userNick,
+        )
 
-    //       if (isLiked) {
-    //         // 사용자 이름이 likelist에 존재하는 경우
-    //         // likeCount 1 감소
-    //         updateFeedData[userLikedIndex].likeCount--
-    //         // likelist에서 사용자 닉네임 제거
-    //         updateFeedData[userLikedIndex].likelist = updateFeedData[
-    //           userLikedIndex
-    //         ].likelist.filter(list => list.nickName !== userNick)
-    //         setIsUserLiked(false)
-    //       } else {
-    //         // 사용자 이름이 likelist에 존재하지 않는 경우
-    //         // likeCount 1 증가
-    //         updateFeedData[userLikedIndex].likeCount++
-    //         // likelist에서 사용자 닉네임 추가
-    //         const listLength = updateFeedData[userLikedIndex].likelist.length
-    //         updateFeedData[userLikedIndex].likelist.push({
-    //           likeId: listLength,
-    //           nickName: userNick,
-    //         })
-    //         setIsUserLiked(true)
-    //       }
+        if (isLiked) {
+          // 사용자 이름이 likelist에 존재하는 경우
+          // likeCount 1 감소
+          updateFeedData[userLikedIndex].likeCount--
+          // likelist에서 사용자 닉네임 제거
+          updateFeedData[userLikedIndex].likelist = updateFeedData[
+            userLikedIndex
+          ].likelist.filter(list => list.nickName !== userNick)
+          setIsUserLiked(false)
+        } else {
+          // 사용자 이름이 likelist에 존재하지 않는 경우
+          // likeCount 1 증가
+          updateFeedData[userLikedIndex].likeCount++
+          // likelist에서 사용자 닉네임 추가
+          const listLength = updateFeedData[userLikedIndex].likelist.length
+          updateFeedData[userLikedIndex].likelist.push({
+            likeId: listLength,
+            nickName: userNick,
+          })
+          setIsUserLiked(true)
+        }
 
-    //       setFeedData(updateFeedData)
-    //     } else {
-    //       // throw new Error('Network response was not ok.')
-    //       console.error('좋아요 변경 실패:', res.status)
-    //       // 실패한 경우에 대한 처리
-    //     }
-    //   } catch (error) {
-    //     console.error('좋아요 변경 실패:', error)
-    //   }
+        setFeedData(updateFeedData)
+      } else {
+        // throw new Error('Network response was not ok.')
+        console.error('좋아요 변경 실패:', res.status)
+        // 실패한 경우에 대한 처리
+      }
+    } catch (error) {
+      console.error('좋아요 변경 실패:', error)
+    }
   }
 
   return (

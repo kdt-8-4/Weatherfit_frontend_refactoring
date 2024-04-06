@@ -22,6 +22,10 @@ export default function FeedContent({ DataforFeed, blurDataUrl }: Props) {
   const { userNick } = AuthUserNickStore()
 
   const likeChecker = (likelist: LIKE[], nickName: string | null) => {
+    if (likelist === undefined) {
+      return false
+    }
+
     return likelist.some(list => list.nickName === nickName)
   }
 

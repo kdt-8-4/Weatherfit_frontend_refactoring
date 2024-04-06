@@ -1,15 +1,17 @@
 [
   {
     "boardId": 1,
-    "category": ["숏 패딩", "컨버스"],
-    "createDate": "2024-02-13T08:00:00.000Z",
-    "hashTag": ["카페", "행복", "겨울"],
+    "nickName": "홍길동",
+    "likeCount": 2,
+    "temperature": 1.2,
     "images": {
       "boardId": 1,
       "imageId": 1,
       "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ0OerVCpI1NxInMd93w4JtvWoGmeRf4l8ZlLM7-A--g&s"
     },
-    "likeCount": 2,
+    "category": ["숏 패딩", "컨버스"],
+    "hashTag": ["카페", "행복", "겨울"],
+    "weatherIcon": "https://openweathermap.org/img/wn/13d.png",
     "likelist": [
       {
         "likeId": 1,
@@ -21,9 +23,7 @@
       }
     ],
     "modifiedDate": "2024-02-15T08:00:00.000Z",
-    "nickName": "홍길동",
-    "temperature": 1.2,
-    "weatherIcon": "https://openweathermap.org/img/wn/13d.png"
+    "createDate": "2024-02-13T08:00:00.000Z"
   },
   {
     "boardId": 2,

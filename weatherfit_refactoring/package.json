@@ -21,7 +21,7 @@
     "plaiceholder": "^3.0.0",
     "react": "^18",
     "react-dom": "^18",
-    "sharp": "^0.33.1",
+    "sharp": "^0.33.3",
     "slick-carousel": "^1.8.1",
     "sweetalert2": "^11.10.4",
     "tailwind-scrollbar-hide": "^1.1.7",

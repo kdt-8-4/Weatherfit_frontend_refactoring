@@ -20,17 +20,19 @@ export default function FeedContents({ response, blurDataMap }: Props) {
     const copyResponse: FEEDDATA[] = [...response]
 
     // 현재 온도 맞는 코디 데이터로 필터링
-    if (tempMax && tempMin) {
-      const filterByTemp = copyResponse.filter(
-        copyResponse =>
-          copyResponse.temperature >= tempMin &&
-          copyResponse.temperature <= tempMax,
-      )
-      setFeedData(filterByTemp)
-    }
-    if (tempMax === null && tempMin === null) {
-      setFeedData(response)
-    }
+    // if (tempMax && tempMin) {
+    //   const filterByTemp = copyResponse.filter(
+    //     copyResponse =>
+    //       copyResponse.temperature >= tempMin &&
+    //       copyResponse.temperature <= tempMax,
+    //   )
+    //   setFeedData(filterByTemp)
+    // }
+    // if (tempMax === null && tempMin === null) {
+    //   setFeedData(response)
+    // }
+
+    setFeedData(response)
   }, [])
 
   return (

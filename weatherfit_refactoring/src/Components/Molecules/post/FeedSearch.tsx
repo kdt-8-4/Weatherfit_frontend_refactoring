@@ -64,6 +64,7 @@ export default function FeedSearch() {
           size={16}
           style="mr-[10px]"
           onClickFunction={searchHashTag}
+          tabindex={0}
         />
       </div>
       <ButtonStore

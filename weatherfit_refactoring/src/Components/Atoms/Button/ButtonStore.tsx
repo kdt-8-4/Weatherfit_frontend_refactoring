@@ -26,6 +26,7 @@ interface Props {
     | undefined
   children?: React.ReactNode
   btnType?: 'button' | 'reset' | 'submit' | undefined
+  tabindex?: number
 }
 
 export default function ButtonStore({
@@ -34,6 +35,7 @@ export default function ButtonStore({
   onClickFunction,
   style,
   btnType,
+  tabindex,
 }: Props) {
   const selectButton = (): React.ReactNode => {
     switch (buttonStyle) {
@@ -84,7 +86,8 @@ export default function ButtonStore({
         return (
           <button
             className={`${style} bg-blue-300 border border-blue-300 text-white rounded-2xl`}
-            onClick={onClickFunction}>
+            onClick={onClickFunction}
+            tabIndex={tabindex}>
             {children}
           </button>
         )
@@ -130,7 +133,10 @@ export default function ButtonStore({
         )
       case ButtonStyle.TEXT_BTN:
         return (
-          <button className={`${style}`} onClick={onClickFunction}>
+          <button
+            className={`${style}`}
+            onClick={onClickFunction}
+            tabIndex={tabindex}>
             {children}
           </button>
         )

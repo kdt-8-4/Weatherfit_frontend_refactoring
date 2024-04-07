@@ -1,5 +1,9 @@
 import Image from 'next/image'
-import { FocusEventHandler, FormEventHandler, KeyboardEventHandler } from 'react'
+import {
+  FocusEventHandler,
+  FormEventHandler,
+  KeyboardEventHandler,
+} from 'react'
 
 export enum InputStyle {
   INPUT_WHITE = 'INPUT_WHITE',
@@ -8,17 +12,18 @@ export enum InputStyle {
 }
 
 interface Props {
-  inputStyle: InputStyle;
-  inputType?: string;
-  placeholderContents?: string;
-  value?: string | number;
-  style?: string;
+  inputStyle: InputStyle
+  inputType?: string
+  placeholderContents?: string
+  value?: string | number
+  style?: string
   onChageFunction?:
     | FormEventHandler<HTMLDivElement>
     | React.ChangeEventHandler<HTMLInputElement>
-    | undefined;
-  onBlur?: FocusEventHandler<HTMLDivElement>;
+    | undefined
+  onBlur?: FocusEventHandler<HTMLDivElement>
   onKeyDown?: KeyboardEventHandler<HTMLDivElement>
+  tabindex?: number
 }
 
 export default function InputStore({
@@ -30,6 +35,7 @@ export default function InputStore({
   onBlur,
   onKeyDown,
   value,
+  tabindex,
 }: Props) {
   const selectInput = (): React.ReactNode => {
     switch (inputStyle) {
@@ -43,6 +49,7 @@ export default function InputStore({
             type={inputType}
             className={`border rounded-lg bg-white border-gray-500 p-1 ${style}`}
             placeholder={placeholderContents}
+            tabIndex={tabindex}
           />
         )
       case InputStyle.INPUT_SEARCH:
@@ -53,6 +60,7 @@ export default function InputStore({
             type={inputType}
             className={`rounded-lg bg-white border-gray-500 p-1 ${style}`}
             placeholder={placeholderContents}
+            tabIndex={tabindex}
           />
         )
       case InputStyle.INPUT_IMAGE:

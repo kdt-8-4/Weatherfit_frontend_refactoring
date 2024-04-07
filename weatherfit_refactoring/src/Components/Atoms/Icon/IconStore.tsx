@@ -28,6 +28,7 @@ interface Props {
   size?: number
   style?: string
   onClickFunction?: () => void
+  tabindex?: number
 }
 
 export default function IconStore({
@@ -35,6 +36,7 @@ export default function IconStore({
   size,
   style,
   onClickFunction,
+  tabindex,
 }: Props) {
   const selectIcon = (): React.ReactNode => {
     switch (iconStyle) {
@@ -235,6 +237,7 @@ export default function IconStore({
             height={size}
             className={`${style}`}
             onClick={onClickFunction}
+            tabIndex={tabindex}
           />
         )
       case IconStyle.SEARCH_FILL:
@@ -246,6 +249,7 @@ export default function IconStore({
             height={size}
             className={`${style}`}
             onClick={onClickFunction}
+            tabIndex={tabindex}
           />
         )
       default:

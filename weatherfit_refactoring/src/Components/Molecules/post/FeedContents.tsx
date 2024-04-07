@@ -47,7 +47,9 @@ export default function FeedContents({ response, blurDataMap }: Props) {
           )
         })
       ) : (
-        <div className=" font-Cafe24SsurroundAir m-auto text-center">
+        <div
+          className=" font-Cafe24SsurroundAir m-auto text-center"
+          tabIndex={0}>
           <p>현재 온도에 맞는 게시물이 없습니다.</p>
           <br />
           <p>카테고리에서</p>

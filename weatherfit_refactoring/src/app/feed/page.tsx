@@ -8,7 +8,7 @@ export default async function Feedpage() {
   // 게시물 관련 백엔드 복구 시 사용
   const feedDataFetch = await fetch('https://www.jerneithe.site/board/list', {
     method: 'GET',
-    cache: 'no-store',
+    cache: 'force-cache',
   })
 
   const feedContentsData: FEEDDATA[] = await feedDataFetch.json()

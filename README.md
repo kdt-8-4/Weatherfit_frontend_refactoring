@@ -8,11 +8,13 @@
     5. 변경된 페이지 디자인
 
 ## 0. 옷늘날씨 리팩토링 배포 주소
-https://weatherfit-refactoring.vercel.app/
+리팩토링 배포 주소 : https://weatherfit-refactoring.vercel.app/
 
 **로그인 계정**<br/>
 rlacjawl37@gmail.com<br/>
-ehdwns12@
+ehdwns12@<br/>
+<br/>
+리팩토링 전 배포 주소 : https://weatherfit.vercel.app/
 
 ## 1. 👔 옷늘날씨 리팩토링의 목적
 - 한눈에 정보가 들어오지 않는 기존 디자인의 문제점 보완  

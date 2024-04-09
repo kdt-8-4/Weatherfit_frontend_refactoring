@@ -46,6 +46,7 @@ interface FEEDDATA_detail {
   content: string
   hashTag: string[]
   category: string[]
+  comments: CommentType[]
 }
 
 interface SelecList {

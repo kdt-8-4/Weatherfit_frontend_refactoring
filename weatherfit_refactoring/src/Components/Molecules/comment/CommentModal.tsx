@@ -4,15 +4,25 @@ import Comment from './Comment'
 import CommentInput from './CommentInput'
 import { confirmAlert } from '@/utils/function/utilFunction'
 import { AuthTokenStore } from '@/Store/AuthToken'
+import { AuthUserNickStore } from '@/Store/AuthUserNick'
 
 interface Props {
   onClickFunction: () => void
+  boardId: BOARDID
+  comments: CommentType[]
 }
 
-export default function CommentModal({ onClickFunction }: Props) {
-  const [comments, setComments] = useState<CommentType[]>([])
+export default function CommentModal({
+  onClickFunction,
+  boardId,
+  comments,
+}: Props) {
+  const [commentList, setCommentList] = useState<CommentType[]>(
+    comments.filter(comment => comment.status !== 0),
+  )
   const [content, setContent] = useState<string>('')
-  const { accesstoken, setAccessToken } = AuthTokenStore()
+  const { accesstoken } = AuthTokenStore()
+  const { userNick } = AuthUserNickStore()
 
   // 댓글 더미 데이터
   // useEffect(() => {
@@ -31,8 +41,8 @@ export default function CommentModal({ onClickFunction }: Props) {
   // }, [])
 
   useEffect(() => {
-    console.log('댓글 목록 업데이트: ', comments)
-  }, [comments])
+    console.log('댓글 목록 업데이트: ', commentList)
+  }, [commentList])
 
   // 댓글 등록
   const handleCommentSubmit = async (e: React.FormEvent) => {
@@ -51,7 +61,7 @@ export default function CommentModal({ onClickFunction }: Props) {
           Authorization: 'Bearer ' + accesstoken,
         },
         body: JSON.stringify({
-          boardId: 1, // localBoardId 수정 필요
+          boardId: boardId, // localBoardId 수정 필요
           content: content,
         }),
       })
@@ -60,8 +70,8 @@ export default function CommentModal({ onClickFunction }: Props) {
 
       console.log('댓글 data: ', data)
 
-      setComments([
-        ...comments,
+      setCommentList([
+        ...commentList,
         {
           id: data.id,
           boardId: data.boardId,
@@ -81,8 +91,8 @@ export default function CommentModal({ onClickFunction }: Props) {
   }
 
   return (
-    <div className="fixed top-0 left-0 m-0 w-[100%] h-[100%] bg-[#bababa4f] z-[100]">
-      <div className="fixed bottom-0 bg-[#ffffff] w-[390px] h-[65%] rounded-t-lg z-[200] font-Cafe24SsurroundAir">
+    <div className="absolute top-0 left-0 m-0 w-[100%] h-[100%] bg-[#bababa4f] z-[100]">
+      <div className="absolute bottom-0 bg-[#ffffff] w-[100%] h-[65%] rounded-t-lg z-[200] font-Cafe24SsurroundAir">
         <div className="flex justify-between my-[10px] mx-[5px] font-bold">
           <p className="w-[100%] text-center">댓글</p>
           <p className="cursor-pointer" onClick={onClickFunction}>
@@ -92,14 +102,14 @@ export default function CommentModal({ onClickFunction }: Props) {
         <hr />
         <div className="m-[10px] h-[79%] overflow-auto">
           {/* 댓글 목록 부분 */}
-          {comments
+          {commentList
             .filter(comment => comment.status !== 0)
             .map(comment => (
               <Comment
                 key={comment.id}
                 comment={comment}
-                comments={comments}
-                setComments={setComments}
+                comments={commentList}
+                setComments={setCommentList}
               />
             ))}
         </div>
@@ -110,7 +120,7 @@ export default function CommentModal({ onClickFunction }: Props) {
           style="m-[10px] absolute bottom-[5px]"
           inputStyle="w-[325px] h-[30px]"
           btnText="게시"
-          place="닉네임(으)로 작성..."
+          place={`${userNick}(으)로 작성...`}
         />
       </div>
     </div>

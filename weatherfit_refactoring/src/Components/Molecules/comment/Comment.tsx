@@ -23,12 +23,8 @@ export default function Comment({
   const [showReply, setShowReply] = useState<boolean>(false)
   const [isEditing, setIsEditing] = useState<boolean>(false)
   const [editContent, setEditContent] = useState<string>('')
-  const { accesstoken, setAccessToken } = AuthTokenStore()
+  const { accesstoken } = AuthTokenStore()
   const { userNick } = AuthUserNickStore()
-
-  useEffect(() => {
-    setAccessToken()
-  }, [])
 
   // 답글 등록
   const handleReplySubmit = async (e: React.FormEvent) => {
@@ -209,7 +205,7 @@ export default function Comment({
       comments.map(c =>
         c.id === comment.id
           ? { ...c, status: 0 }
-          : { ...c, replyList: findComment(c.replyList) },
+          : { ...c, replyList: c.replyList ? findComment(c.replyList) : [] },
       )
     setComments(findComment(newComments))
   }
@@ -274,7 +270,7 @@ export default function Comment({
             style="my-[5px]"
             inputStyle="w-[285px] h-[30px]"
             btnText="게시"
-            place={`${userNick}으로 작성...`}
+            place={`${userNick}(으)로 작성...`}
           />
         </div>
       )}

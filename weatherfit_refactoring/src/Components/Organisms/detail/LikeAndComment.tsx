@@ -9,9 +9,13 @@ import { AuthUserNickStore } from '@/Store/AuthUserNick'
 export default function LikeAndComment({
   boardId,
   likelist,
+  comments,
+  refreshComments,
 }: {
+  comments: CommentType[]
   boardId: BOARDID
   likelist: LIKE[]
+  refreshComments: () => void
 }) {
   // const { isLiked, toggleLikeState } = useStore()
   const { accesstoken } = AuthTokenStore()
@@ -56,7 +60,11 @@ export default function LikeAndComment({
           size={25}
         />
       </div>
-      <CommentIcon />
+      <CommentIcon
+        boardId={boardId}
+        comments={comments}
+        refreshComments={refreshComments}
+      />
     </div>
   )
 }

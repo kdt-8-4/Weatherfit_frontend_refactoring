@@ -3,11 +3,20 @@ import { useState } from 'react'
 import IconStore, { IconStyle } from '../../Atoms/Icon/IconStore'
 import CommentModal from './CommentModal'
 
-export default function CommentIcon() {
+export default function CommentIcon({
+  boardId,
+  comments,
+  refreshComments,
+}: {
+  boardId: BOARDID
+  comments: CommentType[]
+  refreshComments: () => void
+}) {
   const [showComment, setShowComment] = useState<boolean>(false)
 
   const onClickComment = () => {
     setShowComment(!showComment)
+    refreshComments()
   }
   return (
     <>
@@ -16,7 +25,13 @@ export default function CommentIcon() {
         size={25}
         onClickFunction={onClickComment}
       />
-      {showComment && <CommentModal onClickFunction={onClickComment} />}
+      {showComment && (
+        <CommentModal
+          onClickFunction={onClickComment}
+          boardId={boardId}
+          comments={comments}
+        />
+      )}
     </>
   )
 }

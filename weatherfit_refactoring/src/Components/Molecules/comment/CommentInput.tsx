@@ -1,3 +1,4 @@
+import { CheckStore } from '@/Store/Check'
 import ButtonStore, { ButtonStyle } from '../../Atoms/Button/ButtonStore'
 import InputStore, { InputStyle } from '../../Atoms/Input/InputStore'
 
@@ -20,24 +21,33 @@ export default function CommentInput({
   style,
   inputStyle,
 }: Props) {
+  const { check } = CheckStore()
   return (
-    <form className={style} onSubmit={handleSubmit}>
-      <InputStore
-        inputStyle={InputStyle.INPUT_WHITE}
-        inputType="text"
-        placeholderContents={place}
-        style={inputStyle}
-        onChageFunction={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setContent(e.target.value)
-        }
-        value={content}
-      />
-      <ButtonStore
-        buttonStyle={ButtonStyle.CONFIRM_BTN}
-        style="w-[40px] h-[30px]"
-        btnType="submit">
-        {btnText}
-      </ButtonStore>
-    </form>
+    <>
+      {check ? (
+        <>
+          <form className={style} onSubmit={handleSubmit}>
+            <InputStore
+              inputStyle={InputStyle.INPUT_WHITE}
+              inputType="text"
+              placeholderContents={place}
+              style={inputStyle}
+              onChageFunction={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setContent(e.target.value)
+              }
+              value={content}
+            />
+            <ButtonStore
+              buttonStyle={ButtonStyle.CONFIRM_BTN}
+              style="w-[40px] h-[30px]"
+              btnType="submit">
+              {btnText}
+            </ButtonStore>
+          </form>
+        </>
+      ) : (
+        <p className="text-center font-semibold">로그인 후 작성 가능합니다!</p>
+      )}
+    </>
   )
 }

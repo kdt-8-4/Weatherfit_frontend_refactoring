@@ -26,7 +26,7 @@ export default function MainHeader({ title }: Props) {
   }, [accesstoken])
   const router = useRouter()
 
-  console.log(`토큰: ${accesstoken} 체크: ${check}`)
+  // console.log(`토큰: ${accesstoken} 체크: ${check}`)
 
   const onClickToMain =
     title === '옷늘날씨' ? () => router.push('/') : undefined // 또는 다른 함수

@@ -50,13 +50,13 @@ export default function FeedContents({ response, blurDataMap }: Props) {
         <div
           className=" font-Cafe24SsurroundAir m-auto text-center"
           tabIndex={0}>
-          <p>현재 온도에 맞는 게시물이 없습니다.</p>
+          <p>현재 온도와 일치하는 게시물이 없습니다.</p>
           <br />
-          <p>카테고리에서</p>
-          <p>온도를 조절하여 원하는 코디를 확인하세요..!</p>
+          <p>카테고리와 온도를 조절하여</p>
+          <p>원하는 코디를 확인해 보세요.</p>
           <br />
           <p className=" text-[12px] text-gray-600">
-            ※ 모든 코디를 보고 싶다면 해시태그 검색을 이용해주세요. ※
+            ※ 검색창의 돋보기를 누르면 모든 코디를 확인할 수 있습니다 ※
           </p>
         </div>
       )}

@@ -36,7 +36,9 @@ export default function MainHeader({ title }: Props) {
       <BoxStore
         boxStyle={BoxStyle.BOX_BLUE}
         style={`absolute left-1/2 transform -translate-x-1/2 px-2 h-[30px] font-neurimboGothic text-[22px] pb-[7px] shadow-[7px_7px_1px] flex items-center ${title === '옷늘날씨' ? 'cursor-pointer' : ''}`}
-        onClickFunction={onClickToMain}>
+        onClickFunction={onClickToMain}
+        tabIndex={0}
+        ariaLabel="옷늘날씨 로고입니다.">
         {title}
       </BoxStore>
       {check ? (

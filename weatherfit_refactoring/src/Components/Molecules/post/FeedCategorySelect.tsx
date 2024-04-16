@@ -151,7 +151,12 @@ export default function FeedCategorySelect() {
 
         {/* 온도 설정 */}
         <section className="flex m-2">
-          <p className=" font-neurimboGothic whitespace-nowrap">온도 설정 : </p>
+          <p
+            className=" font-neurimboGothic whitespace-nowrap"
+            tabIndex={0}
+            aria-label="원하는 온도에 맞는 코디를 보기위해 온도를 설정하는 요소입니다. 입력하지 않을 시 현재 온도 그대로 적용됩니다.">
+            온도 설정 :{' '}
+          </p>
           <InputStore
             inputStyle={InputStyle.INPUT_WHITE}
             onChageFunction={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -175,14 +180,22 @@ export default function FeedCategorySelect() {
         </section>
 
         {/* 선택한 카테고리 목록 */}
-        <section className="flex overflow-x-auto h-[50px]">
+        <section
+          className="flex overflow-x-auto h-[50px]"
+          tabIndex={0}
+          aria-label="선택한 카테고리를 확인할 수 있습니다.">
           {selectData.map((data, index) => {
             return (
               <p
                 key={index}
-                className=" whitespace-nowrap m-2 p-1 border-[1px] rounded-lg border-black  font-NanumSquareRound">
+                className=" whitespace-nowrap m-2 p-1 border-[1px] rounded-lg border-black  font-NanumSquareRound"
+                tabIndex={0}
+                aria-label={`${data}`}>
                 {data}
-                <button onClick={() => selectCancle(data)} className="ml-2">
+                <button
+                  onClick={() => selectCancle(data)}
+                  className="ml-2"
+                  aria-label="선택한 카테고리 취소 버튼">
                   {' '}
                   x
                 </button>

@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { KeyboardEventHandler } from 'react'
 
 export enum IconStyle {
   MY_PROFILE = 'MY_PROFILE',
@@ -28,7 +29,9 @@ interface Props {
   size?: number
   style?: string
   onClickFunction?: () => void
+  onKeyDown?: KeyboardEventHandler<HTMLDivElement>
   tabindex?: number
+  ariaLabel?: string
 }
 
 export default function IconStore({
@@ -36,7 +39,9 @@ export default function IconStore({
   size,
   style,
   onClickFunction,
+  onKeyDown,
   tabindex,
+  ariaLabel,
 }: Props) {
   const selectIcon = (): React.ReactNode => {
     switch (iconStyle) {
@@ -109,6 +114,7 @@ export default function IconStore({
             height={size}
             className={`${style}`}
             onClick={onClickFunction}
+            aria-label={ariaLabel}
           />
         )
       case IconStyle.UNLIKE:
@@ -120,6 +126,7 @@ export default function IconStore({
             height={size}
             className={`${style}`}
             onClick={onClickFunction}
+            aria-label={ariaLabel}
           />
         )
       case IconStyle.LIKE:
@@ -131,6 +138,7 @@ export default function IconStore({
             height={size}
             className={`${style}`}
             onClick={onClickFunction}
+            aria-label={ariaLabel}
           />
         )
       case IconStyle.TOGGLE:
@@ -162,6 +170,9 @@ export default function IconStore({
             height={size}
             className={`${style}`}
             onClick={onClickFunction}
+            tabIndex={tabindex}
+            aria-label={ariaLabel}
+            onKeyDown={onKeyDown}
           />
         )
       case IconStyle.PREV2:
@@ -173,6 +184,9 @@ export default function IconStore({
             height={size}
             className={`${style}`}
             onClick={onClickFunction}
+            tabIndex={tabindex}
+            aria-label={ariaLabel}
+            onKeyDown={onKeyDown}
           />
         )
       case IconStyle.NEXT:
@@ -184,6 +198,8 @@ export default function IconStore({
             height={size}
             className={`${style}`}
             onClick={onClickFunction}
+            tabIndex={tabindex}
+            aria-label={ariaLabel}
           />
         )
       case IconStyle.SETTING:
@@ -195,6 +211,8 @@ export default function IconStore({
             height={size}
             className={`${style}`}
             onClick={onClickFunction}
+            tabIndex={tabindex}
+            aria-label={ariaLabel}
           />
         )
       case IconStyle.ETC:
@@ -206,6 +224,8 @@ export default function IconStore({
             height={size}
             className={`${style}`}
             onClick={onClickFunction}
+            tabIndex={tabindex}
+            aria-label={ariaLabel}
           />
         )
       case IconStyle.HIGHEST:
@@ -237,7 +257,9 @@ export default function IconStore({
             height={size}
             className={`${style}`}
             onClick={onClickFunction}
+            onKeyDown={onKeyDown}
             tabIndex={tabindex}
+            aria-label={ariaLabel}
           />
         )
       case IconStyle.SEARCH_FILL:
@@ -250,6 +272,7 @@ export default function IconStore({
             className={`${style}`}
             onClick={onClickFunction}
             tabIndex={tabindex}
+            aria-label={ariaLabel}
           />
         )
       default:

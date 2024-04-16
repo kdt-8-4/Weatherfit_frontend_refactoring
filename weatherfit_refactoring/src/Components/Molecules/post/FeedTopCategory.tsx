@@ -5,24 +5,38 @@ import ButtonStore, { ButtonStyle } from '../../Atoms/Button/ButtonStore'
 import { FeedData } from '@/Store/FeedData'
 
 export default function FeedTopCategory() {
-  const { feedData, setFeedData } = FeedData()
-  const [topCategory, setTopCategory] = useState<string[]>([])
+  const { setFeedData } = FeedData()
+
+  // //게시글 백엔드 복구 후 실행
+  // const [topCategory, setTopCategory] = useState<string[]>([])
+
+  // const callTopCategory = async () => {
+  //   const callTop = await fetch('https://www.jerneithe.site/board/tops', {
+  //     method: 'GET',
+  //   })
+  //   const toJson = await callTop.json()
+  //   console.log(toJson)
+  //   setTopCategory(toJson.data)
+  // }
 
   //임시 top5 카테고리
-  const topCate: string[] = BestCategory.best_category_data
+  const temporaryTopCategory: string[] = BestCategory.best_category_data
 
-  //게시글 백엔드 복구 후 실행
-  const callTopCategory = async () => {
-    const callTop = await fetch('https://www.jerneithe.site/board/tops', {
-      method: 'GET',
-    })
-    const toJson = await callTop.json()
-    console.log(toJson)
-    setTopCategory(toJson.data)
-  }
+  const [categories, setCategories] = useState([
+    ...temporaryTopCategory,
+    ...temporaryTopCategory,
+    ...temporaryTopCategory,
+  ])
 
   useEffect(() => {
-    // callTopCategory()
+    const interval = setInterval(() => {
+      setCategories(prev => {
+        const first: string[] = prev.slice(0, 5)
+        return [...prev.slice(5), ...first]
+      })
+    }, 3000)
+
+    return () => clearInterval(interval)
   }, [])
 
   const gotoCategory = async (restopCategory: string) => {
@@ -43,11 +57,13 @@ export default function FeedTopCategory() {
       <div className="m-auto flex ">
         <p
           className=" font-neurimboGothic whitespace-nowrap mx-1.5 w-[120px]"
-          tabIndex={0}>
+          tabIndex={0}
+          aria-label="오늘의 카테고리 : 현재 제일 많이 사용된 카테고리 top5를 로드합니다. 
+          포커싱된 카테고리를 확인하고 보고싶다면 엔터를 눌러주세요.">
           오늘의 카테고리 :
         </p>
-        <div className="flex overflow-hidden whitespace-nowrap w-[calc(100px*10)]">
-          {topCate.concat(topCate).map((topcategory, index) => {
+        <div className="flex overflow-hidden whitespace-nowrap w-[calc(100px*20)]">
+          {categories.map((topcategory, index) => {
             return (
               <ButtonStore
                 key={index}

@@ -46,6 +46,13 @@ export default function FeedSearch() {
     }
   }
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLImageElement>) => {
+    console.log('엔터 키 눌림')
+    if (e.key === 'Enter') {
+      searchHashTag()
+    }
+  }
+
   return (
     <article className=" flex py-[10px] px-[10px]">
       <div className="flex border rounded-[9px] mx-1 w-[300px]">
@@ -56,7 +63,7 @@ export default function FeedSearch() {
           }
           inputStyle={InputStyle.INPUT_SEARCH}
           inputType="text"
-          placeholderContents="#해시태그를 입력하세요"
+          placeholderContents="'# + 해시태그' 형식으로 입력하세요"
           style="font-gmarketsans font-thin outline-none text-[14px] w-[85%] h-[38px] mx-1"
         />
         <IconStore
@@ -64,6 +71,7 @@ export default function FeedSearch() {
           size={16}
           style="mr-[10px]"
           onClickFunction={searchHashTag}
+          onKeyDown={handleKeyDown}
           tabindex={0}
         />
       </div>

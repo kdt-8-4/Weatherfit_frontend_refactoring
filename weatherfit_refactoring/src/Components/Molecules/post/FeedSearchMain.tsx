@@ -1,13 +1,15 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import IconStore, { IconStyle } from '../../Atoms/Icon/IconStore'
 import InputStore, { InputStyle } from '../../Atoms/Input/InputStore'
 import ButtonStore, { ButtonStyle } from '../../Atoms/Button/ButtonStore'
 import { useState } from 'react'
-import { FeedData } from '@/Store/FeedData'
+import { WebSearchData } from '@/Store/WebSearchData'
 
 export default function FeedSearchMain() {
-  const { feedData, setFeedData } = FeedData()
+  const router = useRouter()
+  const { setWebSearchData } = WebSearchData()
   const [hashValue, setHashValue] = useState<string>('')
 
   let url = 'https://www.jerneithe.site/board/search?hashtags='
@@ -40,7 +42,8 @@ export default function FeedSearchMain() {
       const callData = await hashSearch.json()
       console.log('해시태그 검색으로 불러온 데이터', callData)
 
-      setFeedData(callData)
+      setWebSearchData(callData)
+      router.push('/feed')
     } catch (error) {
       console.error('에러 발생', error)
     }

@@ -3,6 +3,7 @@
 import { useContext, useEffect, useState } from 'react'
 import FeedContent from './FeedContent'
 import { FeedData } from '@/Store/FeedData'
+import { WebSearchData } from '@/Store/WebSearchData'
 import { WeatherContext } from '../../../../contexts/WeatherContext'
 
 interface Props {
@@ -13,9 +14,11 @@ interface Props {
 export default function FeedContents({ response, blurDataMap }: Props) {
   const { feedData, setFeedData } = FeedData()
   const { tempMax, tempMin } = useContext(WeatherContext)
+  const { webSearchData } = WebSearchData()
 
   useEffect(() => {
     console.log('')
+    console.log('웹뷰에서 검색', webSearchData)
 
     const copyResponse: FEEDDATA[] = [...response]
 
@@ -32,6 +35,12 @@ export default function FeedContents({ response, blurDataMap }: Props) {
       setFeedData(response)
     }
   }, [])
+
+  useEffect(() => {
+    if (webSearchData.length > 0) {
+      setFeedData(webSearchData)
+    }
+  }, [webSearchData])
 
   return (
     <main className={`mt-5 flex flex-wrap relative`}>

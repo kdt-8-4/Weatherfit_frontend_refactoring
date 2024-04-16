@@ -24,6 +24,7 @@ interface Props {
   onBlur?: FocusEventHandler<HTMLDivElement>
   onKeyDown?: KeyboardEventHandler<HTMLDivElement>
   tabindex?: number
+  ariaLabel?: string
 }
 
 export default function InputStore({
@@ -36,6 +37,7 @@ export default function InputStore({
   onKeyDown,
   value,
   tabindex,
+  ariaLabel,
 }: Props) {
   const selectInput = (): React.ReactNode => {
     switch (inputStyle) {
@@ -50,6 +52,7 @@ export default function InputStore({
             className={`border rounded-lg bg-white border-gray-500 p-1 ${style}`}
             placeholder={placeholderContents}
             tabIndex={tabindex}
+            aria-label={ariaLabel}
           />
         )
       case InputStyle.INPUT_SEARCH:
@@ -61,6 +64,7 @@ export default function InputStore({
             className={`rounded-lg bg-white border-gray-500 p-1 ${style}`}
             placeholder={placeholderContents}
             tabIndex={tabindex}
+            aria-label={ariaLabel}
           />
         )
       case InputStyle.INPUT_IMAGE:

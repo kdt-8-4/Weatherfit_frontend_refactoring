@@ -101,7 +101,10 @@ export default function FeedContent({ DataforFeed, blurDataUrl }: Props) {
         <article className=" bg-E4E4E6 rounded-xl mx-2 my-2 w-[179px] h-[350px]">
           <div className="flex justify-between m-auto w-[90%] py-2">
             <div className="flex">
-              <div className=" relative w-[40px] h-[40px]">
+              <div
+                className=" relative w-[40px] h-[40px]"
+                tabIndex={0}
+                aria-label="코디를 올린 캐스터 정보입니다.">
                 <Image
                   src={
                     'https://cdnimg.melon.co.kr/cm2/artistcrop/images/002/61/143/261143_20210325180240_500.jpg?61e575e8653e5920470a38d1482d7312/melon/optimize/90'
@@ -112,11 +115,15 @@ export default function FeedContent({ DataforFeed, blurDataUrl }: Props) {
                   className="rounded-full"
                 />
               </div>
-              <div className=" ml-1">
-                <p className=" font-Cafe24SsurroundAir text-[13px]">
+              <div className=" ml-1" tabIndex={0}>
+                <p
+                  className=" font-Cafe24SsurroundAir text-[13px]"
+                  aria-label={`코디를 올린 캐스터 이름 : ${DataforFeed.nickName}`}>
                   {DataforFeed.nickName}
                 </p>
-                <p className=" font-NanumSquareRound text-[10px]">
+                <p
+                  className=" font-NanumSquareRound text-[10px]"
+                  aria-label={`코디를 올린 날짜 : ${createDate}`}>
                   {createDate}
                 </p>
               </div>
@@ -127,6 +134,7 @@ export default function FeedContent({ DataforFeed, blurDataUrl }: Props) {
               <Image
                 src={DataforFeed.images.imageUrl}
                 alt="코디 사진"
+                aria-label={`코디 정보 ${DataforFeed.category}`}
                 sizes="auto"
                 fill
                 className="border border-black rounded-xl"
@@ -137,12 +145,21 @@ export default function FeedContent({ DataforFeed, blurDataUrl }: Props) {
           </Link>
           <div className="flex justify-between m-auto w-[90%] py-2">
             <div className="flex">
-              <div className="relative">
+              <div
+                className="relative"
+                tabIndex={0}
+                aria-label="좋아요 버튼입니다.">
                 <IconStore
                   iconStyle={isUserLiked ? IconStyle.LIKE : IconStyle.UNLIKE}
                   size={25}
                   style="relative top-[26%]"
                   onClickFunction={clickLike}
+                  tabindex={0}
+                  onKeyDown={(e: React.KeyboardEvent<HTMLImageElement>) => {
+                    if (e.key === 'Enter') {
+                      clickLike()
+                    }
+                  }}
                 />
               </div>
               <div className="relative font-Cafe24SsurroundAir text-[13px]">
@@ -151,7 +168,9 @@ export default function FeedContent({ DataforFeed, blurDataUrl }: Props) {
                 </p>
               </div>
             </div>
-            <div>
+            <div
+              tabIndex={0}
+              aria-label="해당 코디를 업로드 했을 당시의 온도입니다.">
               <Image
                 src={DataforFeed.weatherIcon}
                 alt="weatherIcon"
@@ -160,7 +179,9 @@ export default function FeedContent({ DataforFeed, blurDataUrl }: Props) {
                 loading="lazy"
               />
               <div>
-                <p className="font-Cafe24SsurroundAir text-xs text-center">
+                <p
+                  className="font-Cafe24SsurroundAir text-xs text-center"
+                  tabIndex={0}>
                   {DataforFeed.temperature}℃
                 </p>
               </div>

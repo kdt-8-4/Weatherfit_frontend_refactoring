@@ -56,14 +56,21 @@ export default function FeedSearchMain() {
           }
           inputStyle={InputStyle.INPUT_SEARCH}
           inputType="text"
-          placeholderContents="#해시태그를 입력하세요"
+          placeholderContents="'# + 해시태그' 형식으로 입력하세요"
           style="font-gmarketsans font-thin outline-none text-[14px] w-[85%] h-[38px] mx-1"
+          ariaLabel="해당 요소는 사이드바에 있는 검색 창입니다. 여기서 지정된 형식에 맞춰서 해시태그를 검색하면 피드 페이지로 넘어가면서 검색한 게시물을 볼 수 있습니다."
         />
         <IconStore
           iconStyle={IconStyle.SEARCH}
           size={16}
           style="mr-[10px]"
           onClickFunction={searchHashTag}
+          onKeyDown={(e: React.KeyboardEvent<HTMLImageElement>) => {
+            if (e.key === 'Enter') {
+              searchHashTag()
+            }
+          }}
+          tabindex={0}
         />
       </div>
       <ButtonStore

@@ -9,9 +9,10 @@ interface Props {
   iconStyle: keyof typeof IconStyle
   title: string
   url: string
+  ariaLabel?: string
 }
 
-export default function NavBarBox({ iconStyle, title, url }: Props) {
+export default function NavBarBox({ iconStyle, title, url, ariaLabel }: Props) {
   const router = useRouter()
   const pathname = usePathname()
   const [isActive, setIsActive] = useState<boolean>(false)
@@ -28,7 +29,10 @@ export default function NavBarBox({ iconStyle, title, url }: Props) {
     : 'text-[11px] mt-[3px]'
 
   return (
-    <Link href={url} className="flex flex-col items-center cursor-pointer">
+    <Link
+      href={url}
+      className="flex flex-col items-center cursor-pointer"
+      aria-label={ariaLabel}>
       <IconStore iconStyle={activeIconStyle} size={22} />
       <TextStore textStyle={TextStyle.CAFE_TEXT} style={activeTextStyle}>
         {title}

@@ -13,6 +13,8 @@ interface Props {
   style?: string
   onClickFunction?: () => void
   children?: React.ReactNode
+  tabIndex?: number
+  ariaLabel?: string
 }
 
 export default function BoxStore({
@@ -20,19 +22,26 @@ export default function BoxStore({
   children,
   onClickFunction,
   style,
+  tabIndex,
+  ariaLabel,
 }: Props) {
   const selectButton = (): React.ReactNode => {
     switch (boxStyle) {
       case BoxStyle.BOX_WHITE:
         return (
           <button
-            className={`${style} bg-white border border-black rounded-2xl `}>
+            className={`${style} bg-white border border-black rounded-2xl `}
+            tabIndex={tabIndex}
+            aria-label={ariaLabel}>
             {children}
           </button>
         )
       case BoxStyle.BOX_YELLOW:
         return (
-          <div className={`${style} bg-yellow-200 border-black rounded-2xl `}>
+          <div
+            className={`${style} bg-yellow-200 border-black rounded-2xl `}
+            tabIndex={tabIndex}
+            aria-label={ariaLabel}>
             {children}
           </div>
         )
@@ -40,13 +49,18 @@ export default function BoxStore({
         return (
           <div
             className={`${style} bg-blue-300 rounded-2xl`}
-            onClick={onClickFunction}>
+            onClick={onClickFunction}
+            tabIndex={tabIndex}
+            aria-label={ariaLabel}>
             {children}
           </div>
         )
       case BoxStyle.BOX_IMAGE:
         return (
-          <div className="border rounded-2xl w-32 h-48 bg-stone-200 flex hover:bg-stone-300 relative  flex-shrink-0">
+          <div
+            className="border rounded-2xl w-32 h-48 bg-stone-200 flex hover:bg-stone-300 relative  flex-shrink-0"
+            tabIndex={tabIndex}
+            aria-label={ariaLabel}>
             {children}
           </div>
         )

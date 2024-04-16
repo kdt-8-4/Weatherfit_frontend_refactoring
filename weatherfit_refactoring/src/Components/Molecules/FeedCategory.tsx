@@ -18,7 +18,6 @@ export default function FeedCategory() {
   }
 
   return (
-
     <section>
       <div
         onClick={tabBooleanControl}
@@ -28,7 +27,8 @@ export default function FeedCategory() {
             <ButtonStore
               buttonStyle={ButtonStyle.CATEGORY_BTN}
               key={val.id}
-              style="h-[30px] p-1 m-1 flex whitespace-nowrap">
+              style="h-[30px] p-1 m-1 flex whitespace-nowrap"
+              ariaLabel={`${val.title} 카테고리 검색을 원하시면 엔터 키를 눌러주세요.`}>
               {val.title}
               <IconStore iconStyle={IconStyle.TOGGLE2} size={20} />
             </ButtonStore>
@@ -37,6 +37,5 @@ export default function FeedCategory() {
       </div>
       {categoryControl && <FeedCategorySelect />}
     </section>
-
   )
 }

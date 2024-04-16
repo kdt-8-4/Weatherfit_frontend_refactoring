@@ -9,10 +9,11 @@ export default function BestThreeCodi({ data }: { data?: FEEDDATA_detail }) {
         <BoxStore boxStyle={BoxStyle.BOX_IMAGE}>
           <Image
             src={'/images/question.bmp'}
-            alt={`없을 경우..`}
+            alt={`베스트 코디가 존재하지 않습니다.`}
             width={100}
             height={100}
             className="w-full h-full object-cover border rounded-2xl"
+            tabIndex={0}
           />
         </BoxStore>
       </div>

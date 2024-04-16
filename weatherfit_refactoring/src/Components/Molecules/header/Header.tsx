@@ -35,11 +35,20 @@ export default function Header({
         size={20}
         style="ml-[10px] cursor-pointer"
         onClickFunction={() => window.history.back()}
+        onKeyDown={(e: React.KeyboardEvent<HTMLImageElement>) => {
+          if (e.key === 'Enter') {
+            window.history.back()
+          }
+        }}
+        tabindex={0}
+        ariaLabel="이전 페이지로 이동합니다."
       />
       <BoxStore
         boxStyle={BoxStyle.BOX_BLUE}
         style={`absolute left-1/2 transform -translate-x-1/2 px-2 h-[30px] font-neurimboGothic text-[22px] pb-[7px] shadow-[7px_7px_1px] flex items-center ${title === '옷늘날씨' ? 'cursor-pointer' : ''}`}
-        onClickFunction={onClickToMain}>
+        onClickFunction={onClickToMain}
+        tabIndex={0}
+        ariaLabel="로고입니다.">
         {title}
       </BoxStore>
       {buttonStyleCase ? (

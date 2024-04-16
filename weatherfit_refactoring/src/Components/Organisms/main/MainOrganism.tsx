@@ -44,7 +44,8 @@ export default function MainOrganism() {
       <div className="w-full  flex flex-col items-center mt-[40px]">
         <TextStore
           textStyle={TextStyle.NANUM_TEXT}
-          style="mb-[20px] text-[20px]">
+          style="mb-[20px] text-[20px]"
+          tabIndex={0}>
           다른 캐스터들은 이렇게 입었어요!
         </TextStore>
 
@@ -54,7 +55,12 @@ export default function MainOrganism() {
           width={30}
           height={30}
         />
-        <span className=" font-NanumSquareRound">BEST 3</span>
+        <span
+          className=" font-NanumSquareRound"
+          tabIndex={0}
+          aria-label="현재 온도 기준 좋아요를 제일 많이 받은 3가지 코디를 보여줍니다.">
+          BEST 3
+        </span>
       </div>
       <BestThreeCodi data={data} />
     </section>

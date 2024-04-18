@@ -1,12 +1,12 @@
 import { create } from 'zustand'
 
 interface WebSearchData {
-  webSearchData: FEEDDATA[]
+  webSearchData: FEEDDATA[] | null
   setWebSearchData: (resSearchData: FEEDDATA[]) => void
 }
 
 export const WebSearchData = create<WebSearchData>(set => ({
-  webSearchData: [],
+  webSearchData: null,
   setWebSearchData: resSearchData => {
     set(() => ({ webSearchData: resSearchData }))
   },

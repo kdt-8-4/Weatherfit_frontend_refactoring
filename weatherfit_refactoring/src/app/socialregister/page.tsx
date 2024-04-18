@@ -150,7 +150,7 @@ export default function SocialRegister() {
   return (
     <>
       {google_signup_check ? (
-        <>
+        <div className="flex flex-col justify-center items-center h-[100%]">
           <BoxStore
             boxStyle={BoxStyle.BOX_BLUE}
             style="h-[33px] font-neurimboGothic text-[30px] mb-[35px] px-[0.6rem] pb-[11px] shadow-[7px_7px_1px] flex items-center">
@@ -161,13 +161,6 @@ export default function SocialRegister() {
             style="text-[20px] mb-[30px]">
             로그인 성공!!
           </TextStore>
-          <Link href={'/login'}>
-            <ButtonStore
-              buttonStyle={ButtonStyle.DEFAULT_BTN}
-              style="font-NanumSquareRound w-[170px] mb-[20px] px-[10px] hover:bg-yellow-200">
-              로그인 페이지로 이동
-            </ButtonStore>
-          </Link>
           <Link href={'/'}>
             <ButtonStore
               buttonStyle={ButtonStyle.DEFAULT_BTN}
@@ -175,7 +168,7 @@ export default function SocialRegister() {
               메인 페이지로 이동
             </ButtonStore>
           </Link>
-        </>
+        </div>
       ) : (
         <main className="flex flex-col items-center mt-[30px]">
           <RegisterLogo />

@@ -37,7 +37,7 @@ export default function FeedContents({ response, blurDataMap }: Props) {
   }, [])
 
   useEffect(() => {
-    if (webSearchData.length > 0) {
+    if (webSearchData !== null) {
       setFeedData(webSearchData)
     }
   }, [webSearchData])

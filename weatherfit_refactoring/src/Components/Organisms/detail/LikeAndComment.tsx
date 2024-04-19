@@ -53,7 +53,7 @@ export default function LikeAndComment({
   }
 
   return (
-    <div className="flex">
+    <div className="flex cursor-pointer">
       <div onClick={toggleLike} style={{ cursor: 'pointer' }}>
         <IconStore
           iconStyle={isUserLiked ? IconStyle.LIKE : IconStyle.UNLIKE}

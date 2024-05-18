@@ -19,6 +19,7 @@ export default function DetailOrganism({ boardId }: { boardId: BOARDID }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        // 게시글 정보
         const fetchBoardDataResponse = await fetch(
           `https://www.jerneithe.site/board/detail/${boardId}`,
           {
@@ -30,16 +31,12 @@ export default function DetailOrganism({ boardId }: { boardId: BOARDID }) {
         console.log('fetchBoardData: ', fetchBoardData)
 
         // 작성 유저 정보
-        // 작성한 유저의 정보를 가져오는 거라서 token 값이 들어가면 안됨
-        // 일단 오류 방지를 위해 현재 로그인한 유저의 토큰값을 보내서 정보를 가져올 수 있음
-        // 로그인 안해도 게시물 확인할 수 있도록 토큰값 없이 작성자 정보 불러오기
         const fetchUserDataResponse = await fetch(
-          `https://www.jerneithe.site/user/api/userinfo`,
+          `https://www.jerneithe.site/user/simpleuserinfo`,
           {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              Authorization: 'Bearer ' + accesstoken,
             },
             body: JSON.stringify({
               nickname: fetchBoardData.nickName,

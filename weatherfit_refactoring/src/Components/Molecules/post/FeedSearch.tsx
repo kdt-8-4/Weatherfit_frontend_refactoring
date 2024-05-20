@@ -32,17 +32,33 @@ export default function FeedSearch() {
   const searchHashTag = async () => {
     hashToArray()
 
-    try {
-      const hashSearch = await fetch(url, {
-        method: 'GET',
-      })
+    if (url === 'https://www.jerneithe.site/board/search?hashtags=') {
+      const feedDataFetch = await fetch(
+        'https://www.jerneithe.site/board/list',
+        {
+          method: 'GET',
+          cache: 'force-cache',
+        },
+      )
 
-      const callData = await hashSearch.json()
-      console.log('해시태그 검색으로 불러온 데이터', callData)
+      const allfeedData: FEEDDATA[] = await feedDataFetch.json()
 
-      setFeedData(callData)
-    } catch (error) {
-      console.error('에러 발생', error)
+      setFeedData(allfeedData)
+    }
+
+    if (url !== 'https://www.jerneithe.site/board/search?hashtags=') {
+      try {
+        const hashSearch = await fetch(url, {
+          method: 'GET',
+        })
+
+        const callData = await hashSearch.json()
+        console.log('해시태그 검색으로 불러온 데이터', callData)
+
+        setFeedData(callData)
+      } catch (error) {
+        console.error('에러 발생', error)
+      }
     }
   }
 

@@ -88,3 +88,43 @@ interface UserData {
   password: string
   image: string | null
 }
+
+// 위치 데이터에 대한 타입 지정
+
+interface Address {
+  address_name: string
+  main_address_no: string
+  mountain_yn: string
+  region_1depth_name: string
+  region_2depth_name: string
+  region_3depth_name: string
+  sub_address_no: string
+  zip_code: string
+}
+
+interface RoadAddress {
+  address_name: string
+  building_name: string
+  main_building_no: string
+  region_1depth_name: string
+  region_2depth_name: string
+  region_3depth_name: string
+  road_name: string
+  sub_building_no: string
+  underground_yn: string
+  zone_no: string
+}
+
+interface Document {
+  address: Address
+  road_address: RoadAddress
+}
+
+interface Meta {
+  total_count: number
+}
+
+interface LocationResponse {
+  meta: Meta
+  documents: Document[]
+}

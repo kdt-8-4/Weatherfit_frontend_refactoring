@@ -111,12 +111,14 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
             headers: { Authorization: `KakaoAK ${KAKAO_API_KEY}` },
           },
         )
-        const addressData = await addressResponse.json()
-        setAddress(
-          addressData.documents[0].address.region_1depth_name +
-            ' ' +
-            addressData.documents[0].address.region_2depth_name,
-        )
+        const addressData: LocationResponse = await addressResponse.json()
+        if (addressData.documents && addressData.documents.length > 0) {
+          setAddress(
+            addressData.documents[0].address.region_1depth_name +
+              ' ' +
+              addressData.documents[0].address.region_2depth_name,
+          )
+        }
       } catch (error) {
         console.error('Error getting location:', error)
       }

@@ -1,6 +1,6 @@
 'use client'
 
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect } from 'react'
 import FeedContent from './FeedContent'
 import { FeedData } from '@/Store/FeedData'
 import { WebSearchData } from '@/Store/WebSearchData'
@@ -17,9 +17,6 @@ export default function FeedContents({ response, blurDataMap }: Props) {
   const { webSearchData } = WebSearchData()
 
   useEffect(() => {
-    console.log('')
-    console.log('웹뷰에서 검색', webSearchData)
-
     const copyResponse: FEEDDATA[] = [...response]
 
     // 현재 온도 맞는 코디 데이터로 필터링

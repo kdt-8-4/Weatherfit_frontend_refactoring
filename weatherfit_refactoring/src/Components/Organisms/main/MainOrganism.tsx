@@ -37,8 +37,6 @@ export default function MainOrganism() {
     getBestCodi()
   }, [temperatureMax, temperatureMin])
 
-  console.log(temperatureMax, temperatureMin)
-
   return (
     <section>
       <div className="w-full  flex flex-col items-center mt-[40px]">

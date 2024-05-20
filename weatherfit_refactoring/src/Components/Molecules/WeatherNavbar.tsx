@@ -1,10 +1,19 @@
 'use client'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import Image from 'next/image'
 import { WeatherContext } from '../../../contexts/WeatherContext'
+import { WeatherTempMax } from '@/Store/WeatherMaxTemp'
+import { WeatherTempMin } from '@/Store/WeatherMinTemp'
 
 export default function WeatherNavbar() {
   const { icon, tempMax, tempMin, tempNow } = useContext(WeatherContext)
+  const { temperatureMax, setTemperatureMax } = WeatherTempMax()
+  const { temperatureMin, setTemperatureMin } = WeatherTempMin()
+
+  useEffect(() => {
+    setTemperatureMax(tempMax)
+    setTemperatureMin(tempMin)
+  }, [])
 
   return (
     <article className="flex justify-between items-center text-[12px] border-t border-b border-slate-100 px-2">
@@ -23,10 +32,10 @@ export default function WeatherNavbar() {
       </section>
       <section className="px-1">
         <span className="font-gmarketsans font-thin px-1" tabIndex={0}>
-          최고 {tempMax}℃
+          최고 {temperatureMax}℃
         </span>
         <span className="font-gmarketsans font-thin px-1" tabIndex={0}>
-          최저 {tempMin}℃
+          최저 {temperatureMin}℃
         </span>
       </section>
     </article>

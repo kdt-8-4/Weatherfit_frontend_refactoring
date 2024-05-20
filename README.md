@@ -1,14 +1,25 @@
 ## 옷늘날씨 리팩토링
 
 - 목차
-    1. 옷늘날씨 리팩토링의 목적
-    2. 팀원 소개
-    3. 개발 일정
-    4. 리팩토링을 하며 바뀐 협업 방식과 기술 스택
-    5. 변경된 페이지 디자인
+  1. 옷늘날씨 리팩토링의 목적
+  2. 팀원 소개
+  3. 개발 일정
+  4. 리팩토링을 하며 바뀐 협업 방식과 기술 스택
+  5. 변경된 페이지 디자인
+
+## 0. 옷늘날씨 리팩토링 배포 주소
+
+**리팩토링 배포 주소** : https://weatherfit-refactoring.vercel.app/
+
+**로그인 계정**<br/>
+rlacjawl37@gmail.com<br/>
+ehdwns12@<br/>
+<br/>
+리팩토링 전 배포 주소 : https://weatherfit.vercel.app/
 
 ## 1. 👔 옷늘날씨 리팩토링의 목적
-- 한눈에 정보가 들어오지 않는 기존 디자인의 문제점 보완  
+
+- 한눈에 정보가 들어오지 않는 기존 디자인의 문제점 보완
 
    <tbody>
     <tr>
@@ -21,15 +32,17 @@
 <br/>
 
 - 기능 구현 위주로 프로젝트를 진행하며 발생한 문제점 보완
-    - 코드의 재사용성과 생산성이 떨어짐 >> 아토믹 디자인 패턴을 도입하며 앞의 문제를 해결
-    - 성능에 초점을 맞추지 못해 사용자 경험이 떨어짐 >> LIGHTHOUSE 등을 이용해 성능을 검사하며 프로젝트 진행
-    - 웹 표준과 웹 접근성을 고려하지 못함 >> 웹 표준과 웹 접근성에 대해 공부하고 적용
+
+  - 코드의 재사용성과 생산성이 떨어짐 >> 아토믹 디자인 패턴을 도입하며 앞의 문제를 해결
+  - 성능에 초점을 맞추지 못해 사용자 경험이 떨어짐 >> LIGHTHOUSE 등을 이용해 성능을 검사하며 프로젝트 진행
+  - 웹 표준과 웹 접근성을 고려하지 못함 >> 웹 표준과 웹 접근성에 대해 공부하고 적용
 
 - Next.js에서 axios를 사용하면 데이터 캐싱 기능을 지원해주지 않기 때문에 성능이 떨어짐
-    - Next.js에서 자체적으로 데이터 캐싱 기능을 지원해주는 fetch를 사용하셔 성능 개선
+
+  - Next.js에서 자체적으로 데이터 캐싱 기능을 지원해주는 fetch를 사용하셔 성능 개선
 
 - 클래스명 혹은 아이디가 겹처 스타일이 깨지는 경우가 발생
-    - Tailwind CSS를 사용하여 사전에 문제 발생 가능성 삭제
+  - Tailwind CSS를 사용하여 사전에 문제 발생 가능성 삭제
 
 ## 2. 👥 팀원 소개 및 담당 역할
 
@@ -53,13 +66,14 @@
 🎨 **디자인**
 
 - 아토믹 디자인 패턴 총괄
-    - 전체 아톰 설계 및 디자인 패턴 프로세스 담당
+  - 전체 아톰 설계 및 디자인 패턴 프로세스 담당
 
 📜 **페이지**
 
 - 피드 페이지
 - 일반 회원가입 페이지
 - 구글 회원가입 페이지
+- 웹 뷰 페이지
 
 🦾 **기능**
 
@@ -70,6 +84,8 @@
 - 온도 설정 시 온도에 맞는 게시물 보여주기
 - 일반 회원가입 구현
 - 구글 소셜 회원가입 구현
+- 논리에 맞게 tabIndex 적용
+- 피드 페이지 이미지 최적화
 
 > ### 박혜원
 
@@ -113,8 +129,9 @@
 - 기본 개발 환경 설정 | 1/11 ~ 15 (완)
 - 역할 분배 후 개발(+ 백엔드 연결) | 2/2 ~ 3/27 (진행 중 : 게시물 관련 백엔드 이슈로 지연)
 - 최종 코드 리뷰를 통한 클린 코드 적용 및 웹 표준 & 웹 접근성을 고려해 코드 수정 | 3/28 ~ 3/29
-- 페이지 성능 테스트 및 개선 | 3/30
+- 페이지 성능 테스트 및 개선점 분석 | 3/30 ~ 4/1
 - 완료
+- 개별 성능 개선 작업 | (진행 중)
 
 ## 4. 🙏 기술 스택 및 협업 방식
 
@@ -170,12 +187,12 @@
   </tr>
 </table>
 
-
 <br />
 
 ## 5. 🎨 변경된 페이지 디자인
 
 ### 메인 페이지
+
   <table>
   <tbody>
     <tr>
@@ -188,15 +205,15 @@
 </table>
 - 현재 날씨를 보여주고, 기온에 적합한 베스트 코디 Top 3 표시합니다.<br/>
 
-
 ### 로그인/회원가입 페이지
+
 <table>
   <tbody>
     <tr>
       <td align="center">로그인 페이지</td>
     </tr>
     <tr>
-        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/c7688a67-8091-4a9d-a881-ef608613db13" width=300/></td>
+        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/b97aef7f-b14a-4ca8-b389-f5b7d3b778f5" width=300/></td>
     </tr>
   </tbody>
 </table>
@@ -208,11 +225,11 @@
       <td align="center">회원가입 페이지</td>
     </tr>
     <tr>
-        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/7dcd0f08-d95e-4e9f-8aed-fc78f8d61551" width=300/></td>
+        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/03c3d801-2c69-47ff-8534-8fe5cc049c3e" width=300/></td>
     </tr>
   </tbody>
 </table>
-- 일반 회원가입 페이지입니다.<br/>
+- 회원가입 페이지입니다.<br/>
 
 ### 피드 페이지
 
@@ -222,12 +239,11 @@
       <td align="center">피드 페이지</td>
     </tr>  
     <tr>
-        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/53a6fa96-c4a5-4fc5-866f-7a6d08c88482" width=300/></td>
+        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/49ef9485-0627-4e6c-8a27-3b263ea1995a" width=300/></td>
     </tr>
   </tbody>
 </table>
 - 온도 조절을 통해 원하는 온도의 게시물을 확인할 수 있고, 태그 검색과 카테고리 검색이 가능합니다.<br/>
-
 
 ### 게시물 상세 페이지
 
@@ -244,7 +260,6 @@
 - 코디를 올린 시점의 온도와 날씨가 표시되고, 해시태그가 포함된 게시글과 카테고리를 확인할 수 있습니다.<br/>
 - 좋아요 및 댓글 기능을 통해 소통이 가능합니다.<br/>
 
-
 ### 업로드 페이지&게시물 수정 페이지
 
 <table>
@@ -253,7 +268,7 @@
       <td align="center">업로드 페이지 & 게시물 수정 페이지</td>
     </tr>
     <tr>
-        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/5f271f16-a660-42cb-9a98-63bf6405826b" width=300/></td>
+        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/5d815fc4-553f-4afd-a3a0-0ca645a29f70" width=300/></td>
     </tr>
   </tbody>
 </table>
@@ -268,10 +283,29 @@
   <tbody>
     <tr>
       <td align="center">마이 페이지</td>
+      <td align="center">마이 페이지 정보 수정</td>
     </tr>
     <tr>
-        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/3bb2c1a5-5b5a-482f-a33a-85b8ab21c9ab" width=300/></td>
+        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/1c5310ad-f916-44f1-a9ca-6eeed3052006" width=300/></td>
+        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/4342c983-68fc-4942-953c-b962f887280f" width=300/></td>
     </tr>
   </tbody>
 </table>
 - 자신의 회원 정보를 수정할 수 있고, 업로드한 코디와 좋아요한 코디를 확인할 수 있습니다.<br/>
+
+### 기타 페이지
+
+<table>
+  <tbody>
+    <tr>
+      <td align="center">웹 반응형 페이지</td>
+      <td align="center">로그인 권환 페이지</td>
+    </tr>
+    <tr>
+        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/c87b056e-9471-4dc7-9f77-d113cbb7995b" width=600/></td>
+        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/d721efee-3ec4-42c4-b06d-aeb2232fb42b" width=300/></td>
+    </tr>
+  </tbody>
+</table>
+- 웹에서 봤을 때의 화면입니다. 모바일 전용이기에 해당 디자인을 채택했습니다.<br/>
+- 로그인 토큰이 없는 경우 로그인 권한 페이지를 띄워줍니다.<br/>

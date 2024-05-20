@@ -1,7 +1,6 @@
 import FeedSearchSort from '@/Components/Organisms/feed/FeedSearchSort'
 import FeedContents from '@/Components/Molecules/post/FeedContents'
 import NavBar from '@/Components/Molecules/bar/NavBar'
-import localFeedData from '../../../public/dummy_data/feedData.json'
 import getBase64 from '@/utils/image_lazy_loding/getBase64'
 
 export default async function Feedpage() {
@@ -12,9 +11,6 @@ export default async function Feedpage() {
   })
 
   const feedContentsData: FEEDDATA[] = await feedDataFetch.json()
-  // console.log(feedContentsData)
-  //임시 데이터
-  // const feedContentsData: FEEDDATA[] = localFeedData
 
   // 받아온 데이터에서 이미지를 블러 이미지로 변환해 준 후
   // boardId와 함께 배열에 넣어주기

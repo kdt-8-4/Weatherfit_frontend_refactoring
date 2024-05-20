@@ -7,15 +7,6 @@
     4. 리팩토링을 하며 바뀐 협업 방식과 기술 스택
     5. 변경된 페이지 디자인
 
-## 0. 옷늘날씨 리팩토링 배포 주소
-**리팩토링 배포 주소** : https://weatherfit-refactoring.vercel.app/
-
-**로그인 계정**<br/>
-rlacjawl37@gmail.com<br/>
-ehdwns12@<br/>
-<br/>
-리팩토링 전 배포 주소 : https://weatherfit.vercel.app/
-
 ## 1. 👔 옷늘날씨 리팩토링의 목적
 - 한눈에 정보가 들어오지 않는 기존 디자인의 문제점 보완  
 
@@ -69,7 +60,6 @@ ehdwns12@<br/>
 - 피드 페이지
 - 일반 회원가입 페이지
 - 구글 회원가입 페이지
-- 웹 뷰 페이지
 
 🦾 **기능**
 
@@ -80,8 +70,6 @@ ehdwns12@<br/>
 - 온도 설정 시 온도에 맞는 게시물 보여주기
 - 일반 회원가입 구현
 - 구글 소셜 회원가입 구현
-- 논리에 맞게 tabIndex 적용
-- 피드 페이지 이미지 최적화
 
 > ### 박혜원
 
@@ -125,10 +113,8 @@ ehdwns12@<br/>
 - 기본 개발 환경 설정 | 1/11 ~ 15 (완)
 - 역할 분배 후 개발(+ 백엔드 연결) | 2/2 ~ 3/27 (진행 중 : 게시물 관련 백엔드 이슈로 지연)
 - 최종 코드 리뷰를 통한 클린 코드 적용 및 웹 표준 & 웹 접근성을 고려해 코드 수정 | 3/28 ~ 3/29
-- 페이지 성능 테스트 및 개선점 분석 | 3/30 ~ 4/1
+- 페이지 성능 테스트 및 개선 | 3/30
 - 완료
-- 개별 성능 개선 작업 | (진행 중)
-
 
 ## 4. 🙏 기술 스택 및 협업 방식
 
@@ -210,7 +196,7 @@ ehdwns12@<br/>
       <td align="center">로그인 페이지</td>
     </tr>
     <tr>
-        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/b97aef7f-b14a-4ca8-b389-f5b7d3b778f5" width=300/></td>
+        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/c7688a67-8091-4a9d-a881-ef608613db13" width=300/></td>
     </tr>
   </tbody>
 </table>
@@ -222,11 +208,11 @@ ehdwns12@<br/>
       <td align="center">회원가입 페이지</td>
     </tr>
     <tr>
-        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/03c3d801-2c69-47ff-8534-8fe5cc049c3e" width=300/></td>
+        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/7dcd0f08-d95e-4e9f-8aed-fc78f8d61551" width=300/></td>
     </tr>
   </tbody>
 </table>
-- 회원가입 페이지입니다.<br/>
+- 일반 회원가입 페이지입니다.<br/>
 
 ### 피드 페이지
 
@@ -236,7 +222,7 @@ ehdwns12@<br/>
       <td align="center">피드 페이지</td>
     </tr>  
     <tr>
-        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/49ef9485-0627-4e6c-8a27-3b263ea1995a" width=300/></td>
+        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/53a6fa96-c4a5-4fc5-866f-7a6d08c88482" width=300/></td>
     </tr>
   </tbody>
 </table>
@@ -267,7 +253,7 @@ ehdwns12@<br/>
       <td align="center">업로드 페이지 & 게시물 수정 페이지</td>
     </tr>
     <tr>
-        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/5d815fc4-553f-4afd-a3a0-0ca645a29f70" width=300/></td>
+        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/5f271f16-a660-42cb-9a98-63bf6405826b" width=300/></td>
     </tr>
   </tbody>
 </table>
@@ -282,29 +268,10 @@ ehdwns12@<br/>
   <tbody>
     <tr>
       <td align="center">마이 페이지</td>
-      <td align="center">마이 페이지 정보 수정</td>
     </tr>
     <tr>
-        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/1c5310ad-f916-44f1-a9ca-6eeed3052006" width=300/></td>
-        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/4342c983-68fc-4942-953c-b962f887280f" width=300/></td>
+        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/3bb2c1a5-5b5a-482f-a33a-85b8ab21c9ab" width=300/></td>
     </tr>
   </tbody>
 </table>
 - 자신의 회원 정보를 수정할 수 있고, 업로드한 코디와 좋아요한 코디를 확인할 수 있습니다.<br/>
-
-### 기타 페이지
-
-<table>
-  <tbody>
-    <tr>
-      <td align="center">웹 반응형 페이지</td>
-      <td align="center">로그인 권환 페이지</td>
-    </tr>
-    <tr>
-        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/c87b056e-9471-4dc7-9f77-d113cbb7995b" width=600/></td>
-        <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/d721efee-3ec4-42c4-b06d-aeb2232fb42b" width=300/></td>
-    </tr>
-  </tbody>
-</table>
-- 웹에서 봤을 때의 화면입니다. 모바일 전용이기에 해당 디자인을 채택했습니다.<br/>
-- 로그인 토큰이 없는 경우 로그인 권한 페이지를 띄워줍니다.<br/>

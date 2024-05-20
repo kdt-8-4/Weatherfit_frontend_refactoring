@@ -75,7 +75,6 @@ export default function FeedCategorySelect() {
           searchData.temperature >= min && searchData.temperature <= max,
       )
 
-      console.log('온도 적용', filterByTemp)
       setFeedData(filterByTemp)
     }
   }

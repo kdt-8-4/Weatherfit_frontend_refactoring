@@ -144,6 +144,7 @@ ehdwns12@<br/>
   <tr>
     <td align="center">Front-End</td>
     <td>
+      <span><img src="https://img.shields.io/badge/typescript-3178C6?style=flat-square&logo=typescript&logoColor=white"></span>&nbsp
       <span><img src="https://img.shields.io/badge/next.js-000?style=flat-square&logo=next.js&logoColor=white"></span>&nbsp
       <span><img src="https://img.shields.io/badge/tailwindcss-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white"></span>&nbsp
       <span><img src="https://img.shields.io/badge/zustand-C70D2C?style=flat-square&logo=zustand&logoColor=black"></span>&nbsp

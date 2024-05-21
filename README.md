@@ -146,7 +146,7 @@ ehdwns12@<br/>
     <td>
       <span><img src="https://img.shields.io/badge/next.js-000?style=flat-square&logo=next.js&logoColor=white"></span>&nbsp
       <span><img src="https://img.shields.io/badge/tailwindcss-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white"></span>&nbsp
-      <span><img src="https://img.shields.io/badge/reactquery-FF4154?style=flat-square&logo=zustand&logoColor=black"></span>&nbsp
+      <span><img src="https://img.shields.io/badge/zustand-FF4154?style=flat-square&logo=zustand&logoColor=black"></span>&nbsp
     </td>
   </tr>
   <tr>

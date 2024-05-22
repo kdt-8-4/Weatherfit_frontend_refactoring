@@ -2,21 +2,25 @@
 
 import { CategoryData } from '@/Store/CategoryData'
 import { CategorySelectData } from '@/Store/CategorySelectData'
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useState } from 'react'
 import InputStore, { InputStyle } from '../../Atoms/Input/InputStore'
+import ButtonStore, { ButtonStyle } from '@/Components/Atoms/Button/ButtonStore'
 import { FeedData } from '@/Store/FeedData'
 import { WeatherContext } from '../../../../contexts/WeatherContext'
+import { WeatherTempMax } from '@/Store/WeatherMaxTemp'
+import { WeatherTempMin } from '@/Store/WeatherMinTemp'
 import { CategoryControl } from '@/Store/CategoryControl'
 
 export default function FeedCategorySelect() {
   const { setFeedData } = FeedData()
   const { categoryData } = CategoryData()
-  const { tempMax, tempMin, setTempMax, setTempMin } =
-    useContext(WeatherContext)
+  const { tempMax, tempMin } = useContext(WeatherContext)
+  const { temperatureMax, setTemperatureMax } = WeatherTempMax()
+  const { temperatureMin, setTemperatureMin } = WeatherTempMin()
   const { setCategoryControl } = CategoryControl()
   const { selectData, setSelectData } = CategorySelectData()
 
-  const [categoryTitleStyle, setCategoryTitleStyle] = useState<string>('')
+  const [categoryTitleStyle] = useState<string>('')
   const [categoryList, setCategoryList] = useState<SelecList[]>([])
   const [localTempMax, setLocalTempMax] = useState<number | null>(null)
   const [localTempMin, setLocalTempMin] = useState<number | null>(null)
@@ -51,8 +55,8 @@ export default function FeedCategorySelect() {
     // console.log('온도', tempMax, tempMin)
     // console.log('로컬 온도', localTempMax, localTempMin)
 
-    let max: number = tempMax || 40
-    let min: number = tempMin || -20
+    let max: number = temperatureMax || 40
+    let min: number = temperatureMin || -20
 
     if (localTempMax !== null) {
       max = localTempMax
@@ -91,11 +95,11 @@ export default function FeedCategorySelect() {
     console.log('카테고리 검색 데이터', callSearchDataToJson)
 
     if (localTempMax !== null) {
-      setTempMax(localTempMax)
+      setTemperatureMax(localTempMax)
     }
 
     if (localTempMin !== null) {
-      setTempMin(localTempMin)
+      setTemperatureMin(localTempMin)
     }
 
     tempFileter(callSearchDataToJson)
@@ -149,33 +153,45 @@ export default function FeedCategorySelect() {
         </section>
 
         {/* 온도 설정 */}
-        <section className="flex m-2">
-          <p
-            className=" font-neurimboGothic whitespace-nowrap"
-            tabIndex={0}
-            aria-label="원하는 온도에 맞는 코디를 보기위해 온도를 설정하는 요소입니다. 입력하지 않을 시 현재 온도 그대로 적용됩니다.">
-            온도 설정 :{' '}
-          </p>
-          <InputStore
-            inputStyle={InputStyle.INPUT_WHITE}
-            onChageFunction={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setLocalTempMax(parseInt(e.target.value))
-            }
-            value={localTempMax || ''}
-            placeholderContents="최고온도를 입력해주세요."
-            style=" w-[70px] h-[30px] text-[13px] ml-2 mr-1"
-          />
-          <span className=" font-neurimboGothic">℃</span>
-          <InputStore
-            inputStyle={InputStyle.INPUT_WHITE}
-            onChageFunction={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setLocalTempMin(parseInt(e.target.value))
-            }
-            value={localTempMin || ''}
-            placeholderContents="최저온도를 입력해주세요."
-            style=" w-[70px] h-[30px] text-[13px] ml-2 mr-1"
-          />
-          <span className=" font-neurimboGothic">℃</span>
+        <section className="flex m-2 justify-between">
+          <div className="flex">
+            <p
+              className=" font-neurimboGothic whitespace-nowrap"
+              tabIndex={0}
+              aria-label="원하는 온도에 맞는 코디를 보기위해 온도를 설정하는 요소입니다. 입력하지 않을 시 현재 온도 그대로 적용됩니다.">
+              온도 설정 :{' '}
+            </p>
+            <InputStore
+              inputStyle={InputStyle.INPUT_WHITE}
+              onChageFunction={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setLocalTempMax(parseInt(e.target.value))
+              }
+              value={localTempMax || ''}
+              placeholderContents="최고온도를 입력해주세요."
+              style=" w-[70px] h-[30px] text-[13px] ml-2 mr-1"
+            />
+            <span className=" font-neurimboGothic">℃</span>
+            <InputStore
+              inputStyle={InputStyle.INPUT_WHITE}
+              onChageFunction={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setLocalTempMin(parseInt(e.target.value))
+              }
+              value={localTempMin || ''}
+              placeholderContents="최저온도를 입력해주세요."
+              style=" w-[70px] h-[30px] text-[13px] ml-2 mr-1"
+            />
+            <span className=" font-neurimboGothic">℃</span>
+          </div>
+
+          <ButtonStore
+            buttonStyle={ButtonStyle.CANCEL_BTN}
+            style="font-NanumSquareRound text-gray-500 text-[12px] w-[60px] p-1"
+            onClickFunction={() => {
+              setLocalTempMax(tempMax)
+              setLocalTempMin(tempMin)
+            }}>
+            현재 온도
+          </ButtonStore>
         </section>
 
         {/* 선택한 카테고리 목록 */}

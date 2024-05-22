@@ -1,11 +1,13 @@
-import { create } from "zustand";
+import { create } from 'zustand'
 
 interface TEMP {
-    temperatureMax : number;
-    setTempMax : (tempMax : number) => void;
+  temperatureMax: number | null
+  setTemperatureMax: (tempMax: number | null) => void
 }
 
-export const WeatherTempMax = create<TEMP>((set)=>({
-    temperatureMax: 0,
-    setTempMax: (tempMax) =>{set(()=>({temperatureMax : tempMax}))},
-}));
+export const WeatherTempMax = create<TEMP>(set => ({
+  temperatureMax: 0,
+  setTemperatureMax: tempMax => {
+    set(() => ({ temperatureMax: tempMax }))
+  },
+}))

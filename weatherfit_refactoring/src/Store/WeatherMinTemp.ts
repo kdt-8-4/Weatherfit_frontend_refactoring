@@ -1,13 +1,13 @@
 import { create } from 'zustand'
 
 interface TEMP {
-  temperatureMin: number
-  setTempMin: (tempMin: number) => void
+  temperatureMin: number | null
+  setTemperatureMin: (tempMin: number | null) => void
 }
 
 export const WeatherTempMin = create<TEMP>(set => ({
   temperatureMin: 0,
-  setTempMin: tempMin => {
+  setTemperatureMin: tempMin => {
     set(() => ({ temperatureMin: tempMin }))
   },
 }))

@@ -39,7 +39,7 @@ export default function Comment({
       const res = await fetch('https://www.jerneithe.site/comment/reply', {
         method: 'POST',
         headers: {
-          Authorization: 'Bearer ' + accesstoken, // accessToken 수정 필요
+          Authorization: 'Bearer ' + accesstoken,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
@@ -63,16 +63,16 @@ export default function Comment({
                   {
                     id: data.id,
                     boardId: c.boardId,
-                    nickname: comment.nickname,
+                    nickname: data.nickname,
                     content,
                     createdDate: data.createdDate,
                     createdTime: data.createdTime,
                     replyList: [],
-                    status: 1,
+                    status: data.status,
                   },
                 ],
               }
-            : { ...c, replyList: findComment(c.replyList) },
+            : { ...c, replyList: c.replyList ? findComment(c.replyList) : [] },
         )
       setComments(findComment(newComments))
 
@@ -147,7 +147,7 @@ export default function Comment({
       comments.map(c =>
         c.id === comment.id
           ? { ...c, content: editContent }
-          : { ...c, replyList: findComment(c.replyList) },
+          : { ...c, replyList: c.replyList ? findComment(c.replyList) : [] },
       )
     setComments(findComment(newComments))
     setIsEditing(false)

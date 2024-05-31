@@ -61,7 +61,7 @@ export default function CommentModal({
           Authorization: 'Bearer ' + accesstoken,
         },
         body: JSON.stringify({
-          boardId: boardId, // localBoardId 수정 필요
+          boardId: boardId,
           content: content,
         }),
       })

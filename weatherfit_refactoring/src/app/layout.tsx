@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import ReactQueryProvider from '../utils/provider/ReactQueryProvider'
+import RegisterServiceWorker from '@/utils/client/RegisterSeviceWorker'
 import WebView from '@/Components/WebView/WebView'
-import { WeatherProvider } from '../../contexts/WeatherContext'
+import { WeatherProviderByContext } from '../../contexts/WeatherContext'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -19,8 +20,9 @@ export default function RootLayout({
       <title>옷늘날씨</title>
       <body>
         <ReactQueryProvider>
+          <RegisterServiceWorker />
           <WebView>
-            <WeatherProvider>{children}</WeatherProvider>
+            <WeatherProviderByContext>{children}</WeatherProviderByContext>
           </WebView>
         </ReactQueryProvider>
       </body>

@@ -41,7 +41,11 @@ export const WeatherContext = createContext<WeatherProvider>({
   setTempMin: () => {},
 })
 
-export const WeatherProvider = ({ children }: { children: ReactNode }) => {
+export const WeatherProviderByContext = ({
+  children,
+}: {
+  children: ReactNode
+}) => {
   const [temperature, setTemp] = useState<number>()
   const [temperatureMin, setTempMin] = useState<number>()
   const [temperatureMax, setTempMax] = useState<number>()

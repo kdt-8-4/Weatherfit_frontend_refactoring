@@ -25,6 +25,7 @@ const nextConfig = {
       'thumbnail.10x10.co.kr',
       'encrypted-tbn0.gstatic.com',
       'image.musinsa.com',
+      'https://test.com',
     ],
   },
 }

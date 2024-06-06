@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { AuthTokenStore } from '@/Store/AuthToken'
 import { AuthUserNickStore } from '@/Store/AuthUserNick'
 import { FeedData } from '@/Store/FeedData'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { confirmAlert } from '@/utils/function/utilFunction'
 
 interface Props {
@@ -16,8 +16,10 @@ interface Props {
 export default function FeedContent({ DataforFeed, blurDataUrl }: Props) {
   const { feedData, setFeedData } = FeedData()
   const [isUserLiked, setIsUserLiked] = useState<boolean>(false)
-  const date = new Date(DataforFeed.createDate)
-  const createDate: string = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+  const createDate: string = useMemo(() => {
+    const date = new Date(DataforFeed.createDate)
+    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+  }, [DataforFeed.createDate])
   const { accesstoken } = AuthTokenStore()
   const { userNick } = AuthUserNickStore()
 
@@ -31,7 +33,7 @@ export default function FeedContent({ DataforFeed, blurDataUrl }: Props) {
 
   useEffect(() => {
     setIsUserLiked(likeChecker(DataforFeed.likelist, userNick))
-  }, [])
+  }, [DataforFeed, userNick])
 
   const clickLike = async () => {
     if (userNick === null) {
@@ -140,6 +142,7 @@ export default function FeedContent({ DataforFeed, blurDataUrl }: Props) {
                 className="border border-black rounded-xl"
                 placeholder="blur"
                 blurDataURL={blurDataUrl}
+                loading="lazy"
               />
             </div>
           </Link>

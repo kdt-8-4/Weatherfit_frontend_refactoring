@@ -29,7 +29,9 @@ export default function DetailImage({
         />
       </div>
       {images.length > 1 && (
-        <div className="absolute flex w-full cursor-pointer px-10 flex justify-between items-center">
+        <div
+          className="absolute flex w-full cursor-pointer px-10 flex justify-between items-center"
+          data-testid="image-button">
           <IconStore
             iconStyle={IconStyle.PREV}
             size={15}

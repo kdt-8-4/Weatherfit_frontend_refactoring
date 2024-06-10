@@ -6,8 +6,12 @@ export default function RegisterServiceWorker() {
   useEffect(() => {
     if ('serviceWorker' in navigator) {
       const registerInit = async () => {
-        const registration = await navigator.serviceWorker.register('/sw.js')
-        registration.waiting?.postMessage({ type: 'SKIP_WAITING' })
+        try {
+          const registration = await navigator.serviceWorker.register('/sw.js')
+          if (registration.waiting) {
+            registration.waiting.postMessage({ type: 'SKIP_WAITING' })
+          }
+        } catch (error) {}
       }
       registerInit()
 

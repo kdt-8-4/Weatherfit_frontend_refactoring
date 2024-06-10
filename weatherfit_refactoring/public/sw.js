@@ -7,11 +7,7 @@ self.addEventListener('fetch', event => {
         return response
       }
 
-      const fetchRequest = event.request.clone()
-
-      return fetch(fetchRequest).then(response => {
-        console.log('fetching...')
-
+      return fetch(event.request).then(response => {
         if (!response || response.status !== 200 || response.type !== 'basic') {
           return response
         }

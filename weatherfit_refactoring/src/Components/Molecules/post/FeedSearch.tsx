@@ -3,11 +3,26 @@
 import IconStore, { IconStyle } from '../../Atoms/Icon/IconStore'
 import InputStore, { InputStyle } from '../../Atoms/Input/InputStore'
 import ButtonStore, { ButtonStyle } from '../../Atoms/Button/ButtonStore'
-import { ChangeEventHandler, useEffect, useState } from 'react'
+import { useState } from 'react'
 import { FeedData } from '@/Store/FeedData'
 
+// 해시태그 문자열 분해
+export const hashToUrlForSearch = (hashValue: string, url: string) => {
+  const searchHashtagData: string[] = hashValue
+    .split('#')
+    .map(tag => {
+      return tag.trim()
+    })
+    .filter(Boolean)
+
+  const combinedHashTags = searchHashtagData.join(',')
+  url += combinedHashTags
+
+  return url
+}
+
 export default function FeedSearch() {
-  const { feedData, setFeedData } = FeedData()
+  const { setFeedData } = FeedData()
   const [hashValue, setHashValue] = useState<string>('')
 
   let url = 'https://www.jerneithe.site/board/search?hashtags='
@@ -17,22 +32,11 @@ export default function FeedSearch() {
     setHashValue('')
   }
 
-  // 해시태그 문자열 분해
-  const hashToArray = () => {
-    const searchHashtagData: string[] = hashValue.split('#').filter(Boolean)
-    console.log('해시태그 검색 배열', searchHashtagData)
-
-    const combinedHashTags = searchHashtagData.join(',')
-    url += combinedHashTags
-
-    console.log('검색 url', url)
-  }
-
   // 해시태그 검색
   const searchHashTag = async () => {
-    hashToArray()
+    const searchUrl = hashToUrlForSearch(hashValue, url)
 
-    if (url === 'https://www.jerneithe.site/board/search?hashtags=') {
+    if (searchUrl === url) {
       const feedDataFetch = await fetch(
         'https://www.jerneithe.site/board/list',
         {
@@ -46,9 +50,9 @@ export default function FeedSearch() {
       setFeedData(allfeedData)
     }
 
-    if (url !== 'https://www.jerneithe.site/board/search?hashtags=') {
+    if (searchUrl !== url) {
       try {
-        const hashSearch = await fetch(url, {
+        const hashSearch = await fetch(searchUrl, {
           method: 'GET',
         })
 
@@ -63,7 +67,6 @@ export default function FeedSearch() {
   }
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLImageElement>) => {
-    console.log('엔터 키 눌림')
     if (e.key === 'Enter') {
       searchHashTag()
     }

@@ -1,8 +1,37 @@
 import { useContext } from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
 import { WeatherProviderByContext, WeatherContext } from './WeatherContext'
-import { server } from '../src/mocks/server'
 
+// msw 서버 설정을 위한 import
+import { http, HttpResponse } from 'msw'
+import { setupServer } from 'msw/node'
+
+// msw 서버 설정
+const handlers = [
+  http.get('https://api.openweathermap.org/data/2.5/weather', () => {
+    return HttpResponse.json({
+      weather: [{ icon: '01d', main: 'Clear' }],
+      main: { temp: 23.52, temp_min: 20.73, temp_max: 26.21 },
+    })
+  }),
+
+  http.get('https://dapi.kakao.com/v2/local/geo/coord2address.json', () => {
+    return HttpResponse.json({
+      documents: [
+        {
+          address: {
+            region_1depth_name: '서울',
+            region_2depth_name: '관악구',
+          },
+        },
+      ],
+    })
+  }),
+]
+
+const server = setupServer(...handlers)
+
+// 테스트 전체에 대한 Given
 beforeAll(() => {
   server.listen()
   // getCurrentPosition 모킹
@@ -23,15 +52,6 @@ beforeAll(() => {
 afterEach(() => server.resetHandlers())
 
 afterAll(() => server.close())
-
-function deferred() {
-  let resolve, reject
-  const promise = new Promise((res, rej) => {
-    resolve = res
-    reject = rej
-  })
-  return { promise, resolve, reject }
-}
 
 // 테스트용 컴포넌트 만들기
 const TestComponent = () => {

@@ -8,6 +8,10 @@ import { FeedData } from '@/Store/FeedData'
 
 // 해시태그 문자열 분해
 export const hashToUrlForSearch = (hashValue: string, url: string) => {
+  if (hashValue === '') {
+    return url
+  }
+
   const searchHashtagData: string[] = hashValue
     .split('#')
     .map(tag => {

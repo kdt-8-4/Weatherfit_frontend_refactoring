@@ -18,7 +18,7 @@ describe('FeedSearch 컴포넌트 테스트', () => {
     await userEvent.type(input, '#테스트')
 
     // Then
-    expect(input.value).toBe('#테스트')
+    waitFor(() => expect(input.value).toBe('#테스트'))
   })
 
   test('취소 버튼 클릭 시, 입력 필드가 초기화된다.', async () => {
@@ -30,11 +30,11 @@ describe('FeedSearch 컴포넌트 테스트', () => {
     const cancelBtn = screen.getByRole('button', { name: '취소' })
 
     // When
-    userEvent.type(input, '#테스트')
+    await userEvent.type(input, '#테스트')
     userEvent.click(cancelBtn)
 
     // Then
-    waitFor(() => expect(input.value).toBe(''))
+    await waitFor(() => expect(input.value).toBe(''))
   })
 
   test('해시태그 검색 아이콘 클릭 시, 검색 함수가 호출된다.', async () => {
@@ -74,6 +74,20 @@ describe('FeedSearch 컴포넌트 테스트', () => {
       // Then
       expect(searchUrl).toBe(
         'https://www.jerneithe.site/board/search?hashtags=테스트1,테스트2',
+      )
+    })
+
+    test('해시태그가 없는 경우, url을 반환하지 않는다.', () => {
+      // Given
+      const hashValue = ''
+      const url = 'https://www.jerneithe.site/board/search?hashtags='
+
+      // When
+      const searchUrl = hashToUrlForSearch(hashValue, url)
+
+      // Then
+      expect(searchUrl).toBe(
+        'https://www.jerneithe.site/board/search?hashtags=',
       )
     })
   })

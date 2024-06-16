@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import FeedSearch from '@/Components/Molecules/post/FeedSearch'
-import FeedContent from '@/Components/Molecules/post/FeedContent'
+import { FeedData } from '@/Store/FeedData'
 
 // msw 서버 설정을 위한 import
 import { http, HttpResponse } from 'msw'
@@ -16,7 +16,7 @@ const handlers = [
   http.get('https://www.jerneithe.site/board/search', info => {
     const url = new URL(info.request.url)
     const inputHashtag = url.searchParams.get('hashtags')
-    if (inputHashtag === '#카페 #겨울 #행복') {
+    if (inputHashtag === '카페,겨울,행복') {
       return HttpResponse.json([feed_data[0]])
     }
   }),
@@ -42,7 +42,7 @@ describe('피드 페이지 통합 테스트', () => {
     //       imageUrl:
     //         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ0OerVCpI1NxInMd93w4JtvWoGmeRf4l8ZlLM7-A--g&s',
     //     },
-    //     category: ['숏 패딩', '컨버스'],
+    //     category: ['데님 팬츠', '컨버스'],
     //     hashTag: ['카페', '행복', '겨울'],
     //     weatherIcon: 'https://openweathermap.org/img/wn/13d.png',
     //     likelist: [
@@ -62,13 +62,10 @@ describe('피드 페이지 통합 테스트', () => {
 
     test('해시태그 입력 후 검색 버튼 클릭 시 해당하는 코디가 보여진다.', async () => {
       // Given
-      // 가져온 코디에 대한 blurURI
-      const BLURURI: string =
-        'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAKCAIAAAAGpYjXAAAACXBIWXMAAAsTAAALEwEAmpwYAAABBUlEQVR4nAH6AAX/AODb0PHr3/v269DKwmlfWHR1coiIiLu7uQDy7eL68+nW08goJygYFxgLCwxoaGimpqUA8O3i//rtoZ6XExITKCcoBgYHTExMkJCPAO3o3/z262NgXRYWFignJwICAi8tLYaGhgD17+bu6d2Uk4wvLS0VFBUMDAw9PDx5eXkA8e/m8evg8evfMC8wBgYIGBgXb29viIiIAOvl2/fy6O/q4DMyMgAAABYWFnJycouLiwD79uv99uv//vOIh4ZMTEtWVVVycnKJiYgAzcKv2M259+zVr62mpqaidHRya21tg4SFAHJpXHJmWoN1ZV9WTX10bFZRS01HQHhwZvYaezP3SOmNAAAAAElFTkSuQmCC'
       render(
         <div>
           <FeedSearch />
-          <FeedContent DataforFeed={feed_data[0]} blurDataUrl={BLURURI} />
+          {/* <FeedContent DataforFeed={feed_data[0]} blurDataUrl={BLURURI} /> */}
         </div>,
       )
       const input: HTMLInputElement = screen.getByPlaceholderText(
@@ -82,15 +79,7 @@ describe('피드 페이지 통합 테스트', () => {
 
       // Then
       await waitFor(() => {
-        const nickName = screen.getByText(/홍길동/)
-        const temperature = screen.getByText('1.2℃')
-        const category = screen.getByLabelText('코디 정보 숏 패딩,컨버스')
-        const likeCount = screen.getByText('2')
-
-        expect(nickName).toBeInTheDocument()
-        expect(temperature).toBeInTheDocument()
-        expect(category).toBeInTheDocument()
-        expect(likeCount).toBeInTheDocument()
+        expect(FeedData.getState().feedData[0]).toStrictEqual(feed_data[0])
       })
     })
   })

@@ -37,8 +37,10 @@ const images: IMAGE[] = [
 
 describe('DetailImage 화면 테스트', () => {
   test('이미지가 한 개일때, 이미지 이동 버튼이 생성되지 않는다.', () => {
-    // Given + When
+    // Given
     render(<DetailImage images={image} />)
+
+    //When
     const imageButtonElement = screen.queryByTestId('image-button')
 
     // Then
@@ -46,8 +48,10 @@ describe('DetailImage 화면 테스트', () => {
   })
 
   test('이미지가 두 개 이상일때, 이미지 이동 버튼이 생성된다.', () => {
-    // Given + When
+    // Given
     render(<DetailImage images={images} />)
+
+    //When
     const imageButtonElement = screen.queryByTestId('image-button')
 
     // Then
@@ -58,9 +62,9 @@ describe('DetailImage 화면 테스트', () => {
     it('이전 버튼 클릭 시, 3번째 이미지를 보여준다.', async () => {
       // Given
       render(<DetailImage images={images} />)
-      const prevButton = screen.getByRole('img', { name: 'prev' })
 
       // When
+      const prevButton = screen.getByRole('img', { name: 'prev' })
       userEvent.click(prevButton)
 
       // Then
@@ -73,9 +77,9 @@ describe('DetailImage 화면 테스트', () => {
     it('이전 버튼을 2번 클릭 시, 2번째 이미지를 보여준다.', async () => {
       // Given
       render(<DetailImage images={images} />)
-      const prevButton = screen.getByRole('img', { name: 'prev' })
 
       // When
+      const prevButton = screen.getByRole('img', { name: 'prev' })
       userEvent.click(prevButton)
       userEvent.click(prevButton)
 
@@ -89,9 +93,9 @@ describe('DetailImage 화면 테스트', () => {
     it('이전 버튼을 3번 클릭 시, 처음 이미지로 돌아온다', async () => {
       // Given
       render(<DetailImage images={images} />)
-      const prevButton = screen.getByAltText('prev')
 
       // When
+      const prevButton = screen.getByAltText('prev')
       userEvent.click(prevButton)
       userEvent.click(prevButton)
       userEvent.click(prevButton)
@@ -106,9 +110,9 @@ describe('DetailImage 화면 테스트', () => {
     it('다음 버튼 클릭 시, 2번째 이미지를 보여준다.', async () => {
       // Given
       render(<DetailImage images={images} />)
-      const nextButton = screen.getByRole('img', { name: 'next' })
 
       // When
+      const nextButton = screen.getByRole('img', { name: 'next' })
       userEvent.click(nextButton)
 
       // Then
@@ -121,9 +125,9 @@ describe('DetailImage 화면 테스트', () => {
     it('다음 버튼 2번 클릭 시, 3번째 이미지를 보여준다.', async () => {
       // Given
       render(<DetailImage images={images} />)
-      const nextButton = screen.getByRole('img', { name: 'next' })
 
       // When
+      const nextButton = screen.getByRole('img', { name: 'next' })
       userEvent.click(nextButton)
       userEvent.click(nextButton)
 
@@ -137,9 +141,9 @@ describe('DetailImage 화면 테스트', () => {
     it('다음 버튼 3번 클릭 시, 처음 이미지로 돌아온다.', async () => {
       // Given
       render(<DetailImage images={images} />)
-      const nextButton = screen.getByRole('img', { name: 'next' })
 
       // When
+      const nextButton = screen.getByRole('img', { name: 'next' })
       userEvent.click(nextButton)
       userEvent.click(nextButton)
       userEvent.click(nextButton)

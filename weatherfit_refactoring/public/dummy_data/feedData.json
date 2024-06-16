@@ -9,7 +9,7 @@
       "imageId": 1,
       "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ0OerVCpI1NxInMd93w4JtvWoGmeRf4l8ZlLM7-A--g&s"
     },
-    "category": ["숏 패딩", "컨버스"],
+    "category": ["데님 팬츠", "컨버스"],
     "hashTag": ["카페", "행복", "겨울"],
     "weatherIcon": "https://openweathermap.org/img/wn/13d.png",
     "likelist": [
@@ -27,7 +27,7 @@
   },
   {
     "boardId": 2,
-    "category": ["후드 집업", "가죽자켓", "컨버스", "운동화", "베레모"],
+    "category": ["후드 집업", "가죽자켓", "컨버스", "운동화", "셔츠"],
     "createDate": "2024-02-14T08:00:00.000Z",
     "hashTag": ["카페", "행복", "겨울", "과", "가을", "사이"],
     "images": {

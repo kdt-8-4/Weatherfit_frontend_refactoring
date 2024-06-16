@@ -11,6 +11,19 @@ import { WeatherTempMax } from '@/Store/WeatherMaxTemp'
 import { WeatherTempMin } from '@/Store/WeatherMinTemp'
 import { CategoryControl } from '@/Store/CategoryControl'
 
+export const callSearchCategoryData = async (selectData: string[]) => {
+  let url: string = 'https://www.jerneithe.site/board/search?categories='
+  const selectDataToList = selectData.join(',')
+  url += selectDataToList
+
+  console.log(url)
+  const callSearchData = await fetch(url, {
+    method: 'GET',
+  })
+
+  return await callSearchData.json()
+}
+
 export default function FeedCategorySelect() {
   const { setFeedData } = FeedData()
   const { categoryData } = CategoryData()
@@ -81,16 +94,9 @@ export default function FeedCategorySelect() {
 
   const searchCategory = async () => {
     console.log('실행', selectData)
-    let url: string = 'https://www.jerneithe.site/board/search?categories='
-    const selectDataToList = selectData.join(',')
-    url += selectDataToList
 
-    console.log(url)
-    const callSearchData = await fetch(url, {
-      method: 'GET',
-    })
-
-    const callSearchDataToJson: FEEDDATA[] = await callSearchData.json()
+    const callSearchDataToJson: FEEDDATA[] =
+      await callSearchCategoryData(selectData)
 
     console.log('카테고리 검색 데이터', callSearchDataToJson)
 

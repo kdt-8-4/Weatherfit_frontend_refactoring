@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { KeyboardEventHandler } from 'react'
 
-export enum IconStyle {
+export const enum IconStyle {
   MY_PROFILE = 'MY_PROFILE',
   MY_PROFILE_FILL = 'MY_PROFILE_FILL',
   UPLOAD_FILL = 'UPLOAD_FILL',

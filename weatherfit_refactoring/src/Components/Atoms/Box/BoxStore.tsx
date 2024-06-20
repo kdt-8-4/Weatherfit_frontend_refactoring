@@ -1,6 +1,4 @@
-import { MouseEventHandler } from 'react'
-
-export enum BoxStyle {
+export const enum BoxStyle {
   BOX_WHITE = 'BOX_WHITE',
   BOX_YELLOW = 'BOX_YELLOW',
   BOX_BLUE = 'BOX_BLUE',

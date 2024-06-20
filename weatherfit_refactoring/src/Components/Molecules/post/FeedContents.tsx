@@ -1,6 +1,6 @@
 'use client'
 
-import { useContext, useEffect } from 'react'
+import { Suspense, useContext, useEffect } from 'react'
 import FeedContent from './FeedContent'
 import { FeedData } from '@/Store/FeedData'
 import { WebSearchData } from '@/Store/WebSearchData'
@@ -53,18 +53,32 @@ export default function FeedContents({ response, blurDataMap }: Props) {
           )
         })
       ) : (
-        <div
-          className=" font-Cafe24SsurroundAir m-auto text-center"
-          tabIndex={0}>
-          <p>현재 온도와 일치하는 게시물이 없습니다.</p>
-          <br />
-          <p>카테고리와 온도를 조절하여</p>
-          <p>원하는 코디를 확인해 보세요.</p>
-          <br />
-          <p className=" text-[12px] text-gray-600">
-            ※ 검색창의 돋보기를 누르면 모든 코디를 확인할 수 있습니다 ※
-          </p>
-        </div>
+        <Suspense
+          fallback={
+            <div className="m-auto text-center" tabIndex={0}>
+              <p>현재 온도와 일치하는 게시물이 없습니다.</p>
+              <br />
+              <p>카테고리와 온도를 조절하여</p>
+              <p>원하는 코디를 확인해 보세요.</p>
+              <br />
+              <p className=" text-[12px] text-gray-600">
+                ※ 검색창의 돋보기를 누르면 모든 코디를 확인할 수 있습니다 ※
+              </p>
+            </div>
+          }>
+          <div
+            className="font-Cafe24SsurroundAir m-auto text-center"
+            tabIndex={0}>
+            <p>현재 온도와 일치하는 게시물이 없습니다.</p>
+            <br />
+            <p>카테고리와 온도를 조절하여</p>
+            <p>원하는 코디를 확인해 보세요.</p>
+            <br />
+            <p className=" text-[12px] text-gray-600">
+              ※ 검색창의 돋보기를 누르면 모든 코디를 확인할 수 있습니다 ※
+            </p>
+          </div>
+        </Suspense>
       )}
     </main>
   )

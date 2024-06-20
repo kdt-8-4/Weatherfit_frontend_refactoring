@@ -1,4 +1,4 @@
-export enum TextStyle {
+export const enum TextStyle {
   GMARKET_TEXT = 'GMARKET_TEXT',
   NANUM_TEXT = 'NANUM_TEXT',
   CAFE_TEXT = 'CAFA_TEXT',

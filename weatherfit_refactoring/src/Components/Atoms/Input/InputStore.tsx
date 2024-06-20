@@ -5,7 +5,7 @@ import {
   KeyboardEventHandler,
 } from 'react'
 
-export enum InputStyle {
+export const enum InputStyle {
   INPUT_WHITE = 'INPUT_WHITE',
   INPUT_SEARCH = 'INPUT_SEARCH',
   INPUT_IMAGE = 'INPUT_IMAGE',

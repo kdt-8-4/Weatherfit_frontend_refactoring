@@ -298,7 +298,7 @@ ehdwns12@<br/>
   <tbody>
     <tr>
       <td align="center">웹 반응형 페이지</td>
-      <td align="center">로그인 권환 페이지</td>
+      <td align="center">로그인 권한 페이지</td>
     </tr>
     <tr>
         <td align="center"><img src="https://github.com/kdt-8-4/Weatherfit_frontend_refactoring/assets/114459629/c87b056e-9471-4dc7-9f77-d113cbb7995b" width=600/></td>

@@ -16,6 +16,7 @@ rlacjawl37@gmail.com<br/>
 ehdwns12@<br/>
 <br/>
 리팩토링 전 배포 주소 : https://weatherfit.vercel.app/
+리팩토링 전 깃허브 주소: https://github.com/kdt-8-4/weatherfit-frontend
 
 ## 1. 👔 옷늘날씨 리팩토링의 목적
 
